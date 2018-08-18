@@ -1,6 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimary">#55CBAC</color> <!--2F88F6-->
+    <color name="colorPrimaryDark">#55CBAC</color>
+    <color name="colorAccent">#3498B4</color>
+    <color name="search_field">#ffffff</color>
+    <color name="black">#dd000000</color>
+    <color name="lightgray">@android:color/darker_gray</color>
+    <color name="lightlighgray">#110000aa</color>
+    <color name="white">@android:color/white</color>
+    <color name="transparent">@android:color/transparent</color>
+    <color name="translucent_background">#dd000000</color>
+    <color name="scratch_start_gradient">#e5e5e5</color>
+    <color name="scratch_end_gradient">#cccccc</color>
+    <color name="search_dark">#212121</color>
+    <color name="search_light">#a4a4a4</color>
+    <color name="accentGold">#f1a031</color>
+    <color name="actionbar_title_hint">#999999</color>
+    <color name="blackalpha">#88000000</color>
+    <color name="blacktransparnt">#88000000</color>
+    <color name="underlineedittext">#D9D9D9</color>
+    <color name="drawarbackground">#191919</color>
+    <color name="golden_stars">#FFC619</color>
+    <color name="redcolor">#FF5351</color>
+    <color name="messagebackground">#EBEBF1</color>
+    <color name="doctordetailheaderbgcolor">#6D6D6D</color>
+
 </resources>

@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "290546755674",
+    "firebase_url": "https://shefaa-project.firebaseio.com",
+    "project_id": "shefaa-project",
+    "storage_bucket": "shefaa-project.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:290546755674:android:553b14a2387bcaff",
+        "android_client_info": {
+          "package_name": "com.JoyBox.Shefaa"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "290546755674-i42rcdbpa58nbg4cib8n2s06k0juevjb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAePETc1bA7ACtectlqKwSZLP2zJW8JEHQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

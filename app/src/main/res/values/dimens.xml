@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="elevation">4dp</dimen>
+    <dimen name="md_elevation">8dp</dimen>
+    <dimen name="lg_elevation">16dp</dimen>
+    <dimen name="xlg_elevation">32dp</dimen>
+    <dimen name="xxlg_elevation">64dp</dimen>
+
+    <dimen name="cardRadius">4dp</dimen>
+    <dimen name="md_cardRadius">8dp</dimen>
+    <dimen name="lg_cardRadius">16dp</dimen>
+
+    <dimen name="max_margin">60dp</dimen>
+
+    <dimen name="sperator">1.5dp</dimen>
+
+    <dimen name="recyclerviewTagHeight">25dp</dimen>
+    <dimen name="myAdsRecyclerHeight">100dp</dimen>
+    <dimen name="zero">0dp</dimen>
+
+    <dimen name="postItemWidth">160dp</dimen>
+    <dimen name="postItemHeight">160dp</dimen>
+    <dimen name="businessItemWidth">250dp</dimen>
+    <dimen name="sm_btn_height">36dp</dimen>
+
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <dimen name="card_insets">2dp</dimen>
+
+    <dimen name="xxsm_margin">1dp</dimen>
+    <dimen name="xxsm_padding">1dp</dimen>
+
+    <dimen name="xsm_margin">2dp</dimen>
+    <dimen name="xsm_padding">2dp</dimen>
+
+    <dimen name="sm_margin">4dp</dimen>
+    <dimen name="sm_padding">4dp</dimen>
+
+    <dimen name="md_margin">8dp</dimen>
+    <dimen name="md_padding">8dp</dimen>
+
+    <dimen name="lg_margin">16dp</dimen>
+    <dimen name="lg_padding">16dp</dimen>
+
+    <dimen name="xlg_margin">32dp</dimen>
+    <dimen name="xlg_padding">32dp</dimen>
+
+    <dimen name="si_default_text_size">18sp</dimen>
+    <dimen name="si_default_radius_max">24dp</dimen>
+    <dimen name="si_default_radius_min">8dp</dimen>
+
+
+    <dimen name="progress_wheel_height">56dp</dimen>
+    <dimen name="progress_wheel_width">56dp</dimen>
+
+    <dimen name="sm_radius">8dp</dimen>
+    <dimen name="md_radius">16dp</dimen>
+    <dimen name="lg_radius">32dp</dimen>
+
+    <dimen name="sm_trans_z">8dp</dimen>
+    <dimen name="md_trans_z">16dp</dimen>
+    <dimen name="lg_trans_z">32dp</dimen>
+
+
+    <dimen name="EditTextHeight">32dp</dimen>
+    <dimen name="ButtonHeight">40dp</dimen>
+    <dimen name="EditTextSeparator">4dp</dimen>
+    <dimen name="smcardheight">90dp</dimen>
+    <dimen name="photowidth">75dp</dimen>
+
+</resources>

@@ -1,4 +1,4 @@
-package com.JoyBox.Shefaa.activities
+package com.joyBox.shefaa.activities
 
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.app.AppCompatDelegate

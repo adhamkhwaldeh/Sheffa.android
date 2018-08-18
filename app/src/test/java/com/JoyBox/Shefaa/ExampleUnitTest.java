@@ -1,4 +1,4 @@
-package com.JoyBox.Shefaa;
+package com.joyBox.shefaa;
 
 import org.junit.Test;
 

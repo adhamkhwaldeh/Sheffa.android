@@ -27,6 +27,12 @@ android {
         }
     }
 
+    dexOptions {
+        //incremental = true;
+        preDexLibraries = false
+        javaMaxHeapSize "2g"
+    }
+
     dataBinding {
         enabled = true
     }
@@ -52,7 +58,15 @@ dependencies {
     implementation "com.google.android.gms:play-services-gcm:$SUPPORT_SERVICE"
     implementation "com.google.android.gms:play-services-location:$SUPPORT_SERVICE"
     implementation "com.google.android.gms:play-services-places:$SUPPORT_SERVICE"
+//    implementation "com.google.firebase:firebase-database:$SUPPORT_SERVICE"
+//    implementation "com.google.firebase:firebase-core:15.0.1"
+//    implementation "com.google.firebase:firebase-messaging:15.0.1"
+//    implementation "com.firebase:firebase-jobdispatcher:0.5.0"
     /*support service ended*/
+
+
+    implementation 'com.google.code.gson:gson:2.8.5'
+
 
 
     /*networking started*/
@@ -91,3 +105,4 @@ dependencies {
     implementation 'com.android.support:multidex:1.0.3'
 
 }
+apply plugin: "com.google.gms.google-services"

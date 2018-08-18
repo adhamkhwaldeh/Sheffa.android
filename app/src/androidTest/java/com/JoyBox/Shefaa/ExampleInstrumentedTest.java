@@ -1,4 +1,4 @@
-package com.JoyBox.Shefaa;
+package com.joyBox.shefaa;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
