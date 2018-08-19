@@ -1,0 +1,44 @@
+package com.joyBox.shefaa.networking.tasks;
+
+import android.os.AsyncTask;
+
+import com.joyBox.shefaa.networking.NetworkingHelper;
+import com.joyBox.shefaa.networking.connections.GeneralConnections;
+import com.joyBox.shefaa.networking.listeners.OnMessagesUnReadResponseListener;
+
+/**
+ * Created by Adhamkh on 2018-08-19.
+ */
+
+public class UnReadMessageAsync extends AsyncTask<Void, Void, String> {
+
+    String url;
+    OnMessagesUnReadResponseListener onMessagesUnReadResponseListener;
+
+    public UnReadMessageAsync(String url, OnMessagesUnReadResponseListener onMessagesUnReadResponseListener) {
+        this.url = url;
+        this.onMessagesUnReadResponseListener = onMessagesUnReadResponseListener;
+    }
+
+    @Override
+    protected String doInBackground(Void... voids) {
+        return GeneralConnections.getJson(url, NetworkingHelper.RequestTimeout);
+    }
+
+    @Override
+    protected void onPostExecute(String s) {
+        super.onPostExecute(s);
+        try {
+            if (!s.equalsIgnoreCase(NetworkingHelper.ErrorConnectionResponse)) {
+                s = s.trim().replace("\"", "");
+                if (s.equalsIgnoreCase("0"))
+                    s = "";
+                onMessagesUnReadResponseListener.onMessageUnReadResponseSuccessFuly(s);
+                return;
+            }
+        } catch (Exception ex) {
+
+        }
+//        onMessagesUnReadResponseListener.onMessageUnReadResponseInternetConnection();
+    }
+}

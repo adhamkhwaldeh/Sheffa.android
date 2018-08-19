@@ -26,6 +26,10 @@ public class NetworkingHelper {
 
     public static String MyNotificationsUrl = "http://shefaaonline.net/api/notifications_service";
 
+    public static String MessageUnReaded = "http://shefaaonline.net/count-pm";
+
+    public static String AppointmentPatientListUrl = "http://shefaaonline.net/api/patient_appointments?patient_uid=";
+
 
     public static String pharmacySearchURL = "search_medicine_service";
     public static String DoctorSearchURL = "doctors_list_service";
@@ -41,7 +45,6 @@ public class NetworkingHelper {
     public static String TargetId = "TargetId";
     public static String PharmacyId = "PharmacyId";
 
-    public static String MessageUnReaded = "http://shefaaonline.net/count-pm";
 
     public static String MessageALL = "http://shefaaonline.net/load-pm";
 

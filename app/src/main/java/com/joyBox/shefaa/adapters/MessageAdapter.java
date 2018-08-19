@@ -1,14 +1,21 @@
 package com.joyBox.shefaa.adapters;
 
 import android.content.Context;
+import android.os.AsyncTask;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.JoyBox.Shefaa.R;
+import com.joyBox.shefaa.entities.Client;
 import com.joyBox.shefaa.entities.MessageEntity;
 import com.joyBox.shefaa.helpers.IntentHelper;
+import com.joyBox.shefaa.networking.JsonParser;
+import com.joyBox.shefaa.networking.NetworkingHelper;
+import com.joyBox.shefaa.networking.connections.GeneralConnections;
+import com.joyBox.shefaa.repositories.UserRepositoy;
 import com.joyBox.shefaa.viewHolders.MessageViewHolder;
 
 import org.jetbrains.annotations.NotNull;
@@ -54,9 +61,12 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageViewHolder> {
         holder.alarm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                new setMessageReaded().execute(holder.getAdapterPosition(), Utl.MakeReadedURL + "?message_id=" + message.getMid() +
-//                        "&sess_id=" + Utl.client.getSessid() + "&rec=" + Utl.client.getUser().getUid() +
-//                        "&sess_name=" + Utl.client.getSessionName() + "&token=" + Utl.client.getToken());
+
+                Client client = new UserRepositoy(context).getClient();
+                new setMessageReaded().execute(holder.getAdapterPosition(), NetworkingHelper.MakeReadedURL +
+                        "?message_id=" + message.getMid() +
+                        "&sess_id=" + client.getSessid() + "&rec=" + client.getUser().getUid() +
+                        "&sess_name=" + client.getSessionName() + "&token=" + client.getToken());
             }
         });
     }
@@ -67,34 +77,37 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageViewHolder> {
     }
 
 
-//    public class setMessageReaded extends AsyncTask<Object, Void, String> {
-//        int position = 0;
-//
-//        @Override
-//        protected String doInBackground(Object... params) {
-//            position = (int) params[0];
-//            String url = (String) params[1];
-//            return JsonParser.getJson(url, Utl.RequestTimeout);
-//        }
-//
-//        @Override
-//        protected void onPreExecute() {
-//            super.onPreExecute();
-//        }
-//
-//        @Override
-//        protected void onPostExecute(String s) {
-//            super.onPostExecute(s);
-//            if (s.equals("Error Connection")) {
-//                Toast.makeText(context, R.string.ErrorConnection, Toast.LENGTH_LONG).show();
-//            } else {
-//                if (s.contains("0")) {
-//                    messageList.get(position).setIs_new("0");
-//                    notifyItemChanged(position);
-//                }
-//            }
-//        }
-//    }
+    public class setMessageReaded extends AsyncTask<Object, Void, String> {
+        int position = 0;
+
+        @Override
+        protected String doInBackground(Object... params) {
+            position = (int) params[0];
+            String url = (String) params[1];
+            return GeneralConnections.getJson(url, NetworkingHelper.RequestTimeout);
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            try {
+                if (s.equalsIgnoreCase(NetworkingHelper.ErrorConnectionResponse)) {
+                    Toast.makeText(context, R.string.ErrorConnection, Toast.LENGTH_LONG).show();
+                } else {
+                    if (s.contains("0")) {
+                        messageList.get(position).set_new("0");
+                        notifyItemChanged(position);
+                    }
+                }
+            } catch (Exception ex) {
+            }
+        }
+    }
 
 
 }

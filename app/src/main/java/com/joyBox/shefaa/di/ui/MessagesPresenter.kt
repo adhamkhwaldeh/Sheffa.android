@@ -4,7 +4,9 @@ import android.content.Context
 import android.view.View
 import com.joyBox.shefaa.entities.MessageEntity
 import com.joyBox.shefaa.networking.listeners.OnMessageResponseListener
+import com.joyBox.shefaa.networking.listeners.OnMessagesUnReadResponseListener
 import com.joyBox.shefaa.networking.tasks.MessagesAsync
+import com.joyBox.shefaa.networking.tasks.UnReadMessageAsync
 import io.reactivex.disposables.CompositeDisposable
 
 /**
@@ -42,6 +44,18 @@ class MessagesPresenter constructor(val context: Context) : MessagesContract.Pre
 
             override fun onMessageResponseNoData() {
                 view.showEmptyView(true)
+            }
+        }).execute()
+    }
+
+    override fun loadUnreadMessage(url: String) {
+        UnReadMessageAsync(url, object : OnMessagesUnReadResponseListener {
+            override fun onMessageUnReadResponseInternetConnection() {
+
+            }
+
+            override fun onMessageUnReadResponseSuccessFuly(count: String) {
+                view.onUnreadMessagesLoaded(count)
             }
         }).execute()
     }

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/ManageAccount"
         android:title="@string/ManageAccount" />
@@ -11,7 +12,8 @@
         android:title="@string/MyMedicalProfile" />
     <item
         android:id="@+id/Messages"
-        android:title="@string/Messages" />
+        android:title="@string/Messages"
+        app:actionLayout="@layout/menu_counter" />
     <item
         android:id="@+id/Notifications"
         android:title="@string/Notifications" />

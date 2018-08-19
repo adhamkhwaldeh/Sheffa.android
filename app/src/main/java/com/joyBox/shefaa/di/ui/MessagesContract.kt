@@ -8,10 +8,12 @@ import com.joyBox.shefaa.entities.MessageEntity
 class MessagesContract {
     interface Presenter : BaseContract.Presenter<View> {
         fun loadMessages(url: String)
+        fun loadUnreadMessage(url: String)
 
     }
 
     interface View : BaseContract.View {
-        fun onMessagesLoaded(messageList: MutableList<MessageEntity>)
+        fun onMessagesLoaded(messageList: MutableList<MessageEntity>) {}
+        fun onUnreadMessagesLoaded(count: String) {}
     }
 }

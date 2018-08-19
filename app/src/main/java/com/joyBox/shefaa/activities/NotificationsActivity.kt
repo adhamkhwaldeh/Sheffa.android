@@ -8,11 +8,13 @@ import android.util.Log
 import butterknife.BindView
 import butterknife.ButterKnife
 import com.JoyBox.Shefaa.R
+import com.joyBox.shefaa.adapters.NotificationAdapter
 import com.joyBox.shefaa.di.component.DaggerNotificationComponent
 import com.joyBox.shefaa.di.module.NotificationModule
 import com.joyBox.shefaa.di.ui.NotificationContract
 import com.joyBox.shefaa.di.ui.NotificationPresenter
 import com.joyBox.shefaa.entities.NotificationEntity
+import com.joyBox.shefaa.views.GridDividerDecoration
 import javax.inject.Inject
 
 /**
@@ -47,7 +49,7 @@ class NotificationsActivity : BaseActivity(), NotificationContract.View {
 
     private fun initRecyclerView() {
         recyclerView.layoutManager = LinearLayoutManager(this)
-        recyclerView.addItemDecoration(Grid)
+        recyclerView.addItemDecoration(GridDividerDecoration(this))
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -67,7 +69,7 @@ class NotificationsActivity : BaseActivity(), NotificationContract.View {
     }
 
     override fun onNotificationsLoaded(notifications: MutableList<NotificationEntity>) {
-
+        recyclerView.adapter = NotificationAdapter(this, notifications)
         Log.v("", "")
     }
 
