@@ -17,6 +17,10 @@
     <item
         android:id="@+id/Notifications"
         android:title="@string/Notifications" />
+
+    <item
+        android:id="@+id/Magazine"
+        android:title="@string/Magazine" />
     <item
         android:id="@+id/Logout"
         android:title="@string/drawer_item_my_LogOut" />

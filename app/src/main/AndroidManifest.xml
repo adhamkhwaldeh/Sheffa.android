@@ -52,10 +52,113 @@
 
         </activity>
 
-        <activity android:name="com.joyBox.shefaa.activities.ProfileActivity">
+        <activity android:name="com.joyBox.shefaa.activities.patient.PatientProfileActivity">
 
         </activity>
 
+        <activity android:name="com.joyBox.shefaa.activities.patient.AppointmentListPatientActivity">
+
+        </activity>
+
+        <activity android:name="com.joyBox.shefaa.activities.patient.MyMedicalProfileActivity">
+
+        </activity>
+
+        <activity android:name="com.joyBox.shefaa.activities.PrescriptionDetailsActivity">
+
+        </activity>
+
+        <activity android:name="com.joyBox.shefaa.activities.MagazinePostsActivity">
+
+        </activity>
+
+        <activity android:name="com.joyBox.shefaa.activities.MagazinePostsDetailsActivity">
+
+        </activity>
+
+        <activity android:name="com.joyBox.shefaa.activities.MagazinePostCommentsActivity">
+
+        </activity>
+
+        <activity android:name="com.joyBox.shefaa.activities.DoctorSearchActivity">
+
+        </activity>
+
+        <activity android:name="com.joyBox.shefaa.activities.AppointmentDetailsActivity">
+
+        </activity>
+
+        <activity android:name="com.joyBox.shefaa.activities.TestResultAddActivity">
+
+        </activity>
+
+        <activity android:name="com.joyBox.shefaa.activities.patient.AdvanceSearchActivity">
+
+        </activity>
+
+        <activity android:name="com.joyBox.shefaa.activities.DoctorDetailsActivity">
+
+        </activity>
+
+        <activity android:name="com.joyBox.shefaa.activities.AppointmentAddActivity">
+
+        </activity>
+
+        <activity android:name="com.joyBox.shefaa.activities.patient.DashBoardActivity">
+
+        </activity>
+
+        <activity android:name="com.joyBox.shefaa.activities.AppointmentReserveActivity">
+
+        </activity>
+
+        <activity android:name="com.joyBox.shefaa.activities.patient.GuardianshipActivity">
+
+        </activity>
+
+        <activity android:name="com.joyBox.shefaa.activities.patient.SelfMonitorActivity">
+
+        </activity>
+
+        <activity android:name="com.joyBox.shefaa.activities.patient.MedicineAndPotionReminderActivity">
+
+        </activity>
+
+        <activity android:name="com.joyBox.shefaa.activities.MagazinePostCommentAddActivity">
+
+        </activity>
+
+        <activity android:name="com.joyBox.shefaa.activities.patient.SelfMonitorAddActivity">
+
+        </activity>
+
+        <activity android:name="com.joyBox.shefaa.activities.patient.GuardianshipAddActivity">
+
+        </activity>
+
+        <activity android:name="com.joyBox.shefaa.activities.ChangeEmailActivity">
+
+        </activity>
+
+        <activity android:name="com.joyBox.shefaa.activities.ChangePasswordActivity">
+
+        </activity>
+
+        <activity android:name="com.joyBox.shefaa.activities.PharmacySearchActivity">
+
+        </activity>
+
+        <activity android:name="com.joyBox.shefaa.activities.PharmacyDetailsActivity">
+
+        </activity>
+
+        <activity android:name="com.joyBox.shefaa.activities.LabSearchActivity">
+
+        </activity>
+
+        <activity android:name="com.joyBox.shefaa.activities.MessageAddActivity">
+
+        </activity>
 
     </application>
 

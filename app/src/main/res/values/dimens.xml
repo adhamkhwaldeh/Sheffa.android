@@ -69,6 +69,9 @@
     <dimen name="EditTextSeparator">4dp</dimen>
     <dimen name="smcardheight">90dp</dimen>
     <dimen name="photowidth">75dp</dimen>
-    <dimen name="drawerHeaderHeight">150dp</dimen>
+    <dimen name="drawerHeaderHeight">200dp</dimen>
+    <dimen name="midcardheight">120dp</dimen>
+    <dimen name="toggleWidth">56dp</dimen>
+    <dimen name="toggleHeight">56dp</dimen>
 
 </resources>

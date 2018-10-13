@@ -30,7 +30,7 @@ import android.text.method.ScrollingMovementMethod
 class TermsAndConditionsDialog : DialogFragment(), TermsAndConditionsContract.View {
 
     companion object {
-        val TermsAndConditionsDialog_Tag = "TermsAndConditionsDialog"
+      const  val TermsAndConditionsDialog_Tag = "TermsAndConditionsDialog"
 
         fun newInstance(): TermsAndConditionsDialog {
             val f = TermsAndConditionsDialog()

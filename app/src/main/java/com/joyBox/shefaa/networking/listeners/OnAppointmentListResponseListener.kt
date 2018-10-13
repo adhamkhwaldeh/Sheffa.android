@@ -10,7 +10,7 @@ interface OnAppointmentListResponseListener {
 
     fun onAppointmentResponseInternetConnection()
 
-    fun onAppointmentResponseSuccessFuly(appointmentList: List<AppointmentEntity>)
+    fun onAppointmentResponseSuccessFully(appointmentList: List<AppointmentEntity>)
 
     fun onAppointmentResponseNoData()
 }

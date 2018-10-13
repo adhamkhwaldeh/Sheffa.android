@@ -4,10 +4,12 @@ import android.content.Context
 import com.joyBox.shefaa.entities.Client
 import com.joyBox.shefaa.entities.NotificationEntity
 import com.joyBox.shefaa.networking.NetworkingHelper
+import com.joyBox.shefaa.networking.listeners.OnFlushNotificationListener
 import com.joyBox.shefaa.networking.listeners.OnNotificationResponseListener
 import com.joyBox.shefaa.networking.listeners.OnRegisterTokenResponseListener
-import com.joyBox.shefaa.networking.tasks.OnNotificationAsync
-import com.joyBox.shefaa.networking.tasks.OnRegisterNotificationTokenAsync
+import com.joyBox.shefaa.networking.tasks.FlushNotifitcationAsync
+import com.joyBox.shefaa.networking.tasks.NotificationAsync
+import com.joyBox.shefaa.networking.tasks.RegisterNotificationTokenAsync
 import io.reactivex.disposables.CompositeDisposable
 
 /**
@@ -30,7 +32,7 @@ class NotificationPresenter constructor(val context: Context) : NotificationCont
     }
 
     override fun loadNotifications() {
-        OnNotificationAsync(NetworkingHelper.MyNotificationsUrl, object : OnNotificationResponseListener {
+        NotificationAsync(NetworkingHelper.MyNotificationsUrl, object : OnNotificationResponseListener {
             override fun onNotificationResponseLoading() {
                 view.showProgress(true)
             }
@@ -53,7 +55,7 @@ class NotificationPresenter constructor(val context: Context) : NotificationCont
     }
 
     override fun registerToken(client: Client, token: String) {
-        OnRegisterNotificationTokenAsync(client, token, object : OnRegisterTokenResponseListener {
+        RegisterNotificationTokenAsync(client, token, object : OnRegisterTokenResponseListener {
             override fun onRegisterTokenResponseLoading() {
 //                view.showProgress(true)
             }
@@ -65,12 +67,32 @@ class NotificationPresenter constructor(val context: Context) : NotificationCont
 
             override fun onRegisterTokenResponseSuccessFuly() {
                 view.showProgress(false)
-                view.onRegisterTokenSuccessfuly()
+                view.onRegisterTokenSuccessfully()
             }
 
             override fun onRegisterTokenResponseFail() {
                 view.showProgress(false)
                 view.onRegisterTokenFail()
+            }
+        }).execute()
+    }
+
+    override fun flushToken(url: String) {
+        FlushNotifitcationAsync(url, object : OnFlushNotificationListener {
+            override fun onFlushNotificationLoading() {
+                view.showProgress(true)
+            }
+
+            override fun onFlushNotificationInternetConnection() {
+                view.showLoadErrorMessage(true)
+            }
+
+            override fun onFlushNotificationSuccessFully() {
+                view.onFlushTokenSuccessfully()
+            }
+
+            override fun onFlushNotificationFail() {
+                view.onFlushTokenFail()
             }
         }).execute()
     }

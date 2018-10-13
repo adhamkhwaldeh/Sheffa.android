@@ -10,11 +10,16 @@ class NotificationContract {
     interface Presenter : BaseContract.Presenter<View> {
         fun registerToken(client: Client, token: String)
         fun loadNotifications()
+        fun flushToken(url: String)
     }
 
     interface View : BaseContract.View {
-        fun onNotificationsLoaded(notifications: MutableList<NotificationEntity>)
-        fun onRegisterTokenSuccessfuly()
-        fun onRegisterTokenFail()
+        fun onNotificationsLoaded(notifications: MutableList<NotificationEntity>) {}
+        fun onRegisterTokenSuccessfully() {}
+        fun onRegisterTokenFail() {}
+
+        fun onFlushTokenSuccessfully() {}
+        fun onFlushTokenFail() {}
+
     }
 }

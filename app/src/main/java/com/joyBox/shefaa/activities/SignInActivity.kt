@@ -4,11 +4,14 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import butterknife.BindView
 import butterknife.ButterKnife
 import butterknife.OnClick
 import com.JoyBox.Shefaa.R
+import com.google.firebase.iid.FirebaseInstanceId
+import com.google.firebase.messaging.FirebaseMessaging
 //import com.google.firebase.iid.FirebaseInstanceId
 //import com.google.firebase.messaging.FirebaseMessaging
 import com.joyBox.shefaa.di.component.DaggerSignInComponent
@@ -27,9 +30,7 @@ import com.joyBox.shefaa.helpers.IntentHelper
 import com.joyBox.shefaa.repositories.UserRepositoy
 import javax.inject.Inject
 
-/**
- * Created by Adhamkh on 2018-08-10.
- */
+
 class SignInActivity : BaseActivity(), RegistrationContract.View, NotificationContract.View {
 
     @Inject
@@ -43,6 +44,9 @@ class SignInActivity : BaseActivity(), RegistrationContract.View, NotificationCo
 
     @BindView(R.id.passwordEditText)
     lateinit var passwordEditText: EditText
+
+    @BindView(R.id.toolBarTitle)
+    lateinit var toolBarTitle: TextView
 
     var progressDialog: ProgressDialog = ProgressDialog()
 
@@ -65,6 +69,8 @@ class SignInActivity : BaseActivity(), RegistrationContract.View, NotificationCo
         setContentView(R.layout.signin_layout)
         ButterKnife.bind(this)
         initDI()
+
+        toolBarTitle.setText(R.string.SignIn)
 
     }
 
@@ -93,11 +99,13 @@ class SignInActivity : BaseActivity(), RegistrationContract.View, NotificationCo
 
     override fun loginSuccessfully(client: Client) {
         UserRepositoy(this).putClient(client)
+
         UserRepositoy(this).putLoginModel(LoginModel(userName = userNameEditText.text.toString(),
                 password = passwordEditText.text.toString()))
-//        FirebaseMessaging.getInstance().subscribeToTopic(client.getUser().getUid())
-//        var token: String = FirebaseInstanceId.getInstance().getToken()!!
-//        notificationPresenter.registerToken(client, token)
+
+        FirebaseMessaging.getInstance().subscribeToTopic(client.user.uid)
+        val token: String = FirebaseInstanceId.getInstance().token!!
+        notificationPresenter.registerToken(client, token)
 
         Toast.makeText(baseContext, resources.getString(R.string.Welcome), Toast.LENGTH_LONG).show()
         IntentHelper.startMainActivity(this)
@@ -117,7 +125,7 @@ class SignInActivity : BaseActivity(), RegistrationContract.View, NotificationCo
 
     }
 
-    override fun onRegisterTokenSuccessfuly() {
+    override fun onRegisterTokenSuccessfully() {
 
     }
 

@@ -13,8 +13,8 @@ import com.joyBox.shefaa.networking.listeners.OnTermsAndConditionResponseListene
  */
 
 public class TermsAndConditionsAsync extends AsyncTask<Void, Void, String> {
-    String url;
-    OnTermsAndConditionResponseListener onTermsAndConditionResponseListener;
+    private String url;
+    private OnTermsAndConditionResponseListener onTermsAndConditionResponseListener;
 
     public TermsAndConditionsAsync(String url, OnTermsAndConditionResponseListener onTermsAndConditionResponseListener) {
         this.url = url;

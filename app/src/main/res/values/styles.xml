@@ -24,6 +24,7 @@
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Dark">
 
     </style>
+
     <style name="ToolBarWithCustomNavigationBack" parent="@style/toolbar">
         <item name="navigationIcon">@drawable/ic_arrow_back_white_24dp</item>
 
@@ -39,6 +40,10 @@
         <item name="android:layout_gravity">left|start</item>
     </style>
 
+    <style name="AppTheme.TitleBlackTextAppearance" parent="AppTheme.TitleTextAppearance">
+        <item name="android:textColor">@color/black</item>
+    </style>
+
     <style name="AppTheme.TitleTextAppearanceCenter" parent="TextAppearance.AppCompat.Large">
         <item name="android:textColor">@color/colorPrimary</item>
         <item name="android:textAllCaps">false</item>
@@ -46,6 +51,23 @@
         <item name="android:gravity">center</item>
         <item name="android:layout_gravity">center</item>
     </style>
+
+    <style name="AppTheme.TitleTextAppearanceWhite" parent="TextAppearance.AppCompat.Large">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:padding">@dimen/xsm_margin</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_gravity">start|left</item>
+    </style>
+
+    <style name="AppTheme.TitleTextAppearanceWhiteCenter" parent="TextAppearance.AppCompat.Large">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:padding">@dimen/xsm_margin</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+
 
     <style name="AppTheme.TextAppearanceSmall" parent="TextAppearance.AppCompat.Small.Inverse">
         <item name="android:textColor">@color/colorPrimary</item>
@@ -67,6 +89,22 @@
         <item name="android:layout_gravity">left|start</item>
     </style>
 
+    <style name="AppTheme.TextWhiteAppearance" parent="TextAppearance.AppCompat.Small">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:padding">@dimen/xsm_margin</item>
+        <item name="android:gravity">start|left</item>
+        <item name="android:layout_gravity">left|start</item>
+    </style>
+
+    <style name="AppTheme.TextGrayAppearance" parent="AppTheme.TextAppearance">
+        <item name="android:textColor">@color/lightgray</item>
+    </style>
+
+    <style name="AppTheme.TextBlackAppearance" parent="AppTheme.TextAppearance">
+        <item name="android:textColor">@color/black</item>
+    </style>
+
     <style name="AppTheme.TextAppearanceCenter" parent="TextAppearance.AppCompat.Small">
         <item name="android:textColor">@color/colorPrimary</item>
         <item name="android:textAllCaps">false</item>
@@ -77,6 +115,27 @@
 
     <!-- TextView Appearance Ended-->
 
+
+    <style name="AppTheme.NormalButtonStyle" parent="Base.Widget.AppCompat.Button">
+        <item name="android:inputType">textCapSentences</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+
+    <style name="DialogAnimation">
+        <item name="android:windowEnterAnimation">@anim/slide_up_dialog</item>
+        <item name="android:windowExitAnimation">@anim/slide_out_up</item>
+    </style>
+
+    <style name="AppTheme.DialogSlideAnimwithback" parent="Theme.AppCompat.Light.Dialog">
+        <item name="android:windowAnimationStyle">@style/DialogAnimation</item>
+        <item name="android:windowBackground">@color/white</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorControlNormal">@color/colorPrimary</item>
+    </style>
 
 
 </resources>

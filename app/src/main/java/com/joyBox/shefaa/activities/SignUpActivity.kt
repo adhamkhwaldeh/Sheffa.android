@@ -16,7 +16,8 @@ import com.joyBox.shefaa.di.ui.RegistrationContract
 import com.joyBox.shefaa.di.ui.RegistrationPresenter
 import com.joyBox.shefaa.dialogs.ProgressDialog
 import com.joyBox.shefaa.dialogs.TermsAndConditionsDialog
-import com.joyBox.shefaa.viewHolders.SignUpViewHolder
+import com.joyBox.shefaa.helpers.IntentHelper
+import com.joyBox.shefaa.viewModels.SignUpViewHolder
 import javax.inject.Inject
 
 /**
@@ -62,6 +63,12 @@ class SignUpActivity : BaseActivity(), RegistrationContract.View {
             presenter.signUp(signUpViewHolder.getSignUpPostModel())
     }
 
+    @OnClick(R.id.signInText)
+    fun onSignInTextClick(view: View) {
+        IntentHelper.startSignInActivity(this)
+    }
+
+
     /*Presenter started*/
     override fun showProgress(show: Boolean) {
         if (show)
@@ -78,8 +85,8 @@ class SignUpActivity : BaseActivity(), RegistrationContract.View {
         super.signUpFail()
     }
 
-    override fun SignUpSuccessfully() {
-        super.SignUpSuccessfully()
+    override fun signUpSuccessfully() {
+        super.signUpSuccessfully()
 
     }
     /*presenter ended*/
@@ -87,7 +94,7 @@ class SignUpActivity : BaseActivity(), RegistrationContract.View {
     @OnCheckedChanged(R.id.privacy_checkbox)
     fun onPrivacyChechBoxClick(view: CompoundButton, isChecked: Boolean) {
         if (isChecked) {
-            var termsAndConditionsDialog = TermsAndConditionsDialog.newInstance()
+            val termsAndConditionsDialog = TermsAndConditionsDialog.newInstance()
             termsAndConditionsDialog.show(supportFragmentManager, TermsAndConditionsDialog.TermsAndConditionsDialog_Tag)
         }
     }

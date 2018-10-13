@@ -46,8 +46,9 @@ public class MessagesAsync extends AsyncTask<Void, Void, String> {
         } else {
             try {
                 List<MessageEntity> messageEntityList = Arrays.asList(new Gson().fromJson(s, MessageEntity[].class));
+
                 if (messageEntityList.size() > 0)
-                    onMessageResponseListener.onMessageResponseSuccessFuly(messageEntityList);
+                    onMessageResponseListener.onMessageResponseSuccessFully(messageEntityList);
                 else
                     onMessageResponseListener.onMessageResponseNoData();
                 return;

@@ -5,8 +5,8 @@ package com.joyBox.shefaa.networking.listeners
  */
 
 public interface OnForgotResponseListener {
-    fun ForgotPasswordLoading()
-    fun ForgotPasswordFail()
-    fun ForgotPasswordSuccessFuly()
-    fun ForgotPasswordInternetConnection()
+    fun forgotPasswordLoading()
+    fun forgotPasswordFail()
+    fun forgotPasswordSuccessFuly()
+    fun forgotPasswordInternetConnection()
 }

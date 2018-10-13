@@ -1,5 +1,7 @@
 package com.joyBox.shefaa.entities;
 
+import android.graphics.Picture;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -49,7 +51,7 @@ public class User {
     private String language;
     @SerializedName("picture")
     @Expose
-    private Object picture;
+    private PictureEntity picture;
     @SerializedName("init")
     @Expose
     private String init;
@@ -68,6 +70,7 @@ public class User {
     @SerializedName("privatemsg_disabled")
     @Expose
     private Boolean privatemsgDisabled;
+
 
     public String getUid() {
         return uid;
@@ -165,11 +168,11 @@ public class User {
         this.language = language;
     }
 
-    public Object getPicture() {
+    public PictureEntity getPicture() {
         return picture;
     }
 
-    public void setPicture(Object picture) {
+    public void setPicture(PictureEntity picture) {
         this.picture = picture;
     }
 

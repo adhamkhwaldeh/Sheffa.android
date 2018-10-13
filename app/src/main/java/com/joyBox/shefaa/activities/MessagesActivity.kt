@@ -5,22 +5,25 @@ import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.Toolbar
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import butterknife.BindView
 import butterknife.ButterKnife
 import com.JoyBox.Shefaa.R
-import com.joyBox.shefaa.adapters.MessageAdapter
+import com.joyBox.shefaa.adapters.MessageRecyclerViewAdapter
 import com.joyBox.shefaa.di.component.DaggerMessageComponent
 import com.joyBox.shefaa.di.module.MessageModule
 import com.joyBox.shefaa.di.ui.MessagesContract
 import com.joyBox.shefaa.di.ui.MessagesPresenter
 import com.joyBox.shefaa.entities.MessageEntity
+import com.joyBox.shefaa.enums.LayoutStatesEnum
+import com.joyBox.shefaa.helpers.IntentHelper
+import com.joyBox.shefaa.listeners.OnRefreshLayoutListener
 import com.joyBox.shefaa.networking.NetworkingHelper
 import com.joyBox.shefaa.repositories.UserRepositoy
+import com.joyBox.shefaa.views.Stateslayoutview
 import javax.inject.Inject
 
-/**
- * Created by Adhamkh on 2018-08-16.
- */
 class MessagesActivity : BaseActivity(), MessagesContract.View {
 
     @Inject
@@ -31,6 +34,9 @@ class MessagesActivity : BaseActivity(), MessagesContract.View {
 
     @BindView(R.id.recyclerView)
     lateinit var recyclerView: RecyclerView
+
+    @BindView(R.id.stateLayout)
+    lateinit var stateLayout: Stateslayoutview
 
     private fun initDI() {
         val component = DaggerMessageComponent.builder()
@@ -52,11 +58,11 @@ class MessagesActivity : BaseActivity(), MessagesContract.View {
         recyclerView.layoutManager = LinearLayoutManager(this)
     }
 
-    fun getUrl(): String {
-        var client = UserRepositoy(this).getClient()!!
-        return NetworkingHelper.MessageALL + "?recipient_id=" + client.getUser().getUid() +
-                "&sess_name=" + client.getSessionName() + "&sess_id=" + client.getSessid() +
-                "&token=" + client.getToken()
+    private fun getUrl(): String {
+        val client = UserRepositoy(this).getClient()!!
+        return NetworkingHelper.MessageALL + "?recipient_id=" + client.user.uid +
+                "&sess_name=" + client.sessionName + "&sess_id=" + client.sessid +
+                "&token=" + client.token
     }
 
 
@@ -64,29 +70,64 @@ class MessagesActivity : BaseActivity(), MessagesContract.View {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.messages_layout)
         ButterKnife.bind(this)
-        initDI()
         initToolBar()
         initRecyclerView()
+        initDI()
+        stateLayout.setOnRefreshLayoutListener(object : OnRefreshLayoutListener {
+            override fun onRefresh() {
+                presenter.loadMessages(getUrl())
+            }
+
+            override fun onRequestPermission() {
+
+            }
+        })
 
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.message_menu, menu)
+        return false
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when (item?.itemId) {
+            R.id.sendMessage -> {
+                IntentHelper.startMessageAddActivity(this@MessagesActivity)
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
 
     /*Presenter started*/
+    override fun showProgress(show: Boolean) {
+        if (show) {
+            stateLayout.FlipLayout(LayoutStatesEnum.Waitinglayout)
+        } else {
+            stateLayout.FlipLayout(LayoutStatesEnum.SuccessLayout)
+        }
+    }
+
     override fun showEmptyView(visible: Boolean) {
-        super.showEmptyView(visible)
+        if (visible) {
+            stateLayout.FlipLayout(LayoutStatesEnum.Nodatalayout)
+        } else {
+            stateLayout.FlipLayout(LayoutStatesEnum.SuccessLayout)
+        }
     }
 
     override fun showLoadErrorMessage(visible: Boolean) {
-        super.showLoadErrorMessage(visible)
+        if (visible) {
+            stateLayout.FlipLayout(LayoutStatesEnum.Noconnectionlayout)
+        } else {
+            stateLayout.FlipLayout(LayoutStatesEnum.SuccessLayout)
+        }
     }
 
     override fun onMessagesLoaded(messageList: MutableList<MessageEntity>) {
-        recyclerView.adapter = MessageAdapter(this, messageList)
+        recyclerView.adapter = MessageRecyclerViewAdapter(this, messageList)
         Log.v("", "")
     }
 
-    override fun showProgress(show: Boolean) {
-
-    }
     /*Presenter ended*/
 }

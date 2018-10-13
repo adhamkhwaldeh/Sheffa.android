@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardview"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/midcardheight"
+    app:cardBackgroundColor="@color/white"
+    app:cardUseCompatPadding="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="3">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:weightSum="5">
+
+            <TextView
+                android:id="@+id/nameLabel"
+                style="@style/AppTheme.TextAppearance"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/NamePharmacy" />
+
+            <TextView
+                android:id="@+id/pharmacyName"
+                style="@style/AppTheme.TextGrayAppearance"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_toEndOf="@+id/nameLabel"
+                android:layout_toLeftOf="@+id/ratingBar"
+                android:layout_toRightOf="@+id/nameLabel"
+                android:layout_toStartOf="@+id/ratingBar" />
+
+            <com.joyBox.shefaa.views.SimpleRatingBar
+                android:id="@+id/ratingBar"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_margin="@dimen/md_margin"
+                app:IsEnable="false"
+                app:srb_borderColor="@color/golden_stars"
+                app:srb_pressedBackgroundColor="@color/golden_stars"
+                app:srb_starBorderWidth="2"
+                app:srb_starSize="25dp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/SpecializationLabel"
+                style="@style/AppTheme.TextAppearance"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/Medicine" />
+
+            <TextView
+                android:id="@+id/pharmacyMedicine"
+                style="@style/AppTheme.TextGrayAppearance"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_toEndOf="@+id/SpecializationLabel"
+                android:layout_toRightOf="@+id/SpecializationLabel" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/AddressLabel"
+                style="@style/AppTheme.TextAppearance"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/Address" />
+
+            <TextView
+                android:id="@+id/pharmacyAddress"
+                style="@style/AppTheme.TextGrayAppearance"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_toEndOf="@+id/AddressLabel"
+                android:layout_toRightOf="@+id/AddressLabel" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>

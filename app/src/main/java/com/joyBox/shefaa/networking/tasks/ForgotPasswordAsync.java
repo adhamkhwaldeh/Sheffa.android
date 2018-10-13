@@ -35,18 +35,18 @@ public class ForgotPasswordAsync extends AsyncTask<Void, Void, String> {
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
-        onForgotResponseListener.ForgotPasswordLoading();
+        onForgotResponseListener.forgotPasswordLoading();
     }
 
     @Override
     protected void onPostExecute(String s) {
         super.onPostExecute(s);
         if (s.equalsIgnoreCase(NetworkingHelper.ErrorConnectionResponse)) {
-            onForgotResponseListener.ForgotPasswordInternetConnection();
+            onForgotResponseListener.forgotPasswordInternetConnection();
         } else if (s.equalsIgnoreCase(NetworkingHelper.EmailNotFoundResponse)) {
-            onForgotResponseListener.ForgotPasswordFail();
+            onForgotResponseListener.forgotPasswordFail();
         } else {
-            onForgotResponseListener.ForgotPasswordSuccessFuly();
+            onForgotResponseListener.forgotPasswordSuccessFuly();
         }
     }
 }

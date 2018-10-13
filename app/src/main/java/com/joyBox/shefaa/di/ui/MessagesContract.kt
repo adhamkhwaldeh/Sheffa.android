@@ -1,5 +1,6 @@
 package com.joyBox.shefaa.di.ui
 
+import com.joyBox.shefaa.entities.AutoCompleteUser
 import com.joyBox.shefaa.entities.MessageEntity
 
 /**
@@ -10,10 +11,15 @@ class MessagesContract {
         fun loadMessages(url: String)
         fun loadUnreadMessage(url: String)
 
+        fun loadAutoCompleteUsers(url: String)
+
     }
 
     interface View : BaseContract.View {
         fun onMessagesLoaded(messageList: MutableList<MessageEntity>) {}
         fun onUnreadMessagesLoaded(count: String) {}
+
+        fun onAutoCompleteUsersLoaded(messageList: MutableList<AutoCompleteUser>) {}
+
     }
 }

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/ManageAccount"
+        android:title="@string/ManageAccount" />
+
+    <item
+        android:id="@+id/MyMedicalProfile"
+        android:title="@string/MyMedicalProfile" />
+
+    <item
+        android:id="@+id/AdvanceSearch"
+        android:title="@string/AdvanceSearch" />
+
+    <item
+        android:id="@+id/ManageAppointments"
+        android:title="@string/ManageAppointments" />
+
+    <item
+        android:id="@+id/SelfMonitor"
+        android:title="@string/SelfMonitor" />
+
+    <item
+        android:id="@+id/Guardianship"
+        android:title="@string/guardianship"/>
+
+    <item
+        android:id="@+id/Messages"
+        android:title="@string/Messages"
+        app:actionLayout="@layout/menu_counter" />
+
+    <item
+        android:id="@+id/Notifications"
+        android:title="@string/Notifications" />
+
+    <item
+        android:id="@+id/Magazine"
+        android:title="@string/Magazine" />
+
+    <item
+        android:id="@+id/Logout"
+        android:title="@string/drawer_item_my_LogOut" />
+
+</menu>

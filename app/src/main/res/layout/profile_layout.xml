@@ -9,150 +9,204 @@
         android:id="@+id/toolbar"
         layout="@layout/toolbar_layout" />
 
-    <LinearLayout
-        android:id="@+id/edittextcontainer"
+    <com.joyBox.shefaa.views.Stateslayoutview
+        android:id="@+id/stateLayout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_centerInParent="true"
-        android:layout_margin="@dimen/lg_margin"
-        android:orientation="vertical"
-        android:weightSum="7"
+        app:NoConnectionLayout="@layout/state_layout_noconnection"
+        app:NoDataLayout="@layout/state_layout_nodata"
+        app:RefreshbtnRes="@+id/retryBtn"
+        app:WaitingLayout="@layout/state_layout_waiting"
         app:layout_constraintBottom_toTopOf="@+id/applybtn"
         app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
-
-        <android.support.v7.widget.AppCompatEditText
-            android:id="@+id/input_firstname"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_gravity="left|start"
-            android:layout_weight="1"
-            android:background="@drawable/edittextdrawble"
-            android:hint="@string/FirstName"
-            android:inputType="textEmailAddress"
-            android:minHeight="@dimen/EditTextHeight"
-            android:textAlignment="gravity"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white" />
-
-        <android.support.v7.widget.AppCompatEditText
-            android:id="@+id/input_lastname"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_gravity="left|start"
-            android:layout_weight="1"
-            android:background="@drawable/edittextdrawble"
-            android:hint="@string/Nickname"
-            android:inputType="textEmailAddress"
-            android:minHeight="@dimen/EditTextHeight"
-            android:textAlignment="gravity"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white" />
-
-        <android.support.v7.widget.AppCompatEditText
-            android:id="@+id/input_email"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_gravity="left|start"
-            android:layout_weight="1"
-            android:background="@drawable/edittextdrawble"
-            android:hint="@string/Email"
-            android:inputType="textEmailAddress"
-            android:minHeight="@dimen/EditTextHeight"
-            android:textAlignment="gravity"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white" />
-
-        <com.joyBox.shefaa.views.PasswordView
-            android:id="@+id/input_password"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_gravity="left|start"
-            android:layout_weight="1"
-            android:background="@drawable/edittextdrawble"
-            android:hint="@string/Password"
-            android:inputType="text"
-            android:minHeight="@dimen/EditTextHeight"
-            android:textAlignment="viewStart"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white"
-            app:strikeThrough="true" />
-
-        <com.joyBox.shefaa.views.PasswordView
-            android:id="@+id/input_new_password"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_gravity="left|start"
-            android:layout_weight="1"
-            android:background="@drawable/edittextdrawble"
-            android:hint="@string/NewPassword"
-            android:inputType="text"
-            android:minHeight="@dimen/EditTextHeight"
-            android:textAlignment="viewStart"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white"
-            app:strikeThrough="true" />
-
-        <com.joyBox.shefaa.views.PasswordView
-            android:id="@+id/input_password_confirm"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_gravity="left|start"
-            android:layout_weight="1"
-            android:background="@drawable/edittextdrawble"
-            android:hint="@string/ConfirmNewPassword"
-            android:inputType="text"
-            android:minHeight="@dimen/EditTextHeight"
-            android:textAlignment="viewStart"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white"
-            app:strikeThrough="true" />
-
-
         <LinearLayout
+            android:id="@+id/edittextcontainer"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:orientation="horizontal">
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/lg_margin"
+            android:orientation="vertical"
+            android:weightSum="7">
 
-            <android.support.v7.widget.AppCompatTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:text="@string/TypeDot"
-                android:textColor="@color/white" />
-
-            <RadioGroup
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/firstName"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="0dp"
+                android:layout_gravity="left|start"
+                android:layout_weight="1"
+                android:background="@drawable/edittextdrawble"
+                android:hint="@string/FirstName"
+                android:inputType="textEmailAddress"
+                android:minHeight="@dimen/EditTextHeight"
+                android:textAlignment="gravity"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white" />
+
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/lastName"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_gravity="left|start"
+                android:layout_weight="1"
+                android:background="@drawable/edittextdrawble"
+                android:hint="@string/Nickname"
+                android:inputType="textEmailAddress"
+                android:minHeight="@dimen/EditTextHeight"
+                android:textAlignment="gravity"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
                 android:orientation="horizontal">
 
-                <android.support.v7.widget.AppCompatRadioButton
-                    android:id="@+id/male_radioButton"
+
+                <android.support.v7.widget.AppCompatEditText
+                    android:id="@+id/email"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="left|start"
+                    android:layout_toLeftOf="@+id/emailChangeBtn"
+                    android:layout_toStartOf="@+id/emailChangeBtn"
+                    android:background="@drawable/edittextdrawble"
+                    android:clickable="false"
+                    android:focusable="false"
+                    android:hint="@string/Email"
+                    android:inputType="textEmailAddress"
+                    android:minHeight="@dimen/EditTextHeight"
+                    android:textAlignment="gravity"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white" />
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/emailChangeBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:padding="@dimen/md_padding"
+                    android:src="@drawable/ic_edit_white_24dp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <com.joyBox.shefaa.views.PasswordView
+                    android:id="@+id/input_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="left|start"
+                    android:layout_toLeftOf="@+id/changePasswordBtn"
+                    android:layout_toStartOf="@+id/changePasswordBtn"
+                    android:background="@drawable/edittextdrawble"
+                    android:clickable="false"
+                    android:focusable="false"
+                    android:hint="@string/Password"
+                    android:inputType="text"
+                    android:minHeight="@dimen/EditTextHeight"
+                    android:textAlignment="viewStart"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white"
+                    app:strikeThrough="true" />
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/changePasswordBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:padding="@dimen/md_padding"
+                    android:src="@drawable/ic_edit_white_24dp" />
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <android.support.v7.widget.AppCompatTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:padding="@dimen/md_padding"
-                    android:text="@string/Male"
-                    android:textColor="@color/white"
-                    app:buttonTint="@color/white" />
+                    android:text="@string/TypeDot"
+                    android:textColor="@color/white" />
 
-                <android.support.v7.widget.AppCompatRadioButton
-                    android:id="@+id/female_radioButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:padding="@dimen/md_padding"
-                    android:text="@string/Female"
-                    android:textColor="@color/white"
-                    app:buttonTint="@color/white" />
+                <RadioGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
 
-            </RadioGroup>
+                    <android.support.v7.widget.AppCompatRadioButton
+                        android:id="@+id/male_radioButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:padding="@dimen/md_padding"
+                        android:text="@string/Male"
+                        android:textColor="@color/white"
+                        app:buttonTint="@color/white" />
+
+                    <android.support.v7.widget.AppCompatRadioButton
+                        android:id="@+id/female_radioButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:padding="@dimen/md_padding"
+                        android:text="@string/Female"
+                        android:textColor="@color/white"
+                        app:buttonTint="@color/white" />
+
+                </RadioGroup>
+
+            </LinearLayout>
+
+            <com.joyBox.shefaa.views.PasswordView
+                android:id="@+id/input_new_password"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_gravity="left|start"
+                android:layout_weight="1"
+                android:background="@drawable/edittextdrawble"
+                android:hint="@string/NewPassword"
+                android:inputType="text"
+                android:minHeight="@dimen/EditTextHeight"
+                android:textAlignment="viewStart"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:visibility="invisible"
+                app:strikeThrough="true" />
+
+            <com.joyBox.shefaa.views.PasswordView
+                android:id="@+id/input_password_confirm"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_gravity="left|start"
+                android:layout_weight="1"
+                android:background="@drawable/edittextdrawble"
+                android:hint="@string/ConfirmNewPassword"
+                android:inputType="text"
+                android:minHeight="@dimen/EditTextHeight"
+                android:textAlignment="viewStart"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:visibility="invisible"
+                app:strikeThrough="true" />
 
         </LinearLayout>
 
+    </com.joyBox.shefaa.views.Stateslayoutview>
 
-    </LinearLayout>
 
     <android.support.v7.widget.AppCompatButton
         android:id="@+id/applybtn"
@@ -161,7 +215,7 @@
         android:layout_margin="@dimen/lg_margin"
         android:background="@color/white"
         android:shadowRadius="10"
-        android:text="@string/Apply"
+        android:text="@string/Save"
         android:textAllCaps="false"
         android:textColor="@color/colorPrimary"
         app:layout_constraintBottom_toBottomOf="parent" />

@@ -7,11 +7,11 @@ import com.joyBox.shefaa.entities.MessageEntity
  */
 interface OnMessageResponseListener {
 
-    fun onMessageResponseLoading();
+    fun onMessageResponseLoading()
 
     fun onMessageResponseInternetConnection()
 
-    fun onMessageResponseSuccessFuly(messageList: MutableList<MessageEntity>)
+    fun onMessageResponseSuccessFully(messageList: MutableList<MessageEntity>)
 
     fun onMessageResponseNoData()
 }

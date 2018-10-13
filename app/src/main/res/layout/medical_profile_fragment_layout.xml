@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.joyBox.shefaa.views.Stateslayoutview xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/stateLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:NoConnectionLayout="@layout/state_layout_noconnection"
+    app:NoDataLayout="@layout/state_layout_nodata"
+    app:RefreshbtnRes="@+id/retryBtn"
+    app:WaitingLayout="@layout/state_layout_waiting">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/titleContainer"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toTopOf="@+id/saveBtn"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.5">
+
+            <android.support.v7.widget.AppCompatTextView
+                style="@style/AppTheme.TitleBlackTextAppearance"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:text="@string/Age" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/AppTheme.TitleBlackTextAppearance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="@string/Height" />
+
+                <TextView
+                    android:id="@+id/heightTextView"
+                    style="@style/AppTheme.TitleBlackTextAppearance"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+            </LinearLayout>
+
+            <android.support.v7.widget.AppCompatTextView
+                style="@style/AppTheme.TitleBlackTextAppearance"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:text="@string/Smoke" />
+
+            <android.support.v7.widget.AppCompatTextView
+                style="@style/AppTheme.TitleBlackTextAppearance"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:text="@string/Allergies" />
+
+            <android.support.v7.widget.AppCompatTextView
+                style="@style/AppTheme.TitleBlackTextAppearance"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:text="@string/Diagnosis_of_Disease_headache" />
+
+
+            <android.support.v7.widget.AppCompatTextView
+                style="@style/AppTheme.TitleBlackTextAppearance"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:text="@string/Emergency_contact" />
+
+            <android.support.v7.widget.AppCompatTextView
+                style="@style/AppTheme.TitleBlackTextAppearance"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:text="@string/Pregnant" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toTopOf="@+id/saveBtn"
+            app:layout_constraintLeft_toRightOf="@+id/titleContainer"
+            app:layout_constraintStart_toEndOf="@+id/titleContainer"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.5">
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/ageTextView"
+                style="@style/AppTheme.TitleBlackTextAppearance"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/AppTheme.TitleBlackTextAppearance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="@string/Weight" />
+
+                <TextView
+                    android:id="@+id/weightTextView"
+                    style="@style/AppTheme.TitleBlackTextAppearance"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+            </LinearLayout>
+
+            <android.support.v7.widget.AppCompatCheckBox
+                android:id="@+id/smokeCheckBox"
+                style="@style/AppTheme.TitleBlackTextAppearance"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                app:backgroundTint="@color/colorPrimary" />
+
+            <android.support.v7.widget.AppCompatCheckBox
+                android:id="@+id/allergiesCheckBox"
+                style="@style/AppTheme.TitleBlackTextAppearance"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                app:backgroundTint="@color/colorPrimary" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/diagnosisHeadAche"
+                style="@style/AppTheme.TitleBlackTextAppearance"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/emergencyContactTextView"
+                style="@style/AppTheme.TitleBlackTextAppearance"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <android.support.v7.widget.AppCompatCheckBox
+                android:id="@+id/pregnantCheckBox"
+                style="@style/AppTheme.TitleBlackTextAppearance"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                app:backgroundTint="@color/colorPrimary" />
+
+
+        </LinearLayout>
+
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/saveBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/md_margin"
+            android:background="@color/colorPrimary"
+            android:text="@string/Save"
+            android:textColor="@color/white"
+            app:backgroundTint="@color/colorPrimary"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+    </android.support.constraint.ConstraintLayout>
+
+</com.joyBox.shefaa.views.Stateslayoutview>

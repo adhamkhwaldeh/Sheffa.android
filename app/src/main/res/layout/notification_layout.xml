@@ -8,12 +8,23 @@
         android:id="@+id/toolbar"
         layout="@layout/toolbar_layout" />
 
-    <include
-        android:id="@+id/recyclerView"
-        layout="@layout/recyclerview_layout"
+    <com.joyBox.shefaa.views.Stateslayoutview
+        android:id="@+id/stateLayout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        app:NoConnectionLayout="@layout/state_layout_noconnection"
+        app:NoDataLayout="@layout/state_layout_nodata"
+        app:RefreshbtnRes="@+id/retryBtn"
+        app:WaitingLayout="@layout/state_layout_waiting"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+        <include
+            android:id="@+id/recyclerView"
+            layout="@layout/recycler_view_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </com.joyBox.shefaa.views.Stateslayoutview>
 
 </android.support.constraint.ConstraintLayout>

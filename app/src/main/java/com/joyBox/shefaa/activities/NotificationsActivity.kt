@@ -8,13 +8,16 @@ import android.util.Log
 import butterknife.BindView
 import butterknife.ButterKnife
 import com.JoyBox.Shefaa.R
-import com.joyBox.shefaa.adapters.NotificationAdapter
+import com.joyBox.shefaa.adapters.NotificationRecyclerViewAdapter
 import com.joyBox.shefaa.di.component.DaggerNotificationComponent
 import com.joyBox.shefaa.di.module.NotificationModule
 import com.joyBox.shefaa.di.ui.NotificationContract
 import com.joyBox.shefaa.di.ui.NotificationPresenter
 import com.joyBox.shefaa.entities.NotificationEntity
+import com.joyBox.shefaa.enums.LayoutStatesEnum
+import com.joyBox.shefaa.listeners.OnRefreshLayoutListener
 import com.joyBox.shefaa.views.GridDividerDecoration
+import com.joyBox.shefaa.views.Stateslayoutview
 import javax.inject.Inject
 
 /**
@@ -30,6 +33,9 @@ class NotificationsActivity : BaseActivity(), NotificationContract.View {
 
     @BindView(R.id.recyclerView)
     lateinit var recyclerView: RecyclerView
+
+    @BindView(R.id.stateLayout)
+    lateinit var stateLayout: Stateslayoutview
 
     private fun initDI() {
         val component = DaggerNotificationComponent.builder()
@@ -60,20 +66,51 @@ class NotificationsActivity : BaseActivity(), NotificationContract.View {
         initToolBar()
         initRecyclerView()
 
+        stateLayout.setOnRefreshLayoutListener(object : OnRefreshLayoutListener {
+            override fun onRefresh() {
+                presenter.loadNotifications()
+            }
+
+            override fun onRequestPermission() {
+
+            }
+        })
+
     }
 
 
     /*Presenter started*/
     override fun showProgress(show: Boolean) {
+        if (show) {
+            stateLayout.FlipLayout(LayoutStatesEnum.Waitinglayout)
+        } else {
+            stateLayout.FlipLayout(LayoutStatesEnum.SuccessLayout)
+        }
+    }
 
+    override fun showEmptyView(visible: Boolean) {
+        if (visible) {
+            stateLayout.FlipLayout(LayoutStatesEnum.Nodatalayout)
+        } else {
+            stateLayout.FlipLayout(LayoutStatesEnum.SuccessLayout)
+        }
+    }
+
+    override fun showLoadErrorMessage(visible: Boolean) {
+        if (visible) {
+            stateLayout.FlipLayout(LayoutStatesEnum.Noconnectionlayout)
+        } else {
+            stateLayout.FlipLayout(LayoutStatesEnum.SuccessLayout)
+        }
     }
 
     override fun onNotificationsLoaded(notifications: MutableList<NotificationEntity>) {
-        recyclerView.adapter = NotificationAdapter(this, notifications)
+        recyclerView.adapter = NotificationRecyclerViewAdapter(this, notifications)
         Log.v("", "")
     }
 
-    override fun onRegisterTokenSuccessfuly() {
+
+    override fun onRegisterTokenSuccessfully() {
 
     }
 

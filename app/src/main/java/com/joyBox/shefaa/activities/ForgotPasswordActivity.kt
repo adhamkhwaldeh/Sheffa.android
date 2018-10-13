@@ -10,17 +10,13 @@ import butterknife.ButterKnife
 import butterknife.OnClick
 import com.JoyBox.Shefaa.R
 import com.joyBox.shefaa.di.component.DaggerForgotPasswordComponent
-import com.joyBox.shefaa.di.component.DaggerSignInComponent
 import com.joyBox.shefaa.di.module.RegistrationModule
 import com.joyBox.shefaa.di.ui.RegistrationContract
 import com.joyBox.shefaa.di.ui.RegistrationPresenter
 import com.joyBox.shefaa.dialogs.ProgressDialog
-import com.joyBox.shefaa.viewHolders.ForgotPasswordViewHolder
+import com.joyBox.shefaa.viewModels.ForgotPasswordViewHolder
 import javax.inject.Inject
 
-/**
- * Created by Adhamkh on 2018-08-10.
- */
 class ForgotPasswordActivity : BaseActivity(), RegistrationContract.View {
 
     @Inject

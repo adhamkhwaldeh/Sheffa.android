@@ -13,26 +13,24 @@ import butterknife.BindView
 import butterknife.ButterKnife
 import com.JoyBox.Shefaa.R
 import com.joyBox.shefaa.di.component.DaggerMainComponent
-import com.joyBox.shefaa.di.component.DaggerMessageComponent
 import com.joyBox.shefaa.di.module.MessageModule
-import com.joyBox.shefaa.di.ui.MessageReplayContract
 import com.joyBox.shefaa.di.ui.MessagesContract
 import com.joyBox.shefaa.di.ui.MessagesPresenter
 import com.joyBox.shefaa.helpers.IntentHelper
 import com.joyBox.shefaa.networking.NetworkingHelper
-import com.joyBox.shefaa.repositories.Repository
 import com.joyBox.shefaa.repositories.UserRepositoy
 import javax.inject.Inject
-import com.JoyBox.Shefaa.R.id.navigationView
 import android.support.v4.view.MenuItemCompat
 import android.view.Gravity
 import android.view.View
 import android.widget.TextView
+import butterknife.OnClick
+import com.joyBox.shefaa.cores.AuthenticationCore
+import com.joyBox.shefaa.entities.Client
+import com.joyBox.shefaa.entities.User
+import org.w3c.dom.Text
+import java.net.Authenticator
 
-
-/**
- * Created by Adhamkh on 2018-08-10.
- */
 class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener, MessagesContract.View {
 
     @Inject
@@ -47,18 +45,25 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     @BindView(R.id.navigationView)
     lateinit var navigationView: NavigationView
 
+    //    @BindView(R.id.userName)
+    lateinit var userName: TextView
+
+    //    @BindView(R.id.userEmail)
+    lateinit var userEmail: TextView
+
+
     fun initToolBar() {
         setSupportActionBar(toolbar)
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.setHomeButtonEnabled(true)
     }
 
-    fun initDrawer() {
+    private fun initDrawer() {
         val mDrawerToggle = ActionBarDrawerToggle(this, mDrawerLayout, R.string.app_name, R.string.app_name)
         mDrawerLayout.addDrawerListener(mDrawerToggle)
         mDrawerToggle.syncState()
-    }
 
+    }
 
     private fun initDI() {
         val component = DaggerMainComponent.builder()
@@ -70,6 +75,25 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         presenter.loadUnreadMessage(getUrl())
     }
 
+    private fun initUser() {
+        val user = UserRepositoy(this).getClient()
+
+        userName = navigationView.getHeaderView(0).findViewById(R.id.userName)
+        userEmail = navigationView.getHeaderView(0).findViewById(R.id.userEmail)
+
+        userName.text = user?.user?.name
+        userEmail.text = user?.user?.mail
+    }
+
+    private fun initRedirection() {
+        val user: User = UserRepositoy(this).getClient()!!.user
+        if (AuthenticationCore.isPatientOnly(user)) {
+            IntentHelper.startDashBoardActivity(this)
+            finish()
+        }
+        Log.v("", "")
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_layout)
@@ -77,30 +101,47 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         initToolBar()
         initDrawer()
         initDI()
+        initUser()
+
+        initRedirection()
 
         navigationView.setNavigationItemSelectedListener(this)
 
     }
 
-    fun getUrl(): String {
-        var client = UserRepositoy(this).getClient()!!
-        var url = NetworkingHelper.MessageUnReaded + "?sess_name=" + client.getSessionName() +
-                "&sess_id=" + client.getSessid() + "&token=" + client.getToken()
+    @OnClick(R.id.doctorBtn)
+    fun onDoctorSearchButtonClick(view: View) {
+        IntentHelper.startAdvanceSearchActivity(this)
+//        IntentHelper.startDoctorSearchActivity(this)
+        Log.v("Clicked", view.id.toString())
+    }
 
-        return url
+    private fun getUrl(): String {
+        val client = UserRepositoy(this).getClient()!!
+        return NetworkingHelper.MessageUnReaded + "?sess_name=" + client.sessionName +
+                "&sess_id=" + client.sessid + "&token=" + client.token
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
 
         when (item.itemId) {
+            R.id.ManageAppointments -> {
+                IntentHelper.startAppointmentListPatientActivity(this)
+            }
             R.id.ManageAccount -> {
                 IntentHelper.startProfileActivity(this)
+            }
+            R.id.MyMedicalProfile -> {
+                IntentHelper.startMyMedicalProfileActivity(this)
             }
             R.id.Messages -> {
                 IntentHelper.startMessagesActivity(this)
             }
             R.id.Notifications -> {
                 IntentHelper.startNotificationsActivity(this)
+            }
+            R.id.Magazine -> {
+                IntentHelper.startMagazinesActivity(this)
             }
             R.id.Logout -> {
                 UserRepositoy(context = baseContext).flushClient()
@@ -133,11 +174,11 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     }
 
     override fun onUnreadMessagesLoaded(count: String) {
-        var messages = MenuItemCompat.getActionView(navigationView.menu.findItem(R.id.Messages)) as TextView
-        messages.setGravity(Gravity.CENTER_VERTICAL)
+        val messages = MenuItemCompat.getActionView(navigationView.menu.findItem(R.id.Messages)) as TextView
+        messages.gravity = (Gravity.CENTER_VERTICAL)
         messages.setTypeface(null, Typeface.BOLD)
         messages.setTextColor(resources.getColor(R.color.redcolor))
-        messages.setText(count);
+        messages.text = count
         Log.v("", "")
     }
     /*Presenter ended*/
