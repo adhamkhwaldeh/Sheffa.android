@@ -14,6 +14,13 @@ class AuthenticationCore {
             return false
         }
 
+        fun isDoctor(user: User): Boolean {
+            val roles = user.roles
+            if (!roles.iS_Doctor.isNullOrEmpty())
+                return true
+            return false
+        }
+
     }
 
 }

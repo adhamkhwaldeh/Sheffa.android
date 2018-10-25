@@ -160,6 +160,23 @@
 
         </activity>
 
+
+        <activity android:name="com.joyBox.shefaa.activities.doctor.DoctorDashBoardActivity">
+
+        </activity>
+
+
+        <activity android:name="com.joyBox.shefaa.activities.doctor.DoctorProfileActivity">
+
+        </activity>
+        <activity android:name="com.joyBox.shefaa.activities.doctor.DoctorAppointmentActivity">
+
+        </activity>
+        <activity android:name="com.joyBox.shefaa.activities.doctor.DoctorAddPrescriptionActivity">
+
+        </activity>
+
+
     </application>
 
 

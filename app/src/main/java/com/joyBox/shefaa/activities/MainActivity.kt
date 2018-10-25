@@ -89,7 +89,10 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         val user: User = UserRepositoy(this).getClient()!!.user
         if (AuthenticationCore.isPatientOnly(user)) {
             IntentHelper.startDashBoardActivity(this)
-            finish()
+//            finish()
+        } else if (AuthenticationCore.isDoctor(user)) {
+            IntentHelper.startDoctorDashBoardActivity(this)
+//            finish()
         }
         Log.v("", "")
     }
@@ -103,9 +106,9 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         initDI()
         initUser()
 
-        initRedirection()
-
         navigationView.setNavigationItemSelectedListener(this)
+
+        initRedirection()
 
     }
 

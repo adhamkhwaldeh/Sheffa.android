@@ -9,10 +9,10 @@ import io.reactivex.disposables.CompositeDisposable
 /**
  * Created by Adhamkh on 2018-08-20.
  */
-class PrescriptionListPresenter constructor(val context: Context) : PresciptionListContract.Presenter {
+class PrescriptionListPresenter constructor(val context: Context) : PrescriptionListContract.Presenter {
     private val subscriptions = CompositeDisposable()
 
-    private lateinit var view: PresciptionListContract.View
+    private lateinit var view: PrescriptionListContract.View
 
     init {
 
@@ -21,7 +21,7 @@ class PrescriptionListPresenter constructor(val context: Context) : PresciptionL
     override fun subscribe() {
     }
 
-    override fun attachView(view: PresciptionListContract.View) {
+    override fun attachView(view: PrescriptionListContract.View) {
         this.view = view
     }
 

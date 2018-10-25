@@ -8,10 +8,15 @@ import com.joyBox.shefaa.entities.SelfMonitorEntity
 class SelfMonitorContact {
     interface Presenter : BaseContract.Presenter<View> {
         fun loadSelfMonitorList(url: String)
+        fun loadPatientSelfMonitor(patientId: String)
 
     }
 
     interface View : BaseContract.View {
-        fun onSelfMonitorListLoaded(selfMonitorList: List<SelfMonitorEntity>)
+        fun onSelfMonitorListLoaded(selfMonitorList: List<SelfMonitorEntity>) {}
+
+        fun onPatientSelfMonitorListLoaded(selfMonitorList: List<SelfMonitorEntity>) {}
+
     }
+
 }

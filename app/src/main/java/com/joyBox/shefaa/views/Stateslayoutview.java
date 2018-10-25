@@ -10,14 +10,7 @@ import com.JoyBox.Shefaa.R;
 import com.joyBox.shefaa.enums.LayoutStatesEnum;
 import com.joyBox.shefaa.listeners.OnRefreshLayoutListener;
 
-//import com.brainsocket.mainlibrary.Enums.LayoutStatesEnum;
-//import com.brainsocket.mainlibrary.Listeners.OnRefreshLayoutListener;
-//import com.brainsocket.mainlibrary.R;
 
-
-/**
- * Created by windows 8.1 on 2017-03-21.
- */
 
 public class Stateslayoutview extends RelativeLayout implements View.OnClickListener {
 

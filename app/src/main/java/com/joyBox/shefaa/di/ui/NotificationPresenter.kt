@@ -7,7 +7,7 @@ import com.joyBox.shefaa.networking.NetworkingHelper
 import com.joyBox.shefaa.networking.listeners.OnFlushNotificationListener
 import com.joyBox.shefaa.networking.listeners.OnNotificationResponseListener
 import com.joyBox.shefaa.networking.listeners.OnRegisterTokenResponseListener
-import com.joyBox.shefaa.networking.tasks.FlushNotifitcationAsync
+import com.joyBox.shefaa.networking.tasks.FlushNotificationAsync
 import com.joyBox.shefaa.networking.tasks.NotificationAsync
 import com.joyBox.shefaa.networking.tasks.RegisterNotificationTokenAsync
 import io.reactivex.disposables.CompositeDisposable
@@ -78,7 +78,7 @@ class NotificationPresenter constructor(val context: Context) : NotificationCont
     }
 
     override fun flushToken(url: String) {
-        FlushNotifitcationAsync(url, object : OnFlushNotificationListener {
+        FlushNotificationAsync(url, object : OnFlushNotificationListener {
             override fun onFlushNotificationLoading() {
                 view.showProgress(true)
             }

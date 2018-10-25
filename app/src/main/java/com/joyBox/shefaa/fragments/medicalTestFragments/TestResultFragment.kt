@@ -115,7 +115,7 @@ class TestResultFragment : BaseMedicalTestFragment(), TestsResultsContract.View 
         }
     }
 
-    override fun onTestsResultsLoadedSuccessfully(testResultEntityList: List<TestResultEntity>) {
+    override fun onTestsResultsLoadedSuccessfully(testResultEntityList: MutableList<TestResultEntity>) {
         recyclerView.adapter = TestsResultRecyclerViewAdapter(context!!, testResultEntityList.toMutableList())
         Log.v("", "")
     }

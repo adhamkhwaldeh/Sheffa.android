@@ -242,5 +242,12 @@
     <string name="LabName">Lab name</string>
     <string name="SearchForLab">Search for lab</string>
     <string name="Labs">Labs</string>
+    <string name="MyClinic">عيادتي</string>
+    <string name="TherapeuticDay">اليوم العلاجي</string>
+    <string name="Budget">الميزانية</string>
+    <string name="MyPatients">مرضاي</string>
+    <string name="DoctorTreatment">Doctor treatment</string>
+    <string name="ShiftAppoitment">Shift appoitment</string>
+    <string name="Calendar">Calendar</string>
 
 </resources>

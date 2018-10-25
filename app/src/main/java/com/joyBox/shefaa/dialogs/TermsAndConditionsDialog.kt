@@ -22,6 +22,9 @@ import com.joyBox.shefaa.entities.TermsAndConditionsEntity
 import com.joyBox.shefaa.networking.NetworkingHelper
 import javax.inject.Inject
 import android.text.method.ScrollingMovementMethod
+import com.joyBox.shefaa.enums.LayoutStatesEnum
+import com.joyBox.shefaa.listeners.OnRefreshLayoutListener
+import com.joyBox.shefaa.views.Stateslayoutview
 
 
 /**
@@ -30,7 +33,7 @@ import android.text.method.ScrollingMovementMethod
 class TermsAndConditionsDialog : DialogFragment(), TermsAndConditionsContract.View {
 
     companion object {
-      const  val TermsAndConditionsDialog_Tag = "TermsAndConditionsDialog"
+        const val TermsAndConditionsDialog_Tag = "TermsAndConditionsDialog"
 
         fun newInstance(): TermsAndConditionsDialog {
             val f = TermsAndConditionsDialog()
@@ -45,6 +48,9 @@ class TermsAndConditionsDialog : DialogFragment(), TermsAndConditionsContract.Vi
 
     @Inject
     lateinit var presenter: TermsAndConditionsPresenter
+
+    @BindView(R.id.stateLayout)
+    lateinit var stateLayout: Stateslayoutview
 
     private fun initDI() {
         val component = DaggerTermsAndConditionsComponent.builder()
@@ -74,23 +80,41 @@ class TermsAndConditionsDialog : DialogFragment(), TermsAndConditionsContract.Vi
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         initDI()
+
+        stateLayout.setOnRefreshLayoutListener(object :OnRefreshLayoutListener{
+            override fun onRefresh() {
+             presenter.loadTermsAndConditions(NetworkingHelper.TermsAndConditionsUrl)
+            }
+
+            override fun onRequestPermission() {
+
+            }
+        })
     }
 
     /*Presenter started*/
     override fun showProgress(show: Boolean) {
         if (show) {
-
+            stateLayout.FlipLayout(LayoutStatesEnum.Waitinglayout)
         } else {
-
+            stateLayout.FlipLayout(LayoutStatesEnum.SuccessLayout)
         }
     }
 
     override fun showEmptyView(visible: Boolean) {
-        super.showEmptyView(visible)
+        if (visible) {
+            stateLayout.FlipLayout(LayoutStatesEnum.Nodatalayout)
+        } else {
+            stateLayout.FlipLayout(LayoutStatesEnum.SuccessLayout)
+        }
     }
 
     override fun showLoadErrorMessage(visible: Boolean) {
-        super.showLoadErrorMessage(visible)
+        if (visible) {
+            stateLayout.FlipLayout(LayoutStatesEnum.Noconnectionlayout)
+        } else {
+            stateLayout.FlipLayout(LayoutStatesEnum.SuccessLayout)
+        }
     }
 
     override fun onTermsAndConditionsLoaded(termsAndConditions: TermsAndConditionsEntity) {

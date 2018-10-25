@@ -32,7 +32,7 @@ public class MedicalProfileUpdateAsync extends AsyncTask<Void, Void, String> {
 
     @Override
     protected String doInBackground(Void... voids) {
-        return GeneralConnections.getJson(url, NetworkingHelper.RequestTimeout);
+        return GeneralConnections.getJsonPost(url, NetworkingHelper.RequestTimeout);
     }
 
     @Override

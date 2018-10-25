@@ -10,6 +10,10 @@ import com.joyBox.shefaa.entities.models.MessageReplayModel
 import com.joyBox.shefaa.enums.ReminderType
 import android.support.v4.content.ContextCompat.startActivity
 import com.JoyBox.Shefaa.R
+import com.joyBox.shefaa.activities.doctor.DoctorAddPrescriptionActivity
+import com.joyBox.shefaa.activities.doctor.DoctorAppointmentActivity
+import com.joyBox.shefaa.activities.doctor.DoctorDashBoardActivity
+import com.joyBox.shefaa.activities.doctor.DoctorProfileActivity
 
 
 class IntentHelper {
@@ -259,6 +263,33 @@ class IntentHelper {
 
         fun startMessageAddActivity(context: Context) {
             val intent = Intent(context, MessageAddActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+            context.startActivity(intent)
+        }
+
+
+        fun startDoctorDashBoardActivity(context: Context) {
+            val intent = Intent(context, DoctorDashBoardActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+            context.startActivity(intent)
+        }
+
+        fun startDoctorProfileActivity(context: Context) {
+            val intent = Intent(context, DoctorProfileActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+            context.startActivity(intent)
+        }
+
+        fun startDoctorAppointmentActivity(context: Context) {
+            val intent = Intent(context, DoctorAppointmentActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+            context.startActivity(intent)
+        }
+
+        fun startDoctorAddPrescriptionActivity(context: Context, doctorAppointment: DoctorAppointment) {
+            val intent = Intent(context, DoctorAddPrescriptionActivity::class.java)
+            val jSon = Gson().toJson(doctorAppointment)
+            intent.putExtra(DoctorAddPrescriptionActivity.DoctorAddPrescriptionActivity_Tag, jSon)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
             context.startActivity(intent)
         }

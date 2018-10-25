@@ -17,9 +17,9 @@ import java.util.List;
  */
 
 public class MessagesAsync extends AsyncTask<Void, Void, String> {
-    String url;
 
-    OnMessageResponseListener onMessageResponseListener;
+    private String url;
+    private OnMessageResponseListener onMessageResponseListener;
 
     public MessagesAsync(String url, OnMessageResponseListener onMessageResponseListener) {
         this.url = url;

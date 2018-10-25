@@ -26,6 +26,7 @@
         android:layout_height="0dp"
         android:background="@color/colorPrimary"
         android:orientation="vertical"
+        android:padding="@dimen/lg_padding"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/titleContainer">
 
@@ -51,7 +52,6 @@
                 android:layout_margin="@dimen/sm_margin"
                 android:checked="true"
                 app:switchPadding="@dimen/sm_padding"
-                app:track="@color/white"
                 app:trackTintMode="src_in" />
 
             <TextView
@@ -125,7 +125,9 @@
                 style="@style/AppTheme.TitleTextAppearanceWhite"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/SuggestedHour" />
+                android:maxLines="1"
+                android:text="@string/SuggestedHour"
+                app:autoSizeTextType="uniform" />
 
             <android.support.v7.widget.AppCompatEditText
                 android:id="@+id/suggestionHourEditText"
@@ -146,8 +148,10 @@
                 android:layout_gravity="start|left"
                 android:layout_weight="1"
                 android:gravity="start|left"
+                android:maxLines="1"
                 android:text="@string/Urgent"
-                android:textAlignment="gravity" />
+                android:textAlignment="gravity"
+                app:autoSizeTextType="uniform" />
 
             <android.support.v7.widget.AppCompatCheckBox
                 android:layout_width="0dp"
@@ -165,7 +169,9 @@
                 style="@style/AppTheme.TitleTextAppearanceWhite"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/UrgentAppointmentCause" />
+                android:maxLines="1"
+                android:text="@string/UrgentAppointmentCause"
+                app:autoSizeTextType="uniform" />
 
             <android.support.v7.widget.AppCompatEditText
                 android:layout_width="match_parent"
@@ -183,7 +189,9 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/SendYourLocation" />
+                android:maxLines="1"
+                android:text="@string/SendYourLocation"
+                app:autoSizeTextType="uniform" />
 
             <android.support.v7.widget.AppCompatCheckBox
                 android:layout_width="0dp"
@@ -193,10 +201,16 @@
         </LinearLayout>
 
         <android.support.v7.widget.AppCompatButton
-            android:layout_width="wrap_content"
+            android:id="@+id/signinbtn"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@string/Save" />
+            android:layout_margin="@dimen/sm_margin"
+            android:background="@color/white"
+            android:shadowRadius="10"
+            android:text="@string/Save"
+            android:textAllCaps="false"
+            android:textColor="@color/colorPrimary" />
 
     </LinearLayout>
 

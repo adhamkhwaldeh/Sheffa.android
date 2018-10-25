@@ -10,7 +10,7 @@ interface OnTestsResultResponseListener {
 
     fun onTestsResultResponseInternetConnection()
 
-    fun onTestsResultResponseSuccessFully(testResultEntityList: List<TestResultEntity>)
+    fun onTestsResultResponseSuccessFully(testResultEntityList: MutableList<TestResultEntity>)
 
     fun onTestsResultResponseNoData()
 }

@@ -10,12 +10,12 @@ import com.joyBox.shefaa.networking.listeners.OnFlushNotificationListener;
  * Created by Adhamkh on 2018-10-13.
  */
 
-public class FlushNotifitcationAsync extends AsyncTask<Void, Void, String> {
+public class FlushNotificationAsync extends AsyncTask<Void, Void, String> {
 
     private String url;
     private OnFlushNotificationListener onFlushNotificationListener;
 
-    public FlushNotifitcationAsync(String url, OnFlushNotificationListener onFlushNotificationListener) {
+    public FlushNotificationAsync(String url, OnFlushNotificationListener onFlushNotificationListener) {
         this.url = url;
         this.onFlushNotificationListener = onFlushNotificationListener;
     }

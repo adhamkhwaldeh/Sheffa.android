@@ -78,10 +78,11 @@ class DashBoardActivity : BaseActivity(), RegistrationContract.View, Notificatio
 
         initToolBar()
         initDrawer()
+        initDI()
         navigationView.setNavigationItemSelectedListener(this)
     }
 
-    fun logout() {
+    private fun logout() {
         registrationPresenter.logout(NetworkingHelper.LogoutUrl)
         notificationPresenter.flushToken(NetworkingHelper.FlushNotificationsUrl + FirebaseInstanceId.getInstance().token!!)
 

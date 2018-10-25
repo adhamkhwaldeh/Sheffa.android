@@ -18,10 +18,10 @@ import com.joyBox.shefaa.repositories.UserRepositoy;
  */
 
 public class MagazinePostLikeAsync extends AsyncTask<Void, Void, String> {
-    String magazinePostId;
-    String userId;
-    String flag;
-    OnMagazinePostLikeResponseListener onMagazinePostLikeResponseListener;
+    private String magazinePostId;
+    private String userId;
+    private String flag;
+    private OnMagazinePostLikeResponseListener onMagazinePostLikeResponseListener;
 
     public MagazinePostLikeAsync(String magazinePostId, String userId, String flag, OnMagazinePostLikeResponseListener onMagazinePostLikeResponseListener) {
         this.magazinePostId = magazinePostId;
@@ -52,12 +52,18 @@ public class MagazinePostLikeAsync extends AsyncTask<Void, Void, String> {
     @Override
     protected void onPostExecute(String s) {
         super.onPostExecute(s);
-        if (s.equalsIgnoreCase(NetworkingHelper.ErrorConnectionResponse)) {
-            onMagazinePostLikeResponseListener.onMagazinePostLikeResponseInternetConnection();
-        } else if (s.toLowerCase().contains("true")) {
-            onMagazinePostLikeResponseListener.onMagazinePostLikeResponseSuccessFully();
-        } else {
-            onMagazinePostLikeResponseListener.onMagazinePostLikeResponseFail();
+        try {
+            if (s.equalsIgnoreCase(NetworkingHelper.ErrorConnectionResponse)) {
+                onMagazinePostLikeResponseListener.onMagazinePostLikeResponseInternetConnection();
+            } else if (s.toLowerCase().contains("true")) {
+                onMagazinePostLikeResponseListener.onMagazinePostLikeResponseSuccessFully();
+            } else {
+                onMagazinePostLikeResponseListener.onMagazinePostLikeResponseFail();
+            }
+            return;
+        } catch (Exception ex) {
+
         }
+        onMagazinePostLikeResponseListener.onMagazinePostLikeResponseInternetConnection();
     }
 }

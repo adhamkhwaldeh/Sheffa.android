@@ -15,8 +15,8 @@ class DoctorContract {
     }
 
     interface View : BaseContract.View {
-        fun onDoctorAutoCompleteSuccessfully(doctorAutoCompleteList: List<DoctorAutoComplete>)
-        fun onDoctorListLoadedSuccessfully(doctorList: MutableList<Doctor>)
+        fun onDoctorAutoCompleteSuccessfully(doctorAutoCompleteList: List<DoctorAutoComplete>){}
+        fun onDoctorListLoadedSuccessfully(doctorList: MutableList<Doctor>){}
         fun onSpecialistAutoCompleteLoadedSuccessfully(specialistAutoCompleteList: MutableList<SpecialistAutoComplete>){}
     }
 

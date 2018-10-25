@@ -5,7 +5,7 @@ import com.joyBox.shefaa.entities.Prescription
 /**
  * Created by Adhamkh on 2018-08-20.
  */
-class PresciptionListContract {
+class PrescriptionListContract {
     interface Presenter : BaseContract.Presenter<View> {
         fun loadPrescriptions(url: String)
     }

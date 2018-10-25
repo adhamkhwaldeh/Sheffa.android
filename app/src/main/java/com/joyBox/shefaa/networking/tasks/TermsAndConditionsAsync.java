@@ -22,6 +22,12 @@ public class TermsAndConditionsAsync extends AsyncTask<Void, Void, String> {
     }
 
     @Override
+    protected void onPreExecute() {
+        super.onPreExecute();
+        onTermsAndConditionResponseListener.onTermsAndConditionResponseLoading();
+    }
+
+    @Override
     protected String doInBackground(Void... voids) {
         return TermsAndConditionsConnections.getJsonPost(url, NetworkingHelper.RequestTimeout);
     }

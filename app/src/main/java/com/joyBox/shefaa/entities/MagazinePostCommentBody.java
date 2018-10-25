@@ -6,9 +6,17 @@ import java.util.Vector;
 
 public class MagazinePostCommentBody {
 
-    List<CommentUnit> und = new Vector<>();
+    private List<CommentUnit> und = new Vector<>();
 
-    class CommentUnit {
+    public List<CommentUnit> getUnd() {
+        return und;
+    }
+
+    public void setUnd(List<CommentUnit> und) {
+        this.und = und;
+    }
+
+    public class CommentUnit {
         private String value = "";
         private String format = "";
         private String safe_value = "";

@@ -1,11 +1,14 @@
 package com.joyBox.shefaa.di.ui
 
 import android.content.Context
+import com.joyBox.shefaa.entities.DoctorProfile
 import com.joyBox.shefaa.entities.MedicalProfile
 import com.joyBox.shefaa.entities.MedicinePotionEntity
+import com.joyBox.shefaa.networking.listeners.OnDoctorProfileListener
 import com.joyBox.shefaa.networking.listeners.OnMedicalProfileListener
 import com.joyBox.shefaa.networking.listeners.OnMedicalProfileUpdateListener
 import com.joyBox.shefaa.networking.listeners.OnMedicineAndPotionResponseListener
+import com.joyBox.shefaa.networking.tasks.DoctorProfileAsync
 import com.joyBox.shefaa.networking.tasks.MedicalProfileAsync
 import com.joyBox.shefaa.networking.tasks.MedicalProfileUpdateAsync
 import com.joyBox.shefaa.networking.tasks.MedicineAndPotionAsync
@@ -65,6 +68,33 @@ class MedicalProfilePresenter constructor(val context: Context) : MedicalProfile
                 view.showEmptyView(true)
             }
         }).execute()
+
+    }
+
+
+    override fun loadDoctorProfile(userId: String, profileType: String) {
+        DoctorProfileAsync(userId, object : OnDoctorProfileListener {
+            override fun onDoctorProfileLoading() {
+                view.showProgress(true)
+            }
+
+            override fun onDoctorProfileInternetConnection() {
+                view.showLoadErrorMessage(true)
+            }
+
+            override fun onDoctorProfileSuccessFully(doctorProfile: DoctorProfile) {
+                view.showProgress(false)
+                view.onDoctorProfileLoaded(doctorProfile)
+            }
+
+            override fun onDoctorProfileNoData() {
+                view.showEmptyView(true)
+            }
+        }).execute()
+
+    }
+
+    override fun updateDoctorProfile(url: String) {
 
     }
 

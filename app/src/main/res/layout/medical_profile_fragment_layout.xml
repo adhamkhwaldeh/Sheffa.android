@@ -143,12 +143,24 @@
                 android:layout_weight="1"
                 app:backgroundTint="@color/colorPrimary" />
 
-            <android.support.v7.widget.AppCompatTextView
-                android:id="@+id/diagnosisHeadAche"
-                style="@style/AppTheme.TitleBlackTextAppearance"
+            <com.joyBox.shefaa.views.Stateslayoutview
+                android:id="@+id/diagnosisStateLayout"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                app:NoConnectionLayout="@layout/state_layout_noconnection"
+                app:NoDataLayout="@layout/state_layout_nodata"
+                app:RefreshbtnRes="@+id/retryBtn"
+                app:WaitingLayout="@layout/state_layout_waiting">
+
+                <android.support.v7.widget.AppCompatSpinner
+                    android:id="@+id/diagnosisHeadAche"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
+            </com.joyBox.shefaa.views.Stateslayoutview>
 
 
             <android.support.v7.widget.AppCompatTextView

@@ -7,10 +7,16 @@ import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParseException;
 import com.google.gson.reflect.TypeToken;
+import com.joyBox.shefaa.entities.AppointmentAutoComplete;
 import com.joyBox.shefaa.entities.AppointmentEntity;
 import com.joyBox.shefaa.entities.AvailableTime;
 import com.joyBox.shefaa.entities.Doctor;
+import com.joyBox.shefaa.entities.DoctorAppointment;
+import com.joyBox.shefaa.entities.DoctorPatient;
+import com.joyBox.shefaa.entities.DoctorPatientPrescription;
 import com.joyBox.shefaa.entities.Lab;
+import com.joyBox.shefaa.entities.LabTest;
+import com.joyBox.shefaa.entities.PaymentType;
 import com.joyBox.shefaa.entities.Pharmacy;
 import com.joyBox.shefaa.entities.PrescriptionFollowUp;
 import com.joyBox.shefaa.entities.Client;
@@ -19,10 +25,10 @@ import com.joyBox.shefaa.entities.MedicinePotionEntity;
 import com.joyBox.shefaa.entities.MessageResult;
 import com.joyBox.shefaa.entities.Prescription;
 import com.joyBox.shefaa.entities.RegisterNotificationResult;
+import com.joyBox.shefaa.entities.ReportExpense;
+import com.joyBox.shefaa.entities.ReportReceipt;
 import com.joyBox.shefaa.entities.TermsAndConditionsEntity;
 import com.joyBox.shefaa.entities.TestResultEntity;
-
-import junit.framework.TestResult;
 
 import java.lang.reflect.Type;
 import java.util.Arrays;
@@ -351,6 +357,236 @@ public class JsonParser {
         }
     }
     /*Lab ended*/
+
+
+    /*Doctor Appointment Started*/
+    public static List<DoctorAppointment> getDoctorAppointments(String gsonstring) {
+        Type type = new TypeToken<List<DoctorAppointment>>() {
+        }.getType();
+        Gson gson = new GsonBuilder().registerTypeAdapter(type, new DoctorAppointmentDeserializer()).create();
+        return gson.fromJson(gsonstring, type);
+    }
+
+    public static class DoctorAppointmentDeserializer implements JsonDeserializer<List<DoctorAppointment>> {
+        @Override
+        public List<DoctorAppointment> deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
+            List<DoctorAppointment> lst = new Vector<>();
+            Gson gson = new GsonBuilder().create();
+            for (JsonElement el : json.getAsJsonArray()) {
+                DoctorAppointment lab = gson.fromJson(el, DoctorAppointment.class);
+                lst.add(lab);
+            }
+            return lst;
+        }
+    }
+    /*Doctor Appointment Ended*/
+
+    /*Lab tests started*/
+    public static List<LabTest> getLabTest(String gsonstring) {
+        Type type = new TypeToken<List<LabTest>>() {
+        }.getType();
+        Gson gson = new GsonBuilder().registerTypeAdapter(type, new LabTestDeserializer()).create();
+        return gson.fromJson(gsonstring, type);
+    }
+
+    public static class LabTestDeserializer implements JsonDeserializer<List<LabTest>> {
+        @Override
+        public List<LabTest> deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
+            List<LabTest> lst = new Vector<>();
+            Gson gson = new GsonBuilder().create();
+            for (JsonElement el : json.getAsJsonArray()) {
+                LabTest lab = gson.fromJson(el, LabTest.class);
+                JsonElement el_test_type = el.getAsJsonObject().get("Test type");
+                if (!el_test_type.isJsonArray()) {
+                    lab.setTest_type(el_test_type.getAsString());
+                } else {
+                    lab.setTest_type("");
+                }
+
+                JsonElement el_test_group = el.getAsJsonObject().get("Test group");
+                if (!el_test_group.isJsonArray()) {
+                    lab.setTest_group(el_test_group.getAsString());
+                } else {
+                    lab.setTest_group("");
+                }
+
+                JsonElement el_test_range = el.getAsJsonObject().get("Normal range");
+                if (!el_test_range.isJsonArray()) {
+                    lab.setNormal_range(el_test_range.getAsString());
+                } else {
+                    lab.setNormal_range("");
+                }
+
+                lst.add(lab);
+            }
+            return lst;
+        }
+    }
+    /*Lab tests ended*/
+
+    /*Doctor Patient Prescription started*/
+
+    public static List<DoctorPatientPrescription> getDoctorPatientPrescription(String gsonstring) {
+        Type type = new TypeToken<List<DoctorPatientPrescription>>() {
+        }.getType();
+        Gson gson = new GsonBuilder().registerTypeAdapter(type, new DoctorPatientPrescriptionDeserializer()).create();
+        return gson.fromJson(gsonstring, type);
+    }
+
+    public static class DoctorPatientPrescriptionDeserializer implements JsonDeserializer<List<DoctorPatientPrescription>> {
+        @Override
+        public List<DoctorPatientPrescription> deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
+            List<DoctorPatientPrescription> lst = new Vector<>();
+            Gson gson = new GsonBuilder().create();
+            for (JsonElement el : json.getAsJsonArray()) {
+                DoctorPatientPrescription lab = gson.fromJson(el, DoctorPatientPrescription.class);
+//                JsonElement el_test_type = el.getAsJsonObject().get("Test type");
+//                if (!el_test_type.isJsonArray()) {
+//                    lab.setTest_type(el_test_type.getAsString());
+//                } else {
+//                    lab.setTest_type("");
+//                }
+//
+//                JsonElement el_test_group = el.getAsJsonObject().get("Test group");
+//                if (!el_test_group.isJsonArray()) {
+//                    lab.setTest_group(el_test_group.getAsString());
+//                } else {
+//                    lab.setTest_group("");
+//                }
+//
+//                JsonElement el_test_range = el.getAsJsonObject().get("Normal range");
+//                if (!el_test_range.isJsonArray()) {
+//                    lab.setNormal_range(el_test_range.getAsString());
+//                } else {
+//                    lab.setNormal_range("");
+//                }
+
+                lst.add(lab);
+            }
+            return lst;
+        }
+    }
+    /*Doctor Patient Prescription ended*/
+
+    /*Doctor Patient  started*/
+
+    public static List<DoctorPatient> getDoctorPatient(String gsonstring) {
+        Type type = new TypeToken<List<DoctorPatient>>() {
+        }.getType();
+        Gson gson = new GsonBuilder().registerTypeAdapter(type, new DoctorPatientDeserializer()).create();
+        return gson.fromJson(gsonstring, type);
+    }
+
+    public static class DoctorPatientDeserializer implements JsonDeserializer<List<DoctorPatient>> {
+        @Override
+        public List<DoctorPatient> deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
+            List<DoctorPatient> lst = new Vector<>();
+            Gson gson = new GsonBuilder().create();
+            for (JsonElement el : json.getAsJsonArray()) {
+                DoctorPatient lab = gson.fromJson(el, DoctorPatient.class);
+                lst.add(lab);
+            }
+            return lst;
+        }
+    }
+    /*Doctor Patient  ended*/
+
+
+      /*Appointment AutoComplete started*/
+
+    public static List<AppointmentAutoComplete> getAppointmentAutoComplete(String gsonstring) {
+        Type type = new TypeToken<List<AppointmentAutoComplete>>() {
+        }.getType();
+        Gson gson = new GsonBuilder().registerTypeAdapter(type, new AppointmentAutoCompleteDeserializer()).create();
+        return gson.fromJson(gsonstring, type);
+    }
+
+    public static class AppointmentAutoCompleteDeserializer implements JsonDeserializer<List<AppointmentAutoComplete>> {
+        @Override
+        public List<AppointmentAutoComplete> deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
+            List<AppointmentAutoComplete> lst = new Vector<>();
+            Gson gson = new GsonBuilder().create();
+            for (JsonElement el : json.getAsJsonArray()) {
+                AppointmentAutoComplete lab = gson.fromJson(el, AppointmentAutoComplete.class);
+                lst.add(lab);
+            }
+            return lst;
+        }
+    }
+    /*Appointment AutoComplete  ended*/
+
+    /*Payment Types started*/
+    public static List<PaymentType> getPaymentTypes(String gsonstring) {
+        Type type = new TypeToken<List<PaymentType>>() {
+        }.getType();
+        Gson gson = new GsonBuilder().registerTypeAdapter(type, new PaymentTypeDeserializer()).create();
+        return gson.fromJson(gsonstring, type);
+    }
+
+    public static class PaymentTypeDeserializer implements JsonDeserializer<List<PaymentType>> {
+        @Override
+        public List<PaymentType> deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
+            List<PaymentType> lst = new Vector<>();
+            Gson gson = new GsonBuilder().create();
+            for (JsonElement el : json.getAsJsonArray()) {
+                PaymentType lab = gson.fromJson(el, PaymentType.class);
+                lst.add(lab);
+            }
+            return lst;
+        }
+    }
+
+    /*Payment Types ended*/
+    
+    
+    /*Report receipt started*/
+
+    public static List<ReportReceipt> getReportReciepts(String gsonstring) {
+        Type type = new TypeToken<List<ReportReceipt>>() {
+        }.getType();
+        Gson gson = new GsonBuilder().registerTypeAdapter(type, new ReportReceiptDeserializer()).create();
+        return gson.fromJson(gsonstring, type);
+    }
+
+    public static class ReportReceiptDeserializer implements JsonDeserializer<List<ReportReceipt>> {
+        @Override
+        public List<ReportReceipt> deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
+            List<ReportReceipt> lst = new Vector<>();
+            Gson gson = new GsonBuilder().create();
+            for (JsonElement el : json.getAsJsonArray()) {
+                ReportReceipt lab = gson.fromJson(el, ReportReceipt.class);
+                lst.add(lab);
+            }
+            return lst;
+        }
+    }
+    
+    /*Report receipt ended*/
+
+
+     /*Report expense started*/
+
+    public static List<ReportExpense> getReportExpenses(String gsonstring) {
+        Type type = new TypeToken<List<ReportExpense>>() {
+        }.getType();
+        Gson gson = new GsonBuilder().registerTypeAdapter(type, new ReportExpenseDeserializer()).create();
+        return gson.fromJson(gsonstring, type);
+    }
+
+    public static class ReportExpenseDeserializer implements JsonDeserializer<List<ReportExpense>> {
+        @Override
+        public List<ReportExpense> deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
+            List<ReportExpense> lst = new Vector<>();
+            Gson gson = new GsonBuilder().create();
+            for (JsonElement el : json.getAsJsonArray()) {
+                ReportExpense lab = gson.fromJson(el, ReportExpense.class);
+                lst.add(lab);
+            }
+            return lst;
+        }
+    }
+
+    /*Report expense ended*/
 
 
 }

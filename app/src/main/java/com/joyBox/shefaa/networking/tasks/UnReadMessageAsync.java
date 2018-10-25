@@ -6,14 +6,12 @@ import com.joyBox.shefaa.networking.NetworkingHelper;
 import com.joyBox.shefaa.networking.connections.GeneralConnections;
 import com.joyBox.shefaa.networking.listeners.OnMessagesUnReadResponseListener;
 
-/**
- * Created by Adhamkh on 2018-08-19.
- */
+
 
 public class UnReadMessageAsync extends AsyncTask<Void, Void, String> {
 
-    String url;
-    OnMessagesUnReadResponseListener onMessagesUnReadResponseListener;
+    private String url;
+    private OnMessagesUnReadResponseListener onMessagesUnReadResponseListener;
 
     public UnReadMessageAsync(String url, OnMessagesUnReadResponseListener onMessagesUnReadResponseListener) {
         this.url = url;

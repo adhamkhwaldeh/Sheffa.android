@@ -13,7 +13,7 @@ import com.JoyBox.Shefaa.R
 import com.joyBox.shefaa.adapters.PrescriptionAdapter
 import com.joyBox.shefaa.di.component.DaggerPresciptionListComponent
 import com.joyBox.shefaa.di.module.PresciptionListModule
-import com.joyBox.shefaa.di.ui.PresciptionListContract
+import com.joyBox.shefaa.di.ui.PrescriptionListContract
 import com.joyBox.shefaa.di.ui.PrescriptionListPresenter
 import com.joyBox.shefaa.entities.Prescription
 import com.joyBox.shefaa.enums.LayoutStatesEnum
@@ -24,7 +24,7 @@ import com.joyBox.shefaa.views.GridDividerDecoration
 import com.joyBox.shefaa.views.Stateslayoutview
 import javax.inject.Inject
 
-class PrescriptionsFragment : BaseMedicalTestFragment(), PresciptionListContract.View {
+class PrescriptionsFragment : BaseMedicalTestFragment(), PrescriptionListContract.View {
 
     companion object {
         fun getNewInstance(): PrescriptionsFragment {

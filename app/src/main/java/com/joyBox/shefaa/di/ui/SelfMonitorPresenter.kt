@@ -2,7 +2,9 @@ package com.joyBox.shefaa.di.ui
 
 import android.content.Context
 import com.joyBox.shefaa.entities.SelfMonitorEntity
+import com.joyBox.shefaa.networking.listeners.OnPatientSelfMonitorListener
 import com.joyBox.shefaa.networking.listeners.OnSelfMonitorListener
+import com.joyBox.shefaa.networking.tasks.PatientSelfMonitorAsync
 import com.joyBox.shefaa.networking.tasks.SelfMonitorAsync
 import io.reactivex.disposables.CompositeDisposable
 
@@ -45,6 +47,28 @@ class SelfMonitorPresenter constructor(val context: Context) : SelfMonitorContac
             }
         }).execute()
 
+    }
+
+    override fun loadPatientSelfMonitor(patientId: String) {
+        PatientSelfMonitorAsync(patientId, object : OnPatientSelfMonitorListener {
+            override fun onPatientSelfMonitorResponseLoading() {
+                view.showProgress(true)
+            }
+
+            override fun onPatientSelfMonitorResponseInternetConnection() {
+                view.showProgress(false)
+                view.showLoadErrorMessage(true)
+            }
+
+            override fun onPatientSelfMonitorResponseNoData() {
+                view.showProgress(false)
+                view.showEmptyView(true)
+            }
+
+            override fun onPatientSelfMonitorResponseSuccessFully(selfMonitorList: List<SelfMonitorEntity>) {
+                view.onPatientSelfMonitorListLoaded(selfMonitorList)
+            }
+        }).execute()
     }
 
     override fun unSubscribe() {

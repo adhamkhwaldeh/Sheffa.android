@@ -234,5 +234,12 @@
     <string name="LabName">Lab name</string>
     <string name="SearchForLab">Search for lab</string>
     <string name="Labs">Labs</string>
+    <string name="MyClinic">My Clinic</string>
+    <string name="TherapeuticDay">Therapeutic day</string>
+    <string name="Budget">Budget</string>
+    <string name="MyPatients">My patients</string>
+    <string name="DoctorTreatment">Doctor treatment</string>
+    <string name="ShiftAppoitment">Shift appoitment</string>
+    <string name="Calendar">Calendar</string>
 
 </resources>
