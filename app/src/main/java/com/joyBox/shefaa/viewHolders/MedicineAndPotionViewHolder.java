@@ -23,6 +23,9 @@ public class MedicineAndPotionViewHolder extends RecyclerView.ViewHolder {
     @BindView(R.id.toggleBtn)
     public ToggleButton toggleBtn;
 
+    @BindView(R.id.medicineName)
+    public TextView medicineName;
+
     public MedicineAndPotionViewHolder(View itemView) {
         super(itemView);
         ButterKnife.bind(this, itemView);
@@ -30,6 +33,7 @@ public class MedicineAndPotionViewHolder extends RecyclerView.ViewHolder {
 
     public void bind(MedicinePotionEntity entity) {
         idText.setText(entity.getId());
+        medicineName.setText(entity.getMedicine_name());
     }
 
 

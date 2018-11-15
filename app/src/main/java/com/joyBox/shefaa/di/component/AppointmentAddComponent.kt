@@ -7,6 +7,6 @@ import dagger.Component
 
 @PerActivity
 @Component(modules = [AppointmentModule::class])
-public interface AppointmentAddComponent {
+interface AppointmentAddComponent {
     fun inject(appointmentAddActivity: AppointmentAddActivity)
 }

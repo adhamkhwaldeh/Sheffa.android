@@ -10,6 +10,7 @@ import android.view.MenuItem
 import butterknife.BindView
 import butterknife.ButterKnife
 import com.JoyBox.Shefaa.R
+import com.google.gson.Gson
 import com.joyBox.shefaa.adapters.LabRecyclerViewAdapter
 import com.joyBox.shefaa.di.component.DaggerLabSearchComponent
 import com.joyBox.shefaa.di.module.LabModule
@@ -17,6 +18,7 @@ import com.joyBox.shefaa.di.ui.LabContract
 import com.joyBox.shefaa.di.ui.LabPresenter
 import com.joyBox.shefaa.entities.Lab
 import com.joyBox.shefaa.enums.LayoutStatesEnum
+import com.joyBox.shefaa.filtrations.LabFilter
 import com.joyBox.shefaa.listeners.OnRefreshLayoutListener
 import com.joyBox.shefaa.networking.NetworkingHelper
 import com.joyBox.shefaa.views.GridDividerDecoration
@@ -24,11 +26,11 @@ import com.joyBox.shefaa.views.Stateslayoutview
 import com.miguelcatalan.materialsearchview.MaterialSearchView
 import javax.inject.Inject
 
-/**
- * Created by Adhamkh on 2018-10-12.
- */
 class LabSearchActivity : BaseActivity(), LabContract.View {
 
+    companion object {
+        const val LabSearchActivity_Tag = "LabSearchActivity_Tag"
+    }
 
     @Inject
     lateinit var presenter: LabPresenter
@@ -63,7 +65,23 @@ class LabSearchActivity : BaseActivity(), LabContract.View {
         component.inject(this)
         presenter.attachView(this)
         presenter.subscribe()
-        presenter.loadLabList(NetworkingHelper.Lab_Search_Url)
+
+        loadData()
+    }
+
+    private fun loadData() {
+        val filter: LabFilter = Gson().fromJson(intent.getStringExtra(LabSearchActivity_Tag), LabFilter::class.java)
+        var url = NetworkingHelper.Lab_Search_Url
+        var concat = "?"
+        if (!filter.query.isNullOrBlank()) {
+            url += concat + "lab_name=" + filter.query
+            concat = "&"
+        }
+        if (!filter.address.isNullOrBlank()) {
+            url += concat + "place=" + filter.query
+            concat = "&"
+        }
+        presenter.loadLabList(url)
     }
 
     fun initSearch() {
@@ -97,7 +115,7 @@ class LabSearchActivity : BaseActivity(), LabContract.View {
 
         stateLayout.setOnRefreshLayoutListener(object : OnRefreshLayoutListener {
             override fun onRefresh() {
-                presenter.loadLabList(NetworkingHelper.Lab_Search_Url)
+                loadData()
             }
 
             override fun onRequestPermission() {

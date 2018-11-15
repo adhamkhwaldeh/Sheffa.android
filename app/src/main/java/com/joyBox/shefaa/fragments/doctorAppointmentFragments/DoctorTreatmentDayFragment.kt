@@ -10,7 +10,7 @@ import butterknife.BindView
 import butterknife.ButterKnife
 import com.JoyBox.Shefaa.R
 import com.joyBox.shefaa.adapters.DoctorAppointmentRecyclerViewAdapter
-import com.joyBox.shefaa.di.component.DaggerDoctorCalendarClinicComponent
+import com.joyBox.shefaa.adapters.DoctorAppointmentTreatmentRecyclerViewAdapter
 import com.joyBox.shefaa.di.component.DaggerDoctorTreatmentDayComponent
 import com.joyBox.shefaa.di.module.AppointmentModule
 import com.joyBox.shefaa.di.ui.AppointmentContract
@@ -19,7 +19,7 @@ import com.joyBox.shefaa.entities.DoctorAppointment
 import com.joyBox.shefaa.enums.LayoutStatesEnum
 import com.joyBox.shefaa.listeners.OnRefreshLayoutListener
 import com.joyBox.shefaa.networking.NetworkingHelper
-import com.joyBox.shefaa.repositories.UserRepositoy
+import com.joyBox.shefaa.repositories.UserRepository
 import com.joyBox.shefaa.views.GridDividerDecoration
 import com.joyBox.shefaa.views.Stateslayoutview
 import javax.inject.Inject
@@ -63,7 +63,7 @@ class DoctorTreatmentDayFragment : BaseDoctorAppointmentFragment(), AppointmentC
     }
 
     private fun generateRequestUrl(): String {
-        val client = UserRepositoy(context!!).getClient()!!
+        val client = UserRepository(context!!).getClient()!!
         return NetworkingHelper.DoctorAppointmentUrl + "?doctor_id=" + client.user.uid
 //        urgent(0-1), home(0-1), date(Format: 14/08/2018)
 
@@ -117,7 +117,7 @@ class DoctorTreatmentDayFragment : BaseDoctorAppointmentFragment(), AppointmentC
     }
 
     override fun onDoctorAppointmentsLoaded(doctorAppointmentList: MutableList<DoctorAppointment>) {
-        recyclerView.adapter = DoctorAppointmentRecyclerViewAdapter(context = context!!,
+        recyclerView.adapter = DoctorAppointmentTreatmentRecyclerViewAdapter(context = context!!,
                 doctorAppointmentList = doctorAppointmentList)
     }
     /*Presenter ended*/

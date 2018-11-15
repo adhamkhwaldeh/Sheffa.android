@@ -72,15 +72,12 @@ dependencies {
     /*support service ended*/
     implementation 'com.google.code.gson:gson:2.8.5'
 
-    /*networking started*/
+    /*Job Schaduler started*/
+    implementation 'com.evernote:android-job:1.2.6'
+    implementation "android.arch.work:work-runtime:1.0.0-alpha02"
+    implementation "com.google.android.gms:play-services-gcm:15.0.1"
 
-    //    implementation "com.amitshekhar.android:android-networking:$Android_Networking"
-
-    //    implementation "com.amitshekhar.android:jackson-android-networking:$Android_Networking"
-
-    //    implementation 'com.squareup.okhttp3:okhttp:3.10.0'
-
-    /*networking ended*/
+    /*Job Schaduler ended*/
 
     /*view Injection started*/
     implementation "com.jakewharton:butterknife:$BUTTERKNIFE_VERSION"
@@ -108,11 +105,13 @@ dependencies {
     implementation "jp.co.cyberagent.android.gpuimage:gpuimage-library:$Glide_Gpuimage"
 
     /*glide image loader ended*/
+
     kapt 'com.android.databinding:compiler:3.1.3'
     implementation 'com.android.support:multidex:1.0.3'
     implementation project(':MaterialSearchlibrary')
     implementation project(':tristatetogglebutton_library')
-    implementation project(':locationpicker')
+    implementation project(':photopicker')
+    implementation project(':filepicker')
 
 }
 apply plugin: "com.google.gms.google-services"

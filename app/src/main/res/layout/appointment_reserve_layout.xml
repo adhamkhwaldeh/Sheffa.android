@@ -14,10 +14,6 @@
             android:id="@+id/toolbar"
             layout="@layout/toolbar_layout" />
 
-        <com.miguelcatalan.materialsearchview.MaterialSearchView
-            android:id="@+id/searchView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
     </RelativeLayout>
 
 
@@ -93,7 +89,7 @@
                 android:background="@drawable/edit_text_white_drawable"
                 android:inputType="text"
                 android:textAlignment="gravity"
-                android:textColor="@color/white"
+                android:textColor="@color/colorGradientEnd"
                 android:textColorHint="@color/white" />
 
         </LinearLayout>
@@ -112,7 +108,13 @@
             <android.support.v7.widget.AppCompatEditText
                 android:id="@+id/appointmentDateEditText"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_gravity="left|start"
+                android:background="@drawable/edit_text_white_drawable"
+                android:inputType="text"
+                android:textAlignment="gravity"
+                android:textColor="@color/colorGradientEnd"
+                android:textColorHint="@color/white" />
 
         </LinearLayout>
 
@@ -132,7 +134,14 @@
             <android.support.v7.widget.AppCompatEditText
                 android:id="@+id/suggestionHourEditText"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_gravity="left|start"
+                android:background="@drawable/edit_text_white_drawable"
+                android:inputType="text"
+                android:textAlignment="gravity"
+                android:textColor="@color/colorGradientEnd"
+                android:textColorHint="@color/white" />
+
 
         </LinearLayout>
 
@@ -154,6 +163,7 @@
                 app:autoSizeTextType="uniform" />
 
             <android.support.v7.widget.AppCompatCheckBox
+                android:id="@+id/urgentCheckBox"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1" />
@@ -174,8 +184,16 @@
                 app:autoSizeTextType="uniform" />
 
             <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/appointmentCause"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_gravity="left|start"
+                android:background="@drawable/edit_text_white_drawable"
+                android:inputType="text"
+                android:textAlignment="gravity"
+                android:textColor="@color/colorGradientEnd"
+                android:textColorHint="@color/white" />
+
 
         </LinearLayout>
 
@@ -194,6 +212,7 @@
                 app:autoSizeTextType="uniform" />
 
             <android.support.v7.widget.AppCompatCheckBox
+                android:id="@+id/patientLocationCheckBox"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1" />
@@ -201,7 +220,7 @@
         </LinearLayout>
 
         <android.support.v7.widget.AppCompatButton
-            android:id="@+id/signinbtn"
+            android:id="@+id/saveBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"

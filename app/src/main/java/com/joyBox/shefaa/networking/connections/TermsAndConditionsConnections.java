@@ -8,10 +8,6 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-/**
- * Created by Adhamkh on 2018-08-17.
- */
-
 public class TermsAndConditionsConnections {
 
     public static String getJsonPost(String url, int timeout) {

@@ -23,10 +23,8 @@ import com.joyBox.shefaa.enums.LayoutStatesEnum
 import com.joyBox.shefaa.helpers.IntentHelper
 import com.joyBox.shefaa.listeners.OnRefreshLayoutListener
 import com.joyBox.shefaa.networking.NetworkingHelper
-import com.joyBox.shefaa.repositories.UserRepositoy
 import com.joyBox.shefaa.views.GridDividerDecoration
 import com.joyBox.shefaa.views.Stateslayoutview
-import io.reactivex.internal.schedulers.NewThreadWorker
 import javax.inject.Inject
 
 

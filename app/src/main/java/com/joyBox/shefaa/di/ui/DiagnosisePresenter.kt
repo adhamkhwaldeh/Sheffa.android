@@ -29,9 +29,10 @@ class DiagnosisePresenter constructor(val context: Context) : DiagnosiseContract
     }
 
     override fun loadDiagnosiseAutoComplete() {
+        view.showDiagnosiseAutoCompleteProgress(true)
         DiagnosiseAutoCompleteAsync(object : OnDiagnosiseAutoCompleteListener {
             override fun onDiagnosiseAutoCompleteLoading() {
-                view.showDiagnosiseAutoCompleteProgress(true)
+                view.showDiagnosiseAutoCompleteProgress(false)
             }
 
             override fun onDiagnosiseAutoCompleteInternetConnection() {

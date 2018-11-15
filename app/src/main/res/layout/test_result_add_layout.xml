@@ -6,59 +6,87 @@
 
     <include
         android:id="@+id/toolbar"
-        layout="@layout/toolbar_title_layout" />
+        layout="@layout/toolbar_layout" />
 
-    <android.support.constraint.Guideline
-        android:id="@+id/guideLine"
+    <com.joyBox.shefaa.views.Stateslayoutview
+        android:id="@+id/stateLayout"
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.5" />
-
-    <android.support.v7.widget.AppCompatEditText
-        android:id="@+id/titleEditText"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/md_margin"
-        android:hint="@string/Title"
-        android:lines="4"
-        app:layout_constraintBottom_toTopOf="@+id/addFiles"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintWidth_percent="0.7" />
-
-    <android.support.v7.widget.AppCompatButton
-        android:id="@+id/addFiles"
-        style="@style/AppTheme.NormalButtonStyle"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/lg_margin"
-        android:background="@drawable/button_primary_bg"
-        android:text="@string/AddFiles"
-        app:backgroundTint="@color/colorPrimary"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/guideLine"
-        app:layout_constraintWidth_percent="0.7" />
-
-    <android.support.v7.widget.AppCompatButton
-        style="@style/AppTheme.NormalButtonStyle"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/lg_margin"
-        android:background="@drawable/button_primary_bg"
-        android:text="@string/Save"
-        app:backgroundTint="@color/colorPrimary"
+        android:layout_height="0dp"
+        app:NoConnectionLayout="@layout/state_layout_noconnection"
+        app:NoDataLayout="@layout/state_layout_nodata"
+        app:RefreshbtnRes="@+id/retryBtn"
+        app:WaitingLayout="@layout/state_layout_waiting"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintWidth_percent="0.7" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <android.support.constraint.Guideline
+                android:id="@+id/guideLine"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.5" />
+
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/titleEditText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/md_margin"
+                android:hint="@string/Title"
+                android:lines="4"
+                app:layout_constraintBottom_toTopOf="@+id/addFileBtn"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintWidth_percent="0.7" />
+
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/addFileBtn"
+                style="@style/AppTheme.NormalButtonStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/lg_margin"
+                android:background="@drawable/button_primary_bg"
+                android:text="@string/AddFiles"
+                app:backgroundTint="@color/colorPrimary"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/guideLine"
+                app:layout_constraintWidth_percent="0.7" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/fileName"
+                style="@style/AppTheme.TextAppearanceCenter"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/md_margin"
+                app:layout_constraintTop_toBottomOf="@+id/addFileBtn" />
+
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/saveBtn"
+                style="@style/AppTheme.NormalButtonStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/lg_margin"
+                android:background="@drawable/button_primary_bg"
+                android:text="@string/Save"
+                app:backgroundTint="@color/colorPrimary"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintWidth_percent="0.7" />
+
+        </android.support.constraint.ConstraintLayout>
+
+    </com.joyBox.shefaa.views.Stateslayoutview>
 
 
 </android.support.constraint.ConstraintLayout>

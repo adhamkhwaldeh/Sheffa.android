@@ -8,6 +8,6 @@ import dagger.Component
 
 @PerActivity
 @Component(modules = [MagazinePostModule::class])
-public interface MagazinePostsDetailsComponent {
+interface MagazinePostsDetailsComponent {
     fun inject(magazinePostsDetailsActivity: MagazinePostsDetailsActivity)
 }

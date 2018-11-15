@@ -8,12 +8,15 @@ import android.view.ViewGroup
 import com.JoyBox.Shefaa.R
 import com.joyBox.shefaa.dialogs.MedicineAndPotionDialog
 import com.joyBox.shefaa.entities.MedicinePotionEntity
+import com.joyBox.shefaa.entities.Prescription
 import com.joyBox.shefaa.viewHolders.MedicineAndPotionViewHolder
 
 /**
  * Created by Adhamkh on 2018-08-21.
  */
-class MedicineAndPotionRecyclerViewAdapter(val context: Context, private val medicineAndPotionList: List<MedicinePotionEntity>) :
+class MedicineAndPotionRecyclerViewAdapter(val context: Context,
+                                           private val medicineAndPotionList: List<MedicinePotionEntity>,
+                                           private val prescription: Prescription) :
         RecyclerView.Adapter<MedicineAndPotionViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MedicineAndPotionViewHolder {
@@ -27,11 +30,10 @@ class MedicineAndPotionRecyclerViewAdapter(val context: Context, private val med
         val poJo = medicineAndPotionList[position]
         holder.bind(poJo)
 
-        holder.toggleBtn.setOnClickListener {
-
-            val medicineAndPotionDialog: MedicineAndPotionDialog = MedicineAndPotionDialog.newInstance(poJo)
-            medicineAndPotionDialog.show((context as FragmentActivity).supportFragmentManager, MedicineAndPotionDialog.MedicineAndPotionDialog_Tag)
-
+        holder.itemView.setOnClickListener {
+            val medicineAndPotionDialog: MedicineAndPotionDialog = MedicineAndPotionDialog.newInstance(poJo, prescription)
+            medicineAndPotionDialog.show((context as FragmentActivity).supportFragmentManager,
+                    MedicineAndPotionDialog.MedicineAndPotionDialog_Tag)
         }
 
     }

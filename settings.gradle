@@ -1,1 +1,1 @@
-include ':app', ':MaterialSearchlibrary', ':tristatetogglebutton_library', ':locationpicker'
+include ':app', ':MaterialSearchlibrary', ':tristatetogglebutton_library', ':photopicker', ':filepicker'

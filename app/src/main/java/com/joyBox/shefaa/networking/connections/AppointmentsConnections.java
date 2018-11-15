@@ -2,7 +2,7 @@ package com.joyBox.shefaa.networking.connections;
 
 import com.joyBox.shefaa.App;
 import com.joyBox.shefaa.networking.NetworkingHelper;
-import com.joyBox.shefaa.repositories.UserRepositoy;
+import com.joyBox.shefaa.repositories.UserRepository;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
@@ -31,7 +31,7 @@ public class AppointmentsConnections {
             c.setRequestProperty("Content-Type", "application/json");
             c.setUseCaches(false);
             c.setDefaultUseCaches(false);
-            c.setRequestProperty("X-CSRF-Token", new UserRepositoy(App.app.getApplicationContext()).getClient().getToken());
+            c.setRequestProperty("X-CSRF-Token", new UserRepository(App.app.getApplicationContext()).getClient().getToken());
 //            JSONObject jsonParam = new JSONObject();
 //            for (Pair<String, String> pr : params) {
 //                jsonParam.put(pr.first, pr.second);
@@ -94,7 +94,7 @@ public class AppointmentsConnections {
             c.setRequestProperty("Content-Type", "application/json");
             c.setUseCaches(false);
             c.setDefaultUseCaches(false);
-            c.setRequestProperty("X-CSRF-Token", new UserRepositoy(App.app.getApplicationContext()).getClient().getToken());
+            c.setRequestProperty("X-CSRF-Token", new UserRepository(App.app.getApplicationContext()).getClient().getToken());
 
             c.connect();
             int status = c.getResponseCode();

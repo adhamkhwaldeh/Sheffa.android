@@ -14,9 +14,8 @@ import com.joyBox.shefaa.di.module.RegistrationModule
 import com.joyBox.shefaa.di.ui.RegistrationContract
 import com.joyBox.shefaa.di.ui.RegistrationPresenter
 import com.joyBox.shefaa.dialogs.ProgressDialog
-import com.joyBox.shefaa.repositories.UserRepositoy
+import com.joyBox.shefaa.repositories.UserRepository
 import com.joyBox.shefaa.viewModels.ChangePasswordViewHolder
-import com.joyBox.shefaa.viewModels.ForgotPasswordViewHolder
 import javax.inject.Inject
 
 
@@ -59,8 +58,8 @@ class ChangePasswordActivity : BaseActivity(), RegistrationContract.View {
     @OnClick(R.id.changePasswordBtn)
     fun onChangePasswordButtonClick(view: View) {
         if (changePasswordViewHolder.isValid()) {
-            val user = UserRepositoy(this).getClient()!!.user
-            val password = UserRepositoy(this).getLoginModel()!!.password
+            val user = UserRepository(this).getClient()!!.user
+            val password = UserRepository(this).getLoginModel()!!.password
             val changePasswordModel = changePasswordViewHolder.getChangePasswordModel()
             presenter.changePassword(user.uid, password, changePasswordModel.password)
         }
@@ -87,9 +86,9 @@ class ChangePasswordActivity : BaseActivity(), RegistrationContract.View {
 
     override fun changePasswordSuccessfully() {
         Toast.makeText(baseContext, resources.getString(R.string.EmailChangeSuccessfully), Toast.LENGTH_LONG).show();
-        val loginModel = UserRepositoy(this).getLoginModel()!!
+        val loginModel = UserRepository(this).getLoginModel()!!
         loginModel.password = changePasswordViewHolder.getChangePasswordModel().password
-        UserRepositoy(this).putLoginModel(loginModel)
+        UserRepository(this).putLoginModel(loginModel)
         finish()
         Log.v("", "")
     }

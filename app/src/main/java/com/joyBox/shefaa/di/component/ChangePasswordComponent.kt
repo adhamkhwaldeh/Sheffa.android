@@ -7,6 +7,6 @@ import dagger.Component
 
 @PerActivity
 @Component(modules = [RegistrationModule::class])
-public interface ChangePasswordComponent {
+interface ChangePasswordComponent {
     fun inject(changePasswordActivity: ChangePasswordActivity)
 }

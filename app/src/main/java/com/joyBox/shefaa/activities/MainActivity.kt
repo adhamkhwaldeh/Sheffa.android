@@ -18,7 +18,7 @@ import com.joyBox.shefaa.di.ui.MessagesContract
 import com.joyBox.shefaa.di.ui.MessagesPresenter
 import com.joyBox.shefaa.helpers.IntentHelper
 import com.joyBox.shefaa.networking.NetworkingHelper
-import com.joyBox.shefaa.repositories.UserRepositoy
+import com.joyBox.shefaa.repositories.UserRepository
 import javax.inject.Inject
 import android.support.v4.view.MenuItemCompat
 import android.view.Gravity
@@ -26,10 +26,7 @@ import android.view.View
 import android.widget.TextView
 import butterknife.OnClick
 import com.joyBox.shefaa.cores.AuthenticationCore
-import com.joyBox.shefaa.entities.Client
 import com.joyBox.shefaa.entities.User
-import org.w3c.dom.Text
-import java.net.Authenticator
 
 class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener, MessagesContract.View {
 
@@ -76,7 +73,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     }
 
     private fun initUser() {
-        val user = UserRepositoy(this).getClient()
+        val user = UserRepository(this).getClient()
 
         userName = navigationView.getHeaderView(0).findViewById(R.id.userName)
         userEmail = navigationView.getHeaderView(0).findViewById(R.id.userEmail)
@@ -86,7 +83,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     }
 
     private fun initRedirection() {
-        val user: User = UserRepositoy(this).getClient()!!.user
+        val user: User = UserRepository(this).getClient()!!.user
         if (AuthenticationCore.isPatientOnly(user)) {
             IntentHelper.startDashBoardActivity(this)
 //            finish()
@@ -120,7 +117,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     }
 
     private fun getUrl(): String {
-        val client = UserRepositoy(this).getClient()!!
+        val client = UserRepository(this).getClient()!!
         return NetworkingHelper.MessageUnReaded + "?sess_name=" + client.sessionName +
                 "&sess_id=" + client.sessid + "&token=" + client.token
     }
@@ -147,7 +144,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
                 IntentHelper.startMagazinesActivity(this)
             }
             R.id.Logout -> {
-                UserRepositoy(context = baseContext).flushClient()
+                UserRepository(context = baseContext).flushClient()
                 IntentHelper.startSignInActivity(this)
                 finish()
             }

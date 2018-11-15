@@ -10,6 +10,7 @@ import android.view.MenuItem
 import butterknife.BindView
 import butterknife.ButterKnife
 import com.JoyBox.Shefaa.R
+import com.google.gson.Gson
 import com.joyBox.shefaa.adapters.PharmacyRecyclerViewAdapter
 import com.joyBox.shefaa.di.component.DaggerPharmacySearchComponent
 import com.joyBox.shefaa.di.module.PharmacyModule
@@ -17,6 +18,7 @@ import com.joyBox.shefaa.di.ui.PharmacyPresenter
 import com.joyBox.shefaa.di.ui.PharmacyContract
 import com.joyBox.shefaa.entities.Pharmacy
 import com.joyBox.shefaa.enums.LayoutStatesEnum
+import com.joyBox.shefaa.filtrations.PharmacyFilter
 import com.joyBox.shefaa.listeners.OnRefreshLayoutListener
 import com.joyBox.shefaa.networking.NetworkingHelper
 import com.joyBox.shefaa.views.GridDividerDecoration
@@ -24,11 +26,11 @@ import com.joyBox.shefaa.views.Stateslayoutview
 import com.miguelcatalan.materialsearchview.MaterialSearchView
 import javax.inject.Inject
 
-/**
- * Created by Adhamkh on 2018-10-12.
- */
 class PharmacySearchActivity : BaseActivity(), PharmacyContract.View {
 
+    companion object {
+        const val PharmacySearchActivity_Tag = "PharmacySearchActivity_Tag"
+    }
 
     @Inject
     lateinit var presenter: PharmacyPresenter
@@ -63,7 +65,25 @@ class PharmacySearchActivity : BaseActivity(), PharmacyContract.View {
         component.inject(this)
         presenter.attachView(this)
         presenter.subscribe()
-        presenter.loadPharmacyList(NetworkingHelper.Pharmacy_Search_Url)
+
+        loadData()
+    }
+
+    private fun loadData() {
+        val filter: PharmacyFilter = Gson().fromJson(
+                intent.getStringExtra(PharmacySearchActivity_Tag), PharmacyFilter::class.java)
+        var url = NetworkingHelper.Pharmacy_Search_Url
+        var concat = "?"
+
+        if (!filter.query.isNullOrBlank()) {
+            url += concat + "pharmacy_name=" + filter.query
+            concat = "&"
+        }
+        if (!filter.medicineName.isNullOrBlank()) {
+            url += concat + "med_name=" + filter.medicineName
+            concat = "&"
+        }
+        presenter.loadPharmacyList(url)
     }
 
     fun initSearch() {
@@ -98,7 +118,7 @@ class PharmacySearchActivity : BaseActivity(), PharmacyContract.View {
 
         stateLayout.setOnRefreshLayoutListener(object : OnRefreshLayoutListener {
             override fun onRefresh() {
-                presenter.loadPharmacyList(NetworkingHelper.Pharmacy_Search_Url)
+                loadData()
             }
 
             override fun onRequestPermission() {

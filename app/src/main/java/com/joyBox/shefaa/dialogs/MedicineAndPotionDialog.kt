@@ -2,6 +2,7 @@ package com.joyBox.shefaa.dialogs
 
 import android.os.Bundle
 import android.support.v4.app.DialogFragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,87 +11,116 @@ import butterknife.BindView
 import butterknife.ButterKnife
 import butterknife.OnClick
 import com.JoyBox.Shefaa.R
+import com.joyBox.shefaa.di.component.DaggerMedicineAndPotionComponent
+import com.joyBox.shefaa.di.component.DaggerMedicineAndPotionDialogComponent
+import com.joyBox.shefaa.di.module.ReminderModule
+import com.joyBox.shefaa.di.ui.ReminderContract
+import com.joyBox.shefaa.di.ui.ReminderPresenter
 import com.joyBox.shefaa.entities.MedicinePotionEntity
+import com.joyBox.shefaa.entities.Prescription
 import com.joyBox.shefaa.entities.PrescriptionFollowUp
+import com.joyBox.shefaa.enums.LayoutStatesEnum
 import com.joyBox.shefaa.enums.ReminderType
 import com.joyBox.shefaa.helpers.IntentHelper
+import com.joyBox.shefaa.viewModels.MedicineAndPotionReminderViewHolder
+import com.joyBox.shefaa.views.Stateslayoutview
+import javax.inject.Inject
 
 
-class MedicineAndPotionDialog : DialogFragment() {
-
-    lateinit var medicinePotionEntity: MedicinePotionEntity
-
-
-    lateinit var reminderType: ReminderType
+class MedicineAndPotionDialog : DialogFragment(), ReminderContract.View {
 
     companion object {
         const val MedicineAndPotionDialog_Tag = "MedicineAndPotionDialog_Tag"
 
-        fun newInstance(medicinePotionEntity: MedicinePotionEntity): MedicineAndPotionDialog {
+        fun newInstance(medicinePotionEntity: MedicinePotionEntity, prescription: Prescription): MedicineAndPotionDialog {
             val f = MedicineAndPotionDialog()
             f.isCancelable = true
             f.medicinePotionEntity = medicinePotionEntity
+            f.prescription = prescription
             f.reminderType = ReminderType.MEDICINE_AND_POTION
-            // Supply num input as an argument.
             val args = Bundle()
             f.arguments = args
             return f
         }
 
-
     }
 
+    lateinit var medicinePotionEntity: MedicinePotionEntity
 
-    @BindView(R.id.medicineNameEditText)
-    lateinit var medicineNameEditText: EditText
+    lateinit var prescription: Prescription
 
-    @BindView(R.id.activeIngredientNameEditText)
-    lateinit var activeIngredientNameEditText: EditText
+    lateinit var reminderType: ReminderType
 
-    @BindView(R.id.alternativeMedicineEditText)
-    lateinit var alternativeMedicineEditText: EditText
+    lateinit var medicineAndPotionReminderViewHolder: MedicineAndPotionReminderViewHolder
 
-    @BindView(R.id.potionEditText)
-    lateinit var potionEditText: EditText
+    @Inject
+    lateinit var presenter: ReminderPresenter
 
-    @BindView(R.id.howManyTimesEditText)
-    lateinit var howManyTimesEditText: EditText
+    @BindView(R.id.stateLayout)
+    lateinit var stateLayout: Stateslayoutview
 
-    @BindView(R.id.perEditText)
-    lateinit var perEditText: EditText
-
-    @BindView(R.id.durationEditText)
-    lateinit var durationEditText: EditText
-
+    private fun initDI() {
+        val component = DaggerMedicineAndPotionDialogComponent.builder()
+                .reminderModule(ReminderModule(activity!!))
+                .build()
+        component.inject(this)
+        presenter.attachView(this)
+        presenter.subscribe()
+//        presenter.loadAvailableTime(doctorId = doctor.doctor_id, date = dateText.text.toString())
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val mView = inflater.inflate(R.layout.medicine_and_potion_dialog_layout, container)
+        val mView: View = inflater.inflate(R.layout.medicine_and_potion_dialog_layout, container)
         ButterKnife.bind(this, mView)
+        medicineAndPotionReminderViewHolder = MedicineAndPotionReminderViewHolder(mView, medicinePotionEntity, prescription)
         return mView
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        bind()
-
+        initDI()
+        medicineAndPotionReminderViewHolder.bind()
     }
 
     @OnClick(R.id.remindBtn)
     fun onReminderBtnClick(view: View) {
-        IntentHelper.startMedicineAndPotionReminderActivity(context!!, reminderType = reminderType)
+        IntentHelper.startAddReminderActivity(activity!!, medicineAndPotionReminderViewHolder.getUrl())
+//        if (medicineAndPotionReminderViewHolder.isValid()) {
+//            presenter.remind(medicineAndPotionReminderViewHolder.getUrl())
+//        }
     }
 
-    fun bind() {
-        if (medicinePotionEntity != null) {
-            medicineNameEditText.setText(medicinePotionEntity!!.medicine_name)
-            activeIngredientNameEditText.setText(medicinePotionEntity!!.active_ingredient_name_String)
-            alternativeMedicineEditText.setText(medicinePotionEntity!!.alternative_medicine_string)
-            potionEditText.setText(medicinePotionEntity!!.potion)
-            howManyTimesEditText.setText(medicinePotionEntity!!.how_many_times)
-            perEditText.setText(medicinePotionEntity!!.per)
-            durationEditText.setText(medicinePotionEntity!!.for_how_long)
+
+    /*Reminder presenter started*/
+
+    override fun showProgress(show: Boolean) {
+        if (show) {
+            stateLayout.FlipLayout(LayoutStatesEnum.Waitinglayout)
+        } else {
+            stateLayout.FlipLayout(LayoutStatesEnum.SuccessLayout)
         }
     }
 
+    override fun showEmptyView(visible: Boolean) {
+        if (visible) {
+            stateLayout.FlipLayout(LayoutStatesEnum.Nodatalayout)
+        } else {
+            stateLayout.FlipLayout(LayoutStatesEnum.SuccessLayout)
+        }
+    }
+
+    override fun showLoadErrorMessage(visible: Boolean) {
+        if (visible) {
+            stateLayout.FlipLayout(LayoutStatesEnum.Noconnectionlayout)
+        } else {
+            stateLayout.FlipLayout(LayoutStatesEnum.SuccessLayout)
+        }
+    }
+
+    override fun onRemindSuccessfully(stringList: MutableList<String>) {
+        Log.v("", "")
+//        presenter.remind()
+//        IntentHelper.startMedicineAndPotionReminderActivity(context!!, reminderType = reminderType)
+    }
+    /*Reminder presenter ended*/
 }

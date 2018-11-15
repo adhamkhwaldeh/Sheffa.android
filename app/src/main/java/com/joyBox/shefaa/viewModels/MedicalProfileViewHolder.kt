@@ -72,7 +72,7 @@ class MedicalProfileViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
         val isPregnant = (if (pregnantCheckBox.isChecked) "1" else "0")
         val diagnosisSelected = (
                 if (diagnosisHeadAche.adapter != null) {
-                    (diagnosisHeadAche.adapter as DiagonsisSpinnerAdapter).diagnosiseAutoCompleteList[diagnosisHeadAche.selectedItemPosition].uuid
+                    (diagnosisHeadAche.adapter as DiagonsisSpinnerAdapter).diagnosiseAutoCompleteList[diagnosisHeadAche.selectedItemPosition].tid
                 } else
                     ""
                 )
@@ -89,7 +89,7 @@ class MedicalProfileViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
 
     }
 
-    fun bindSpinnerSelected(diagnosis: String, adapter: DiagonsisSpinnerAdapter) {
+    private fun bindSpinnerSelected(diagnosis: String, adapter: DiagonsisSpinnerAdapter) {
         val pos = adapter.setSelectedDiagnosis(diagnosis)
         if (pos != -1)
             diagnosisHeadAche.setSelection(pos)

@@ -11,9 +11,6 @@ import com.joyBox.shefaa.networking.listeners.*
 import com.joyBox.shefaa.networking.tasks.*
 import io.reactivex.disposables.CompositeDisposable
 
-/**
- * Created by Adhamkh on 2018-09-24.
- */
 class AppointmentPresenter constructor(val context: Context) : AppointmentContract.Presenter {
     private val subscriptions = CompositeDisposable()
     private lateinit var view: AppointmentContract.View
@@ -196,7 +193,26 @@ class AppointmentPresenter constructor(val context: Context) : AppointmentContra
         }).execute()
     }
 
-    override fun addAppointments() {
+    override fun addAppointment(url: String) {
+        AppointmentReserveAsync(url, object : OnAppointmentReserveListener {
+            override fun onAppointmentReserveLoading() {
+                view.showProgress(true)
+            }
 
+            override fun onAppointmentReserveInternetConnection() {
+                view.showProgress(false)
+                view.showLoadErrorMessage(true)
+            }
+
+            override fun onAppointmentReserveSuccessFully() {
+                view.showProgress(false)
+                view.onAppointmentAddSuccessfully()
+            }
+
+            override fun onAppointmentReserveFailed() {
+                view.showProgress(false)
+                view.onAppointmentAddFail()
+            }
+        }).execute()
     }
 }

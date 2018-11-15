@@ -62,4 +62,19 @@ public class ClinicHourHelper {
 //        return hr.toString() + ":" + minute.toString();
     }
 
+    public static String getTimeWithoutFormate(String tm) {
+        try {
+            if (tm.length() == 2) {
+                tm = "00" + tm;
+            }
+            if (tm.length() == 3) {
+                tm = "0" + tm;
+            }
+            return tm.replace(":", "");
+        } catch (Exception ex) {
+
+        }
+        return tm.replace(":", "");
+    }
+
 }

@@ -11,6 +11,7 @@ import android.widget.CompoundButton;
 import android.widget.TextView;
 
 import com.JoyBox.Shefaa.R;
+import com.joyBox.shefaa.listeners.OnAvailableTimeSelectListener;
 import com.joyBox.shefaa.viewHolders.AppointmentAvailableTimeViewHolder;
 
 import java.util.List;
@@ -23,10 +24,13 @@ public class AppointmentAvailableTimeAdapter extends RecyclerView.Adapter<Appoin
     public CheckBox selectedcheckbox;
     public String selectedtime = "";
 
+    public OnAvailableTimeSelectListener onAvailableTimeSelectListener;
 
-    public AppointmentAvailableTimeAdapter(Context context, List<String> availabletimelist) {
+    public AppointmentAvailableTimeAdapter(Context context, List<String> availabletimelist,
+                                           OnAvailableTimeSelectListener onAvailableTimeSelectListener) {
         this.context = context;
         this.availabletimelist = availabletimelist;
+        this.onAvailableTimeSelectListener = onAvailableTimeSelectListener;
         selectedtime = "";
     }
 
@@ -54,6 +58,7 @@ public class AppointmentAvailableTimeAdapter extends RecyclerView.Adapter<Appoin
                     holder.selecttimecheckbox.setChecked(true);
                     selectedcheckbox = holder.selecttimecheckbox;
                     selectedtime = tm;
+                    onAvailableTimeSelectListener.onTimeSelect(tm);
                 } else {
                     selectedtime = "";
                 }

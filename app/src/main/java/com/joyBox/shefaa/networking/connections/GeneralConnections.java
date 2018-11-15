@@ -14,10 +14,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
 
-/**
- * Created by Adhamkh on 2018-08-16.
- */
-
 public class GeneralConnections {
 
 //    public static String getToken(String url) {

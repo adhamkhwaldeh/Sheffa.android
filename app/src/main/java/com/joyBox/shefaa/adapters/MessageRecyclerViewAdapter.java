@@ -12,10 +12,9 @@ import com.JoyBox.Shefaa.R;
 import com.joyBox.shefaa.entities.Client;
 import com.joyBox.shefaa.entities.MessageEntity;
 import com.joyBox.shefaa.helpers.IntentHelper;
-import com.joyBox.shefaa.networking.JsonParser;
 import com.joyBox.shefaa.networking.NetworkingHelper;
 import com.joyBox.shefaa.networking.connections.GeneralConnections;
-import com.joyBox.shefaa.repositories.UserRepositoy;
+import com.joyBox.shefaa.repositories.UserRepository;
 import com.joyBox.shefaa.viewHolders.MessageViewHolder;
 
 import org.jetbrains.annotations.NotNull;
@@ -62,7 +61,7 @@ public class MessageRecyclerViewAdapter extends RecyclerView.Adapter<MessageView
             @Override
             public void onClick(View v) {
 
-                Client client = new UserRepositoy(context).getClient();
+                Client client = new UserRepository(context).getClient();
                 new setMessageReaded().execute(holder.getAdapterPosition(), NetworkingHelper.MakeReadedURL +
                         "?message_id=" + message.getMid() +
                         "&sess_id=" + client.getSessid() + "&rec=" + client.getUser().getUid() +

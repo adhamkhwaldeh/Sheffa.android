@@ -56,7 +56,7 @@ public class TestsResultsAsync extends AsyncTask<Void, Void, String> {
             }
             return;
         } catch (Exception ex) {
-            Log.e("Error Message", ex.getMessage());
+//            Log.e("Error Message", ex.getMessage());
         }
         onTestsResultResponseListener.onTestsResultResponseInternetConnection();
     }

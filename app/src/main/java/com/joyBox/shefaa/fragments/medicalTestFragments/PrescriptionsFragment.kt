@@ -11,7 +11,7 @@ import butterknife.BindView
 import butterknife.ButterKnife
 import com.JoyBox.Shefaa.R
 import com.joyBox.shefaa.adapters.PrescriptionAdapter
-import com.joyBox.shefaa.di.component.DaggerPresciptionListComponent
+import com.joyBox.shefaa.di.component.DaggerPrescriptionListComponent
 import com.joyBox.shefaa.di.module.PresciptionListModule
 import com.joyBox.shefaa.di.ui.PrescriptionListContract
 import com.joyBox.shefaa.di.ui.PrescriptionListPresenter
@@ -19,7 +19,7 @@ import com.joyBox.shefaa.entities.Prescription
 import com.joyBox.shefaa.enums.LayoutStatesEnum
 import com.joyBox.shefaa.listeners.OnRefreshLayoutListener
 import com.joyBox.shefaa.networking.NetworkingHelper
-import com.joyBox.shefaa.repositories.UserRepositoy
+import com.joyBox.shefaa.repositories.UserRepository
 import com.joyBox.shefaa.views.GridDividerDecoration
 import com.joyBox.shefaa.views.Stateslayoutview
 import javax.inject.Inject
@@ -44,7 +44,7 @@ class PrescriptionsFragment : BaseMedicalTestFragment(), PrescriptionListContrac
     lateinit var stateLayout: Stateslayoutview
 
     private fun initDI() {
-        val component = DaggerPresciptionListComponent.builder()
+        val component = DaggerPrescriptionListComponent.builder()
                 .presciptionListModule(PresciptionListModule(activity!!))
                 .build()
         component.inject(this)
@@ -59,7 +59,7 @@ class PrescriptionsFragment : BaseMedicalTestFragment(), PrescriptionListContrac
     }
 
     private fun generateRequestUrl(): String {
-        val client = UserRepositoy(context!!).getClient()!!
+        val client = UserRepository(context!!).getClient()!!
         return NetworkingHelper.PrescriptionUrl + "?patient_id=" + client.user.uid +
                 "&sess_name=" + client.sessionName + "&sess_id=" + client.sessid + "&token=" + client.token
     }

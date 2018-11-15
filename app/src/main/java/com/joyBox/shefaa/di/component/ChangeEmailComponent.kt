@@ -7,6 +7,6 @@ import dagger.Component
 
 @PerActivity
 @Component(modules = [RegistrationModule::class])
-public interface ChangeEmailComponent {
+interface ChangeEmailComponent {
     fun inject(chaneEmailActivity: ChangeEmailActivity)
 }

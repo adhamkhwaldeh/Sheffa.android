@@ -110,7 +110,7 @@ class PrescriptionFollowUpFragment : BasePrescriptionFragment(), PrescriptionFol
 
     override fun onPrescriptionFollowUpSuccessfully(prescriptionFollowUpList: List<PrescriptionFollowUp>) {
         recyclerView.adapter = PrescriptionFollowUpRecyclerViewAdapter(context = context!!,
-                prescriptionFollowUpList = prescriptionFollowUpList)
+                prescriptionFollowUpList = prescriptionFollowUpList, prescription = prescription)
         Log.v("", "")
     }
     /*Presenter ended*/

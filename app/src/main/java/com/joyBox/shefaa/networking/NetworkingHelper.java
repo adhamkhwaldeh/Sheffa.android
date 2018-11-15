@@ -87,7 +87,11 @@ public class NetworkingHelper {
 
     public static String SelfMonitorListUrl = "http://shefaaonline.net/api/my-self-monitor-service";
 
+    public static String SelfMonitorAddUrl = "http://shefaaonline.net/api/node";
+
     public static String MyGuardiansListUrl = "http://shefaaonline.net/api/my-guardians-service";
+
+    public static String GuardiansAutoCompleteUrl = "http://shefaaonline.net/api/all-users";
 
     public static String Specialist_AutoCompleteUrl = "http://shefaaonline.net/api/taxonomy_term?parameters[vid]=11";
 
@@ -127,6 +131,14 @@ public class NetworkingHelper {
     public static final String ActiveMaterialAutoCompleteUrl = "http://shefaaonline.net/api/taxonomy_term?parameters[vid]=12";
 
     public static final String DiagnosiseAutoCompleteUrl = "http://shefaaonline.net/api/taxonomy_term?parameters[vid]=9";
+
+    public static final String UploadFileUrl = "http://shefaaonline.net/api/file";
+
+    public static final String TestResultAddUrl = "http://shefaaonline.net/api/node";
+
+    public static final String ReminderUrl = "http://shefaaonline.net/set-reminder-service";
+
+    public static final String GuardianshipAddUrl = "http://shefaaonline.net/api/user/";
 
 
     public static String about_usurl = "http://shefaaonline.net/about-us";

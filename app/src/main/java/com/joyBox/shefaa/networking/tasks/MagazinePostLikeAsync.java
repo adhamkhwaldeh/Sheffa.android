@@ -5,13 +5,11 @@ import android.os.AsyncTask;
 import com.google.gson.Gson;
 import com.joyBox.shefaa.App;
 import com.joyBox.shefaa.entities.Client;
-import com.joyBox.shefaa.entities.MagazinePost;
 import com.joyBox.shefaa.entities.models.MagazinePostLikeModel;
-import com.joyBox.shefaa.networking.JsonParser;
 import com.joyBox.shefaa.networking.NetworkingHelper;
 import com.joyBox.shefaa.networking.connections.MagazinePostConnections;
 import com.joyBox.shefaa.networking.listeners.OnMagazinePostLikeResponseListener;
-import com.joyBox.shefaa.repositories.UserRepositoy;
+import com.joyBox.shefaa.repositories.UserRepository;
 
 /**
  * Created by Adhamkh on 2018-10-05.
@@ -42,7 +40,7 @@ public class MagazinePostLikeAsync extends AsyncTask<Void, Void, String> {
         String jSon = new Gson().toJson(likeModel);
 
 
-        Client client = new UserRepositoy(App.app).getClient();
+        Client client = new UserRepository(App.app).getClient();
         String url = NetworkingHelper.MagazinePostLikeUrl + "?sess_id=" + client.getSessid() +
                 "&sess_name=" + client.getSessionName() + "&token=" + client.getToken();
 

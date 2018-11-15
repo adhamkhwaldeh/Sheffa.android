@@ -8,12 +8,9 @@ import android.widget.BaseAdapter
 import android.widget.TextView
 import com.JoyBox.Shefaa.R
 
-/**
- * Created by Adhamkh on 2018-10-05.
- */
 class IndicatorSpinnerAdapter(val context: Context, val indicatorList: MutableList<String>) : BaseAdapter() {
 
-    val mInflater: LayoutInflater = LayoutInflater.from(context)
+    private val mInflater: LayoutInflater = LayoutInflater.from(context)
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
         val view: View

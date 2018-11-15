@@ -6,13 +6,12 @@ import android.util.Pair;
 import com.joyBox.shefaa.App;
 import com.joyBox.shefaa.entities.Client;
 import com.joyBox.shefaa.networking.NetworkingHelper;
-import com.joyBox.shefaa.repositories.UserRepositoy;
+import com.joyBox.shefaa.repositories.UserRepository;
 
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.CookieHandler;
@@ -20,7 +19,6 @@ import java.net.CookieManager;
 import java.net.CookiePolicy;
 import java.net.HttpCookie;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
 
@@ -82,7 +80,7 @@ public class RegistrationConnections {
                     cookies = cm.getCookieStore().getCookies();
 
                     for (HttpCookie cookie : cookies) {
-                        new UserRepositoy(App.app).putCookei(cookie.toString());
+                        new UserRepository(App.app).putCookei(cookie.toString());
                     }
                     return sb.toString();
                 case 400:
@@ -258,7 +256,7 @@ public class RegistrationConnections {
             c.setRequestProperty("Cache-Control", "no-cache");
             c.setRequestProperty("Cache-Control", "no-store");
 
-            Client client = new UserRepositoy(App.app.getApplicationContext()).getClient();
+            Client client = new UserRepository(App.app.getApplicationContext()).getClient();
             c.setRequestProperty("X-CSRF-Token", client.getToken());
             c.setRequestProperty("sessid", client.getSessid());
             c.setRequestProperty("session_name", client.getSessionName());
@@ -291,7 +289,7 @@ public class RegistrationConnections {
                     cookies = cm.getCookieStore().getCookies();
 
                     for (HttpCookie cookie : cookies) {
-                        new UserRepositoy(App.app).putCookei(cookie.toString());
+                        new UserRepository(App.app).putCookei(cookie.toString());
                     }
                     return sb.toString();
                 case 400:
@@ -347,7 +345,7 @@ public class RegistrationConnections {
             c.setRequestProperty("Cache-Control", "no-cache");
             c.setRequestProperty("Cache-Control", "no-store");
 
-            Client client = new UserRepositoy(App.app.getApplicationContext()).getClient();
+            Client client = new UserRepository(App.app.getApplicationContext()).getClient();
             c.setRequestProperty("X-CSRF-Token", client.getToken());
             c.setRequestProperty("sessid", client.getSessid());
             c.setRequestProperty("session_name", client.getSessionName());
@@ -380,7 +378,7 @@ public class RegistrationConnections {
                     cookies = cm.getCookieStore().getCookies();
 
                     for (HttpCookie cookie : cookies) {
-                        new UserRepositoy(App.app).putCookei(cookie.toString());
+                        new UserRepository(App.app).putCookei(cookie.toString());
                     }
                     return sb.toString();
                 case 400:
@@ -427,7 +425,7 @@ public class RegistrationConnections {
             c.setDoInput(true);
             c.setDoOutput(true);
             c.setRequestProperty("Content-Type", "application/json");
-            Client client = new UserRepositoy(App.app.getApplicationContext()).getClient();
+            Client client = new UserRepository(App.app.getApplicationContext()).getClient();
             c.setRequestProperty("X-CSRF-Token", client.getToken());
             c.setRequestProperty("sessid", client.getSessid());
             c.setRequestProperty("session_name", client.getSessionName());

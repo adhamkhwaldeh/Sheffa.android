@@ -2,7 +2,7 @@ package com.joyBox.shefaa.networking.connections;
 
 import com.joyBox.shefaa.App;
 import com.joyBox.shefaa.entities.Client;
-import com.joyBox.shefaa.repositories.UserRepositoy;
+import com.joyBox.shefaa.repositories.UserRepository;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -14,10 +14,6 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
-
-/**
- * Created by Adhamkh on 2018-10-20.
- */
 
 public class DoctorConnections {
 
@@ -106,7 +102,7 @@ public class DoctorConnections {
             c.setRequestProperty("Cache-Control", "no-cache");
             c.setRequestProperty("Cache-Control", "no-store");
 
-            Client client = new UserRepositoy(App.app.getApplicationContext()).getClient();
+            Client client = new UserRepository(App.app.getApplicationContext()).getClient();
             c.setRequestProperty("X-CSRF-Token", client.getToken());
             c.setRequestProperty("sessid", client.getSessid());
             c.setRequestProperty("session_name", client.getSessionName());

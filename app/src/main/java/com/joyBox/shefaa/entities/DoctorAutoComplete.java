@@ -1,16 +1,24 @@
 package com.joyBox.shefaa.entities;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  * Created by Adhamkh on 2018-08-22.
  */
 
 public class DoctorAutoComplete {
-    private String Doctor_id="";
-    private String profile_users_1_pid="";
-    private String nothing="";
-    private String name="";
+
+    @SerializedName("Doctor id")
+    private String Doctor_id = "";
+    private String profile_users_1_pid = "";
+    private String nothing = "";
+    private String name = "";
 
     public String getDoctor_id() {
+//        if (Doctor_id == null)
+//            return "2";
+//        if (Doctor_id.isEmpty())
+//            return "2";
         return Doctor_id;
     }
 

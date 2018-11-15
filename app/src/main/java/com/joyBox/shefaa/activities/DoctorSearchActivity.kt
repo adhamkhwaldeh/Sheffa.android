@@ -10,6 +10,7 @@ import android.view.MenuItem
 import butterknife.BindView
 import butterknife.ButterKnife
 import com.JoyBox.Shefaa.R
+import com.google.gson.Gson
 import com.joyBox.shefaa.adapters.DoctorRecyclerViewAdapter
 import com.joyBox.shefaa.di.component.DaggerDoctorSearchComponent
 import com.joyBox.shefaa.di.module.DoctorModule
@@ -18,6 +19,7 @@ import com.joyBox.shefaa.di.ui.DoctorPresenter
 import com.joyBox.shefaa.entities.Doctor
 import com.joyBox.shefaa.entities.DoctorAutoComplete
 import com.joyBox.shefaa.enums.LayoutStatesEnum
+import com.joyBox.shefaa.filtrations.DoctorFilter
 import com.joyBox.shefaa.listeners.OnRefreshLayoutListener
 import com.joyBox.shefaa.networking.NetworkingHelper
 import com.joyBox.shefaa.views.GridDividerDecoration
@@ -26,6 +28,10 @@ import com.miguelcatalan.materialsearchview.MaterialSearchView
 import javax.inject.Inject
 
 class DoctorSearchActivity : BaseActivity(), DoctorContract.View {
+
+    companion object {
+        const val DoctorSearchActivity_Tag = "DoctorSearchActivity_Tag"
+    }
 
     @Inject
     lateinit var presenter: DoctorPresenter
@@ -60,7 +66,27 @@ class DoctorSearchActivity : BaseActivity(), DoctorContract.View {
         component.inject(this)
         presenter.attachView(this)
         presenter.subscribe()
-        presenter.loadDoctorList(NetworkingHelper.Doctor_Search_Url)
+
+        loadData()
+    }
+
+    private fun loadData() {
+        val filter: DoctorFilter = Gson().fromJson(intent.getStringExtra(DoctorSearchActivity_Tag), DoctorFilter::class.java)
+        var url = NetworkingHelper.Doctor_Search_Url
+//        var concat = "?"
+//        if (!filter.query.isNullOrBlank()) {
+//            url += concat + "doctor_name=" + filter.query
+//            concat = "&"
+//        }
+//        if (!filter.cost.isNullOrBlank()) {
+//            url += concat + "field_cost_value=" + filter.cost
+//            concat = "&"
+//        }
+//        if (filter.specialistAutoComplete != null) {
+//            url += concat + "field_doctor_specialization_tid=" + filter.specialistAutoComplete!!.tid
+//            concat = "&"
+//        }
+        presenter.loadDoctorList(url)
     }
 
     fun initSearch() {
@@ -95,7 +121,8 @@ class DoctorSearchActivity : BaseActivity(), DoctorContract.View {
 
         stateLayout.setOnRefreshLayoutListener(object : OnRefreshLayoutListener {
             override fun onRefresh() {
-                presenter.loadDoctorList(NetworkingHelper.Doctor_Search_Url)
+                loadData()
+//                presenter.loadDoctorList(NetworkingHelper.Doctor_Search_Url)
             }
 
             override fun onRequestPermission() {

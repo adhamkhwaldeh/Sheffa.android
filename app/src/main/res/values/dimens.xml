@@ -73,5 +73,6 @@
     <dimen name="midcardheight">120dp</dimen>
     <dimen name="toggleWidth">56dp</dimen>
     <dimen name="toggleHeight">56dp</dimen>
+    <dimen name="magazineItemHeight">120dp</dimen>
 
 </resources>

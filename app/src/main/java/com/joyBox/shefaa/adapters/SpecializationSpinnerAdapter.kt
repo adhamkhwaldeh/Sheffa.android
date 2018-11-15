@@ -7,9 +7,10 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
 import com.JoyBox.Shefaa.R
+import com.joyBox.shefaa.entities.SpecialistAutoComplete
 
 
-class SpecializationSpinnerAdapter(val context: Context, val specList: MutableList<String>) : BaseAdapter() {
+class SpecializationSpinnerAdapter(val context: Context, val specList: MutableList<SpecialistAutoComplete>) : BaseAdapter() {
 
     val mInflater: LayoutInflater = LayoutInflater.from(context)
 
@@ -22,7 +23,7 @@ class SpecializationSpinnerAdapter(val context: Context, val specList: MutableLi
         }
 
         val specializationName: TextView = view.findViewById(R.id.specializationName)
-        specializationName.text = specList[position]
+        specializationName.text = specList[position].name
         // setting adapter item height programatically.
 
 //        val params = view.layoutParams

@@ -8,6 +8,8 @@ import com.google.gson.annotations.SerializedName;
 
 public class AutoCompleteUser {
 
+    private Boolean isSelected = false;
+
     private String username;
 
     private String profile_users_pid;
@@ -59,4 +61,18 @@ public class AutoCompleteUser {
     public void setLast_Name(String last_Name) {
         Last_Name = last_Name;
     }
+
+    public Boolean getSelected() {
+        return isSelected;
+    }
+
+    public void setSelected(Boolean selected) {
+        isSelected = selected;
+    }
+
+
+    public String getFullName() {
+        return First_Name + " " + Last_Name;
+    }
+
 }

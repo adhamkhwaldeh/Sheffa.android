@@ -1,6 +1,5 @@
 package com.joyBox.shefaa.activities
 
-import android.opengl.Visibility
 import android.os.Build
 import android.os.Bundle
 import android.support.v7.widget.Toolbar
@@ -22,7 +21,7 @@ import com.joyBox.shefaa.enums.ImageSize
 import com.joyBox.shefaa.helpers.BindingHelper
 import com.joyBox.shefaa.helpers.IntentHelper
 import com.joyBox.shefaa.networking.NetworkingHelper
-import com.joyBox.shefaa.repositories.UserRepositoy
+import com.joyBox.shefaa.repositories.UserRepository
 import javax.inject.Inject
 
 class MagazinePostsDetailsActivity : BaseActivity(), MagazinePostsContract.View {
@@ -89,7 +88,7 @@ class MagazinePostsDetailsActivity : BaseActivity(), MagazinePostsContract.View 
 
     @OnClick(R.id.magazinePostLikeBtn)
     fun onMagazinePostLikeButtonClick(view: View) {
-        val userId: String = UserRepositoy(baseContext).getClient()!!.user.uid
+        val userId: String = UserRepository(baseContext).getClient()!!.user.uid
         presenter.likeMagazinePost(magazinePostId = magazinePost.nid, userId = userId, flag = FlagType.Flag.type)
     }
 

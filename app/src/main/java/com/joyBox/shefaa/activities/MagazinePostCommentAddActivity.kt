@@ -16,10 +16,9 @@ import com.joyBox.shefaa.di.module.MagazinePostCommentModule
 import com.joyBox.shefaa.di.ui.MagazinePostCommentsContract
 import com.joyBox.shefaa.di.ui.MagazinePostCommentsPresenter
 import com.joyBox.shefaa.entities.MagazinePost
-import com.joyBox.shefaa.entities.MagazinePostComment
 import com.joyBox.shefaa.entities.models.MagazinePostCommentAddModel
 import com.joyBox.shefaa.enums.LayoutStatesEnum
-import com.joyBox.shefaa.repositories.UserRepositoy
+import com.joyBox.shefaa.repositories.UserRepository
 import com.joyBox.shefaa.views.Stateslayoutview
 import javax.inject.Inject
 
@@ -81,7 +80,7 @@ class MagazinePostCommentAddActivity : BaseActivity(), MagazinePostCommentsContr
     fun onSaveButtonClick(view: View) {
         if ((!commentTitle.text.toString().isEmpty()) &&
                 (!commentBody.text.toString().isEmpty())) {
-            val userId = UserRepositoy(baseContext).getClient()!!.user.uid
+            val userId = UserRepository(baseContext).getClient()!!.user.uid
             val magazinePostCommentAddModel = MagazinePostCommentAddModel(userId = userId, postId = magazinePost.nid,
                     title = commentTitle.text.toString(), body = commentBody.text.toString())
             presenter.addMagazinePostComment(magazinePostCommentAddModel = magazinePostCommentAddModel)

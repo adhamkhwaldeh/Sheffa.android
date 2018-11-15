@@ -20,4 +20,5 @@ public class BindingHelper {
                 .error(R.drawable.user).into(imageView);
 
     }
+
 }

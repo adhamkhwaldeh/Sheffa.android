@@ -1,6 +1,5 @@
 package com.joyBox.shefaa.activities
 
-import android.app.ProgressDialog
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
@@ -22,7 +21,7 @@ import com.joyBox.shefaa.di.ui.AppointmentPresenter
 import com.joyBox.shefaa.entities.AvailableTime
 import com.joyBox.shefaa.entities.Doctor
 import com.joyBox.shefaa.enums.AppointmentStatus
-import com.joyBox.shefaa.repositories.UserRepositoy
+import com.joyBox.shefaa.repositories.UserRepository
 import com.joyBox.shefaa.views.GridDividerDecoration
 import java.text.SimpleDateFormat
 import java.util.*
@@ -94,6 +93,8 @@ class AppointmentAddActivity : BaseActivity(), AppointmentContract.View {
 
     }
 
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.appointment_add_layout)
@@ -131,7 +132,7 @@ class AppointmentAddActivity : BaseActivity(), AppointmentContract.View {
         }
         if (tm != "" || appointmentTime.getText().toString() != "") {
 
-            val usrId = UserRepositoy(this).getClient()!!.user.uid
+            val usrId = UserRepository(this).getClient()!!.user.uid
             val dt = dateText.text.toString()
             if (appointmentTime.text.toString() != "")
                 tm = appointmentTime.text.toString()
@@ -159,7 +160,7 @@ class AppointmentAddActivity : BaseActivity(), AppointmentContract.View {
     }
 
     override fun onAvailableTimeLoadedSuccessfully(availableTime: AvailableTime) {
-        availableTimeRecyclerView.adapter = AppointmentAvailableTimeAdapter(this, availableTime.availableTimes)
+        availableTimeRecyclerView.adapter = AppointmentAvailableTimeAdapter(this, availableTime.availableTimes, null)
         Log.v("", "")
     }
 

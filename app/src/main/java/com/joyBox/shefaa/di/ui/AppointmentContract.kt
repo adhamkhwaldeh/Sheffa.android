@@ -1,6 +1,5 @@
 package com.joyBox.shefaa.di.ui
 
-import com.joyBox.shefaa.entities.AppointmentEntity
 import com.joyBox.shefaa.entities.AvailableTime
 import com.joyBox.shefaa.entities.DoctorAppointment
 import com.joyBox.shefaa.entities.models.AppointmentInvoiceModel
@@ -8,9 +7,7 @@ import com.joyBox.shefaa.entities.models.AppointmentShiftModel
 import com.joyBox.shefaa.entities.models.AppointmentUrgentModel
 import com.joyBox.shefaa.enums.AppointmentFlagName
 
-/**
- * Created by Adhamkh on 2018-09-24.
- */
+
 class AppointmentContract {
     interface Presenter : BaseContract.Presenter<View> {
         fun loadAvailableTime(doctorId: String, date: String)
@@ -26,7 +23,7 @@ class AppointmentContract {
 
         fun addAppointmentInvoice(invoiceModel: AppointmentInvoiceModel)
 
-        fun addAppointments()
+        fun addAppointment(url: String)
     }
 
     interface View : BaseContract.View {
@@ -34,6 +31,7 @@ class AppointmentContract {
         fun onDoctorAppointmentsLoaded(doctorAppointmentList: MutableList<DoctorAppointment>) {}
 
         fun onAppointmentAddSuccessfully() {}
+        fun onAppointmentAddFail() {}
 
         fun onAppointmentShiftedSuccessfully() {}
         fun onAppointmentShiftedFailed() {}

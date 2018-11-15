@@ -1,6 +1,7 @@
 package com.joyBox.shefaa.networking.tasks;
 
 import android.os.AsyncTask;
+import android.util.Log;
 
 import com.joyBox.shefaa.entities.DoctorAppointment;
 import com.joyBox.shefaa.networking.JsonParser;
@@ -50,7 +51,7 @@ public class DoctorAppointmentsAsync extends AsyncTask<Void, Void, String> {
             }
             return;
         } catch (Exception ex) {
-
+            Log.v("", "");
         }
         onDoctorAppointmentsListener.onDoctorAppointmentsInternetConnection();
     }

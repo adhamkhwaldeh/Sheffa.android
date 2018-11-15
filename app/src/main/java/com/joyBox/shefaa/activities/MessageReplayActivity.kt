@@ -11,18 +11,15 @@ import butterknife.ButterKnife
 import butterknife.OnClick
 import com.JoyBox.Shefaa.R
 import com.google.gson.Gson
-import com.joyBox.shefaa.di.component.DaggerMessageComponent
 import com.joyBox.shefaa.di.component.DaggerMessageReplayComponent
-import com.joyBox.shefaa.di.module.MessageModule
 import com.joyBox.shefaa.di.module.MessageReplayModule
 import com.joyBox.shefaa.di.ui.MessageReplayContract
 import com.joyBox.shefaa.di.ui.MessageReplayPresenter
 import com.joyBox.shefaa.dialogs.ProgressDialog
-import com.joyBox.shefaa.entities.MessageEntity
 import com.joyBox.shefaa.entities.MessageResult
 import com.joyBox.shefaa.entities.models.MessageReplayModel
 import com.joyBox.shefaa.networking.NetworkingHelper
-import com.joyBox.shefaa.repositories.UserRepositoy
+import com.joyBox.shefaa.repositories.UserRepository
 import javax.inject.Inject
 
 class MessageReplayActivity : BaseActivity(), MessageReplayContract.View {
@@ -73,7 +70,7 @@ class MessageReplayActivity : BaseActivity(), MessageReplayContract.View {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.replay_message_layout)
         ButterKnife.bind(this)
-        var json = intent.getStringExtra(ReplayMessageActivity_Tag)
+        val json = intent.getStringExtra(ReplayMessageActivity_Tag)
         messageReplayModel = Gson().fromJson(json, MessageReplayModel::class.java)
         initDI()
         initToolBar()
@@ -85,7 +82,7 @@ class MessageReplayActivity : BaseActivity(), MessageReplayContract.View {
     }
 
     fun generateRequest() {
-        var client = UserRepositoy(this).getClient()!!
+        var client = UserRepository(this).getClient()!!
         var url = NetworkingHelper.ReplayMessageUrl + "?recipients_ids=" +
                 messageReplayModel.TargetId + "&subject=" + subjecttxt.getText().toString() + "&body=" +
                 bodytxt.getText().toString() + "&sess_id=" + client.getSessid() +

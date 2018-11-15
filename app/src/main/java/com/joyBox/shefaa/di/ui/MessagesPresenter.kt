@@ -64,7 +64,6 @@ class MessagesPresenter constructor(val context: Context) : MessagesContract.Pre
         }).execute()
     }
 
-
     override fun loadAutoCompleteUsers(url: String) {
         AutoCompleteUsersAsync(url, object : OnAutoCompleteUsersListener {
             override fun autoCompleteUsersLoading() {

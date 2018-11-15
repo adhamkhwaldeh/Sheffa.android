@@ -14,9 +14,98 @@
         app:RefreshbtnRes="@+id/retryBtn"
         app:WaitingLayout="@layout/state_layout_waiting">
 
-        <include
-            android:id="@+id/recyclerView"
-            layout="@layout/recycler_view_layout" />
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:id="@+id/dateLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/dateText"
+                    style="@style/AppTheme.TextAppearance"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_margin="@dimen/sm_margin"
+                    android:layout_toLeftOf="@+id/dateBtn"
+                    android:layout_toStartOf="@+id/dateBtn" />
+
+                <ImageView
+                    android:id="@+id/dateBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_margin="@dimen/sm_margin"
+                    android:src="@drawable/ic_calender_dark_24dp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/appointmentStatusLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/dateLayout">
+
+                <TextView
+                    style="@style/AppTheme.TextAppearance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toEndOf="@+id/appointmentPlace"
+                    android:layout_toRightOf="@+id/appointmentPlace"
+                    android:text="@string/HomeAppointment" />
+
+                <it.beppi.tristatetogglebutton_library.TriStateToggleButton
+                    android:id="@+id/appointmentPlace"
+                    android:layout_width="80dp"
+                    android:layout_height="40dp"
+                    android:layout_centerInParent="true"
+                    android:layout_margin="@dimen/sm_margin"
+                    app:tbDefaultStatus="mid"
+                    app:tbIsMidSelectable="false" />
+
+                <android.support.v7.widget.SwitchCompat
+                    android:id="@+id/urgent1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_margin="@dimen/sm_margin"
+                    android:checked="true"
+                    android:visibility="invisible" />
+
+                <TextView
+                    style="@style/AppTheme.TextAppearance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@+id/appointmentPlace"
+                    android:layout_toStartOf="@+id/appointmentPlace"
+                    android:text="@string/ClinicAppointment" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/sperator"
+                    android:layout_below="@+id/appointmentPlace"
+                    android:layout_marginBottom="@dimen/md_margin"
+                    android:layout_marginTop="@dimen/md_margin"
+                    android:background="@color/lightgray" />
+
+            </RelativeLayout>
+
+            <include
+                android:id="@+id/recyclerView"
+                layout="@layout/recycler_view_layout"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/appointmentStatusLayout" />
+
+        </android.support.constraint.ConstraintLayout>
+
+
     </com.joyBox.shefaa.views.Stateslayoutview>
 
 

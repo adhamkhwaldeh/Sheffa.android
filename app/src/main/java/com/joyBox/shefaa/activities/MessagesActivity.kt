@@ -20,7 +20,7 @@ import com.joyBox.shefaa.enums.LayoutStatesEnum
 import com.joyBox.shefaa.helpers.IntentHelper
 import com.joyBox.shefaa.listeners.OnRefreshLayoutListener
 import com.joyBox.shefaa.networking.NetworkingHelper
-import com.joyBox.shefaa.repositories.UserRepositoy
+import com.joyBox.shefaa.repositories.UserRepository
 import com.joyBox.shefaa.views.Stateslayoutview
 import javax.inject.Inject
 
@@ -59,7 +59,7 @@ class MessagesActivity : BaseActivity(), MessagesContract.View {
     }
 
     private fun getUrl(): String {
-        val client = UserRepositoy(this).getClient()!!
+        val client = UserRepository(this).getClient()!!
         return NetworkingHelper.MessageALL + "?recipient_id=" + client.user.uid +
                 "&sess_name=" + client.sessionName + "&sess_id=" + client.sessid +
                 "&token=" + client.token
@@ -73,6 +73,7 @@ class MessagesActivity : BaseActivity(), MessagesContract.View {
         initToolBar()
         initRecyclerView()
         initDI()
+
         stateLayout.setOnRefreshLayoutListener(object : OnRefreshLayoutListener {
             override fun onRefresh() {
                 presenter.loadMessages(getUrl())
@@ -87,7 +88,7 @@ class MessagesActivity : BaseActivity(), MessagesContract.View {
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.message_menu, menu)
-        return false
+        return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
@@ -130,4 +131,5 @@ class MessagesActivity : BaseActivity(), MessagesContract.View {
     }
 
     /*Presenter ended*/
+
 }

@@ -16,6 +16,9 @@ public class PrescriptionFollowUpViewHolder extends RecyclerView.ViewHolder {
     @BindView(R.id.idText)
     public TextView idText;
 
+    @BindView(R.id.medicineName)
+    public TextView medicineName;
+
     @BindView(R.id.toggleBtn)
     public ToggleButton toggleBtn;
 
@@ -26,6 +29,7 @@ public class PrescriptionFollowUpViewHolder extends RecyclerView.ViewHolder {
 
     public void bind(PrescriptionFollowUp followUp) {
         idText.setText(followUp.getId());
+        medicineName.setText(followUp.getIndicator_name());
     }
 
 }

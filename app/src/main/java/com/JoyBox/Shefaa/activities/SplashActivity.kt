@@ -19,9 +19,8 @@ import com.joyBox.shefaa.di.ui.RegistrationContract
 import com.joyBox.shefaa.di.ui.RegistrationPresenter
 import com.joyBox.shefaa.dialogs.ProgressDialog
 import com.joyBox.shefaa.entities.Client
-import com.joyBox.shefaa.entities.models.LoginModel
 import com.joyBox.shefaa.helpers.IntentHelper
-import com.joyBox.shefaa.repositories.UserRepositoy
+import com.joyBox.shefaa.repositories.UserRepository
 import javax.inject.Inject
 
 class SplashActivity : BaseActivity(), RegistrationContract.View, NotificationContract.View {
@@ -53,8 +52,8 @@ class SplashActivity : BaseActivity(), RegistrationContract.View, NotificationCo
         ButterKnife.bind(this)
         initDI()
 
-        val client = UserRepositoy(this).getClient()
-        val loginModel = UserRepositoy(this).getLoginModel()
+        val client = UserRepository(this).getClient()
+        val loginModel = UserRepository(this).getLoginModel()
         if (client == null || loginModel == null) {
             //   IntentHelper.startSignInActivity(this)
         } else {
@@ -76,7 +75,7 @@ class SplashActivity : BaseActivity(), RegistrationContract.View, NotificationCo
     }
 
     override fun loginSuccessfully(client: Client) {
-        UserRepositoy(this).putClient(client)
+        UserRepository(this).putClient(client)
 
         FirebaseMessaging.getInstance().subscribeToTopic(client.user.uid)
         val token: String = FirebaseInstanceId.getInstance().token!!

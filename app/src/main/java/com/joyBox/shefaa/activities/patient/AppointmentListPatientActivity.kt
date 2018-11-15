@@ -7,7 +7,6 @@ import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.Toolbar
 import android.util.Log
 import android.view.View
-import android.widget.DatePicker
 import android.widget.TextView
 import butterknife.BindView
 import butterknife.ButterKnife
@@ -21,11 +20,10 @@ import com.joyBox.shefaa.di.ui.AppointmentListPatientContract
 import com.joyBox.shefaa.di.ui.AppointmentListPatientPresenter
 import com.joyBox.shefaa.entities.AppointmentEntity
 import com.joyBox.shefaa.enums.AppointmentPlace
-import com.joyBox.shefaa.enums.AppointmentStatus
 import com.joyBox.shefaa.enums.LayoutStatesEnum
 import com.joyBox.shefaa.helpers.IntentHelper
 import com.joyBox.shefaa.listeners.OnRefreshLayoutListener
-import com.joyBox.shefaa.repositories.UserRepositoy
+import com.joyBox.shefaa.repositories.UserRepository
 import com.joyBox.shefaa.views.GridDividerDecoration
 import com.joyBox.shefaa.views.Stateslayoutview
 import it.beppi.tristatetogglebutton_library.TriStateToggleButton
@@ -62,7 +60,7 @@ class AppointmentListPatientActivity : BaseActivity(), AppointmentListPatientCon
         component.inject(this)
         presenter.attachView(this)
         presenter.subscribe()
-        val client = UserRepositoy(this).getClient()!!
+        val client = UserRepository(this).getClient()!!
         presenter.loadAppointments(client.user.uid)
     }
 
@@ -139,7 +137,7 @@ class AppointmentListPatientActivity : BaseActivity(), AppointmentListPatientCon
 
         stateLayout.setOnRefreshLayoutListener(object : OnRefreshLayoutListener {
             override fun onRefresh() {
-                val client = UserRepositoy(this@AppointmentListPatientActivity).getClient()!!
+                val client = UserRepository(this@AppointmentListPatientActivity).getClient()!!
                 presenter.loadAppointments(client.user.uid)
             }
 

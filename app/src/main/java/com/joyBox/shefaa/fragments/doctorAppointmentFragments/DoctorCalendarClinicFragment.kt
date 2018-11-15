@@ -1,33 +1,35 @@
 package com.joyBox.shefaa.fragments.doctorAppointmentFragments
 
+import android.app.DatePickerDialog
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import butterknife.BindView
 import butterknife.ButterKnife
+import butterknife.OnClick
 import com.JoyBox.Shefaa.R
 import com.joyBox.shefaa.adapters.DoctorAppointmentRecyclerViewAdapter
+import com.joyBox.shefaa.adapters.DoctorAppointmentTreatmentRecyclerViewAdapter
 import com.joyBox.shefaa.di.component.DaggerDoctorCalendarClinicComponent
 import com.joyBox.shefaa.di.module.AppointmentModule
 import com.joyBox.shefaa.di.ui.AppointmentContract
 import com.joyBox.shefaa.di.ui.AppointmentPresenter
-import com.joyBox.shefaa.entities.AvailableTime
 import com.joyBox.shefaa.entities.DoctorAppointment
 import com.joyBox.shefaa.enums.LayoutStatesEnum
 import com.joyBox.shefaa.listeners.OnRefreshLayoutListener
 import com.joyBox.shefaa.networking.NetworkingHelper
-import com.joyBox.shefaa.repositories.UserRepositoy
+import com.joyBox.shefaa.repositories.UserRepository
 import com.joyBox.shefaa.views.GridDividerDecoration
 import com.joyBox.shefaa.views.Stateslayoutview
+import it.beppi.tristatetogglebutton_library.TriStateToggleButton
+import java.text.SimpleDateFormat
+import java.util.*
 import javax.inject.Inject
 
-/**
- * Created by Adhamkh on 2018-10-24.
- */
 class DoctorCalendarClinicFragment : BaseDoctorAppointmentFragment(), AppointmentContract.View {
 
     companion object {
@@ -41,8 +43,14 @@ class DoctorCalendarClinicFragment : BaseDoctorAppointmentFragment(), Appointmen
     @Inject
     lateinit var presenter: AppointmentPresenter
 
+    @BindView(R.id.dateText)
+    lateinit var dateText: TextView
+
     @BindView(R.id.recyclerView)
     lateinit var recyclerView: RecyclerView
+
+    @BindView(R.id.appointmentPlace)
+    lateinit var appointmentPlace: TriStateToggleButton
 
     @BindView(R.id.stateLayout)
     lateinit var stateLayout: Stateslayoutview
@@ -63,8 +71,25 @@ class DoctorCalendarClinicFragment : BaseDoctorAppointmentFragment(), Appointmen
         recyclerView.addItemDecoration(GridDividerDecoration(context))
     }
 
+    private fun initTimePicker() {
+        var calendar = Calendar.getInstance()
+        val timePicker = DatePickerDialog(this@DoctorCalendarClinicFragment.context, R.style.AppTheme_DialogSlideAnimwithback,
+                DatePickerDialog.OnDateSetListener { view, year, month, dayOfMonth ->
+                    calendar = Calendar.getInstance()
+                    calendar.set(Calendar.YEAR, year)
+                    calendar.set(Calendar.MONTH, month)
+                    calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth)
+                    val date = calendar.time
+                    val sdf = SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH)
+                    val sdt = sdf.format(date)
+                    dateText.text = sdt
+                    presenter.loadDoctorAppointments(generateRequestUrl())
+                }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH))
+        timePicker.show()
+    }
+
     private fun generateRequestUrl(): String {
-        val client = UserRepositoy(context!!).getClient()!!
+        val client = UserRepository(context!!).getClient()!!
         return NetworkingHelper.DoctorAppointmentUrl + "?doctor_id=" + client.user.uid
 //        urgent(0-1), home(0-1), date(Format: 14/08/2018)
 
@@ -81,6 +106,24 @@ class DoctorCalendarClinicFragment : BaseDoctorAppointmentFragment(), Appointmen
         super.onViewCreated(view, savedInstanceState)
         initRecyclerView()
         initDI()
+
+        appointmentPlace.setOnToggleChanged(object : TriStateToggleButton.OnToggleChanged {
+            override fun onToggle(toggleStatus: TriStateToggleButton.ToggleStatus?,
+                                  booleanToggleStatus: Boolean, toggleIntValue: Int) {
+                when (toggleStatus) {
+                    TriStateToggleButton.ToggleStatus.off -> {
+                        presenter.loadDoctorAppointments(generateRequestUrl())
+                    }
+                    TriStateToggleButton.ToggleStatus.on -> {
+                        presenter.loadDoctorAppointments(generateRequestUrl())
+                    }
+                    TriStateToggleButton.ToggleStatus.mid -> {
+                        presenter.loadDoctorAppointments(generateRequestUrl())
+                    }
+                }
+            }
+        })
+
         stateLayout.setOnRefreshLayoutListener(object : OnRefreshLayoutListener {
             override fun onRefresh() {
                 presenter.loadDoctorAppointments(generateRequestUrl())
@@ -90,6 +133,11 @@ class DoctorCalendarClinicFragment : BaseDoctorAppointmentFragment(), Appointmen
 
             }
         })
+    }
+
+    @OnClick(R.id.dateLayout)
+    fun onDateLayoutClick(view: View) {
+        initTimePicker()
     }
 
     /*Presenter started*/
@@ -118,7 +166,7 @@ class DoctorCalendarClinicFragment : BaseDoctorAppointmentFragment(), Appointmen
     }
 
     override fun onDoctorAppointmentsLoaded(doctorAppointmentList: MutableList<DoctorAppointment>) {
-        recyclerView.adapter = DoctorAppointmentRecyclerViewAdapter(context = context!!,
+        recyclerView.adapter = DoctorAppointmentTreatmentRecyclerViewAdapter(context = context!!,
                 doctorAppointmentList = doctorAppointmentList)
     }
     /*Presenter ended*/

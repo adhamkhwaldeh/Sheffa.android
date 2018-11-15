@@ -4,9 +4,12 @@ import android.content.Context
 import com.joyBox.shefaa.entities.LabTest
 import com.joyBox.shefaa.entities.Prescription
 import com.joyBox.shefaa.entities.TestResultEntity
+import com.joyBox.shefaa.entities.models.TestResultAddModel
 import com.joyBox.shefaa.networking.listeners.OnLabTestsListener
+import com.joyBox.shefaa.networking.listeners.OnTestResultAddListener
 import com.joyBox.shefaa.networking.listeners.OnTestsResultResponseListener
 import com.joyBox.shefaa.networking.tasks.LabTestAsync
+import com.joyBox.shefaa.networking.tasks.TestResultAddAsync
 import com.joyBox.shefaa.networking.tasks.TestsResultsAsync
 import io.reactivex.disposables.CompositeDisposable
 
@@ -69,6 +72,29 @@ class TestResultsPresenter constructor(val context: Context) : TestsResultsContr
                 view.onAvailableTestsLoadedSuccessfully(labTestList)
             }
 
+        }).execute()
+    }
+
+    override fun addTestResult(testResultAddModel: TestResultAddModel) {
+        TestResultAddAsync(testResultAddModel, object : OnTestResultAddListener {
+            override fun onTestResultAddLoading() {
+                view.showProgress(true)
+            }
+
+            override fun onTestResultAddInternetConnection() {
+                view.showProgress(false)
+                view.showLoadErrorMessage(true)
+            }
+
+            override fun onTestResultAddSuccessFully() {
+                view.showProgress(false)
+                view.onTestResultAddedSuccessfully()
+            }
+
+            override fun onTestResultAddFail() {
+                view.showProgress(false)
+                view.onTestResultAddFail()
+            }
         }).execute()
     }
 

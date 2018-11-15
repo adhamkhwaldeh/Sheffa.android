@@ -26,15 +26,16 @@ public class MedicineAndPotionAsync extends AsyncTask<Void, Void, String> {
         this.onMedicineAndPotionResponseListener = onMedicineAndPotionResponseListener;
     }
 
-    @Override
-    protected String doInBackground(Void... voids) {
-        return GeneralConnections.getJson(NetworkingHelper.MedicineAndPotionDetailsUrl + itemId, NetworkingHelper.RequestTimeout);
-    }
 
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
         onMedicineAndPotionResponseListener.onMedicineAndPotionResponseLoading();
+    }
+
+    @Override
+    protected String doInBackground(Void... voids) {
+        return GeneralConnections.getJson(NetworkingHelper.MedicineAndPotionDetailsUrl + itemId, NetworkingHelper.RequestTimeout);
     }
 
     @Override

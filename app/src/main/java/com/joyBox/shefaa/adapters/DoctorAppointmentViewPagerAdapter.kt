@@ -10,9 +10,6 @@ import com.joyBox.shefaa.fragments.doctorAppointmentFragments.DoctorShiftAppoint
 import com.joyBox.shefaa.fragments.doctorAppointmentFragments.DoctorTreatmentDayFragment
 import java.util.*
 
-/**
- * Created by Adhamkh on 2018-10-24.
- */
 class DoctorAppointmentViewPagerAdapter(val context: Context, fragmentManager: FragmentManager)
     : FragmentPagerAdapter(fragmentManager) {
 

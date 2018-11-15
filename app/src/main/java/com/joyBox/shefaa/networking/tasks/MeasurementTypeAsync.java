@@ -11,9 +11,6 @@ import com.joyBox.shefaa.networking.listeners.OnMeasurementTypeListener;
 import java.util.Arrays;
 import java.util.List;
 
-/**
- * Created by Adhamkh on 2018-10-20.
- */
 
 public class MeasurementTypeAsync extends AsyncTask<Void, Void, String> {
 

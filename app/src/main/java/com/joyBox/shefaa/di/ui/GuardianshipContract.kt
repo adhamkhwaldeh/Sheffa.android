@@ -1,6 +1,7 @@
 package com.joyBox.shefaa.di.ui
 
 import com.joyBox.shefaa.activities.patient.GuardianshipActivity
+import com.joyBox.shefaa.entities.GuardianshipAutoComplete
 import com.joyBox.shefaa.entities.GuardianshipEntity
 
 /**
@@ -10,11 +11,18 @@ class GuardianshipContract {
 
     interface Presenter : BaseContract.Presenter<View> {
         fun loadGuardianshipList(url: String)
+        fun loadAutoCompleteList()
+        fun addGuardianship(url: String)
 
     }
 
     interface View : BaseContract.View {
-        fun onGuardianshipListLoaded(guardianshipList: List<GuardianshipEntity>)
+        fun onGuardianshipListLoaded(guardianshipList: List<GuardianshipEntity>) {}
 
+        fun onGuardianshipAutoCompleteListLoaded(guardianshipAutoCompleteList: MutableList<GuardianshipAutoComplete>) {}
+
+        fun onGuardianshipAddedSuccessfully() {}
+
+        fun onGuardianshipAddedFail() {}
     }
 }

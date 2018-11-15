@@ -5,7 +5,7 @@ import android.util.Pair;
 
 import com.joyBox.shefaa.App;
 import com.joyBox.shefaa.networking.NetworkingHelper;
-import com.joyBox.shefaa.repositories.UserRepositoy;
+import com.joyBox.shefaa.repositories.UserRepository;
 
 import org.json.JSONObject;
 
@@ -13,11 +13,6 @@ import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.net.CookieHandler;
-import java.net.CookieManager;
-import java.net.CookiePolicy;
-import java.net.HttpCookie;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -42,7 +37,7 @@ public class NotificationConnections {
             c.setDoOutput(true);
             c.setUseCaches(false);
             c.setDefaultUseCaches(false);
-            c.setRequestProperty("X-CSRF-Token", new UserRepositoy(App.app.getApplicationContext()).getClient().getToken());
+            c.setRequestProperty("X-CSRF-Token", new UserRepository(App.app.getApplicationContext()).getClient().getToken());
 //            for (HttpCookie cookie : JsonParser.cookies) {
 //                c.setRequestProperty("Cookie", cookie.getValue());
 //            }
@@ -185,7 +180,7 @@ public class NotificationConnections {
             c.setDoOutput(true);
             c.setUseCaches(false);
             c.setDefaultUseCaches(false);
-            c.setRequestProperty("X-CSRF-Token", new UserRepositoy(App.app.getApplicationContext()).getClient().getToken());
+            c.setRequestProperty("X-CSRF-Token", new UserRepository(App.app.getApplicationContext()).getClient().getToken());
 //            for (HttpCookie cookie : JsonParser.cookies) {
 //                c.setRequestProperty("Cookie", cookie.getValue());
 //            }

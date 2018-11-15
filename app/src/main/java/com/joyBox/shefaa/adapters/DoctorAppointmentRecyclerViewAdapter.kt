@@ -11,9 +11,6 @@ import com.joyBox.shefaa.helpers.IntentHelper
 import com.joyBox.shefaa.viewHolders.DoctorAppointmentViewHolder
 import com.joyBox.shefaa.viewHolders.DoctorViewHolder
 
-/**
- * Created by Adhamkh on 2018-10-24.
- */
 class DoctorAppointmentRecyclerViewAdapter(val context: Context, val doctorAppointmentList: MutableList<DoctorAppointment>) :
         RecyclerView.Adapter<DoctorAppointmentViewHolder>() {
 

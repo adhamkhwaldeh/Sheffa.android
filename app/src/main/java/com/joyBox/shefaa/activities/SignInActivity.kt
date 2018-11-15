@@ -1,7 +1,6 @@
 package com.joyBox.shefaa.activities
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.EditText
 import android.widget.TextView
@@ -15,7 +14,6 @@ import com.google.firebase.messaging.FirebaseMessaging
 //import com.google.firebase.iid.FirebaseInstanceId
 //import com.google.firebase.messaging.FirebaseMessaging
 import com.joyBox.shefaa.di.component.DaggerSignInComponent
-import com.joyBox.shefaa.di.component.DaggerSplashComponent
 import com.joyBox.shefaa.di.module.NotificationModule
 import com.joyBox.shefaa.di.module.RegistrationModule
 import com.joyBox.shefaa.di.ui.NotificationContract
@@ -27,7 +25,7 @@ import com.joyBox.shefaa.entities.Client
 import com.joyBox.shefaa.entities.NotificationEntity
 import com.joyBox.shefaa.entities.models.LoginModel
 import com.joyBox.shefaa.helpers.IntentHelper
-import com.joyBox.shefaa.repositories.UserRepositoy
+import com.joyBox.shefaa.repositories.UserRepository
 import javax.inject.Inject
 
 
@@ -98,9 +96,9 @@ class SignInActivity : BaseActivity(), RegistrationContract.View, NotificationCo
     }
 
     override fun loginSuccessfully(client: Client) {
-        UserRepositoy(this).putClient(client)
+        UserRepository(this).putClient(client)
 
-        UserRepositoy(this).putLoginModel(LoginModel(userName = userNameEditText.text.toString(),
+        UserRepository(this).putLoginModel(LoginModel(userName = userNameEditText.text.toString(),
                 password = passwordEditText.text.toString()))
 
         FirebaseMessaging.getInstance().subscribeToTopic(client.user.uid)

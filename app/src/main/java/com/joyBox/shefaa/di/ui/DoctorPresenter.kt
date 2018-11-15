@@ -4,6 +4,7 @@ import android.content.Context
 import com.joyBox.shefaa.entities.Doctor
 import com.joyBox.shefaa.entities.DoctorAutoComplete
 import com.joyBox.shefaa.entities.SpecialistAutoComplete
+import com.joyBox.shefaa.filtrations.DoctorFilter
 import com.joyBox.shefaa.networking.listeners.OnDoctorAutoCompleteResponseListener
 import com.joyBox.shefaa.networking.listeners.OnDoctorSearchListener
 import com.joyBox.shefaa.networking.listeners.OnSpecialistAutoCompleteListener
@@ -90,7 +91,7 @@ class DoctorPresenter constructor(val context: Context) : DoctorContract.Present
             override fun onSpecialiestAutoNoData() {
                 view.showEmptyView(true)
             }
-        })
+        }).execute()
     }
 
     override fun unSubscribe() {

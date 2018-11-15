@@ -11,10 +11,6 @@ import com.joyBox.shefaa.networking.listeners.OnGuardianshipListener;
 import java.util.Arrays;
 import java.util.List;
 
-/**
- * Created by Adhamkh on 2018-10-05.
- */
-
 public class GuardianshipAsync extends AsyncTask<Void, Void, String> {
 
     private String url;

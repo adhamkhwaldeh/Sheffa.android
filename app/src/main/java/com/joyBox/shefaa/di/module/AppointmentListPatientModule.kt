@@ -6,9 +6,6 @@ import com.joyBox.shefaa.di.ui.AppointmentListPatientPresenter
 import dagger.Module
 import dagger.Provides
 
-/**
- * Created by Adhamkh on 2018-08-19.
- */
 @Module
 class AppointmentListPatientModule constructor(private var activity: Activity) {
 

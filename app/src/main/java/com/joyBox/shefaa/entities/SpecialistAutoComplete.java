@@ -5,6 +5,7 @@ package com.joyBox.shefaa.entities;
  */
 
 public class SpecialistAutoComplete {
+
     private String tid = "";
     private String vid = "";
     private String name = "";
@@ -16,6 +17,16 @@ public class SpecialistAutoComplete {
     private String i18n_tsid = "";
     private String parent = "";
     private String uri = "";
+
+    private Boolean isSelected = false;
+
+    public Boolean getSelected() {
+        return isSelected;
+    }
+
+    public void setSelected(Boolean selected) {
+        isSelected = selected;
+    }
 
     public String getTid() {
         return tid;

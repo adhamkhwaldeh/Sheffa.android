@@ -110,7 +110,7 @@ class PrescriptionMedicinePotionFragment : BasePrescriptionFragment(), MedicineA
     }
 
     override fun onMedicineAndPotionSuccessfully(medicinePotionList: List<MedicinePotionEntity>) {
-        recyclerView.adapter = MedicineAndPotionRecyclerViewAdapter(context!!, medicinePotionList)
+        recyclerView.adapter = MedicineAndPotionRecyclerViewAdapter(context!!, medicinePotionList,prescription)
         Log.v("", "")
     }
     /*Presenter ended*/

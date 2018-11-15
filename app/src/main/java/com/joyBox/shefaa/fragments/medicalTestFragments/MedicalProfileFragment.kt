@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import butterknife.BindView
 import butterknife.ButterKnife
 import butterknife.OnClick
@@ -21,7 +22,7 @@ import com.joyBox.shefaa.entities.MedicalProfile
 import com.joyBox.shefaa.enums.LayoutStatesEnum
 import com.joyBox.shefaa.enums.ProfileType
 import com.joyBox.shefaa.listeners.OnRefreshLayoutListener
-import com.joyBox.shefaa.repositories.UserRepositoy
+import com.joyBox.shefaa.repositories.UserRepository
 import com.joyBox.shefaa.viewModels.MedicalProfileViewHolder
 import com.joyBox.shefaa.views.Stateslayoutview
 import javax.inject.Inject
@@ -64,7 +65,7 @@ class MedicalProfileFragment : BaseMedicalTestFragment(), MedicalProfileContract
 
         presenter.attachView(this)
         presenter.subscribe()
-        val user = UserRepositoy(activity!!).getClient()
+        val user = UserRepository(activity!!).getClient()
         presenter.loadUserProfile(userId = user!!.user.uid, profileType = ProfileType.PATIENT.type)
 
 
@@ -83,7 +84,7 @@ class MedicalProfileFragment : BaseMedicalTestFragment(), MedicalProfileContract
 
         stateLayout.setOnRefreshLayoutListener(object : OnRefreshLayoutListener {
             override fun onRefresh() {
-                val user = UserRepositoy(activity!!).getClient()
+                val user = UserRepository(activity!!).getClient()
                 presenter.updateUserProfile(medicalProfileViewHolder.getUpdateUrl(userId = user!!.user!!.uid))
             }
 
@@ -106,7 +107,7 @@ class MedicalProfileFragment : BaseMedicalTestFragment(), MedicalProfileContract
 
     @OnClick(R.id.saveBtn)
     fun onSaveButtonClick(view: View) {
-        val user = UserRepositoy(activity!!).getClient()
+        val user = UserRepository(activity!!).getClient()
         presenter.updateUserProfile(medicalProfileViewHolder.getUpdateUrl(userId = user!!.user!!.uid))
     }
 
@@ -142,7 +143,7 @@ class MedicalProfileFragment : BaseMedicalTestFragment(), MedicalProfileContract
     }
 
     override fun onUserProfileUpdateSuccessfully() {
-
+        Toast.makeText(context, R.string.profileUpdateSuccessfully, Toast.LENGTH_LONG).show()
     }
 
     /*Presenter ended*/

@@ -22,6 +22,7 @@ import com.joyBox.shefaa.enums.LayoutStatesEnum
 import com.joyBox.shefaa.helpers.IntentHelper
 import com.joyBox.shefaa.listeners.OnRefreshLayoutListener
 import com.joyBox.shefaa.networking.NetworkingHelper
+import com.joyBox.shefaa.viewModels.DoctorGeneralSearchViewHolder
 import com.joyBox.shefaa.views.Stateslayoutview
 import javax.inject.Inject
 
@@ -44,6 +45,8 @@ class DoctorGeneralSearchFragment : BaseGeneralSearchFragment(), DoctorContract.
     @Inject
     lateinit var presenter: DoctorPresenter
 
+    lateinit var doctorGeneralSearchViewHolder: DoctorGeneralSearchViewHolder
+
     private fun initDI() {
         val component = DaggerDoctorGeneralSearchComponent.builder()
                 .doctorModule(DoctorModule(activity!!))
@@ -59,6 +62,7 @@ class DoctorGeneralSearchFragment : BaseGeneralSearchFragment(), DoctorContract.
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = layoutInflater.inflate(R.layout.doctor_general_search_fragment_layout, container, false)
+        doctorGeneralSearchViewHolder = DoctorGeneralSearchViewHolder(view)
         ButterKnife.bind(this, view)
         return view
     }
@@ -81,7 +85,7 @@ class DoctorGeneralSearchFragment : BaseGeneralSearchFragment(), DoctorContract.
 
     @OnClick(R.id.searchBtn)
     fun onSearchButtonClick(view: View) {
-        IntentHelper.startDoctorSearchActivity(activity!!)
+        IntentHelper.startDoctorSearchActivity(activity!!, doctorGeneralSearchViewHolder.getDoctorSearchModel())
         Log.v("", "")
     }
 
@@ -122,9 +126,9 @@ class DoctorGeneralSearchFragment : BaseGeneralSearchFragment(), DoctorContract.
     }
 
     override fun onSpecialistAutoCompleteLoadedSuccessfully(specialistAutoCompleteList: MutableList<SpecialistAutoComplete>) {
-        val specList: MutableList<String> = specialistAutoCompleteList
-                .map { it -> it.name }.toMutableList()
-        specializationSpinner.adapter = SpecializationSpinnerAdapter(context!!, specList)
+//        val specList: MutableList<String> = specialistAutoCompleteList
+//                .map { it -> it.name }.toMutableList()
+        specializationSpinner.adapter = SpecializationSpinnerAdapter(context!!, specialistAutoCompleteList)
         Log.v("", "")
     }
 

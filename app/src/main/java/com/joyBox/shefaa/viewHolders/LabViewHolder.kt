@@ -8,25 +8,22 @@ import butterknife.BindView
 import butterknife.ButterKnife
 import com.JoyBox.Shefaa.R
 import com.joyBox.shefaa.entities.Lab
-import com.schibstedspain.leku.LATITUDE
 
-/**
- * Created by Adhamkh on 2018-10-12.
- */
-class LabViewHolder : RecyclerView.ViewHolder {
+class LabViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
     var context: Context
 
-    @BindView(R.id.labName)
-    lateinit var labName: TextView
-
-    constructor(view: View) : super(view) {
+    init {
         ButterKnife.bind(this, view)
         context = view.context
     }
 
+    @BindView(R.id.labName)
+    lateinit var labName: TextView
+
     fun bind(lab: Lab) {
         labName.text = lab.name
     }
+
 
 }

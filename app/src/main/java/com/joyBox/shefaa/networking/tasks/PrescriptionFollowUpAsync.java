@@ -26,6 +26,12 @@ public class PrescriptionFollowUpAsync extends AsyncTask<Void, Void, String> {
     }
 
     @Override
+    protected void onPreExecute() {
+        super.onPreExecute();
+        onPrescriptionFollowUpResponseListener.onPrescriptionFollowUpResponseLoading();
+    }
+
+    @Override
     protected String doInBackground(Void... voids) {
         return GeneralConnections.getJson(NetworkingHelper.PrescriptionFollowUpUrl + itemId, NetworkingHelper.RequestTimeout);
     }

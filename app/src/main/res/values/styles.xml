@@ -6,6 +6,33 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+
+        <item name="android:dialogTheme">@style/AppTheme.DialogSlideAnim</item>
+        <item name="android:alertDialogTheme">@style/AppAlertTheme</item>
+    </style>
+
+    <style name="AppTheme.MainToggle">
+
+    </style>
+
+    <style name="AppAlertTheme" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:windowAnimationStyle">@style/DialogAnimation</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorControlNormal">@color/colorPrimary</item>
+        <item name="android:textColorHighlight">@color/colorAccent</item>
+        <item name="android:windowBackground">@null</item>
+
+    </style>
+
+    <style name="AppTheme.DialogSlideAnim" parent="Theme.AppCompat.Light.Dialog">
+        <item name="android:windowAnimationStyle">@style/DialogAnimation</item>
+        <item name="android:windowBackground">@color/transparent</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorControlNormal">@color/colorPrimary</item>
     </style>
 
     <!-- Toolbar started -->
@@ -14,7 +41,7 @@
     </style>
 
     <style name="ToolBarWithNavigationBack" parent="@style/toolbar">
-        <item name="navigationIcon">@drawable/abc_ic_ab_back_material</item>
+        <item name="navigationIcon">@drawable/ic_arrow_back_white_24dp</item>
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark">
@@ -77,7 +104,7 @@
         <item name="android:gravity">center</item>
         <item name="android:maxLines">1</item>
         <item name="android:ellipsize">end</item>
-        <item name="android:textAlignment">gravity</item>
+        <!--<item name="android:textAlignment">gravity</item>-->
         <item name="android:layout_gravity">center</item>
     </style>
 

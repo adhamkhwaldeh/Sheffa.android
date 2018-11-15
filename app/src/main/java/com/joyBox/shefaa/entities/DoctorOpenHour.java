@@ -9,6 +9,15 @@ public class DoctorOpenHour {
     private String starthours = "";
     private String endhours = "";
 
+    public DoctorOpenHour() {
+    }
+
+    public DoctorOpenHour(String day, String starthours, String endhours) {
+        this.day = day;
+        this.starthours = starthours;
+        this.endhours = endhours;
+    }
+
     public String getDay() {
         return day;
     }

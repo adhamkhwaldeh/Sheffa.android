@@ -22,7 +22,7 @@ import com.joyBox.shefaa.enums.LayoutStatesEnum
 import com.joyBox.shefaa.enums.ProfileType
 import com.joyBox.shefaa.helpers.IntentHelper
 import com.joyBox.shefaa.listeners.OnRefreshLayoutListener
-import com.joyBox.shefaa.repositories.UserRepositoy
+import com.joyBox.shefaa.repositories.UserRepository
 import com.joyBox.shefaa.views.Stateslayoutview
 import javax.inject.Inject
 
@@ -67,7 +67,7 @@ class PatientProfileActivity : BaseActivity(), RegistrationContract.View {
         component.inject(this)
         presenter.attachView(this)
         presenter.subscribe()
-        val user = UserRepositoy(this).getClient()!!.user
+        val user = UserRepository(this).getClient()!!.user
         presenter.loadMainProfile(userId = user.uid)
     }
 
@@ -80,7 +80,7 @@ class PatientProfileActivity : BaseActivity(), RegistrationContract.View {
 
         stateLayout.setOnRefreshLayoutListener(object : OnRefreshLayoutListener {
             override fun onRefresh() {
-                val user = UserRepositoy(this@PatientProfileActivity).getClient()!!.user
+                val user = UserRepository(this@PatientProfileActivity).getClient()!!.user
                 presenter.loadMainProfile(userId = user.uid)
             }
 
@@ -104,7 +104,7 @@ class PatientProfileActivity : BaseActivity(), RegistrationContract.View {
 
     private fun getMainProfileFromUI(): MainProfile {
         val mainProfile = MainProfile()
-        val user = UserRepositoy(this).getClient()!!.user
+        val user = UserRepository(this).getClient()!!.user
 
         mainProfile.pid = user.uid
         mainProfile.field_first_name = firstName.text.toString()

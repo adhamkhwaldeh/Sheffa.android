@@ -16,6 +16,7 @@ import com.joyBox.shefaa.entities.DoctorPatient;
 import com.joyBox.shefaa.entities.DoctorPatientPrescription;
 import com.joyBox.shefaa.entities.Lab;
 import com.joyBox.shefaa.entities.LabTest;
+import com.joyBox.shefaa.entities.MapAddress;
 import com.joyBox.shefaa.entities.PaymentType;
 import com.joyBox.shefaa.entities.Pharmacy;
 import com.joyBox.shefaa.entities.PrescriptionFollowUp;
@@ -198,6 +199,13 @@ public class JsonParser {
                     PrescriptionFollowUp.Indicator indicator = gson.fromJson(followElment, PrescriptionFollowUp.Indicator.class);
                     entity.setIndicator_tid(indicator);
                 }
+
+                JsonElement followNameElment = elmnt.getAsJsonObject().get("Indicator name");
+                if (!followNameElment.isJsonArray()) {
+                    entity.setIndicator_name(followNameElment.getAsString());
+                }
+
+
                 JsonElement notesElmnt = elmnt.getAsJsonObject().get("Notes");
                 if (!notesElmnt.isJsonArray()) {
                     String notes = notesElmnt.getAsString();
@@ -374,6 +382,10 @@ public class JsonParser {
             Gson gson = new GsonBuilder().create();
             for (JsonElement el : json.getAsJsonArray()) {
                 DoctorAppointment lab = gson.fromJson(el, DoctorAppointment.class);
+                JsonElement el_patient_home_address = el.getAsJsonObject().get("Patient home address");
+                if (el_patient_home_address.isJsonObject()) {
+                    lab.setPatient_home_address(new Gson().fromJson(el_patient_home_address, MapAddress.class));
+                }
                 lst.add(lab);
             }
             return lst;

@@ -8,6 +8,7 @@ import butterknife.ButterKnife
 import butterknife.OnClick
 import com.JoyBox.Shefaa.R
 import com.joyBox.shefaa.helpers.IntentHelper
+import com.joyBox.shefaa.viewModels.LabGeneralSearchViewHolder
 
 class LabGeneralSearchFragment : BaseGeneralSearchFragment() {
 
@@ -19,10 +20,12 @@ class LabGeneralSearchFragment : BaseGeneralSearchFragment() {
         }
     }
 
+    lateinit var labGeneralSearchViewHolder: LabGeneralSearchViewHolder
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = layoutInflater.inflate(R.layout.lab_general_search_fragment_layout, container, false)
         ButterKnife.bind(this, view)
+        labGeneralSearchViewHolder = LabGeneralSearchViewHolder(view)
         return view
     }
 
@@ -32,7 +35,7 @@ class LabGeneralSearchFragment : BaseGeneralSearchFragment() {
 
     @OnClick(R.id.searchBtn)
     fun onSearchButtonClick(view: View) {
-        IntentHelper.startLabSearchActivity(context!!)
+        IntentHelper.startLabSearchActivity(context!!, labGeneralSearchViewHolder.getLabFilter())
     }
 
 

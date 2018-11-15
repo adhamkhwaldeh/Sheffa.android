@@ -1,6 +1,214 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar_layout" />
+
+    <com.joyBox.shefaa.views.Stateslayoutview
+        android:id="@+id/stateLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:NoConnectionLayout="@layout/state_layout_noconnection"
+        app:NoDataLayout="@layout/state_layout_nodata"
+        app:RefreshbtnRes="@+id/retryBtn"
+        app:WaitingLayout="@layout/state_layout_waiting"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorPrimary">
+
+            <LinearLayout
+                android:id="@+id/measureTypeContainer"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_margin="@dimen/sm_margin"
+                android:orientation="horizontal"
+                android:padding="@dimen/sm_padding"
+                app:layout_constraintHeight_percent="0.1">
+
+                <android.support.v7.widget.AppCompatTextView
+                    style="@style/AppTheme.TextWhiteAppearance"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="3"
+                    android:text="@string/measureType"
+                    app:autoSizeTextType="uniform" />
+
+                <android.support.v7.widget.AppCompatSpinner
+                    android:id="@+id/measureTypeSpinner"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="7"
+                    android:background="@drawable/edit_text_white_drawable"
+                    android:spinnerMode="dialog" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/measureValueContainer"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_margin="@dimen/sm_margin"
+                android:orientation="horizontal"
+                android:padding="@dimen/sm_padding"
+                app:layout_constraintHeight_percent="0.1"
+                app:layout_constraintTop_toBottomOf="@+id/measureTypeContainer">
+
+                <android.support.v7.widget.AppCompatTextView
+                    style="@style/AppTheme.TextWhiteAppearance"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="3"
+                    android:text="@string/measureValue"
+                    app:autoSizeTextType="uniform" />
+
+                <android.support.v7.widget.AppCompatEditText
+                    android:id="@+id/measureValue"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="7"
+                    android:background="@drawable/edit_text_white_drawable"
+                    android:inputType="number" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/measureUnitContainer"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_margin="@dimen/sm_margin"
+                android:orientation="horizontal"
+                android:padding="@dimen/sm_padding"
+                app:layout_constraintHeight_percent="0.1"
+                app:layout_constraintTop_toBottomOf="@+id/measureValueContainer">
+
+                <android.support.v7.widget.AppCompatTextView
+                    style="@style/AppTheme.TextWhiteAppearance"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="3"
+                    android:text="@string/measureUnit"
+                    app:autoSizeTextType="uniform" />
+
+                <android.support.v7.widget.AppCompatEditText
+                    android:id="@+id/measureUnit"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="7"
+                    android:background="@drawable/edit_text_white_drawable" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/measureDateContainer"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_margin="@dimen/sm_margin"
+                android:orientation="horizontal"
+                android:padding="@dimen/sm_padding"
+                app:layout_constraintHeight_percent="0.1"
+                app:layout_constraintTop_toBottomOf="@+id/measureUnitContainer">
+
+                <android.support.v7.widget.AppCompatTextView
+                    style="@style/AppTheme.TextWhiteAppearance"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="3"
+                    android:text="@string/measureDate"
+                    app:autoSizeTextType="uniform" />
+
+                <android.support.v7.widget.AppCompatEditText
+                    android:id="@+id/measureDate"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="7"
+                    android:background="@drawable/edit_text_white_drawable" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/measureTimeContainer"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_margin="@dimen/sm_margin"
+                android:orientation="horizontal"
+                android:padding="@dimen/sm_padding"
+                app:layout_constraintHeight_percent="0.1"
+                app:layout_constraintTop_toBottomOf="@+id/measureDateContainer">
+
+                <android.support.v7.widget.AppCompatTextView
+                    style="@style/AppTheme.TextWhiteAppearance"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="3"
+                    android:text="@string/measureTime"
+                    app:autoSizeTextType="uniform" />
+
+                <android.support.v7.widget.AppCompatEditText
+                    android:id="@+id/measureTime"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="7"
+                    android:background="@drawable/edit_text_white_drawable" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/measureNotesContainer"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_margin="@dimen/sm_margin"
+                android:orientation="vertical"
+                android:padding="@dimen/sm_padding"
+                app:layout_constraintHeight_percent="0.25"
+                app:layout_constraintTop_toBottomOf="@+id/measureTimeContainer">
+
+                <android.support.v7.widget.AppCompatTextView
+                    style="@style/AppTheme.TextWhiteAppearance"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/measureNotes"
+                    app:autoSizeTextType="uniform" />
+
+                <android.support.v7.widget.AppCompatEditText
+                    android:id="@+id/measureNotes"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/edit_text_white_drawable" />
+
+            </LinearLayout>
+
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/saveBtn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_primary_bg"
+                android:text="@string/Save"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/measureNotesContainer"
+                app:layout_constraintWidth_percent="0.6" />
+
+        </android.support.constraint.ConstraintLayout>
+
+
+    </com.joyBox.shefaa.views.Stateslayoutview>
 
 </android.support.constraint.ConstraintLayout>

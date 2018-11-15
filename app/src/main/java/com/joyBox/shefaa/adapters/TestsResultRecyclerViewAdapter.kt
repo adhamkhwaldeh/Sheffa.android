@@ -6,11 +6,9 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.JoyBox.Shefaa.R
 import com.joyBox.shefaa.entities.TestResultEntity
+import com.joyBox.shefaa.helpers.IntentHelper
 import com.joyBox.shefaa.viewHolders.TestsResultViewHolder
 
-/**
- * Created by Adhamkh on 2018-08-21.
- */
 class TestsResultRecyclerViewAdapter constructor(val context: Context, val testResultList: MutableList<TestResultEntity>)
     : RecyclerView.Adapter<TestsResultViewHolder>() {
 
@@ -25,5 +23,8 @@ class TestsResultRecyclerViewAdapter constructor(val context: Context, val testR
     override fun onBindViewHolder(holder: TestsResultViewHolder, position: Int) {
         val poJo = testResultList[position]
         holder.bind(poJo)
+        holder.itemView.setOnClickListener {
+            IntentHelper.startTestsResultDetailsActivity(context, poJo)
+        }
     }
 }

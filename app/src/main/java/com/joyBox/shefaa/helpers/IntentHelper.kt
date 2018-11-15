@@ -2,6 +2,7 @@ package com.joyBox.shefaa.helpers
 
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import com.google.gson.Gson
 import com.joyBox.shefaa.activities.*
 import com.joyBox.shefaa.activities.patient.*
@@ -9,11 +10,16 @@ import com.joyBox.shefaa.entities.*
 import com.joyBox.shefaa.entities.models.MessageReplayModel
 import com.joyBox.shefaa.enums.ReminderType
 import android.support.v4.content.ContextCompat.startActivity
+import android.util.Log
 import com.JoyBox.Shefaa.R
-import com.joyBox.shefaa.activities.doctor.DoctorAddPrescriptionActivity
-import com.joyBox.shefaa.activities.doctor.DoctorAppointmentActivity
-import com.joyBox.shefaa.activities.doctor.DoctorDashBoardActivity
-import com.joyBox.shefaa.activities.doctor.DoctorProfileActivity
+import com.joyBox.shefaa.activities.autoComplete.DoctorAutoCompleteActivity
+import android.support.v4.content.ContextCompat.startActivity
+import com.joyBox.shefaa.activities.autoComplete.GuardianshipAutoCompleteActivity
+import com.joyBox.shefaa.activities.autoComplete.UserAutoCompleteActivity
+import com.joyBox.shefaa.activities.doctor.*
+import com.joyBox.shefaa.filtrations.DoctorFilter
+import com.joyBox.shefaa.filtrations.LabFilter
+import com.joyBox.shefaa.filtrations.PharmacyFilter
 
 
 class IntentHelper {
@@ -115,9 +121,11 @@ class IntentHelper {
             context.startActivity(intent)
         }
 
-        fun startDoctorSearchActivity(context: Context) {
+        fun startDoctorSearchActivity(context: Context, doctorFilter: DoctorFilter) {
             val intent = Intent(context, DoctorSearchActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+            val jSon = Gson().toJson(doctorFilter)
+            intent.putExtra(DoctorSearchActivity.DoctorSearchActivity_Tag, jSon)
             context.startActivity(intent)
         }
 
@@ -190,9 +198,10 @@ class IntentHelper {
 
         fun startShareLink(context: Context, title: String, url: String) {
             val share = Intent(android.content.Intent.ACTION_SEND)
-            share.type = "text/plain"
-            share.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET)
 
+            share.type = "text/plain"
+            //or Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET
+            share.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             // Add data to the intent, the receiving app will decide
             // what to do with it.
             share.putExtra(Intent.EXTRA_SUBJECT, title)
@@ -221,6 +230,14 @@ class IntentHelper {
             context.startActivity(intent)
         }
 
+
+        fun startGuardianshipAutoCompleteActivity(context: Context) {
+            val intent = Intent(context, GuardianshipAutoCompleteActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+            context.startActivity(intent)
+        }
+
+
         fun startChangeEmailActivity(context: Context) {
             val intent = Intent(context, ChangeEmailActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
@@ -233,8 +250,10 @@ class IntentHelper {
             context.startActivity(intent)
         }
 
-        fun startPharmacySearchActivity(context: Context) {
+        fun startPharmacySearchActivity(context: Context, pharmacyFilter: PharmacyFilter) {
             val intent = Intent(context, PharmacySearchActivity::class.java)
+            val jSon = Gson().toJson(pharmacyFilter)
+            intent.putExtra(PharmacySearchActivity.PharmacySearchActivity_Tag, jSon)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
             context.startActivity(intent)
         }
@@ -247,8 +266,10 @@ class IntentHelper {
             context.startActivity(intent)
         }
 
-        fun startLabSearchActivity(context: Context) {
+        fun startLabSearchActivity(context: Context, labFilter: LabFilter) {
             val intent = Intent(context, LabSearchActivity::class.java)
+            val jSon = Gson().toJson(labFilter)
+            intent.putExtra(LabSearchActivity.LabSearchActivity_Tag, jSon)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
             context.startActivity(intent)
         }
@@ -290,6 +311,76 @@ class IntentHelper {
             val intent = Intent(context, DoctorAddPrescriptionActivity::class.java)
             val jSon = Gson().toJson(doctorAppointment)
             intent.putExtra(DoctorAddPrescriptionActivity.DoctorAddPrescriptionActivity_Tag, jSon)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+            context.startActivity(intent)
+        }
+
+        fun startDoctorAutoCompleteActivity(context: Context) {
+            val intent = Intent(context, DoctorAutoCompleteActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+            context.startActivity(intent)
+        }
+
+
+        fun startLocationCheckActivity(context: Context, activityName: String) {
+            val intent = Intent(context, LocationCheckActivity::class.java)
+            intent.putExtra(LocationCheckActivity.Target_Tag, activityName)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+            context.startActivity(intent)
+        }
+
+        fun startActivityByName(context: Context, activityName: String) {
+            try {
+                val intent = Intent()
+                intent.setClassName(context, activityName)
+                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+                context.startActivity(intent)
+            } catch (ex: Exception) {
+                Log.v("", "")
+                Log.v("", "")
+            }
+        }
+
+        fun startTestsResultDetailsActivity(context: Context, testResultEntity: TestResultEntity) {
+            val intent = Intent(context, TestsResultDetailsActivity::class.java)
+            val jSon = Gson().toJson(testResultEntity)
+            intent.putExtra(TestsResultDetailsActivity.TestsResultDetailsActivity_Tag, jSon)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+            context.startActivity(intent)
+        }
+
+        fun startWebsiteLink(context: Context, link: String) {
+            var url = link
+            if (!url.startsWith("http://") && !url.startsWith("https://"))
+                url = "http://" + url
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+            context.startActivity(intent)
+        }
+
+        fun startAddReminderActivity(context: Context, url: String) {
+            val intent = Intent(context, AddReminderActivity::class.java)
+            intent.putExtra(AddReminderActivity.AddReminderActivity_Tag, url)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+            context.startActivity(intent)
+        }
+
+        fun startUserAutoCompleteActivity(context: Context) {
+            val intent = Intent(context, UserAutoCompleteActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+            context.startActivity(intent)
+        }
+
+        fun startMyPatientProfileActivity(context: Context, patientId: String) {
+            val intent = Intent(context, MyPatientProfileActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+            context.startActivity(intent)
+        }
+
+        fun startDoctorAppointmentDetailsActivity(context: Context, appointment: DoctorAppointment) {
+            val intent = Intent(context, DoctorAppointmentDetailsActivity::class.java)
+            val jSon = Gson().toJson(appointment)
+            intent.putExtra(DoctorAppointmentDetailsActivity.DoctorAppointmentDetailsActivity_Tag, jSon)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
             context.startActivity(intent)
         }

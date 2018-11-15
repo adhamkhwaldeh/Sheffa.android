@@ -15,7 +15,7 @@ import butterknife.OnClick
 import com.JoyBox.Shefaa.R
 import com.google.firebase.iid.FirebaseInstanceId
 import com.joyBox.shefaa.activities.BaseActivity
-import com.joyBox.shefaa.di.component.DaggerDashBoardCompoenent
+import com.joyBox.shefaa.di.component.DaggerDashBoardComponent
 import com.joyBox.shefaa.di.module.NotificationModule
 import com.joyBox.shefaa.di.module.RegistrationModule
 import com.joyBox.shefaa.di.ui.NotificationContract
@@ -24,7 +24,7 @@ import com.joyBox.shefaa.di.ui.RegistrationContract
 import com.joyBox.shefaa.di.ui.RegistrationPresenter
 import com.joyBox.shefaa.helpers.IntentHelper
 import com.joyBox.shefaa.networking.NetworkingHelper
-import com.joyBox.shefaa.repositories.UserRepositoy
+import com.joyBox.shefaa.repositories.UserRepository
 import javax.inject.Inject
 
 class DashBoardActivity : BaseActivity(), RegistrationContract.View, NotificationContract.View,
@@ -46,7 +46,7 @@ class DashBoardActivity : BaseActivity(), RegistrationContract.View, Notificatio
     lateinit var notificationPresenter: NotificationPresenter
 
     fun initDI() {
-        val component = DaggerDashBoardCompoenent.builder()
+        val component = DaggerDashBoardComponent.builder()
                 .registrationModule(RegistrationModule(this))
                 .notificationModule(NotificationModule(this))
                 .build()
@@ -123,7 +123,7 @@ class DashBoardActivity : BaseActivity(), RegistrationContract.View, Notificatio
             R.id.Logout -> {
                 logout()
                 Handler().postDelayed({
-                    UserRepositoy(context = baseContext).flushClient()
+                    UserRepository(context = baseContext).flushClient()
                     IntentHelper.startSignInActivity(this)
                     finish()
                 }, 200)

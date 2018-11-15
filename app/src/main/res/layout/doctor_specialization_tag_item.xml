@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/ic_cat_tag_bg">
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/specializationName"
+        style="@style/AppTheme.TextAppearance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageButton
+        android:id="@+id/closeBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/transparent"
+        android:contentDescription="@string/contentDescription"
+        android:src="@drawable/ic_action_navigation_close"
+        app:layout_constraintLeft_toRightOf="@+id/specializationName"
+        app:layout_constraintStart_toEndOf="@+id/specializationName" />
+
+</android.support.constraint.ConstraintLayout>

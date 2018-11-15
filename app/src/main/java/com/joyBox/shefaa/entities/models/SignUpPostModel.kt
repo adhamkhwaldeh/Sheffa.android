@@ -3,9 +3,6 @@ package com.joyBox.shefaa.entities.models
 import com.google.gson.annotations.SerializedName
 import java.lang.reflect.Field
 
-/**
- * Created by Adhamkh on 2018-08-10.
- */
 class SignUpPostModel {
 
     var name: String = ""

@@ -1,6 +1,232 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<com.joyBox.shefaa.views.Stateslayoutview xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/stateLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:NoConnectionLayout="@layout/state_layout_noconnection"
+    app:NoDataLayout="@layout/state_layout_nodata"
+    app:RefreshbtnRes="@+id/retryBtn"
+    app:WaitingLayout="@layout/state_layout_waiting">
 
-</android.support.constraint.ConstraintLayout>
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimary">
+
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/saveBtn"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/appointmentDateContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/md_margin">
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/appointmentDateLabel"
+                    style="@style/AppTheme.TextWhiteAppearance"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="left|start"
+                    android:text="@string/AppointmentDate"
+                    android:textAlignment="gravity"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintWidth_percent="0.4" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/appointmentDateText"
+                    style="@style/AppTheme.TextWhiteAppearance"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textAlignment="gravity"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintWidth_percent="0.6" />
+
+            </android.support.constraint.ConstraintLayout>
+
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/appointmentShiftTypeContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/md_margin"
+                app:layout_constraintTop_toBottomOf="@+id/appointmentDateContainer">
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/shiftTypeLabel"
+                    style="@style/AppTheme.TextWhiteAppearance"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="left|start"
+                    android:text="@string/AppointmentDate"
+                    android:textAlignment="gravity"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintWidth_percent="0.4" />
+
+                <RadioGroup
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintWidth_percent="0.6">
+
+                    <android.support.v7.widget.AppCompatRadioButton
+                        android:id="@+id/earlierRadioButton"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/earlier" />
+
+                    <android.support.v7.widget.AppCompatRadioButton
+                        android:id="@+id/laterRadioButton"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/later" />
+                </RadioGroup>
+
+            </android.support.constraint.ConstraintLayout>
+
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/appointmentShiftTimeContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/md_margin"
+                app:layout_constraintTop_toBottomOf="@+id/appointmentShiftTypeContainer">
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/shiftTimeLabel"
+                    style="@style/AppTheme.TextWhiteAppearance"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="left|start"
+                    android:text="@string/ShiftTime"
+                    android:textAlignment="gravity"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintWidth_percent="0.4" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/appointmentShiftTimeText"
+                    style="@style/AppTheme.TextWhiteAppearance"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textAlignment="gravity"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintWidth_percent="0.6" />
+
+            </android.support.constraint.ConstraintLayout>
+
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/appointmentStartShiftContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/md_margin"
+                app:layout_constraintTop_toBottomOf="@+id/appointmentShiftTimeContainer">
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/StartShiftLabel"
+                    style="@style/AppTheme.TextWhiteAppearance"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="left|start"
+                    android:text="@string/StartShift"
+                    android:textAlignment="gravity"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintWidth_percent="0.4" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/appointmentStartShiftText"
+                    style="@style/AppTheme.TextWhiteAppearance"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textAlignment="gravity"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintWidth_percent="0.6" />
+
+            </android.support.constraint.ConstraintLayout>
+
+
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/appointmentCloseClinicContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/md_margin"
+                app:layout_constraintTop_toBottomOf="@+id/appointmentStartShiftContainer">
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/closeClinicLabel"
+                    style="@style/AppTheme.TextWhiteAppearance"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:text="@string/CloseClinic"
+                    android:textAlignment="gravity"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintWidth_percent="0.4" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/closeClinicText"
+                    style="@style/AppTheme.TextWhiteAppearance"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textAlignment="gravity"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintWidth_percent="0.6" />
+
+            </android.support.constraint.ConstraintLayout>
+
+
+        </android.support.constraint.ConstraintLayout>
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/saveBtn"
+            style="@style/AppTheme.NormalButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/md_margin"
+            android:background="@drawable/button_primary_bg"
+            android:text="@string/Save"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintWidth_percent="0.7" />
+
+
+    </android.support.constraint.ConstraintLayout>
+
+</com.joyBox.shefaa.views.Stateslayoutview>
