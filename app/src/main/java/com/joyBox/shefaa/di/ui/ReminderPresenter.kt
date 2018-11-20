@@ -3,11 +3,9 @@ package com.joyBox.shefaa.di.ui
 import android.content.Context
 import com.joyBox.shefaa.networking.listeners.OnReminderListener
 import com.joyBox.shefaa.networking.tasks.ReminderAsync
-import io.reactivex.disposables.CompositeDisposable
 
 
 class ReminderPresenter constructor(val context: Context) : ReminderContract.Presenter {
-    private val subscriptions = CompositeDisposable()
 
     private lateinit var view: ReminderContract.View
 

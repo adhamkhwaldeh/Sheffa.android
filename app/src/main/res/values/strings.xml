@@ -300,5 +300,30 @@
     <string name="AddInvoice">Add Invoice</string>
     <string name="Refuse">Refuse</string>
     <string name="patientAddress">Patient address</string>
+    <string name="MyPatientsPrescriptions">My patients prescriptions</string>
+    <string name="MyPatientsTestResult">My patients test result</string>
+    <string name="MyPrescription">My prescription</string>
+    <string name="Reports">Reports</string>
+    <string name="generalReport">General report</string>
+    <string name="incoming">Incoming</string>
+    <string name="Spending">Spending</string>
+    <string name="ViewReport">View report</string>
+    <string name="From">From</string>
+    <string name="Total">Total</string>
+    <string name="SpendingReport">Spending report</string>
+    <string name="incomingReport">Incoming report</string>
+    <string name="PaymentType">Payment type</string>
+    <string name="SpendingAddSuccessfully">Spending add successfully</string>
+    <string name="UnexpectedError">Unexpected error</string>
+    <string name="AppointmentAutoComplete">Appointment autoComplete</string>
+    <string name="Incoming">Incoming</string>
+    <string name="Last_Week">Last week</string>
+    <string name="Last_Month">Last month</string>
+    <string name="Last_Year">Last year</string>
+    <string name="Net">Net</string>
+    <string name="Report">Report</string>
+    <string name="Type">Type</string>
+    <string name="receiptAddSuccessfully">Receipt added successfully</string>
+    <string name="addReceiptFailed">Add receipt failed</string>
 
 </resources>

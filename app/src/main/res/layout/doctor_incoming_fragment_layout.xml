@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.joyBox.shefaa.views.Stateslayoutview xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/stateLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:NoConnectionLayout="@layout/state_layout_noconnection"
+    app:NoDataLayout="@layout/state_layout_nodata"
+    app:RefreshbtnRes="@+id/retryBtn"
+    app:WaitingLayout="@layout/state_layout_waiting">
+
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimary"
+        android:padding="@dimen/md_padding">
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/addressContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/xxsm_margin">
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/addressLabel"
+                style="@style/AppTheme.TitleTextAppearanceWhite"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/Address"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintWidth_percent="1.0" />
+
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/addressEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left|start"
+                android:background="@drawable/edit_text_white_drawable"
+                android:inputType="text"
+                android:textAlignment="gravity"
+                android:textColor="@color/colorGradientEnd"
+                android:textColorHint="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/addressLabel"
+                app:layout_constraintWidth_percent="1.0" />
+
+        </android.support.constraint.ConstraintLayout>
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/paymentTypeContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/xxsm_margin"
+            app:layout_constraintTop_toBottomOf="@+id/addressContainer">
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/appointmentLabel"
+                style="@style/AppTheme.TitleTextAppearanceWhite"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:text="@string/Appointment"
+                app:autoSizeTextType="uniform"
+                app:layout_constraintWidth_default="percent"
+                app:layout_constraintWidth_percent="0.3" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/appointmentId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone" />
+
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/appointmentName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left|start"
+                android:background="@drawable/edit_text_white_drawable"
+                android:textAlignment="gravity"
+                android:textColor="@color/colorGradientEnd"
+                android:textColorHint="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/appointmentLabel"
+                app:layout_constraintWidth_percent="0.7" />
+
+        </android.support.constraint.ConstraintLayout>
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/costContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/xxsm_margin"
+            app:layout_constraintTop_toBottomOf="@+id/paymentTypeContainer">
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/costLabel"
+                style="@style/AppTheme.TitleTextAppearanceWhite"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/Cost"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintWidth_percent="0.3" />
+
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/costEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left|start"
+                android:background="@drawable/edit_text_white_drawable"
+                android:inputType="number"
+                android:textAlignment="gravity"
+                android:textColor="@color/colorGradientEnd"
+                android:textColorHint="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/costLabel"
+                app:layout_constraintWidth_percent="0.7" />
+
+        </android.support.constraint.ConstraintLayout>
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/paymentNotesContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/xxsm_margin"
+            app:layout_constraintTop_toBottomOf="@+id/costContainer">
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/noteLabel"
+                style="@style/AppTheme.TitleTextAppearanceWhite"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/measureNotes"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintWidth_percent="0.3" />
+
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/notesEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left|start"
+                android:background="@drawable/edit_text_white_drawable"
+                android:lines="3"
+                android:minLines="3"
+                android:textAlignment="gravity"
+                android:textColor="@color/colorGradientEnd"
+                android:textColorHint="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/noteLabel"
+                app:layout_constraintWidth_percent="0.7" />
+
+        </android.support.constraint.ConstraintLayout>
+
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/saveBtn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_primary_bg2"
+            android:text="@string/Save"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintWidth_percent="0.7" />
+
+
+    </android.support.constraint.ConstraintLayout>
+
+</com.joyBox.shefaa.views.Stateslayoutview>

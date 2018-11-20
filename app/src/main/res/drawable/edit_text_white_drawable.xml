@@ -15,7 +15,7 @@
             <item android:left="-2dp" android:right="-2dp" android:top="-2dp">
                 <shape>
                     <solid android:color="@color/transparent" />
-                    <stroke android:width="2dp" android:color="@color/lightgray" />
+                    <stroke android:width="2dp" android:color="@color/colorAccent" />
                     <padding android:bottom="@dimen/md_padding" android:left="@dimen/md_padding" android:right="@dimen/md_padding" android:top="@dimen/md_padding" />
                 </shape>
             </item>

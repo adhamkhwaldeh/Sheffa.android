@@ -1,15 +1,24 @@
 package com.joyBox.shefaa.entities;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  * Created by Adhamkh on 2018-10-20.
  */
 
 public class ReportExpense {
+
     private String nid = "";
     private String Notes = "";
     private String title = "";
+
+    @SerializedName("How much")
     private String How_much = "";
+
+    @SerializedName("Paying date")
     private String Paying_date = "";
+
+    @SerializedName("Type of payments")
     private String Type_of_payments = "";
 
     public String getNid() {

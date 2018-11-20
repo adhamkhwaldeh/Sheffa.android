@@ -1,0 +1,672 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.joyBox.shefaa.views.Stateslayoutview xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/stateLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:NoConnectionLayout="@layout/state_layout_noconnection"
+    app:NoDataLayout="@layout/state_layout_nodata"
+    app:RefreshbtnRes="@+id/retryBtn"
+    app:WaitingLayout="@layout/state_layout_waiting"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/transparent">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/generaReportContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary"
+                android:padding="@dimen/md_margin"
+                app:cardBackgroundColor="@color/colorPrimary"
+                app:cardCornerRadius="@dimen/md_radius"
+                app:cardElevation="@dimen/elevation"
+                app:cardPreventCornerOverlap="true"
+                app:cardUseCompatPadding="true">
+
+                <android.support.constraint.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <android.support.constraint.ConstraintLayout
+                        android:id="@+id/generalReportCalenderHeader"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/md_padding">
+
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/generalReportTitle"
+                            style="@style/AppTheme.TitleTextAppearanceWhite"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:maxLines="1"
+                            android:text="@string/generalReport"
+                            app:autoSizeTextType="uniform"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintWidth_percent="0.3" />
+
+                        <android.support.constraint.ConstraintLayout
+                            android:id="@+id/generalReportCalenderContainer"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/generalReportTitle"
+                            app:layout_constraintWidth_percent="0.7">
+
+                            <android.support.v7.widget.AppCompatTextView
+                                android:id="@+id/generalReportCalenderDate"
+                                style="@style/AppTheme.TitleTextAppearanceWhite"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:gravity="start"
+                                android:maxLines="1"
+                                app:autoSizeTextType="uniform"
+                                app:layout_constraintEnd_toStartOf="@+id/generalReportCalender"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintRight_toLeftOf="@+id/generalReportCalender"
+                                app:layout_constraintStart_toStartOf="parent" />
+
+                            <android.support.v7.widget.AppCompatImageView
+                                android:id="@+id/generalReportCalender"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/ic_calender_dark_24dp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintRight_toRightOf="parent" />
+
+                        </android.support.constraint.ConstraintLayout>
+
+                    </android.support.constraint.ConstraintLayout>
+
+                    <android.support.constraint.ConstraintLayout
+                        android:id="@+id/generalReportHeader"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@+id/generalReportCalenderHeader">
+
+                        <android.support.v7.widget.AppCompatTextView
+                            style="@style/AppTheme.TextAppearance"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:maxLines="1"
+                            android:text="@string/Report"
+
+                            android:textColor="@color/white"
+                            app:autoSizeTextType="uniform"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintWidth_percent="0.25" />
+
+                        <android.support.v7.widget.AppCompatTextView
+                            style="@style/AppTheme.TextAppearance"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:maxLines="1"
+                            android:text="@string/incoming"
+                            android:textColor="@color/white"
+                            app:autoSizeTextType="uniform"
+                            app:layout_constraintEnd_toStartOf="@+id/generalReportHeaderSpending"
+                            app:layout_constraintRight_toLeftOf="@+id/generalReportHeaderSpending"
+                            app:layout_constraintWidth_percent="0.25" />
+
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/generalReportHeaderSpending"
+                            style="@style/AppTheme.TextAppearance"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:maxLines="1"
+                            android:text="@string/Spending"
+                            android:textColor="@color/white"
+                            app:autoSizeTextType="uniform"
+                            app:layout_constraintEnd_toStartOf="@+id/generalReportHeaderNet"
+                            app:layout_constraintRight_toLeftOf="@+id/generalReportHeaderNet"
+                            app:layout_constraintWidth_percent="0.25" />
+
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/generalReportHeaderNet"
+                            style="@style/AppTheme.TextAppearance"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:maxLines="1"
+                            android:text="@string/Net"
+                            android:textColor="@color/white"
+                            app:autoSizeTextType="uniform"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintWidth_percent="0.25" />
+
+                    </android.support.constraint.ConstraintLayout>
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/generalReportRecyclerView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@+id/generalReportHeader" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/sperator"
+                        android:layout_marginTop="@dimen/lg_margin"
+                        android:background="@color/white"
+                        app:layout_constraintTop_toBottomOf="@+id/generalReportRecyclerView" />
+
+                </android.support.constraint.ConstraintLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/incomingReportContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary"
+                android:padding="@dimen/md_margin"
+                app:cardBackgroundColor="@color/colorPrimary"
+                app:cardCornerRadius="@dimen/md_radius"
+                app:cardElevation="@dimen/elevation"
+                app:cardPreventCornerOverlap="true"
+                app:cardUseCompatPadding="true"
+                app:layout_constraintTop_toBottomOf="@+id/generaReportContainer">
+
+                <android.support.constraint.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/incomingReportTitle"
+                        style="@style/AppTheme.TitleTextAppearanceWhite"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:maxLines="1"
+                        android:text="@string/incomingReport"
+                        app:autoSizeTextType="uniform"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                    <android.support.constraint.ConstraintLayout
+                        android:id="@+id/incomingReportFilterContainer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@+id/incomingReportTitle">
+
+                        <android.support.constraint.ConstraintLayout
+                            android:id="@+id/incomingReportCalenderToContainer"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintWidth_percent="0.5">
+
+                            <android.support.v7.widget.AppCompatTextView
+                                android:id="@+id/incomingReportToCalenderLabel"
+                                style="@style/AppTheme.TextAppearance"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="start"
+                                android:maxLines="1"
+                                android:text="@string/To"
+                                android:textColor="@color/white"
+                                app:autoSizeTextType="uniform"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <android.support.v7.widget.AppCompatTextView
+                                android:id="@+id/incomingReportToCalenderTextView"
+                                style="@style/AppTheme.TextAppearance"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:gravity="start"
+
+                                android:maxLines="1"
+
+                                android:textColor="@color/white"
+                                app:autoSizeTextType="uniform"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toStartOf="@+id/incomingReportToCalender"
+                                app:layout_constraintLeft_toRightOf="@+id/incomingReportToCalenderLabel"
+                                app:layout_constraintRight_toLeftOf="@+id/incomingReportToCalender"
+                                app:layout_constraintStart_toEndOf="@+id/incomingReportToCalenderLabel"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <android.support.v7.widget.AppCompatImageView
+                                android:id="@+id/incomingReportToCalender"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/ic_calender_dark_24dp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintRight_toRightOf="parent" />
+
+                        </android.support.constraint.ConstraintLayout>
+
+                        <android.support.constraint.ConstraintLayout
+                            android:id="@+id/incomingReportCalenderFromContainer"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintWidth_percent="0.5">
+
+
+                            <android.support.v7.widget.AppCompatTextView
+                                android:id="@+id/incomingReportFromCalenderLabel"
+                                style="@style/AppTheme.TextAppearance"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="start"
+                                android:maxLines="1"
+                                android:text="@string/From"
+                                android:textColor="@color/white"
+                                app:autoSizeTextType="uniform"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <android.support.v7.widget.AppCompatTextView
+                                android:id="@+id/incomingReportFromCalenderTextView"
+                                style="@style/AppTheme.TextAppearance"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:gravity="start"
+                                android:maxLines="1"
+                                android:textColor="@color/white"
+                                app:autoSizeTextType="uniform"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toStartOf="@+id/incomingReportFromCalender"
+                                app:layout_constraintLeft_toRightOf="@+id/incomingReportFromCalenderLabel"
+                                app:layout_constraintRight_toLeftOf="@+id/incomingReportFromCalender"
+                                app:layout_constraintStart_toEndOf="@+id/incomingReportFromCalenderLabel"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <android.support.v7.widget.AppCompatImageView
+                                android:id="@+id/incomingReportFromCalender"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/ic_calender_dark_24dp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintRight_toRightOf="parent" />
+
+                        </android.support.constraint.ConstraintLayout>
+
+                    </android.support.constraint.ConstraintLayout>
+
+                    <android.support.constraint.ConstraintLayout
+                        android:id="@+id/incomingReportHeader"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        app:layout_constraintTop_toBottomOf="@+id/incomingReportFilterContainer">
+
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/nameTitle"
+                            style="@style/AppTheme.TextAppearance"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:maxLines="1"
+                            android:text="@string/Name"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintWidth_percent="0.2" />
+
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/patientTitle"
+                            style="@style/AppTheme.TextAppearance"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:maxLines="1"
+                            android:text="@string/Patient"
+                            app:layout_constraintLeft_toRightOf="@+id/nameTitle"
+                            app:layout_constraintStart_toEndOf="@+id/nameTitle"
+                            app:layout_constraintWidth_percent="0.2" />
+
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/dateTitle"
+                            style="@style/AppTheme.TextAppearance"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:maxLines="1"
+                            android:text="@string/date"
+                            app:layout_constraintLeft_toRightOf="@+id/patientTitle"
+                            app:layout_constraintStart_toEndOf="@+id/patientTitle"
+                            app:layout_constraintWidth_percent="0.2" />
+
+
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/costTitle"
+                            style="@style/AppTheme.TextAppearance"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:maxLines="1"
+                            android:text="@string/Cost"
+                            app:layout_constraintLeft_toRightOf="@+id/patientTitle"
+                            app:layout_constraintStart_toEndOf="@+id/patientTitle"
+                            app:layout_constraintWidth_percent="0.2" />
+
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/noteTitle"
+                            style="@style/AppTheme.TextAppearance"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:maxLines="1"
+                            android:text="@string/measureNotes"
+                            app:layout_constraintLeft_toRightOf="@+id/costTitle"
+                            app:layout_constraintStart_toEndOf="@+id/costTitle"
+                            app:layout_constraintWidth_percent="0.2" />
+
+
+                    </android.support.constraint.ConstraintLayout>
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/incomingReportRecyclerView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@+id/incomingReportHeader" />
+
+                    <android.support.constraint.ConstraintLayout
+                        android:id="@+id/incomingReportFooterContainer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@+id/incomingReportRecyclerView">
+
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/generalReportFooterLabel"
+                            style="@style/AppTheme.TitleTextAppearanceWhite"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:gravity="start|left"
+                            android:maxLines="1"
+                            android:text="@string/Total"
+                            app:autoSizeTextType="uniform"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintWidth_percent="0.3" />
+
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/incomingReportFooterTextView"
+                            style="@style/AppTheme.TitleTextAppearanceWhite"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:gravity="start|left"
+                            android:maxLines="1"
+                            app:autoSizeTextType="uniform"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintWidth_percent="0.7" />
+
+                    </android.support.constraint.ConstraintLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/sperator"
+                        android:layout_marginTop="@dimen/lg_margin"
+                        android:background="@color/white"
+                        app:layout_constraintTop_toBottomOf="@+id/incomingReportFooterContainer" />
+
+                </android.support.constraint.ConstraintLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/spendingReportContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary"
+                android:padding="@dimen/md_margin"
+                app:cardBackgroundColor="@color/colorPrimary"
+                app:cardCornerRadius="@dimen/md_radius"
+                app:cardElevation="@dimen/elevation"
+                app:cardPreventCornerOverlap="true"
+                app:cardUseCompatPadding="true"
+                app:layout_constraintTop_toBottomOf="@+id/incomingReportContainer">
+
+                <android.support.constraint.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/spendingReportTitle"
+                        style="@style/AppTheme.TitleTextAppearanceWhite"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:maxLines="1"
+                        android:text="@string/SpendingReport"
+                        app:autoSizeTextType="uniform"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                    <android.support.constraint.ConstraintLayout
+                        android:id="@+id/spendingReportFilterContainer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@+id/spendingReportTitle">
+
+                        <android.support.constraint.ConstraintLayout
+                            android:id="@+id/spendingReportCalenderToContainer"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintWidth_percent="0.5">
+
+                            <android.support.v7.widget.AppCompatTextView
+                                android:id="@+id/spendingReportToCalenderLabel"
+                                style="@style/AppTheme.TextAppearance"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="start"
+                                android:maxLines="1"
+                                android:text="@string/To"
+                                android:textColor="@color/white"
+                                app:autoSizeTextType="uniform"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <android.support.v7.widget.AppCompatTextView
+                                android:id="@+id/spendingReportToCalenderTextView"
+                                style="@style/AppTheme.TextAppearance"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:gravity="start"
+                                android:maxLines="1"
+                                android:textColor="@color/white"
+                                app:autoSizeTextType="uniform"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toStartOf="@+id/spendingReportToCalender"
+                                app:layout_constraintLeft_toRightOf="@+id/spendingReportToCalenderLabel"
+                                app:layout_constraintRight_toLeftOf="@+id/spendingReportToCalender"
+                                app:layout_constraintStart_toEndOf="@+id/spendingReportToCalenderLabel"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <android.support.v7.widget.AppCompatImageView
+                                android:id="@+id/spendingReportToCalender"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/ic_calender_dark_24dp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintRight_toRightOf="parent" />
+
+                        </android.support.constraint.ConstraintLayout>
+
+                        <android.support.constraint.ConstraintLayout
+                            android:id="@+id/spendingReportCalenderFromContainer"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintWidth_percent="0.5">
+
+
+                            <android.support.v7.widget.AppCompatTextView
+                                android:id="@+id/spendingReportFromCalenderLabel"
+                                style="@style/AppTheme.TextAppearance"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="start"
+                                android:maxLines="1"
+                                android:text="@string/From"
+                                android:textColor="@color/white"
+                                app:autoSizeTextType="uniform"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <android.support.v7.widget.AppCompatTextView
+                                android:id="@+id/spendingReportFromCalenderTextView"
+                                style="@style/AppTheme.TextAppearance"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:gravity="start"
+                                android:maxLines="1"
+                                android:textColor="@color/white"
+                                app:autoSizeTextType="uniform"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toStartOf="@+id/spendingReportFromCalender"
+                                app:layout_constraintLeft_toRightOf="@+id/spendingReportFromCalenderLabel"
+                                app:layout_constraintRight_toLeftOf="@+id/spendingReportFromCalender"
+                                app:layout_constraintStart_toEndOf="@+id/spendingReportFromCalenderLabel"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <android.support.v7.widget.AppCompatImageView
+                                android:id="@+id/spendingReportFromCalender"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/ic_calender_dark_24dp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintRight_toRightOf="parent" />
+
+                        </android.support.constraint.ConstraintLayout>
+
+                    </android.support.constraint.ConstraintLayout>
+
+
+                    <android.support.constraint.ConstraintLayout
+                        android:id="@+id/spendingReportHeader"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        app:layout_constraintTop_toBottomOf="@+id/spendingReportFilterContainer">
+
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/name"
+                            style="@style/AppTheme.TextAppearance"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="@string/Name"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintWidth_percent="0.2" />
+
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/cost"
+                            style="@style/AppTheme.TextAppearance"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="@string/Cost"
+                            app:layout_constraintLeft_toRightOf="@+id/name"
+                            app:layout_constraintStart_toEndOf="@+id/name"
+                            app:layout_constraintWidth_percent="0.2" />
+
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/date"
+                            style="@style/AppTheme.TextAppearance"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="@string/date"
+                            app:layout_constraintLeft_toRightOf="@+id/cost"
+                            app:layout_constraintStart_toEndOf="@+id/cost"
+                            app:layout_constraintWidth_percent="0.2" />
+
+
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/type"
+                            style="@style/AppTheme.TextAppearance"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="@string/Type"
+                            app:layout_constraintLeft_toRightOf="@+id/date"
+                            app:layout_constraintStart_toEndOf="@+id/date"
+                            app:layout_constraintWidth_percent="0.2" />
+
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/note"
+                            style="@style/AppTheme.TextAppearance"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="@string/measureNotes"
+                            app:layout_constraintLeft_toRightOf="@+id/type"
+                            app:layout_constraintStart_toEndOf="@+id/type"
+                            app:layout_constraintWidth_percent="0.2" />
+
+
+                    </android.support.constraint.ConstraintLayout>
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/spendingReportRecyclerView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@+id/spendingReportHeader" />
+
+                    <android.support.constraint.ConstraintLayout
+                        android:id="@+id/spendingReportFooterContainer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@+id/spendingReportRecyclerView">
+
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/spendingReportFooterLabel"
+                            style="@style/AppTheme.TitleTextAppearanceWhite"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:gravity="start|left"
+                            android:maxLines="1"
+                            android:text="@string/Total"
+                            app:autoSizeTextType="uniform"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintWidth_percent="0.3" />
+
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/spendingReportFooterTextView"
+                            style="@style/AppTheme.TitleTextAppearanceWhite"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:gravity="start|left"
+                            android:maxLines="1"
+                            app:autoSizeTextType="uniform"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintWidth_percent="0.7" />
+
+                    </android.support.constraint.ConstraintLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/sperator"
+                        android:layout_marginTop="@dimen/lg_margin"
+                        android:background="@color/white"
+                        app:layout_constraintTop_toBottomOf="@+id/spendingReportFooterContainer" />
+
+                </android.support.constraint.ConstraintLayout>
+
+            </android.support.v7.widget.CardView>
+
+        </android.support.constraint.ConstraintLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+
+</com.joyBox.shefaa.views.Stateslayoutview>

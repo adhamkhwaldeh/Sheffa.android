@@ -9,9 +9,6 @@ import android.widget.TextView
 import com.JoyBox.Shefaa.R
 import com.joyBox.shefaa.entities.DiagnosiseAutoComplete
 
-/**
- * Created by Adhamkh on 2018-10-25.
- */
 class DiagonsisSpinnerAdapter(val context: Context, val diagnosiseAutoCompleteList: MutableList<DiagnosiseAutoComplete>) : BaseAdapter() {
 
     val mInflater: LayoutInflater = LayoutInflater.from(context)

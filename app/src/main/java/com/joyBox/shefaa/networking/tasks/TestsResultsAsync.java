@@ -3,30 +3,31 @@ package com.joyBox.shefaa.networking.tasks;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import com.google.gson.Gson;
 import com.joyBox.shefaa.entities.TestResultEntity;
 import com.joyBox.shefaa.networking.JsonParser;
 import com.joyBox.shefaa.networking.NetworkingHelper;
 import com.joyBox.shefaa.networking.connections.GeneralConnections;
 import com.joyBox.shefaa.networking.listeners.OnTestsResultResponseListener;
 
-import java.util.Arrays;
 import java.util.List;
-
-/**
- * Created by Adhamkh on 2018-08-21.
- */
 
 public class TestsResultsAsync extends AsyncTask<Void, Void, String> {
 
-    private String patientId;
+    private String id;
     private OnTestsResultResponseListener onTestsResultResponseListener;
 
-    public TestsResultsAsync(String patientId, OnTestsResultResponseListener onTestsResultResponseListener) {
-        this.patientId = patientId;
+    private String parameterName = "patient_id";
+
+    public TestsResultsAsync(String id, OnTestsResultResponseListener onTestsResultResponseListener) {
+        this.id = id;
         this.onTestsResultResponseListener = onTestsResultResponseListener;
     }
 
+    public TestsResultsAsync(String parameterName, String id, OnTestsResultResponseListener onTestsResultResponseListener) {
+        this.id = id;
+        this.parameterName = parameterName;
+        this.onTestsResultResponseListener = onTestsResultResponseListener;
+    }
 
     @Override
     protected void onPreExecute() {
@@ -37,7 +38,7 @@ public class TestsResultsAsync extends AsyncTask<Void, Void, String> {
 
     @Override
     protected String doInBackground(Void... voids) {
-        return GeneralConnections.getJson(NetworkingHelper.TestResultUrl + patientId, NetworkingHelper.RequestTimeout);
+        return GeneralConnections.getJson(NetworkingHelper.TestResultUrl + "?" + parameterName + "=" + id, NetworkingHelper.RequestTimeout);
     }
 
     @Override
@@ -56,7 +57,7 @@ public class TestsResultsAsync extends AsyncTask<Void, Void, String> {
             }
             return;
         } catch (Exception ex) {
-//            Log.e("Error Message", ex.getMessage());
+            Log.e("Error Message", ex.getMessage());
         }
         onTestsResultResponseListener.onTestsResultResponseInternetConnection();
     }

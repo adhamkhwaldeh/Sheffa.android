@@ -1,15 +1,18 @@
 package com.joyBox.shefaa.entities;
 
-/**
- * Created by Adhamkh on 2018-10-20.
- */
+
+import com.google.gson.annotations.SerializedName;
 
 public class ReportReceipt {
     public String nid = "";
     public String node_field_data_field_appointment_number_nid = "";
 
+    @SerializedName("Receipt title")
     public String Receipt_title = "";
+
+    @SerializedName("Patient Name")
     public String Patient_Name = "";
+    @SerializedName("Appointment start time")
     public String Appointment_start_time = "";
 
     //Shifted: The new time

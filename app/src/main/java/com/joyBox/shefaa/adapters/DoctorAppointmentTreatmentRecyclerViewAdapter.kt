@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.JoyBox.Shefaa.R
 import com.joyBox.shefaa.entities.DoctorAppointment
+import com.joyBox.shefaa.entities.User
 import com.joyBox.shefaa.eventsBus.EventActions
 import com.joyBox.shefaa.eventsBus.MessageEvent
 import com.joyBox.shefaa.eventsBus.RxBus
@@ -30,7 +31,7 @@ class DoctorAppointmentTreatmentRecyclerViewAdapter(val context: Context, val do
             IntentHelper.startDoctorAddPrescriptionActivity(context, poJo)
         })
         holder.patientName.setOnClickListener {
-            IntentHelper.startMyPatientProfileActivity(context, poJo.patient_ID)
+            IntentHelper.startMyMedicalProfileActivity(context, User(poJo.patient_ID))
         }
         holder.startAppointment.setOnClickListener {
             RxBus.publish(MessageEvent(EventActions.SwitchAppointmentStateStart_Tag, poJo))

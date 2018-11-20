@@ -26,5 +26,20 @@ class DoctorDashBoardActivity : BaseActivity() {
         IntentHelper.startDoctorAppointmentActivity(this@DoctorDashBoardActivity)
     }
 
+    @OnClick(R.id.MyPatientsContainer)
+    fun onMyPatientsContainerClick(view: View) {
+        IntentHelper.startDoctorMyPatientsActivity(this@DoctorDashBoardActivity)
+    }
+
+    @OnClick(R.id.BudgetContainer)
+    fun onBudgetContainerClick(view: View) {
+        IntentHelper.startDoctorBudgetActivity(this@DoctorDashBoardActivity)
+    }
+
+    @OnClick(R.id.TherapeuticDayContainer)
+    fun onTherapeuticDayContainerClick(view: View) {
+        IntentHelper.startDoctorTherapeuticDayActivity(this@DoctorDashBoardActivity)
+    }
+
 
 }

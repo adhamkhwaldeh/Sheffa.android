@@ -16,6 +16,7 @@ import com.joyBox.shefaa.di.module.PresciptionListModule
 import com.joyBox.shefaa.di.ui.PrescriptionListContract
 import com.joyBox.shefaa.di.ui.PrescriptionListPresenter
 import com.joyBox.shefaa.entities.Prescription
+import com.joyBox.shefaa.entities.User
 import com.joyBox.shefaa.enums.LayoutStatesEnum
 import com.joyBox.shefaa.listeners.OnRefreshLayoutListener
 import com.joyBox.shefaa.networking.NetworkingHelper
@@ -27,9 +28,10 @@ import javax.inject.Inject
 class PrescriptionsFragment : BaseMedicalTestFragment(), PrescriptionListContract.View {
 
     companion object {
-        fun getNewInstance(): PrescriptionsFragment {
+        fun getNewInstance(user: User): PrescriptionsFragment {
             val f = PrescriptionsFragment()
             f.titleRes = R.string.Prescriptions
+            f.user = user
             return f
         }
     }
@@ -60,7 +62,7 @@ class PrescriptionsFragment : BaseMedicalTestFragment(), PrescriptionListContrac
 
     private fun generateRequestUrl(): String {
         val client = UserRepository(context!!).getClient()!!
-        return NetworkingHelper.PrescriptionUrl + "?patient_id=" + client.user.uid +
+        return NetworkingHelper.PrescriptionUrl + "?patient_id=" + /*client.*/user.uid +
                 "&sess_name=" + client.sessionName + "&sess_id=" + client.sessid + "&token=" + client.token
     }
 
@@ -73,8 +75,9 @@ class PrescriptionsFragment : BaseMedicalTestFragment(), PrescriptionListContrac
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initDI()
         initRecyclerView()
+        initDI()
+
 
         stateLayout.setOnRefreshLayoutListener(object : OnRefreshLayoutListener {
             override fun onRefresh() {

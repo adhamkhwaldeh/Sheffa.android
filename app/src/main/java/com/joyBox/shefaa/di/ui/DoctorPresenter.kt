@@ -1,16 +1,10 @@
 package com.joyBox.shefaa.di.ui
 
 import android.content.Context
-import com.joyBox.shefaa.entities.Doctor
-import com.joyBox.shefaa.entities.DoctorAutoComplete
-import com.joyBox.shefaa.entities.SpecialistAutoComplete
+import com.joyBox.shefaa.entities.*
 import com.joyBox.shefaa.filtrations.DoctorFilter
-import com.joyBox.shefaa.networking.listeners.OnDoctorAutoCompleteResponseListener
-import com.joyBox.shefaa.networking.listeners.OnDoctorSearchListener
-import com.joyBox.shefaa.networking.listeners.OnSpecialistAutoCompleteListener
-import com.joyBox.shefaa.networking.tasks.DoctorAutoCompleteAsync
-import com.joyBox.shefaa.networking.tasks.DoctorSearchAsync
-import com.joyBox.shefaa.networking.tasks.SpecialiestAutoCompleteAsync
+import com.joyBox.shefaa.networking.listeners.*
+import com.joyBox.shefaa.networking.tasks.*
 import io.reactivex.disposables.CompositeDisposable
 
 class DoctorPresenter constructor(val context: Context) : DoctorContract.Presenter {
@@ -89,6 +83,72 @@ class DoctorPresenter constructor(val context: Context) : DoctorContract.Present
             }
 
             override fun onSpecialiestAutoNoData() {
+                view.showEmptyView(true)
+            }
+        }).execute()
+    }
+
+    override fun loadDoctorPatients() {
+        DoctorPatientsAsync(object : OnDoctorPatientListener {
+            override fun onDoctorPatientLoading() {
+                view.showProgress(true)
+            }
+
+            override fun onDoctorPatientInternetConnection() {
+                view.showLoadErrorMessage(true)
+            }
+
+            override fun onDoctorPatientSuccessFully(doctorPatient: List<DoctorPatient>) {
+                view.showProgress(false)
+                view.onMyPatientsLoaded(doctorPatient.toMutableList())
+            }
+
+            override fun onDoctorPatientNoData() {
+                view.showEmptyView(true)
+            }
+        }).execute()
+
+    }
+
+    override fun loadDoctorPatientPrescription(patientId: String, doctorName: String) {
+        DoctorPatientPrescriptionAsync(patientId, doctorName, object : OnDoctorPatientPrescriptionListener {
+            override fun onDoctorPatientPrescriptionLoading() {
+                view.showProgress(true)
+            }
+
+            override fun onDoctorPatientPrescriptionInternetConnection() {
+                view.showLoadErrorMessage(true)
+            }
+
+            override fun onDoctorPatientPrescriptionSuccessFully(doctorPatientPrescription: List<DoctorPatientPrescription>) {
+                view.showProgress(false)
+                view.onDoctorPatientPrescriptionLoaded(doctorPatientPrescription.toMutableList())
+            }
+
+            override fun onDoctorPatientPrescriptionNoData() {
+                view.showEmptyView(true)
+            }
+        }).execute()
+    }
+
+    override fun loadDoctorTestResult(doctorId: String) {
+        TestsResultsAsync("doctor_id",doctorId, object : OnTestsResultResponseListener {
+
+
+            override fun onTestsResultResponseLoading() {
+                view.showProgress(true)
+            }
+
+            override fun onTestsResultResponseInternetConnection() {
+                view.showLoadErrorMessage(true)
+            }
+
+            override fun onTestsResultResponseSuccessFully(testResultEntityList: MutableList<TestResultEntity>) {
+                view.showProgress(false)
+                view.onTestsResultsLoadedSuccessfully(testResultEntityList)
+            }
+
+            override fun onTestsResultResponseNoData() {
                 view.showEmptyView(true)
             }
         }).execute()

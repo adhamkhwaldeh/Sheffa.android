@@ -132,7 +132,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
                 IntentHelper.startProfileActivity(this)
             }
             R.id.MyMedicalProfile -> {
-                IntentHelper.startMyMedicalProfileActivity(this)
+                IntentHelper.startMyMedicalProfileActivity(this,UserRepository(this@MainActivity).getClient()!!.user)
             }
             R.id.Messages -> {
                 IntentHelper.startMessagesActivity(this)

@@ -30,6 +30,7 @@ import com.joyBox.shefaa.entities.ReportExpense;
 import com.joyBox.shefaa.entities.ReportReceipt;
 import com.joyBox.shefaa.entities.TermsAndConditionsEntity;
 import com.joyBox.shefaa.entities.TestResultEntity;
+import com.joyBox.shefaa.entities.TestResultFilesDetails;
 
 import java.lang.reflect.Type;
 import java.util.Arrays;
@@ -273,6 +274,18 @@ public class JsonParser {
                     entity.setDoctor_name(doctorName);
                 }
 
+                JsonElement filesDetailsElement = elmnt.getAsJsonObject().get("Files details");
+                if ((filesDetailsElement != null) && (filesDetailsElement.isJsonArray())) {
+                    entity.setFilesDetails(Arrays.asList(new Gson().fromJson(filesDetailsElement.getAsString()
+                            , TestResultFilesDetails[].class)));
+                } else if ((filesDetailsElement != null) && (filesDetailsElement.isJsonObject())) {
+                    List<TestResultFilesDetails> testResultFilesDetails = new Vector<>();
+//                    TestResultFilesDetails resultFilesDetails = new Gson().fromJson(filesDetailsElement
+//                            , TestResultFilesDetails.class);
+                    testResultFilesDetails.add(getTestResultFilesDetails(filesDetailsElement));
+                    entity.setFilesDetails(testResultFilesDetails);
+                }
+
 
 //                JsonElement For_how_longElement = elmnt.getAsJsonObject().get("For how long");
 //                if (!For_how_longElement.isJsonArray()) {
@@ -288,6 +301,56 @@ public class JsonParser {
             return entityList;
         }
 
+    }
+
+    public static TestResultFilesDetails getTestResultFilesDetails(JsonElement filesDetailsElement) {
+        TestResultFilesDetails details = new TestResultFilesDetails();
+
+        JsonElement fidElmnt = filesDetailsElement.getAsJsonObject().get("fid");
+        if (fidElmnt != null)
+            details.setFid(fidElmnt.getAsString());
+
+        JsonElement uidElmnt = filesDetailsElement.getAsJsonObject().get("uid");
+        if (uidElmnt != null)
+            details.setUid(uidElmnt.getAsString());
+
+        JsonElement filenameElmnt = filesDetailsElement.getAsJsonObject().get("filename");
+        if (filenameElmnt != null)
+            details.setFilename(filenameElmnt.getAsString());
+
+        JsonElement uriElmnt = filesDetailsElement.getAsJsonObject().get("uri");
+        if (uriElmnt != null)
+            details.setUri(uriElmnt.getAsString());
+
+        JsonElement filemimeElmnt = filesDetailsElement.getAsJsonObject().get("filemime");
+        if (filemimeElmnt != null)
+            details.setFilemime(filemimeElmnt.getAsString());
+
+        JsonElement filesizeElmnt = filesDetailsElement.getAsJsonObject().get("filesize");
+        if (filesizeElmnt != null)
+            details.setFilesize(filesizeElmnt.getAsString());
+
+        JsonElement statusElmnt = filesDetailsElement.getAsJsonObject().get("status");
+        if (statusElmnt != null)
+            details.setStatus(statusElmnt.getAsString());
+
+        JsonElement timestampElmnt = filesDetailsElement.getAsJsonObject().get("timestamp");
+        if (timestampElmnt != null)
+            details.setTimestamp(timestampElmnt.getAsString());
+
+        JsonElement uuidElmnt = filesDetailsElement.getAsJsonObject().get("uuid");
+        if (uuidElmnt != null)
+            details.setUuid(uuidElmnt.getAsString());
+
+        JsonElement displayElmnt = filesDetailsElement.getAsJsonObject().get("display");
+        if (displayElmnt != null)
+            details.setDisplay(displayElmnt.getAsString());
+
+        JsonElement descriptionElmnt = filesDetailsElement.getAsJsonObject().get("description");
+        if (descriptionElmnt != null)
+            details.setDescription(descriptionElmnt.getAsString());
+
+        return details;
     }
 
     /*Test result ended*/

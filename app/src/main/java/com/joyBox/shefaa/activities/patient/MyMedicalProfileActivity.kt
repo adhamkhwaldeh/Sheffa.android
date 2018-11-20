@@ -7,10 +7,16 @@ import android.support.v7.widget.Toolbar
 import butterknife.BindView
 import butterknife.ButterKnife
 import com.JoyBox.Shefaa.R
+import com.google.gson.Gson
 import com.joyBox.shefaa.activities.BaseActivity
 import com.joyBox.shefaa.adapters.MedicalTestsViewPagerAdapter
+import com.joyBox.shefaa.entities.User
 
 class MyMedicalProfileActivity : BaseActivity() {
+
+    companion object {
+        const val MyMedicalProfileActivity_Tag = "MyMedicalProfileActivity_Tag"
+    }
 
     @BindView(R.id.toolbar)
     lateinit var toolbar: Toolbar
@@ -28,7 +34,8 @@ class MyMedicalProfileActivity : BaseActivity() {
     }
 
     private fun initViewPager() {
-        viewPager.adapter = MedicalTestsViewPagerAdapter(this,supportFragmentManager)
+        val user = Gson().fromJson(intent.getStringExtra(MyMedicalProfileActivity_Tag), User::class.java)
+        viewPager.adapter = MedicalTestsViewPagerAdapter(this, user, supportFragmentManager)
         tabLayout.setupWithViewPager(viewPager)
     }
 

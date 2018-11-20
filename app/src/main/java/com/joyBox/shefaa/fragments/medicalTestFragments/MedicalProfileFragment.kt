@@ -19,6 +19,7 @@ import com.joyBox.shefaa.di.ui.MedicalProfileContract
 import com.joyBox.shefaa.di.ui.MedicalProfilePresenter
 import com.joyBox.shefaa.entities.DiagnosiseAutoComplete
 import com.joyBox.shefaa.entities.MedicalProfile
+import com.joyBox.shefaa.entities.User
 import com.joyBox.shefaa.enums.LayoutStatesEnum
 import com.joyBox.shefaa.enums.ProfileType
 import com.joyBox.shefaa.listeners.OnRefreshLayoutListener
@@ -31,18 +32,23 @@ import javax.inject.Inject
 class MedicalProfileFragment : BaseMedicalTestFragment(), MedicalProfileContract.View, DiagnosiseContract.View {
 
     companion object {
-        fun getNewInstance(): MedicalProfileFragment {
+        fun getNewInstance(user: User): MedicalProfileFragment {
             val f = MedicalProfileFragment()
             f.titleRes = R.string.MedicalProfile
+            f.user = user
             return f
         }
     }
+
 
     @BindView(R.id.stateLayout)
     lateinit var stateLayout: Stateslayoutview
 
     @BindView(R.id.diagnosisStateLayout)
     lateinit var diagnosisStateLayout: Stateslayoutview
+
+    @BindView(R.id.saveBtn)
+    lateinit var saveBtn: View
 
     @Inject
     lateinit var presenter: MedicalProfilePresenter
@@ -84,8 +90,8 @@ class MedicalProfileFragment : BaseMedicalTestFragment(), MedicalProfileContract
 
         stateLayout.setOnRefreshLayoutListener(object : OnRefreshLayoutListener {
             override fun onRefresh() {
-                val user = UserRepository(activity!!).getClient()
-                presenter.updateUserProfile(medicalProfileViewHolder.getUpdateUrl(userId = user!!.user!!.uid))
+//                val user = UserRepository(activity!!).getClient()
+                presenter.updateUserProfile(medicalProfileViewHolder.getUpdateUrl(userId =/* user!!.*/user.uid))
             }
 
             override fun onRequestPermission() {
@@ -103,12 +109,20 @@ class MedicalProfileFragment : BaseMedicalTestFragment(), MedicalProfileContract
             }
         })
 
+
+        val localUser = UserRepository(context!!).getClient()!!.user
+        if (localUser.uid != (user.uid)) {
+            saveBtn.visibility = View.INVISIBLE
+        } else {
+            saveBtn.visibility = View.VISIBLE
+        }
+
     }
 
     @OnClick(R.id.saveBtn)
     fun onSaveButtonClick(view: View) {
-        val user = UserRepository(activity!!).getClient()
-        presenter.updateUserProfile(medicalProfileViewHolder.getUpdateUrl(userId = user!!.user!!.uid))
+//        val user = UserRepository(activity!!).getClient()
+        presenter.updateUserProfile(medicalProfileViewHolder.getUpdateUrl(userId = /*user!!.*/user.uid))
     }
 
 

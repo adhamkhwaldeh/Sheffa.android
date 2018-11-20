@@ -1,8 +1,5 @@
 package com.joyBox.shefaa.entities;
 
-/**
- * Created by Adhamkh on 2018-10-20.
- */
 
 public class DoctorPatient {
     private String Picture = "";//"<img src=\"http://shefaaonline.net/sites/default/files/styles/thumbnail/public/pictures/picture-10-1505650760.jpg?itok=m8eXoiTG\" alt=\"\" />",

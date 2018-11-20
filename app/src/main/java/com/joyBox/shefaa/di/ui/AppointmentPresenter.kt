@@ -1,18 +1,16 @@
 package com.joyBox.shefaa.di.ui
 
 import android.content.Context
+import com.joyBox.shefaa.entities.AppointmentAutoComplete
 import com.joyBox.shefaa.entities.AvailableTime
 import com.joyBox.shefaa.entities.DoctorAppointment
-import com.joyBox.shefaa.entities.models.AppointmentInvoiceModel
 import com.joyBox.shefaa.entities.models.AppointmentShiftModel
 import com.joyBox.shefaa.entities.models.AppointmentUrgentModel
 import com.joyBox.shefaa.enums.AppointmentFlagName
 import com.joyBox.shefaa.networking.listeners.*
 import com.joyBox.shefaa.networking.tasks.*
-import io.reactivex.disposables.CompositeDisposable
 
 class AppointmentPresenter constructor(val context: Context) : AppointmentContract.Presenter {
-    private val subscriptions = CompositeDisposable()
     private lateinit var view: AppointmentContract.View
 
     init {
@@ -170,29 +168,6 @@ class AppointmentPresenter constructor(val context: Context) : AppointmentContra
         }).execute()
     }
 
-    override fun addAppointmentInvoice(invoiceModel: AppointmentInvoiceModel) {
-        DoctorAppointmentInvoiceAsync(invoiceModel, object : OnDoctorAppointmentInvoiceListener {
-            override fun onAppointmentInvoiceLoading() {
-                view.showProgress(true)
-            }
-
-            override fun onAppointmentInvoiceInternetConnection() {
-                view.showProgress(false)
-                view.showLoadErrorMessage(true)
-            }
-
-            override fun onAppointmentInvoiceSuccessFully() {
-                view.showProgress(false)
-                view.onAppointmentInvoiceAddedSuccessfully()
-            }
-
-            override fun onAppointmentInvoiceFail() {
-                view.showProgress(false)
-                view.onAppointmentInvoiceAddedFailed()
-            }
-        }).execute()
-    }
-
     override fun addAppointment(url: String) {
         AppointmentReserveAsync(url, object : OnAppointmentReserveListener {
             override fun onAppointmentReserveLoading() {
@@ -215,4 +190,29 @@ class AppointmentPresenter constructor(val context: Context) : AppointmentContra
             }
         }).execute()
     }
+
+    override fun loadAutoCompleteAppointments(title: String) {
+        AppointmentAutoCompleteAsync(title,object :OnAppointmentAutoCompleteListener{
+            override fun onAppointmentAutoCompleteLoading() {
+                view.showProgress(true)
+            }
+
+            override fun onAppointmentAutoCompleteInternetConnection() {
+                view.showProgress(false)
+                view.showLoadErrorMessage(true)
+            }
+
+            override fun onAppointmentAutoCompleteSuccessFully(appointmentAutoCompleteList: List<AppointmentAutoComplete>) {
+                view.showProgress(false)
+                view.onAppointmentAutoCompletLoaded(appointmentAutoCompleteList.toMutableList())
+            }
+
+            override fun onAppointmentAutoCompleteNoData() {
+                view.showProgress(false)
+                view.showEmptyView(true)
+            }
+        }).execute()
+
+    }
+
 }

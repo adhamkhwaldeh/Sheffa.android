@@ -14,6 +14,7 @@ import android.util.Log
 import com.JoyBox.Shefaa.R
 import com.joyBox.shefaa.activities.autoComplete.DoctorAutoCompleteActivity
 import android.support.v4.content.ContextCompat.startActivity
+import com.joyBox.shefaa.activities.autoComplete.AppointmentAutoCompleteActivity
 import com.joyBox.shefaa.activities.autoComplete.GuardianshipAutoCompleteActivity
 import com.joyBox.shefaa.activities.autoComplete.UserAutoCompleteActivity
 import com.joyBox.shefaa.activities.doctor.*
@@ -94,8 +95,10 @@ class IntentHelper {
             context.startActivity(intent)
         }
 
-        fun startMyMedicalProfileActivity(context: Context) {
+        fun startMyMedicalProfileActivity(context: Context, user: User) {
             val intent = Intent(context, MyMedicalProfileActivity::class.java)
+            val jSon = Gson().toJson(user)
+            intent.putExtra(MyMedicalProfileActivity.MyMedicalProfileActivity_Tag, jSon)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
             context.startActivity(intent)
         }
@@ -371,16 +374,42 @@ class IntentHelper {
             context.startActivity(intent)
         }
 
-        fun startMyPatientProfileActivity(context: Context, patientId: String) {
-            val intent = Intent(context, MyPatientProfileActivity::class.java)
-            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-            context.startActivity(intent)
-        }
-
         fun startDoctorAppointmentDetailsActivity(context: Context, appointment: DoctorAppointment) {
             val intent = Intent(context, DoctorAppointmentDetailsActivity::class.java)
             val jSon = Gson().toJson(appointment)
             intent.putExtra(DoctorAppointmentDetailsActivity.DoctorAppointmentDetailsActivity_Tag, jSon)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+            context.startActivity(intent)
+        }
+
+        fun startDoctorMyPatientsActivity(context: Context) {
+            val intent = Intent(context, DoctorMyPatientsActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+            context.startActivity(intent)
+        }
+
+        fun startDoctorBudgetActivity(context: Context) {
+            val intent = Intent(context, DoctorBudgetActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+            context.startActivity(intent)
+        }
+
+        fun startDoctorTherapeuticDayActivity(context: Context) {
+            val intent = Intent(context, DoctorTherapeuticDayActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+            context.startActivity(intent)
+        }
+
+        fun startDoctorAppointmentInvoiceActivity(context: Context, appointment: DoctorAppointment) {
+            val intent = Intent(context, DoctorAppointmentInvoiceActivity::class.java)
+            val jSon = Gson().toJson(appointment)
+            intent.putExtra(DoctorAppointmentInvoiceActivity.DoctorAppointmentInvoiceActivity_Tag, jSon)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+            context.startActivity(intent)
+        }
+
+        fun startAppointmentAutoCompleteActivity(context: Context) {
+            val intent = Intent(context, AppointmentAutoCompleteActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
             context.startActivity(intent)
         }

@@ -96,7 +96,7 @@ class DashBoardActivity : BaseActivity(), RegistrationContract.View, Notificatio
             }
 
             R.id.MyMedicalProfile -> {
-                IntentHelper.startMyMedicalProfileActivity(this)
+                IntentHelper.startMyMedicalProfileActivity(this,UserRepository(this@DashBoardActivity).getClient()!!.user)
             }
 
             R.id.AdvanceSearch -> {
@@ -156,7 +156,7 @@ class DashBoardActivity : BaseActivity(), RegistrationContract.View, Notificatio
 
     @OnClick(R.id.MyMedicalProfileContainer)
     fun onMyMedicalProfileClick(view: View) {
-        IntentHelper.startMyMedicalProfileActivity(this)
+        IntentHelper.startMyMedicalProfileActivity(this,UserRepository(this@DashBoardActivity).getClient()!!.user)
     }
 
     @OnClick(R.id.AdvanceSearchContainer)

@@ -71,6 +71,12 @@ public class User {
     @Expose
     private Boolean privatemsgDisabled;
 
+    public User() {
+    }
+
+    public User(String uid) {
+        this.uid = uid;
+    }
 
     public String getUid() {
         return uid;

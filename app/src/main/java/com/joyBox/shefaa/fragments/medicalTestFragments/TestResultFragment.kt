@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import butterknife.BindView
 import butterknife.ButterKnife
 import butterknife.OnClick
@@ -17,6 +18,7 @@ import com.joyBox.shefaa.di.module.TestResultsModule
 import com.joyBox.shefaa.di.ui.TestResultsPresenter
 import com.joyBox.shefaa.di.ui.TestsResultsContract
 import com.joyBox.shefaa.entities.TestResultEntity
+import com.joyBox.shefaa.entities.User
 import com.joyBox.shefaa.enums.LayoutStatesEnum
 import com.joyBox.shefaa.helpers.IntentHelper
 import com.joyBox.shefaa.listeners.OnRefreshLayoutListener
@@ -28,9 +30,10 @@ import javax.inject.Inject
 class TestResultFragment : BaseMedicalTestFragment(), TestsResultsContract.View {
 
     companion object {
-        fun getNewInstance(): TestResultFragment {
+        fun getNewInstance(user: User): TestResultFragment {
             val f = TestResultFragment()
             f.titleRes = R.string.TestResult
+            f.user = user
             return f
         }
     }
@@ -45,6 +48,9 @@ class TestResultFragment : BaseMedicalTestFragment(), TestsResultsContract.View 
     @BindView(R.id.stateLayout)
     lateinit var stateLayout: Stateslayoutview
 
+    @BindView(R.id.addNewAnalise)
+    lateinit var addNewAnalise: TextView
+
 
     private fun initDI() {
         val component = DaggerTestResultsComponent.builder()
@@ -53,8 +59,8 @@ class TestResultFragment : BaseMedicalTestFragment(), TestsResultsContract.View 
         component.inject(this)
         presenter.attachView(this)
         presenter.subscribe()
-        val client = UserRepository(activity!!).getClient()!!
-        presenter.loadTestsResults(client.user.uid)
+//        val client = UserRepository(activity!!).getClient()!!
+        presenter.loadTestsResults(/*client.*/user.uid)
     }
 
     private fun initRecyclerView() {
@@ -75,14 +81,21 @@ class TestResultFragment : BaseMedicalTestFragment(), TestsResultsContract.View 
         initRecyclerView()
         stateLayout.setOnRefreshLayoutListener(object : OnRefreshLayoutListener {
             override fun onRefresh() {
-                val client = UserRepository(activity!!).getClient()!!
-                presenter.loadTestsResults(client.user.uid)
+//                val client = UserRepository(activity!!).getClient()!!
+                presenter.loadTestsResults(/*client.*/user.uid)
             }
 
             override fun onRequestPermission() {
 
             }
         })
+
+
+        val localUser = UserRepository(context!!).getClient()!!.user
+        if (localUser.uid == (user.uid)) {
+            addNewAnalise.visibility = View.INVISIBLE
+        }
+
     }
 
     @OnClick(R.id.addNewAnalise)

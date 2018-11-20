@@ -20,6 +20,12 @@ class DoctorAppointmentDetailsViewHolder constructor(var view: View) : RecyclerV
 
     lateinit var doctorAppointment: DoctorAppointment
 
+    @BindView(R.id.patientId)
+    lateinit var patientId: TextView
+
+    @BindView(R.id.appointmentId)
+    lateinit var appointmentId: TextView
+
     @BindView(R.id.patientName)
     lateinit var patientName: TextView
 
@@ -48,6 +54,9 @@ class DoctorAppointmentDetailsViewHolder constructor(var view: View) : RecyclerV
 
     fun bind(doctorAppointment: DoctorAppointment) {
         this.doctorAppointment = doctorAppointment
+
+        patientId.setText(doctorAppointment.patient_ID)
+        appointmentId.setText(doctorAppointment.nid)
 
         patientName.text = doctorAppointment.patient_Name
         appointmentDate.text = doctorAppointment.appointment_Date

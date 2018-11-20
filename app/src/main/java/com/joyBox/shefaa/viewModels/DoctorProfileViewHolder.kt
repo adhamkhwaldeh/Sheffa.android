@@ -109,7 +109,7 @@ class DoctorProfileViewHolder constructor(view: View) : RecyclerView.ViewHolder(
 
         val doctorSpecialistAutoCompleteList: MutableList<SpecialistAutoComplete> = mutableListOf()
         specialistAutoCompleteList?.forEach {
-            if (doctorProfile.field_doctor_specialization.equals(it.name, true)) {
+            if (doctorProfile.field_doctor_specialization.contains(it.name)) {
                 doctorSpecialistAutoCompleteList.add(it)
             }
         }

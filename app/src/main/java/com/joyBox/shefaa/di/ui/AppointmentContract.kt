@@ -1,5 +1,6 @@
 package com.joyBox.shefaa.di.ui
 
+import com.joyBox.shefaa.entities.AppointmentAutoComplete
 import com.joyBox.shefaa.entities.AvailableTime
 import com.joyBox.shefaa.entities.DoctorAppointment
 import com.joyBox.shefaa.entities.models.AppointmentInvoiceModel
@@ -21,9 +22,9 @@ class AppointmentContract {
 
         fun deleteAppointment(appointmentId: String)
 
-        fun addAppointmentInvoice(invoiceModel: AppointmentInvoiceModel)
-
         fun addAppointment(url: String)
+
+        fun loadAutoCompleteAppointments(title: String)
     }
 
     interface View : BaseContract.View {
@@ -45,8 +46,8 @@ class AppointmentContract {
         fun onAppointmentDeletedSuccessfully() {}
         fun onAppointmentDeletedFailed() {}
 
-        fun onAppointmentInvoiceAddedSuccessfully() {}
-        fun onAppointmentInvoiceAddedFailed() {}
+        fun onAppointmentAutoCompletLoaded(appointmentAutoCompleteList: MutableList<AppointmentAutoComplete>) {}
+
 
     }
 }

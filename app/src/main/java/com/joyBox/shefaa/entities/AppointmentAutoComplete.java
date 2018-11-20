@@ -5,7 +5,17 @@ package com.joyBox.shefaa.entities;
  */
 
 public class AppointmentAutoComplete {
+
+    public String id = "";
     private String title = "";
+
+    public AppointmentAutoComplete() {
+    }
+
+    public AppointmentAutoComplete(String id, String title) {
+        this.id = id;
+        this.title = title;
+    }
 
     public String getTitle() {
         return title;

@@ -10,9 +10,6 @@ import com.joyBox.shefaa.networking.listeners.OnPaymentTypeListener;
 
 import java.util.List;
 
-/**
- * Created by Adhamkh on 2018-10-20.
- */
 
 public class PaymentTypeAsync extends AsyncTask<Void, Void, String> {
 

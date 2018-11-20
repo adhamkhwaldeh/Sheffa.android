@@ -4,6 +4,7 @@ import android.os.AsyncTask;
 
 import com.google.gson.Gson;
 import com.joyBox.shefaa.entities.models.AppointmentInvoiceModel;
+import com.joyBox.shefaa.entities.models.IncomingAddModel;
 import com.joyBox.shefaa.networking.NetworkingHelper;
 import com.joyBox.shefaa.networking.connections.AppointmentsConnections;
 import com.joyBox.shefaa.networking.listeners.OnDoctorAppointmentInvoiceListener;
@@ -15,10 +16,16 @@ import com.joyBox.shefaa.networking.listeners.OnDoctorAppointmentInvoiceListener
 public class DoctorAppointmentInvoiceAsync extends AsyncTask<Void, Void, String> {
 
     private AppointmentInvoiceModel invoiceModel;
+    private IncomingAddModel incomingAddModel;
     private OnDoctorAppointmentInvoiceListener onDoctorAppointmentInvoiceListener;
 
     public DoctorAppointmentInvoiceAsync(AppointmentInvoiceModel invoiceModel, OnDoctorAppointmentInvoiceListener onDoctorAppointmentInvoiceListener) {
         this.invoiceModel = invoiceModel;
+        this.onDoctorAppointmentInvoiceListener = onDoctorAppointmentInvoiceListener;
+    }
+
+    public DoctorAppointmentInvoiceAsync(IncomingAddModel incomingAddModel, OnDoctorAppointmentInvoiceListener onDoctorAppointmentInvoiceListener) {
+        this.incomingAddModel = incomingAddModel;
         this.onDoctorAppointmentInvoiceListener = onDoctorAppointmentInvoiceListener;
     }
 
@@ -30,7 +37,12 @@ public class DoctorAppointmentInvoiceAsync extends AsyncTask<Void, Void, String>
 
     @Override
     protected String doInBackground(Void... voids) {
-        String jSon = new Gson().toJson(invoiceModel);
+        String jSon = "";
+        if (invoiceModel != null)
+            jSon = invoiceModel.getData();
+        else
+            jSon = incomingAddModel.getData();
+
         return AppointmentsConnections.getJsonPostWithDataJson(NetworkingHelper.AppointmentInvoiceUrl, jSon, NetworkingHelper.RequestTimeout);
     }
 

@@ -2,39 +2,36 @@ package com.joyBox.shefaa.networking.tasks;
 
 import android.os.AsyncTask;
 
-import com.joyBox.shefaa.entities.ReportReceipt;
+import com.joyBox.shefaa.entities.ReportExpense;
 import com.joyBox.shefaa.networking.JsonParser;
 import com.joyBox.shefaa.networking.NetworkingHelper;
 import com.joyBox.shefaa.networking.connections.ReportsConnections;
-import com.joyBox.shefaa.networking.listeners.OnReportReceiptListener;
+import com.joyBox.shefaa.networking.listeners.OnReportExpenseListener;
 
 import java.util.List;
 
-/**
- * Created by Adhamkh on 2018-10-20.
- */
 
-public class ReportReceiptAsync extends AsyncTask<Void, Void, String> {
+public class ReportSpendingAsync extends AsyncTask<Void, Void, String> {
 
     public String startDate;
     public String endDate;
-    public OnReportReceiptListener onReportReceiptListener;
+    public OnReportExpenseListener onReportExpenseListener;
 
-    public ReportReceiptAsync(String startDate, String endDate, OnReportReceiptListener onReportReceiptListener) {
+    public ReportSpendingAsync(String startDate, String endDate, OnReportExpenseListener onReportExpenseListener) {
         this.startDate = startDate;
         this.endDate = endDate;
-        this.onReportReceiptListener = onReportReceiptListener;
+        this.onReportExpenseListener = onReportExpenseListener;
     }
 
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
-        onReportReceiptListener.onReportGeneralLoading();
+        onReportExpenseListener.onReportExpenseLoading();
     }
 
     @Override
     protected String doInBackground(Void... voids) {
-        String url = NetworkingHelper.ReportGeneralUrl;
+        String url = NetworkingHelper.ReportExpensesUrl;
         if ((startDate == null) || (endDate == null))
             url += "?from_date=" + startDate + "&to_date=" + endDate;
         return ReportsConnections.getJson(url, NetworkingHelper.RequestTimeout);
@@ -45,17 +42,18 @@ public class ReportReceiptAsync extends AsyncTask<Void, Void, String> {
         super.onPostExecute(s);
         try {
             if (s.equalsIgnoreCase(NetworkingHelper.ErrorConnectionResponse))
-                onReportReceiptListener.onReportGeneralInternetConnection();
+                onReportExpenseListener.onReportExpenseInternetConnection();
             else {
-                List<ReportReceipt> reportReceiptList = JsonParser.getReportReciepts(s);
+                List<ReportExpense> reportReceiptList = JsonParser.getReportExpenses(s);
                 if (reportReceiptList.size() > 0)
-                    onReportReceiptListener.onReportGeneralSuccessFully(reportReceiptList);
+                    onReportExpenseListener.onReportExpenseSuccessFully(reportReceiptList);
                 else
-                    onReportReceiptListener.onReportGeneralNoData();
+                    onReportExpenseListener.onReportExpenseNoData();
             }
             return;
         } catch (Exception ex) {
         }
-        onReportReceiptListener.onReportGeneralInternetConnection();
+        onReportExpenseListener.onReportExpenseInternetConnection();
     }
 }
+

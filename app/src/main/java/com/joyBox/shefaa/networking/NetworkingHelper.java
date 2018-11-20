@@ -46,7 +46,7 @@ public class NetworkingHelper {
 
     public static String PrescriptionUrl = "http://shefaaonline.net/api/show_prescription_service";
 
-    public static String TestResultUrl = "http://shefaaonline.net/api/my-tests-service?patient_id=";
+    public static String TestResultUrl = "http://shefaaonline.net/api/my-tests-service";
 
     public static String MedicineAndPotionDetailsUrl = "http://shefaaonline.net/api/medicine_and_potion?item_id=";
 
@@ -121,6 +121,7 @@ public class NetworkingHelper {
 
     public static final String ReportGeneralUrl = "http://shefaaonline.net/get-report";
     public static final String ReportReceiptUrl = "http://shefaaonline.net/api/receipts_api";
+    public static final String ReportExpensesUrl = "http://shefaaonline.net/api/expenses_api";
 
     public static final String AlertAutoCompleteUrl = "http://shefaaonline.net/find-alter-med?active_ing=";
 

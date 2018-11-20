@@ -13,7 +13,7 @@ public class DoctorProfile {
     private MapAddress field_address_map = null;
     protected DoctorAppointmentDuration field_appointment_duration = null;
     private String field_home_doctor = "";
-    private String field_doctor_specialization = "";
+    private List<String> field_doctor_specialization = new Vector<>();
     private List<DoctorOpenHour> field_open_hours = new Vector<>();
 
     public String getField_phone() {
@@ -56,11 +56,11 @@ public class DoctorProfile {
         this.field_home_doctor = field_home_doctor;
     }
 
-    public String getField_doctor_specialization() {
+    public List<String> getField_doctor_specialization() {
         return field_doctor_specialization;
     }
 
-    public void setField_doctor_specialization(String field_doctor_specialization) {
+    public void setField_doctor_specialization(List<String> field_doctor_specialization) {
         this.field_doctor_specialization = field_doctor_specialization;
     }
 

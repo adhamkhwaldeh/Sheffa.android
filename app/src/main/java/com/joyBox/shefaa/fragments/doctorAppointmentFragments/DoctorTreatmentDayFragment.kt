@@ -17,6 +17,7 @@ import com.joyBox.shefaa.di.ui.AppointmentContract
 import com.joyBox.shefaa.di.ui.AppointmentPresenter
 import com.joyBox.shefaa.entities.DoctorAppointment
 import com.joyBox.shefaa.enums.LayoutStatesEnum
+import com.joyBox.shefaa.helpers.DateHelper
 import com.joyBox.shefaa.listeners.OnRefreshLayoutListener
 import com.joyBox.shefaa.networking.NetworkingHelper
 import com.joyBox.shefaa.repositories.UserRepository
@@ -24,9 +25,6 @@ import com.joyBox.shefaa.views.GridDividerDecoration
 import com.joyBox.shefaa.views.Stateslayoutview
 import javax.inject.Inject
 
-/**
- * Created by Adhamkh on 2018-10-24.
- */
 class DoctorTreatmentDayFragment : BaseDoctorAppointmentFragment(), AppointmentContract.View {
 
     companion object {
@@ -64,7 +62,7 @@ class DoctorTreatmentDayFragment : BaseDoctorAppointmentFragment(), AppointmentC
 
     private fun generateRequestUrl(): String {
         val client = UserRepository(context!!).getClient()!!
-        return NetworkingHelper.DoctorAppointmentUrl + "?doctor_id=" + client.user.uid
+        return NetworkingHelper.DoctorAppointmentUrl + "?doctor_id=" + client.user.uid + "&date" + DateHelper.getCurrentDate()
 //        urgent(0-1), home(0-1), date(Format: 14/08/2018)
 
     }

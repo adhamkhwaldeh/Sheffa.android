@@ -243,11 +243,28 @@
 
         </activity>
 
-        <activity android:name="com.joyBox.shefaa.activities.doctor.MyPatientProfileActivity">
+        <activity android:name="com.joyBox.shefaa.activities.doctor.DoctorMyPatientsActivity">
 
         </activity>
 
         <activity android:name="com.joyBox.shefaa.activities.doctor.DoctorAppointmentDetailsActivity">
+
+        </activity>
+
+
+        <activity android:name="com.joyBox.shefaa.activities.doctor.DoctorBudgetActivity">
+
+        </activity>
+
+        <activity android:name="com.joyBox.shefaa.activities.doctor.DoctorTherapeuticDayActivity">
+
+        </activity>
+
+        <activity android:name="com.joyBox.shefaa.activities.autoComplete.AppointmentAutoCompleteActivity">
+
+        </activity>
+
+        <activity android:name="com.joyBox.shefaa.activities.doctor.DoctorAppointmentInvoiceActivity">
 
         </activity>
 

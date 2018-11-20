@@ -17,5 +17,7 @@ class EventActions {
 
         const val SwitchAppointmentStateEnd_Tag = "SwitchAppointmentStateEnd_Tag"
 
+        const val AppointmentAutoCompleteActivity_Tag: String = "AppointmentAutoCompleteActivity_Tag"
+
     }
 }

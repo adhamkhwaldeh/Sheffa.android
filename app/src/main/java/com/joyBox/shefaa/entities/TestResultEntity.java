@@ -2,6 +2,8 @@ package com.joyBox.shefaa.entities;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.List;
+
 /**
  * Created by Adhamkh on 2018-08-21.
  */
@@ -24,8 +26,8 @@ public class TestResultEntity {
     //    @SerializedName("Doctor name")
     private String Doctor_name;
 
-    @SerializedName("Files details")
-    private TestResultFilesDetails filesDetails;
+//    @SerializedName("Files details")
+    private List<TestResultFilesDetails> filesDetails;
 
     public String getNid() {
         return nid;
@@ -75,11 +77,11 @@ public class TestResultEntity {
         Doctor_name = doctor_name;
     }
 
-    public TestResultFilesDetails getFilesDetails() {
+    public List<TestResultFilesDetails> getFilesDetails() {
         return filesDetails;
     }
 
-    public void setFilesDetails(TestResultFilesDetails filesDetails) {
+    public void setFilesDetails(List<TestResultFilesDetails> filesDetails) {
         this.filesDetails = filesDetails;
     }
 }

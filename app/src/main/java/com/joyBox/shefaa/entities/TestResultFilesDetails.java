@@ -5,17 +5,18 @@ package com.joyBox.shefaa.entities;
  */
 
 public class TestResultFilesDetails {
-    String fid = "";
-    String uid = "";
-    String filename = "";
-    String uri = "";
-    String filemime = "";
-    String filesize = "";
-    String status = "";
-    String timestamp = "";
-    String uuid = "";
-    String display = "";
-    String description = "";
+
+    private String fid = "";
+    private String uid = "";
+    private String filename = "";
+    private String uri = "";
+    private String filemime = "";
+    private String filesize = "";
+    private String status = "";
+    private String timestamp = "";
+    private String uuid = "";
+    private String display = "";
+    private String description = "";
 
     public String getFid() {
         return fid;
