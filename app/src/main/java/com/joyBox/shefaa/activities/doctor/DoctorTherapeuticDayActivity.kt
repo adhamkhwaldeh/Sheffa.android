@@ -41,7 +41,7 @@ class DoctorTherapeuticDayActivity : BaseActivity(), AppointmentContract.View/*,
     lateinit var appointmentPresenter: AppointmentPresenter
 
     private fun initToolbar() {
-        toolbar.setTitle(R.string.ManageAppointments)
+        toolbar.setTitle(R.string.TherapeuticDay)
         setSupportActionBar(toolbar)
         toolbar.setNavigationOnClickListener { onBackPressed() }
     }

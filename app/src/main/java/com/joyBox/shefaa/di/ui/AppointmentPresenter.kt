@@ -4,6 +4,7 @@ import android.content.Context
 import com.joyBox.shefaa.entities.AppointmentAutoComplete
 import com.joyBox.shefaa.entities.AvailableTime
 import com.joyBox.shefaa.entities.DoctorAppointment
+import com.joyBox.shefaa.entities.models.AppointmentInvoiceModel
 import com.joyBox.shefaa.entities.models.AppointmentShiftModel
 import com.joyBox.shefaa.entities.models.AppointmentUrgentModel
 import com.joyBox.shefaa.enums.AppointmentFlagName
@@ -192,7 +193,7 @@ class AppointmentPresenter constructor(val context: Context) : AppointmentContra
     }
 
     override fun loadAutoCompleteAppointments(title: String) {
-        AppointmentAutoCompleteAsync(title,object :OnAppointmentAutoCompleteListener{
+        AppointmentAutoCompleteAsync(title, object : OnAppointmentAutoCompleteListener {
             override fun onAppointmentAutoCompleteLoading() {
                 view.showProgress(true)
             }
@@ -215,4 +216,26 @@ class AppointmentPresenter constructor(val context: Context) : AppointmentContra
 
     }
 
+    override fun addAppointmentInvoice(appointmentInvoiceModel: AppointmentInvoiceModel) {
+        DoctorAppointmentInvoiceAsync(appointmentInvoiceModel, object : OnDoctorAppointmentInvoiceListener {
+            override fun onAppointmentInvoiceLoading() {
+                view.showProgress(true)
+            }
+
+            override fun onAppointmentInvoiceInternetConnection() {
+                view.showProgress(false)
+                view.showLoadErrorMessage(true)
+            }
+
+            override fun onAppointmentInvoiceSuccessFully() {
+                view.showProgress(false)
+                view.onAppointmentInvoiceAddedSuccessfully()
+            }
+
+            override fun onAppointmentInvoiceFail() {
+                view.showProgress(false)
+                view.onAddAppointmentInvoiceFailed()
+            }
+        }).execute()
+    }
 }

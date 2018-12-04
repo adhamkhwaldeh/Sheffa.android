@@ -94,6 +94,8 @@ class DoctorIncomingFragment : BaseDoctorBudgetFragment(), ReportContract.View {
     fun onSaveButtonClick(view: View) {
         if (doctorIncomingViewHolder.isValid()) {
             presenter.addIncoming(doctorIncomingViewHolder.getAppointmentInvoiceModel())
+        } else {
+            Toast.makeText(context, R.string.AllRecordsAreMandatory, Toast.LENGTH_LONG).show()
         }
     }
 

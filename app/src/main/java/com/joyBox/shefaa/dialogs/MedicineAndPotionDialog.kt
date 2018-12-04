@@ -22,6 +22,7 @@ import com.joyBox.shefaa.entities.PrescriptionFollowUp
 import com.joyBox.shefaa.enums.LayoutStatesEnum
 import com.joyBox.shefaa.enums.ReminderType
 import com.joyBox.shefaa.helpers.IntentHelper
+import com.joyBox.shefaa.localJobs.MainJobManager
 import com.joyBox.shefaa.viewModels.MedicineAndPotionReminderViewHolder
 import com.joyBox.shefaa.views.Stateslayoutview
 import javax.inject.Inject
@@ -118,6 +119,14 @@ class MedicineAndPotionDialog : DialogFragment(), ReminderContract.View {
     }
 
     override fun onRemindSuccessfully(stringList: MutableList<String>) {
+        for (s in stringList) {
+            try {
+                val time = s.toLong() - System.currentTimeMillis()
+                MainJobManager.addJob2Scheduler(time)
+            } catch (ex: Exception) {
+            }
+        }
+        dismiss()
         Log.v("", "")
 //        presenter.remind()
 //        IntentHelper.startMedicineAndPotionReminderActivity(context!!, reminderType = reminderType)

@@ -19,6 +19,7 @@ import com.joyBox.shefaa.entities.DoctorAppointment
 import com.joyBox.shefaa.enums.AppointmentFlagName
 import com.joyBox.shefaa.helpers.IntentHelper
 import com.joyBox.shefaa.networking.NetworkingHelper
+import com.joyBox.shefaa.repositories.UserRepository
 import com.joyBox.shefaa.viewHolders.DoctorAppointmentDetailsViewHolder
 import javax.inject.Inject
 
@@ -46,14 +47,12 @@ class DoctorAppointmentDetailsActivity : BaseActivity(), AppointmentContract.Vie
                 .appointmentModule(AppointmentModule(this))
                 .build()
         component.inject(this)
-//        presenter.attachView(this)
-//        presenter.subscribe()
 
         presenter.attachView(this)
         presenter.subscribe()
     }
 
-    lateinit var progressDialog: ProgressDialog
+    var progressDialog: ProgressDialog = ProgressDialog.newInstance()
 
     lateinit var doctorAppointment: DoctorAppointment
     lateinit var doctorAppointmentDetailsViewHolder: DoctorAppointmentDetailsViewHolder
@@ -73,31 +72,34 @@ class DoctorAppointmentDetailsActivity : BaseActivity(), AppointmentContract.Vie
 
     @OnClick(R.id.startAppointmentBtn)
     fun onStartAppointmentButtonClick(view: View) {
-        presenter.switchAppointmentState(NetworkingHelper.DoctorAppointmentShiftUrl, AppointmentFlagName.START,
+        val userId = UserRepository(this).getClient()!!.user.uid
+        presenter.switchAppointmentState(NetworkingHelper.Doctor_Appointment_Url, AppointmentFlagName.START,
                 doctorAppointmentDetailsViewHolder.appointmentId.text.toString(),
-                doctorAppointmentDetailsViewHolder.patientId.text.toString(), "flag")
+                userId /*doctorAppointmentDetailsViewHolder.patientId.text.toString()*/, "flag")
     }
 
     @OnClick(R.id.endAppointmentBtn)
     fun onEndAppointmentButtonClick(view: View) {
-
-        presenter.switchAppointmentState(NetworkingHelper.DoctorAppointmentShiftUrl, AppointmentFlagName.END,
+        val userId = UserRepository(this).getClient()!!.user.uid
+        presenter.switchAppointmentState(NetworkingHelper.Doctor_Appointment_Url, AppointmentFlagName.END,
                 doctorAppointmentDetailsViewHolder.appointmentId.text.toString(),
-                doctorAppointmentDetailsViewHolder.patientId.text.toString(), "flag")
+                userId /*doctorAppointmentDetailsViewHolder.patientId.text.toString()*/, "flag")
     }
 
     @OnClick(R.id.acceptAppointmentBtn)
     fun onAcceptAppointmentButtonClick(view: View) {
-        presenter.switchAppointmentState(NetworkingHelper.DoctorAppointmentShiftUrl, AppointmentFlagName.Accept,
+        val userId = UserRepository(this).getClient()!!.user.uid
+        presenter.switchAppointmentState(NetworkingHelper.Doctor_Appointment_Url, AppointmentFlagName.Accept,
                 doctorAppointmentDetailsViewHolder.appointmentId.text.toString(),
-                doctorAppointmentDetailsViewHolder.patientId.text.toString(), "flag")
+                userId /*doctorAppointmentDetailsViewHolder.patientId.text.toString()*/, "flag")
     }
 
     @OnClick(R.id.refuseAppointmentBtn)
     fun onRefuseAppointmentButtonClick(view: View) {
-        presenter.switchAppointmentState(NetworkingHelper.DoctorAppointmentShiftUrl, AppointmentFlagName.Refuse,
+        val userId = UserRepository(this).getClient()!!.user.uid
+        presenter.switchAppointmentState(NetworkingHelper.Doctor_Appointment_Url, AppointmentFlagName.Refuse,
                 doctorAppointmentDetailsViewHolder.appointmentId.text.toString(),
-                doctorAppointmentDetailsViewHolder.patientId.text.toString(), "flag")
+                userId /*doctorAppointmentDetailsViewHolder.patientId.text.toString()*/, "flag")
     }
 
     @OnClick(R.id.deleteAppointmentBtn)

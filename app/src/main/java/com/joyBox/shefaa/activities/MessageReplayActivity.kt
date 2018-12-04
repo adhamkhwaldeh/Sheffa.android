@@ -74,6 +74,8 @@ class MessageReplayActivity : BaseActivity(), MessageReplayContract.View {
         messageReplayModel = Gson().fromJson(json, MessageReplayModel::class.java)
         initDI()
         initToolBar()
+
+        tomessagetxt.setText(messageReplayModel.TargetName)
     }
 
     @OnClick(R.id.submitbtn)

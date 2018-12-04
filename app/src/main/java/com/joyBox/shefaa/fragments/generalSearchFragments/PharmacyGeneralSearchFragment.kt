@@ -7,6 +7,11 @@ import android.view.ViewGroup
 import butterknife.ButterKnife
 import butterknife.OnClick
 import com.JoyBox.Shefaa.R
+import com.joyBox.shefaa.dialogs.CitiesDialog
+import com.joyBox.shefaa.enums.CityEnum
+import com.joyBox.shefaa.eventsBus.EventActions
+import com.joyBox.shefaa.eventsBus.MessageEvent
+import com.joyBox.shefaa.eventsBus.RxBus
 import com.joyBox.shefaa.helpers.IntentHelper
 import com.joyBox.shefaa.viewModels.PharmacyGeneralSearchViewHolder
 
@@ -31,6 +36,13 @@ class PharmacyGeneralSearchFragment : BaseGeneralSearchFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        RxBus.listen(MessageEvent::class.java).subscribe {
+            when (it.action) {
+                EventActions.CityPharmacy_Tag -> {
+                    pharmacyGeneralSearchViewHolder.cityTextView.text = it.message as String
+                }
+            }
+        }
     }
 
     @OnClick(R.id.searchBtn)
@@ -38,5 +50,12 @@ class PharmacyGeneralSearchFragment : BaseGeneralSearchFragment() {
         IntentHelper.startPharmacySearchActivity(context = context!!,
                 pharmacyFilter = pharmacyGeneralSearchViewHolder.getPharmacyFilter())
     }
+
+    @OnClick(R.id.cityTextView)
+    fun onCityTextViewClick(view: View) {
+        val cityDialog = CitiesDialog.newInstance(CityEnum.PHARMACIST)
+        cityDialog.show(childFragmentManager, CitiesDialog.CitiesDialog_Tag)
+    }
+
 
 }

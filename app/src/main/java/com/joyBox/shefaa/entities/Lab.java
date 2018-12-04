@@ -24,7 +24,7 @@ public class Lab {
     private String Laboratory_Name = "";
 
     @SerializedName("Lab open hours")
-    private List<DoctorOpenHour> Lab_open_hours = new Vector<>();
+    private List<Clinic_open_hours> Lab_open_hours = new Vector<>();
 
 
     public String getProfile_users_pid() {
@@ -99,11 +99,23 @@ public class Lab {
         Laboratory_Name = laboratory_Name;
     }
 
-    public List<DoctorOpenHour> getLab_open_hours() {
+    public List<Clinic_open_hours> getLab_open_hours() {
         return Lab_open_hours;
     }
 
-    public void setLab_open_hours(List<DoctorOpenHour> lab_open_hours) {
+    public void setLab_open_hours(List<Clinic_open_hours> lab_open_hours) {
         Lab_open_hours = lab_open_hours;
     }
+
+    public float getRating() {
+        Float res = 0.00f;
+        if (getRate() != null) {
+            Float cnt = Float.valueOf(getRate().count);
+            Float avg = Float.valueOf(getRate().average);
+            if (cnt > 0)
+                res = avg / 20.00f;
+        }
+        return res;
+    }
+
 }

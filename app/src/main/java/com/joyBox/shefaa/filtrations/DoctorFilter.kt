@@ -9,10 +9,11 @@ class DoctorFilter : BaseFilter {
 
     constructor() : super()
 
-    constructor(query: String, specialistAutoComplete: SpecialistAutoComplete?, cost: String?) : super() {
+    constructor(query: String, specialistAutoComplete: SpecialistAutoComplete?, cost: String?, city: String?) : super() {
         this.query = query
         this.specialistAutoComplete = specialistAutoComplete
         this.cost = cost
+        this.city = city
     }
 
 

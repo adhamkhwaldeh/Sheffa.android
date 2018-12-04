@@ -4,6 +4,7 @@ import android.content.Context
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.widget.EditText
+import android.widget.TextView
 import butterknife.BindView
 import butterknife.ButterKnife
 import com.JoyBox.Shefaa.R
@@ -18,6 +19,9 @@ class PharmacyGeneralSearchViewHolder : RecyclerView.ViewHolder {
     @BindView(R.id.pharmacyName)
     lateinit var pharmacyName: EditText
 
+    @BindView(R.id.cityTextView)
+    lateinit var cityTextView: TextView
+
     var context: Context
 
     constructor(itemView: View) : super(itemView) {
@@ -26,7 +30,8 @@ class PharmacyGeneralSearchViewHolder : RecyclerView.ViewHolder {
     }
 
     fun getPharmacyFilter(): PharmacyFilter {
-        return PharmacyFilter(query = pharmacyName.text.toString(), medicineName = medicineName.text.toString())
+        return PharmacyFilter(query = pharmacyName.text.toString(), city = cityTextView.text.toString(),
+                medicineName = medicineName.text.toString())
     }
 
 }

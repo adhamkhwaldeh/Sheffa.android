@@ -3,10 +3,6 @@ package com.joyBox.shefaa.entities;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-/**
- * Created by windows 8.1 on 2017-04-16.
- */
-
 public class Roles {
 
     @SerializedName("2")

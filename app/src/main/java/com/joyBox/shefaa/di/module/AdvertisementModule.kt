@@ -2,15 +2,12 @@ package com.joyBox.shefaa.di.module
 
 import android.app.Activity
 import android.content.Context
-import com.joyBox.shefaa.di.ui.PrescriptionListPresenter
+import com.joyBox.shefaa.di.ui.AdvertisementPresenter
 import dagger.Module
 import dagger.Provides
 
-/**
- * Created by Adhamkh on 2018-08-20.
- */
 @Module
-class PresciptionListModule constructor(private var activity: Activity) {
+class AdvertisementModule constructor(private var activity: Activity) {
 
     @Provides
     fun provideContext(): Context {
@@ -23,8 +20,8 @@ class PresciptionListModule constructor(private var activity: Activity) {
     }
 
     @Provides
-    fun getPresciptionListPresenter(): PrescriptionListPresenter {
-        return PrescriptionListPresenter(provideContext())
+    fun getAdvertisementPresenter(): AdvertisementPresenter {
+        return AdvertisementPresenter(provideContext())
     }
 
 }

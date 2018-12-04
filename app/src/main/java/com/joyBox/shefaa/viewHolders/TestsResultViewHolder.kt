@@ -24,8 +24,8 @@ class TestsResultViewHolder constructor(var view: View) : RecyclerView.ViewHolde
     }
 
     fun bind(testResultEntity: TestResultEntity) {
-        doctorName.text = testResultEntity.doctor_name
-        testName.text = testResultEntity.test_name
+        doctorName.text = testResultEntity.patient_name
+        testName.text = testResultEntity.title
     }
 
 }

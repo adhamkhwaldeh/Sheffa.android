@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/white">
+    android:background="@color/colorPrimary">
 
     <ImageView
         android:layout_width="wrap_content"
@@ -13,14 +13,16 @@
 
     <android.support.v7.widget.AppCompatTextView
         android:id="@+id/specializationName"
-        style="@style/AppTheme.TitleBlackTextAppearance"
+        style="@style/AppTheme.MediumBlackTextAppearance"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:maxLines="1"
         android:padding="@dimen/sm_padding"
         android:paddingEnd="@dimen/lg_padding"
         android:paddingLeft="@dimen/lg_padding"
         android:paddingRight="@dimen/lg_padding"
         android:paddingStart="@dimen/lg_padding"
+        app:autoSizeTextType="uniform"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

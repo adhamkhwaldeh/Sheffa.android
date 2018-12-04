@@ -1,6 +1,7 @@
 package com.joyBox.shefaa.networking.tasks;
 
 import android.os.AsyncTask;
+import android.util.Log;
 
 import com.google.gson.Gson;
 import com.joyBox.shefaa.entities.MedicinePotionEntity;
@@ -54,6 +55,8 @@ public class MedicineAndPotionAsync extends AsyncTask<Void, Void, String> {
             }
             return;
         } catch (Exception ex) {
+            String msg = ex.getMessage();
+            Log.v("Error", msg);
         }
         onMedicineAndPotionResponseListener.onMedicineAndPotionResponseInternetConnection();
     }

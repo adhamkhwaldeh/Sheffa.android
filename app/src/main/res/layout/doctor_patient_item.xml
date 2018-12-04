@@ -3,20 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/cardview"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/midcardheight"
+    android:layout_height="50dp"
     app:cardBackgroundColor="@color/white"
     app:cardUseCompatPadding="true">
-
+    <!--android:layout_height="@dimen/midcardheight"-->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:weightSum="4">
+        android:weightSum="1">
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_height="match_parent"
             android:orientation="horizontal"
             android:weightSum="5">
 
@@ -28,94 +27,94 @@
                 android:text="@string/Name" />
 
             <TextView
-                android:id="@+id/doctorname"
+                android:id="@+id/patientName"
                 style="@style/AppTheme.TextGrayAppearance"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_toEndOf="@+id/namelabel"
                 android:layout_toRightOf="@+id/namelabel" />
 
         </RelativeLayout>
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1">
+        <!--<RelativeLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="0dp"-->
+        <!--android:layout_weight="1">-->
 
-            <TextView
-                android:id="@+id/SpecializationLabel"
-                style="@style/AppTheme.TextAppearance"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="@string/Specialization" />
+        <!--<TextView-->
+        <!--android:id="@+id/SpecializationLabel"-->
+        <!--style="@style/AppTheme.TextAppearance"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:text="@string/Specialization" />-->
 
-            <TextView
-                android:id="@+id/doctorSpecializitions"
-                style="@style/AppTheme.TextGrayAppearance"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_toEndOf="@+id/SpecializationLabel"
-                android:layout_toRightOf="@+id/SpecializationLabel" />
-        </RelativeLayout>
+        <!--<TextView-->
+        <!--android:id="@+id/doctorSpecializitions"-->
+        <!--style="@style/AppTheme.TextGrayAppearance"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_toEndOf="@+id/SpecializationLabel"-->
+        <!--android:layout_toRightOf="@+id/SpecializationLabel" />-->
+        <!--</RelativeLayout>-->
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1">
+        <!--<RelativeLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="0dp"-->
+        <!--android:layout_weight="1">-->
 
-            <TextView
-                android:id="@+id/Addresslabel"
-                style="@style/AppTheme.TextAppearance"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="@string/Address" />
+        <!--<TextView-->
+        <!--android:id="@+id/Addresslabel"-->
+        <!--style="@style/AppTheme.TextAppearance"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:text="@string/Address" />-->
 
-            <TextView
-                android:id="@+id/doctoraddress"
-                style="@style/AppTheme.TextGrayAppearance"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_toEndOf="@+id/Addresslabel"
-                android:layout_toRightOf="@+id/Addresslabel" />
-        </RelativeLayout>
+        <!--<TextView-->
+        <!--android:id="@+id/doctoraddress"-->
+        <!--style="@style/AppTheme.TextGrayAppearance"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_toEndOf="@+id/Addresslabel"-->
+        <!--android:layout_toRightOf="@+id/Addresslabel" />-->
+        <!--</RelativeLayout>-->
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1">
+        <!--<RelativeLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="0dp"-->
+        <!--android:layout_weight="1">-->
 
-            <TextView
-                android:id="@+id/PriceLabel"
-                style="@style/AppTheme.TextAppearance"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="@string/Price" />
+        <!--<TextView-->
+        <!--android:id="@+id/PriceLabel"-->
+        <!--style="@style/AppTheme.TextAppearance"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:text="@string/Price" />-->
 
-            <TextView
-                android:id="@+id/doctorprice"
-                style="@style/AppTheme.TextGrayAppearance"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_toEndOf="@+id/PriceLabel"
-                android:layout_toLeftOf="@+id/ratingBar"
-                android:layout_toRightOf="@+id/PriceLabel"
-                android:layout_toStartOf="@+id/ratingBar" />
+        <!--<TextView-->
+        <!--android:id="@+id/doctorprice"-->
+        <!--style="@style/AppTheme.TextGrayAppearance"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_toEndOf="@+id/PriceLabel"-->
+        <!--android:layout_toLeftOf="@+id/ratingBar"-->
+        <!--android:layout_toRightOf="@+id/PriceLabel"-->
+        <!--android:layout_toStartOf="@+id/ratingBar" />-->
 
-            <com.joyBox.shefaa.views.SimpleRatingBar
-                android:id="@+id/ratingBar"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_margin="@dimen/xxsm_margin"
-                app:IsEnable="false"
-                app:srb_borderColor="@color/golden_stars"
-                app:srb_pressedBackgroundColor="@color/golden_stars"
-                app:srb_starBorderWidth="2"
-                app:srb_starSize="25dp" />
+        <!--<com.joyBox.shefaa.views.SimpleRatingBar-->
+        <!--android:id="@+id/ratingBar"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_alignParentEnd="true"-->
+        <!--android:layout_alignParentRight="true"-->
+        <!--android:layout_margin="@dimen/xxsm_margin"-->
+        <!--app:IsEnable="false"-->
+        <!--app:srb_borderColor="@color/golden_stars"-->
+        <!--app:srb_pressedBackgroundColor="@color/golden_stars"-->
+        <!--app:srb_starBorderWidth="2"-->
+        <!--app:srb_starSize="25dp" />-->
 
 
-        </RelativeLayout>
+        <!--</RelativeLayout>-->
 
 
     </LinearLayout>

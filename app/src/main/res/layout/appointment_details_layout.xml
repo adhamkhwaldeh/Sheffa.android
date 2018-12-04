@@ -10,231 +10,242 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?android:attr/actionBarSize"
-            android:layout_gravity="top"
-            android:background="@color/colorPrimary"
-            android:minHeight="?attr/actionBarSize"
-            android:title="@string/AppointmentDetail"
-            app:title="@string/AppointmentDetail"
-            app:titleTextColor="@color/white" />
-
-        <TextView
-            style="@style/AppTheme.TextAppearance"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/Appointment_Id" />
-
-        <TextView
-            android:id="@+id/Appointment_Id"
-            style="@style/AppTheme.TextGrayAppearance"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/sperator"
-            android:layout_marginBottom="@dimen/sm_margin"
-            android:layout_marginTop="@dimen/sm_margin"
-            android:background="@color/lightgray" />
-
-        <TextView
-            style="@style/AppTheme.TextAppearance"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/Title"
-            android:visibility="gone" />
-
-        <TextView
-            android:id="@+id/Title"
-            style="@style/AppTheme.TextGrayAppearance"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:visibility="gone" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/sperator"
-            android:layout_marginBottom="@dimen/sm_margin"
-            android:layout_marginTop="@dimen/sm_margin"
-            android:background="@color/lightgray"
-            android:visibility="gone" />
-
-        <TextView
-            style="@style/AppTheme.TextAppearance"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/Patient_name" />
-
-        <TextView
-            android:id="@+id/patientname"
-            style="@style/AppTheme.TextGrayAppearance"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/sperator"
-            android:layout_marginBottom="@dimen/sm_margin"
-            android:layout_marginTop="@dimen/sm_margin"
-            android:background="@color/lightgray" />
-
-        <TextView
-            android:id="@+id/UrgentAppointmentCausetext"
-            style="@style/AppTheme.TextAppearance"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/UrgentAppointmentCause" />
-
-        <TextView
-            android:id="@+id/UrgentAppointmentCause"
-            style="@style/AppTheme.TextGrayAppearance"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <View
-            android:id="@+id/div1"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/sperator"
-            android:layout_marginBottom="@dimen/sm_margin"
-            android:layout_marginTop="@dimen/sm_margin"
-            android:background="@color/lightgray" />
-
-        <TextView
-            android:id="@+id/Appointment_Statustext"
-            style="@style/AppTheme.TextAppearance"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/Appointment_Status" />
-
-        <TextView
-            android:id="@+id/Appointment_Status"
-            style="@style/AppTheme.TextGrayAppearance"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <View
-            android:id="@+id/div2"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/sperator"
-            android:layout_marginBottom="@dimen/sm_margin"
-            android:layout_marginTop="@dimen/sm_margin"
-            android:background="@color/lightgray" />
+        <include layout="@layout/toolbar_layout"
+            android:id="@+id/toolbar"/>
 
 
-        <RelativeLayout
+        <com.joyBox.shefaa.views.Stateslayoutview
+            android:id="@+id/stateLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent"
+            app:NoConnectionLayout="@layout/state_layout_noconnection"
+            app:NoDataLayout="@layout/state_layout_nodata"
+            app:RefreshbtnRes="@+id/retryBtn"
+            app:WaitingLayout="@layout/state_layout_waiting">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_toLeftOf="@+id/Editdatebtn"
-                android:layout_toStartOf="@+id/Editdatebtn"
+                android:layout_height="match_parent"
                 android:orientation="vertical">
 
                 <TextView
                     style="@style/AppTheme.TextAppearance"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/AppointmentDate" />
+                    android:text="@string/Appointment_Id" />
 
                 <TextView
-                    android:id="@+id/Appointment_Date"
+                    android:id="@+id/Appointment_Id"
                     style="@style/AppTheme.TextGrayAppearance"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
-            </LinearLayout>
 
-
-            <ImageView
-                android:id="@+id/Editdatebtn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_marginEnd="20dp"
-                android:layout_marginRight="20dp"
-                android:src="@drawable/ic_edit_white_24dp"
-                android:visibility="gone" />
-
-        </RelativeLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/sperator"
-            android:layout_marginBottom="@dimen/sm_margin"
-            android:layout_marginTop="@dimen/sm_margin"
-            android:background="@color/lightgray" />
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_toLeftOf="@+id/EditTimebtn"
-                android:layout_toStartOf="@+id/EditTimebtn"
-                android:orientation="vertical">
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/sperator"
+                    android:layout_marginBottom="@dimen/sm_margin"
+                    android:layout_marginTop="@dimen/sm_margin"
+                    android:background="@color/lightgray" />
 
                 <TextView
                     style="@style/AppTheme.TextAppearance"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/AppointmentTime" />
+                    android:text="@string/Title"
+                    android:visibility="gone" />
 
                 <TextView
-                    android:id="@+id/Appointment_Time"
+                    android:id="@+id/Title"
+                    style="@style/AppTheme.TextGrayAppearance"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/sperator"
+                    android:layout_marginBottom="@dimen/sm_margin"
+                    android:layout_marginTop="@dimen/sm_margin"
+                    android:background="@color/lightgray"
+                    android:visibility="gone" />
+
+                <TextView
+                    style="@style/AppTheme.TextAppearance"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/Patient_name" />
+
+                <TextView
+                    android:id="@+id/patientname"
                     style="@style/AppTheme.TextGrayAppearance"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/sperator"
+                    android:layout_marginBottom="@dimen/sm_margin"
+                    android:layout_marginTop="@dimen/sm_margin"
+                    android:background="@color/lightgray" />
+
+                <TextView
+                    android:id="@+id/UrgentAppointmentCausetext"
+                    style="@style/AppTheme.TextAppearance"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/UrgentAppointmentCause" />
+
+                <TextView
+                    android:id="@+id/UrgentAppointmentCause"
+                    style="@style/AppTheme.TextGrayAppearance"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <View
+                    android:id="@+id/div1"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/sperator"
+                    android:layout_marginBottom="@dimen/sm_margin"
+                    android:layout_marginTop="@dimen/sm_margin"
+                    android:background="@color/lightgray" />
+
+                <TextView
+                    android:id="@+id/Appointment_Statustext"
+                    style="@style/AppTheme.TextAppearance"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/Appointment_Status" />
+
+                <TextView
+                    android:id="@+id/Appointment_Status"
+                    style="@style/AppTheme.TextGrayAppearance"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <View
+                    android:id="@+id/div2"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/sperator"
+                    android:layout_marginBottom="@dimen/sm_margin"
+                    android:layout_marginTop="@dimen/sm_margin"
+                    android:background="@color/lightgray" />
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_toLeftOf="@+id/Editdatebtn"
+                        android:layout_toStartOf="@+id/Editdatebtn"
+                        android:orientation="vertical">
+
+                        <TextView
+                            style="@style/AppTheme.TextAppearance"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/AppointmentDate" />
+
+                        <TextView
+                            android:id="@+id/Appointment_Date"
+                            style="@style/AppTheme.TextGrayAppearance"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+
+
+                    <ImageView
+                        android:id="@+id/Editdatebtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="20dp"
+                        android:layout_marginRight="20dp"
+                        android:src="@drawable/ic_edit_white_24dp"
+                        android:visibility="gone" />
+
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/sperator"
+                    android:layout_marginBottom="@dimen/sm_margin"
+                    android:layout_marginTop="@dimen/sm_margin"
+                    android:background="@color/lightgray" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_toLeftOf="@+id/EditTimebtn"
+                        android:layout_toStartOf="@+id/EditTimebtn"
+                        android:orientation="vertical">
+
+                        <TextView
+                            style="@style/AppTheme.TextAppearance"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/AppointmentTime" />
+
+                        <TextView
+                            android:id="@+id/Appointment_Time"
+                            style="@style/AppTheme.TextGrayAppearance"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+
+
+                    <ImageView
+                        android:id="@+id/EditTimebtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="20dp"
+                        android:layout_marginRight="20dp"
+                        android:src="@drawable/ic_edit_white_24dp" />
+
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/sperator"
+                    android:layout_marginBottom="@dimen/sm_margin"
+                    android:layout_marginTop="@dimen/sm_margin"
+                    android:background="@color/lightgray" />
+
+                <Button
+                    android:id="@+id/cancelBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:background="@color/colorPrimary"
+                    android:text="@string/Cancel"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                    android:textColor="@color/white" />
+
+                <Button
+                    android:id="@+id/Acceptappointmentbtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:background="@color/colorPrimary"
+                    android:text="@string/Approve"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                    android:textColor="@color/white" />
+
             </LinearLayout>
 
-
-            <ImageView
-                android:id="@+id/EditTimebtn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_marginEnd="20dp"
-                android:layout_marginRight="20dp"
-                android:src="@drawable/ic_edit_white_24dp" />
-
-        </RelativeLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/sperator"
-            android:layout_marginBottom="@dimen/sm_margin"
-            android:layout_marginTop="@dimen/sm_margin"
-            android:background="@color/lightgray" />
-
-        <Button
-            android:id="@+id/cancelBtn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:background="@color/colorPrimary"
-            android:text="@string/Cancel"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
-            android:textColor="@color/white" />
-
-        <Button
-            android:id="@+id/Acceptappointmentbtn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:background="@color/colorPrimary"
-            android:text="@string/Approve"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
-            android:textColor="@color/white" />
-
-
+        </com.joyBox.shefaa.views.Stateslayoutview>
     </LinearLayout>
+
+
 </ScrollView>

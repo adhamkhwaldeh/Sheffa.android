@@ -139,7 +139,7 @@
     <string name="contentDescription">contentDescription</string>
     <string name="ManageAccount">Manage account</string>
     <string name="ManageAppointments">Manage appointments</string>
-    <string name="MyMedicalProfile">My medical profile</string>
+    <string name="MyMedicalProfile">Medical profile</string>
     <string name="Notifications">Notifications</string>
     <string name="entercorrectemail">Please enter correct Email</string>
     <string name="EmailNoFound">Email no found</string>
@@ -170,7 +170,7 @@
     <string name="Height">Height</string>
     <string name="Smoke">Smoke?</string>
     <string name="Allergies">Allergies</string>
-    <string name="Diagnosis_of_Disease_headache">Diagnosis of disease headache</string>
+    <string name="Diagnosis_of_Disease_headache">Diagnosis of disease</string>
     <string name="Emergency_contact">Emergency contact</string>
     <string name="Pregnant">Pregnant</string>
     <string name="Weight">Weight</string>
@@ -181,7 +181,7 @@
     <string name="Code">Code</string>
     <string name="Key">Key</string>
     <string name="Pharmacy">Pharmacy</string>
-    <string name="Lab">Lab</string>
+    <string name="Lab">Laboratory</string>
     <string name="Cost">Cost</string>
     <string name="SearchForDoctor">Search for doctor</string>
     <string name="Doctors">Doctors</string>
@@ -222,7 +222,7 @@
     <string name="AddSelfMonitor">Add self monitor</string>
     <string name="Value">Value</string>
     <string name="Unit">Unit</string>
-    <string name="AddGuardianship">Add guardianship</string>
+    <string name="AddGuardianship">Add Guardianship</string>
     <string name="Guardianship">Guardianship</string>
     <string name="GuardianshipName">Guardianship name :</string>
     <string name="ChangePassword">Change password</string>
@@ -268,7 +268,7 @@
     <string name="pleaseSelectHomeLocation">Please select home location</string>
     <string name="ReminderSetCorrectly">Reminder set correctly</string>
     <string name="GuardianshipAddedSuccessfully">Guardianship added successfully</string>
-    <string name="AddGuardianshipFailed">Add guardianship failed</string>
+    <string name="AddGuardianshipFailed">Add Guardianship failed</string>
     <string name="AppointmentDeletedSuccessfully">Appointment canceled successfully</string>
     <string name="CancelAppointmentFailed">Cancel appointment failed</string>
     <string name="doYouWantCancelAppointment">Do you want cancel appointment !!</string>
@@ -302,7 +302,7 @@
     <string name="patientAddress">Patient address</string>
     <string name="MyPatientsPrescriptions">My patients prescriptions</string>
     <string name="MyPatientsTestResult">My patients test result</string>
-    <string name="MyPrescription">My prescription</string>
+    <string name="MyPrescription">My prescriptions</string>
     <string name="Reports">Reports</string>
     <string name="generalReport">General report</string>
     <string name="incoming">Incoming</string>
@@ -325,5 +325,24 @@
     <string name="Type">Type</string>
     <string name="receiptAddSuccessfully">Receipt added successfully</string>
     <string name="addReceiptFailed">Add receipt failed</string>
+    <string name="InvoiceAddedSuccessfully">Invoice added successfully</string>
+    <string name="SelectDate">Select date</string>
+    <string name="SelectTime">Select time</string>
+    <string name="Roles">Roles</string>
+    <string name="SignUpSuccessfully">Sign up successfully</string>
+    <string name="RequiredTest">Required test</string>
+    <string name="RequiredMedicines">Required medicines</string>
+    <string name="activeIngredient">Active ingredient</string>
+    <string name="requieredMeasurements">Requiered measurements</string>
+    <string name="SelectCity">Select city</string>
+    <string name="CityDot">City :</string>
+    <string name="Add">Add</string>
+    <string name="findGuardianShip">Find GuardianShip</string>
+    <string name="SelectDiagnosis">Select diagnosis</string>
+    <string name="SelectTest">Select test</string>
+    <string name="alterMedicine">Alter medicine</string>
+    <string name="frequent">frequent</string>
+    <string name="During">During</string>
+    <string name="For">For</string>
 
 </resources>

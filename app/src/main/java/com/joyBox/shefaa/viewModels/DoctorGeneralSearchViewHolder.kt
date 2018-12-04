@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.widget.EditText
 import android.widget.Spinner
+import android.widget.TextView
 import butterknife.BindView
 import butterknife.ButterKnife
 import com.JoyBox.Shefaa.R
@@ -23,6 +24,9 @@ class DoctorGeneralSearchViewHolder : RecyclerView.ViewHolder {
     @BindView(R.id.costEditText)
     lateinit var costEditText: EditText
 
+    @BindView(R.id.cityTextView)
+    lateinit var cityTextView: TextView
+
     var context: Context
 
     constructor(itemView: View) : super(itemView) {
@@ -35,10 +39,13 @@ class DoctorGeneralSearchViewHolder : RecyclerView.ViewHolder {
         if (specializationSpinner.adapter != null) {
             val adapter = (specializationSpinner.adapter as SpecializationSpinnerAdapter)
             specialistAutoComplete = adapter.specList[specializationSpinner.selectedItemPosition]
+            if (specialistAutoComplete.tid.isNullOrBlank())
+                specialistAutoComplete = null
         }
 
         return DoctorFilter(query = doctorName.text.toString(),
-                specialistAutoComplete = specialistAutoComplete, cost = costEditText.text.toString())
+                specialistAutoComplete = specialistAutoComplete, cost = costEditText.text.toString()
+                , city = cityTextView.text.toString())
     }
 
 

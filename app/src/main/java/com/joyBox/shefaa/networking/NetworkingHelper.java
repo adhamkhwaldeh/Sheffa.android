@@ -141,6 +141,8 @@ public class NetworkingHelper {
 
     public static final String GuardianshipAddUrl = "http://shefaaonline.net/api/user/";
 
+    public static final String RatingURL = "http://shefaaonline.net/rate";
+
 
     public static String about_usurl = "http://shefaaonline.net/about-us";
     public static String contact_usurlar = "http://shefaaonline.net/ar/contact-us";
@@ -153,6 +155,8 @@ public class NetworkingHelper {
 
     public static String Urgent = "0";
     public static String UnUrgent = "1";
+
+    public static String CityListUrl ="http://shefaaonline.net/api/list-of-cities-service";
 
 
 //    public static Client client = new Client();

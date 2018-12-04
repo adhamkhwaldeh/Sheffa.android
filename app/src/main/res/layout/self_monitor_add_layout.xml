@@ -77,6 +77,7 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="7"
+                    android:maxLines="1"
                     android:background="@drawable/edit_text_white_drawable"
                     android:inputType="number" />
 
@@ -106,6 +107,7 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="7"
+                    android:maxLines="1"
                     android:background="@drawable/edit_text_white_drawable" />
 
             </LinearLayout>
@@ -134,6 +136,7 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="7"
+                    android:maxLines="1"
                     android:background="@drawable/edit_text_white_drawable" />
 
             </LinearLayout>
@@ -162,6 +165,7 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="7"
+                    android:maxLines="1"
                     android:background="@drawable/edit_text_white_drawable" />
 
             </LinearLayout>
@@ -196,7 +200,7 @@
                 android:id="@+id/saveBtn"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:background="@drawable/button_primary_bg"
+                android:background="@drawable/button_primary_bg2"
                 android:text="@string/Save"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

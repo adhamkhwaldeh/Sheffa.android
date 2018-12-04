@@ -3,6 +3,7 @@ package com.joyBox.shefaa.activities.patient
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.os.Bundle
+import android.support.v7.widget.Toolbar
 import android.util.Log
 import android.view.View
 import android.widget.Toast
@@ -16,6 +17,7 @@ import com.joyBox.shefaa.di.module.ReminderModule
 import com.joyBox.shefaa.di.ui.ReminderContract
 import com.joyBox.shefaa.di.ui.ReminderPresenter
 import com.joyBox.shefaa.enums.LayoutStatesEnum
+import com.joyBox.shefaa.listeners.OnRefreshLayoutListener
 import com.joyBox.shefaa.localJobs.MainJobManager
 import com.joyBox.shefaa.viewModels.AddReminderViewHolder
 import com.joyBox.shefaa.views.Stateslayoutview
@@ -35,6 +37,9 @@ class AddReminderActivity : BaseActivity(), ReminderContract.View {
     @BindView(R.id.stateLayout)
     lateinit var stateLayout: Stateslayoutview
 
+    @BindView(R.id.toolbar)
+    lateinit var toolbar: Toolbar
+
     @Inject
     lateinit var presenter: ReminderPresenter
 
@@ -47,6 +52,12 @@ class AddReminderActivity : BaseActivity(), ReminderContract.View {
         component.inject(this)
         presenter.attachView(this)
         presenter.subscribe()
+    }
+
+    private fun initToolbar() {
+        toolbar.setTitle(R.string.Remind)
+        setSupportActionBar(toolbar)
+        toolbar.setNavigationOnClickListener { onBackPressed() }
     }
 
     private fun initDatePicker() {
@@ -91,7 +102,17 @@ class AddReminderActivity : BaseActivity(), ReminderContract.View {
         addReminderViewHolder = AddReminderViewHolder(findViewById(android.R.id.content),
                 intent.getStringExtra(AddReminderActivity_Tag))
         initDI()
+        initToolbar()
 
+        stateLayout.setOnRefreshLayoutListener(object : OnRefreshLayoutListener {
+            override fun onRefresh() {
+                onRemindButtonClick(stateLayout)
+            }
+
+            override fun onRequestPermission() {
+
+            }
+        })
     }
 
     @OnClick(R.id.dateContainer)
@@ -142,8 +163,12 @@ class AddReminderActivity : BaseActivity(), ReminderContract.View {
     override fun onRemindSuccessfully(stringList: MutableList<String>) {
 
         stringList.forEach {
-            val time: Long = it.toLong() - System.currentTimeMillis()
-            MainJobManager.addJob2Scheduler(time)
+            try {
+                val tm = it.toLong()
+                val tm2: Long = tm //* 1000 - System.currentTimeMillis()
+                MainJobManager.addJob2Scheduler(tm2)
+            } catch (ex: Exception) {
+            }
         }
         Toast.makeText(baseContext, baseContext.getString(R.string.ReminderSetCorrectly), Toast.LENGTH_LONG).show()
         Log.v("", "")

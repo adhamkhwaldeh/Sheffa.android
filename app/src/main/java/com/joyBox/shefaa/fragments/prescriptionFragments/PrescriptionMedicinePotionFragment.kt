@@ -51,7 +51,10 @@ class PrescriptionMedicinePotionFragment : BasePrescriptionFragment(), MedicineA
         component.inject(this)
         presenter.attachView(this)
         presenter.subscribe()
-        presenter.loadMedicineAndPotion(prescription.Medicine_and_potion[0].value)
+        if (prescription.Medicine_and_potion.size > 0)
+            presenter.loadMedicineAndPotion(prescription.Medicine_and_potion[0].value)
+        else
+            showEmptyView(true)
     }
 
     private fun initRecyclerView() {
@@ -110,7 +113,7 @@ class PrescriptionMedicinePotionFragment : BasePrescriptionFragment(), MedicineA
     }
 
     override fun onMedicineAndPotionSuccessfully(medicinePotionList: List<MedicinePotionEntity>) {
-        recyclerView.adapter = MedicineAndPotionRecyclerViewAdapter(context!!, medicinePotionList,prescription)
+        recyclerView.adapter = MedicineAndPotionRecyclerViewAdapter(context!!, medicinePotionList, prescription)
         Log.v("", "")
     }
     /*Presenter ended*/

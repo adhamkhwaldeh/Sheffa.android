@@ -92,7 +92,7 @@ class TestResultFragment : BaseMedicalTestFragment(), TestsResultsContract.View 
 
 
         val localUser = UserRepository(context!!).getClient()!!.user
-        if (localUser.uid == (user.uid)) {
+        if (localUser.uid != (user.uid)) {
             addNewAnalise.visibility = View.INVISIBLE
         }
 

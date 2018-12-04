@@ -81,8 +81,6 @@ class MagazinePostsDetailsActivity : BaseActivity(), MagazinePostsContract.View 
         initToolBar()
         bindPost()
         initDI()
-
-
     }
 
 

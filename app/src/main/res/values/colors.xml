@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#55CBAC</color> <!--2F88F6-->
-    <color name="colorPrimaryDark">#55CBAC</color>
+    <color name="colorPrimary">#44AE97</color> <!--2F88F6--> <!--55CBAC-->
+    <color name="colorPrimaryDark">#388F7E</color><!--55CBAC-->
     <color name="colorAccent">#3498B4</color>
     <color name="search_field">#ffffff</color>
     <color name="black">#dd000000</color>

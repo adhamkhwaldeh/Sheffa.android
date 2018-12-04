@@ -22,6 +22,9 @@ import com.joyBox.shefaa.di.ui.MagazinePostCommentsPresenter
 import com.joyBox.shefaa.entities.MagazinePost
 import com.joyBox.shefaa.entities.MagazinePostComment
 import com.joyBox.shefaa.enums.LayoutStatesEnum
+import com.joyBox.shefaa.eventsBus.EventActions
+import com.joyBox.shefaa.eventsBus.MessageEvent
+import com.joyBox.shefaa.eventsBus.RxBus
 import com.joyBox.shefaa.helpers.IntentHelper
 import com.joyBox.shefaa.listeners.OnRefreshLayoutListener
 import com.joyBox.shefaa.networking.NetworkingHelper
@@ -92,6 +95,14 @@ class MagazinePostCommentsActivity : BaseActivity(), MagazinePostCommentsContrac
 
             }
         })
+
+        RxBus.listen(MessageEvent::class.java).subscribe {
+            when(it.action){
+                EventActions.MagazinePostCommentAddActivity_Tag->{
+                    presenter.loadMagazinePostComments(magazinePost.nid)
+                }
+            }
+        }
 
     }
 

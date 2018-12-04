@@ -99,10 +99,13 @@ class GuardianshipAddActivity : BaseActivity(), GuardianshipContract.View {
 
     @OnClick(R.id.saveBtn)
     fun onSaveButtonClick(view: View) {
-        if (!guardianshipName.text.isNullOrEmpty()) {
-            val userId = UserRepository(baseContext).getClient()!!.user.uid
-            val url: String = NetworkingHelper.GuardianshipAddUrl + userId + "/relationship/" + guardianshipName.tag.toString()
-            presenter.addGuardianship(url)
+        try {
+            if (!guardianshipName.text.isNullOrEmpty()) {
+                val userId = UserRepository(baseContext).getClient()!!.user.uid
+                val url: String = NetworkingHelper.GuardianshipAddUrl + userId + "/relationship/" + guardianshipName.tag.toString()
+                presenter.addGuardianship(url)
+            }
+        } catch (ex: Exception) {
         }
     }
 
@@ -133,6 +136,8 @@ class GuardianshipAddActivity : BaseActivity(), GuardianshipContract.View {
 
     override fun onGuardianshipAddedSuccessfully() {
         Toast.makeText(baseContext, baseContext.resources.getString(R.string.GuardianshipAddedSuccessfully), Toast.LENGTH_LONG).show()
+        RxBus.publish(MessageEvent(EventActions.GuardianshipAddActivity_Tag, 1))
+        finish()
     }
 
     override fun onGuardianshipAddedFail() {

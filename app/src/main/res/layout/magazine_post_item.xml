@@ -27,7 +27,9 @@
             android:id="@+id/magazinePostTitle"
             style="@style/AppTheme.TitleTextAppearance"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:maxLines="3"
+            android:ellipsize="end" />
 
         <android.support.v7.widget.AppCompatTextView
             android:id="@+id/magazinePostTags"

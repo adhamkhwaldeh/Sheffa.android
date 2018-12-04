@@ -6,6 +6,8 @@ import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.Toolbar
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.TextView
 import butterknife.BindView
@@ -165,6 +167,20 @@ class AppointmentListPatientActivity : BaseActivity(), AppointmentListPatientCon
 
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.appointment_list_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when (item?.itemId) {
+            R.id.add -> {
+                IntentHelper.startAppointmentReserveActivity(this, null)
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
     @OnClick(R.id.dateBtn)
     fun onDateButtonClick(view: View) {
         initTimePicker()
@@ -172,7 +188,7 @@ class AppointmentListPatientActivity : BaseActivity(), AppointmentListPatientCon
 
     @OnClick(R.id.reserveAppointmentBtn)
     fun onReserveAppointmentButtonClick(view: View) {
-        IntentHelper.startAppointmentReserveActivity(this)
+        IntentHelper.startAppointmentReserveActivity(this, null)
     }
 
     /*Presenter started*/

@@ -38,7 +38,10 @@ public class DoctorSearchAsync extends AsyncTask<Void, Void, String> {
     protected void onPostExecute(String s) {
         super.onPostExecute(s);
         try {
-            if (s.equalsIgnoreCase(NetworkingHelper.ErrorConnectionResponse)) {
+            if (s.trim().isEmpty()) {
+                onDoctorSearchListener.onDoctorNoData();
+                return;
+            } else if (s.equalsIgnoreCase(NetworkingHelper.ErrorConnectionResponse)) {
                 onDoctorSearchListener.onDoctorInternetConnection();
             } else {
                 List<Doctor> doctorList = JsonParser.getDoctors(s);

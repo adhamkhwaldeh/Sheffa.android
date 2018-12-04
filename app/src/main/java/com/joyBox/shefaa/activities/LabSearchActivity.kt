@@ -11,6 +11,7 @@ import butterknife.BindView
 import butterknife.ButterKnife
 import com.JoyBox.Shefaa.R
 import com.google.gson.Gson
+import com.joyBox.shefaa.adapters.DoctorRecyclerViewAdapter
 import com.joyBox.shefaa.adapters.LabRecyclerViewAdapter
 import com.joyBox.shefaa.di.component.DaggerLabSearchComponent
 import com.joyBox.shefaa.di.module.LabModule
@@ -19,6 +20,7 @@ import com.joyBox.shefaa.di.ui.LabPresenter
 import com.joyBox.shefaa.entities.Lab
 import com.joyBox.shefaa.enums.LayoutStatesEnum
 import com.joyBox.shefaa.filtrations.LabFilter
+import com.joyBox.shefaa.helpers.IntentHelper
 import com.joyBox.shefaa.listeners.OnRefreshLayoutListener
 import com.joyBox.shefaa.networking.NetworkingHelper
 import com.joyBox.shefaa.views.GridDividerDecoration
@@ -67,6 +69,8 @@ class LabSearchActivity : BaseActivity(), LabContract.View {
         presenter.subscribe()
 
         loadData()
+
+        initSearch()
     }
 
     private fun loadData() {
@@ -79,6 +83,10 @@ class LabSearchActivity : BaseActivity(), LabContract.View {
         }
         if (!filter.address.isNullOrBlank()) {
             url += concat + "place=" + filter.query
+            concat = "&"
+        }
+        if (!filter.city.isNullOrBlank()) {
+            url += concat + "city=" + filter.city
             concat = "&"
         }
         presenter.loadLabList(url)
@@ -98,8 +106,12 @@ class LabSearchActivity : BaseActivity(), LabContract.View {
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
-//                if (newText != null)
-//                    presenter.LoadSuggestion(newText)
+                try {
+                    if (newText != null) {
+                        (recyclerView.adapter as LabRecyclerViewAdapter).filter.filter(newText)
+                    }
+                } catch (ex: Exception) {
+                }
                 return false
             }
         })
@@ -135,9 +147,11 @@ class LabSearchActivity : BaseActivity(), LabContract.View {
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when (item?.itemId) {
-//            R.id.gifsearch_menu_help -> {
-//
-//            }
+            R.id.map_search -> {
+                val activityName = LabSearchMapActivity::class.java.canonicalName
+                IntentHelper.startLocationCheckActivity(this, activityName)
+//                Log.v("View Clicked", view.id.toString())
+            }
         }
         return true
     }

@@ -20,6 +20,7 @@ import com.joyBox.shefaa.entities.Doctor
 import com.joyBox.shefaa.entities.DoctorAutoComplete
 import com.joyBox.shefaa.enums.LayoutStatesEnum
 import com.joyBox.shefaa.filtrations.DoctorFilter
+import com.joyBox.shefaa.helpers.IntentHelper
 import com.joyBox.shefaa.listeners.OnRefreshLayoutListener
 import com.joyBox.shefaa.networking.NetworkingHelper
 import com.joyBox.shefaa.views.GridDividerDecoration
@@ -68,24 +69,33 @@ class DoctorSearchActivity : BaseActivity(), DoctorContract.View {
         presenter.subscribe()
 
         loadData()
+
     }
 
     private fun loadData() {
         val filter: DoctorFilter = Gson().fromJson(intent.getStringExtra(DoctorSearchActivity_Tag), DoctorFilter::class.java)
         var url = NetworkingHelper.Doctor_Search_Url
-//        var concat = "?"
-//        if (!filter.query.isNullOrBlank()) {
+        var concat = "?"
+        if (!filter.query.isNullOrBlank()) {
 //            url += concat + "doctor_name=" + filter.query
 //            concat = "&"
-//        }
-//        if (!filter.cost.isNullOrBlank()) {
-//            url += concat + "field_cost_value=" + filter.cost
-//            concat = "&"
-//        }
-//        if (filter.specialistAutoComplete != null) {
-//            url += concat + "field_doctor_specialization_tid=" + filter.specialistAutoComplete!!.tid
-//            concat = "&"
-//        }
+            url += concat + "first_name=" + filter.query
+            concat = "&"
+            url += concat + "last_name=" + filter.query
+            concat = "&"
+        }
+        if (!filter.cost.isNullOrBlank()) {
+            url += concat + "field_cost_value=" + filter.cost
+            concat = "&"
+        }
+        if (filter.city.isNullOrBlank()) {
+            url += concat + "city=" + filter.city
+            concat = "&"
+        }
+        if (filter.specialistAutoComplete != null) {
+            url += concat + "field_doctor_specialization_tid=" + filter.specialistAutoComplete!!.tid
+            concat = "&"
+        }
         presenter.loadDoctorList(url)
     }
 
@@ -103,8 +113,12 @@ class DoctorSearchActivity : BaseActivity(), DoctorContract.View {
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
-//                if (newText != null)
-//                    presenter.LoadSuggestion(newText)
+                try {
+                    if (newText != null) {
+                        (recyclerView.adapter as DoctorRecyclerViewAdapter).filter.filter(newText)
+                    }
+                } catch (ex: Exception) {
+                }
                 return false
             }
         })
@@ -118,6 +132,8 @@ class DoctorSearchActivity : BaseActivity(), DoctorContract.View {
         initToolBar()
         initRecyclerView()
         initDI()
+
+        initSearch()
 
         stateLayout.setOnRefreshLayoutListener(object : OnRefreshLayoutListener {
             override fun onRefresh() {
@@ -140,9 +156,11 @@ class DoctorSearchActivity : BaseActivity(), DoctorContract.View {
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when (item?.itemId) {
-//            R.id.gifsearch_menu_help -> {
-//
-//            }
+            R.id.map_search -> {
+                val activityName = DoctorSearchMapActivity::class.java.canonicalName
+                IntentHelper.startLocationCheckActivity(this, activityName)
+//                Log.v("View Clicked", view.id.toString())
+            }
         }
         return true
     }

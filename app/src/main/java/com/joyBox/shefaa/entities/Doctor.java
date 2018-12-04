@@ -8,10 +8,6 @@ import com.google.gson.annotations.SerializedName;
 import java.util.List;
 import java.util.Vector;
 
-/**
- * Created by windows 8.1 on 2017-04-17.
- */
-
 public class Doctor {
 
     @SerializedName("Doctor_id")

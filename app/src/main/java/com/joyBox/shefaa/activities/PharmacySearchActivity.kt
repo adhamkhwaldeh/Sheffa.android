@@ -11,6 +11,7 @@ import butterknife.BindView
 import butterknife.ButterKnife
 import com.JoyBox.Shefaa.R
 import com.google.gson.Gson
+import com.joyBox.shefaa.adapters.LabRecyclerViewAdapter
 import com.joyBox.shefaa.adapters.PharmacyRecyclerViewAdapter
 import com.joyBox.shefaa.di.component.DaggerPharmacySearchComponent
 import com.joyBox.shefaa.di.module.PharmacyModule
@@ -19,6 +20,7 @@ import com.joyBox.shefaa.di.ui.PharmacyContract
 import com.joyBox.shefaa.entities.Pharmacy
 import com.joyBox.shefaa.enums.LayoutStatesEnum
 import com.joyBox.shefaa.filtrations.PharmacyFilter
+import com.joyBox.shefaa.helpers.IntentHelper
 import com.joyBox.shefaa.listeners.OnRefreshLayoutListener
 import com.joyBox.shefaa.networking.NetworkingHelper
 import com.joyBox.shefaa.views.GridDividerDecoration
@@ -83,6 +85,11 @@ class PharmacySearchActivity : BaseActivity(), PharmacyContract.View {
             url += concat + "med_name=" + filter.medicineName
             concat = "&"
         }
+
+        if (!filter.city.isNullOrBlank()) {
+            url += concat + "city=" + filter.city
+            concat = "&"
+        }
         presenter.loadPharmacyList(url)
     }
 
@@ -100,8 +107,12 @@ class PharmacySearchActivity : BaseActivity(), PharmacyContract.View {
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
-//                if (newText != null)
-//                    presenter.LoadSuggestion(newText)
+                try {
+                    if (newText != null) {
+                        (recyclerView.adapter as PharmacyRecyclerViewAdapter).filter.filter(newText)
+                    }
+                } catch (ex: Exception) {
+                }
                 return false
             }
         })
@@ -114,7 +125,7 @@ class PharmacySearchActivity : BaseActivity(), PharmacyContract.View {
         initToolBar()
         initRecyclerView()
         initDI()
-
+        initSearch()
 
         stateLayout.setOnRefreshLayoutListener(object : OnRefreshLayoutListener {
             override fun onRefresh() {
@@ -138,9 +149,11 @@ class PharmacySearchActivity : BaseActivity(), PharmacyContract.View {
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when (item?.itemId) {
-//            R.id.gifsearch_menu_help -> {
-//
-//            }
+            R.id.map_search -> {
+                val activityName = PharmacySearchMapActivity::class.java.canonicalName
+                IntentHelper.startLocationCheckActivity(this, activityName)
+//                Log.v("View Clicked", view.id.toString())
+            }
         }
         return true
     }

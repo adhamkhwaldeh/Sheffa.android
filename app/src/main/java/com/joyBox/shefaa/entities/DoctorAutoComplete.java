@@ -14,6 +14,16 @@ public class DoctorAutoComplete {
     private String nothing = "";
     private String name = "";
 
+    public DoctorAutoComplete() {
+    }
+
+    public DoctorAutoComplete(String doctor_id, String profile_users_1_pid, String nothing, String name) {
+        Doctor_id = doctor_id;
+        this.profile_users_1_pid = profile_users_1_pid;
+        this.nothing = nothing;
+        this.name = name;
+    }
+
     public String getDoctor_id() {
 //        if (Doctor_id == null)
 //            return "2";

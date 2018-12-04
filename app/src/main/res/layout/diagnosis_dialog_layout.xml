@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="300dp">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <com.joyBox.shefaa.views.Stateslayoutview
+            android:id="@+id/stateLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:NoConnectionLayout="@layout/state_layout_noconnection"
+            app:NoDataLayout="@layout/state_layout_nodata"
+            app:RefreshbtnRes="@+id/retryBtn"
+            app:WaitingLayout="@layout/state_layout_waiting">
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/titleContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardBackgroundColor="@color/colorPrimary"
+                    app:cardCornerRadius="@dimen/md_cardRadius"
+                    app:cardElevation="@dimen/elevation">
+
+                    <android.support.v7.widget.AppCompatTextView
+                        style="@style/AppTheme.TitleTextAppearance"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/md_margin"
+                        android:text="@string/SelectDiagnosis"
+                        android:textColor="@color/white" />
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:background="@color/white"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/titleContainer" />
+
+            </android.support.constraint.ConstraintLayout>
+
+        </com.joyBox.shefaa.views.Stateslayoutview>
+
+    </android.support.constraint.ConstraintLayout>
+
+</RelativeLayout>

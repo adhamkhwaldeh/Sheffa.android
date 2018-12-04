@@ -4,37 +4,60 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
+    <android.support.v7.widget.AppCompatImageView
+        android:id="@+id/isUrgent"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_gravity="end"
+        android:layout_margin="@dimen/md_margin"
+        android:rotation="180"
+        android:src="@drawable/shape_triangle"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
     <LinearLayout
         android:id="@+id/buttonsContainer"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
         android:orientation="vertical"
+        android:paddingTop="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintWidth_percent="0.3">
+
 
         <android.support.v7.widget.AppCompatButton
             android:id="@+id/startAppointment"
             style="@style/AppTheme.NormalButtonStyle"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/xsm_btn_height"
+            android:layout_margin="@dimen/xsm_margin"
+            android:background="@drawable/button_primary_bg"
             android:text="@string/start" />
 
         <android.support.v7.widget.AppCompatButton
             android:id="@+id/endAppointment"
             style="@style/AppTheme.NormalButtonStyle"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/xsm_btn_height"
+            android:layout_margin="@dimen/xsm_margin"
+            android:background="@drawable/button_primary_bg"
             android:text="@string/end" />
 
         <android.support.v7.widget.AppCompatButton
             android:id="@+id/addPrescriptionBtn"
             style="@style/AppTheme.NormalButtonStyle"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/AddPrescription" />
+            android:layout_height="@dimen/xsm_btn_height"
+            android:layout_margin="@dimen/xsm_margin"
+            android:background="@drawable/button_primary_bg"
+            android:text="@string/AddPrescription"
+            android:textSize="10sp" />
 
     </LinearLayout>
+
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="0dp"
@@ -54,15 +77,18 @@
                 style="@style/AppTheme.TextAppearance"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_margin="@dimen/sm_margin"
                 android:layout_weight="2"
-                android:text="@string/Patient_name" />
+                android:text="@string/Patient_name"
+                android:textColor="@color/lightgray" />
 
             <android.support.v7.widget.AppCompatTextView
                 android:id="@+id/patientName"
                 style="@style/AppTheme.TextAppearance"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="2" />
+                android:layout_weight="2"
+                android:gravity="center" />
 
         </LinearLayout>
 
@@ -77,8 +103,10 @@
                 style="@style/AppTheme.TextAppearance"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_margin="@dimen/sm_margin"
                 android:layout_weight="2"
-                android:text="@string/startTime" />
+                android:text="@string/startTime"
+                android:textColor="@color/lightgray" />
 
             <android.support.v7.widget.AppCompatTextView
                 android:id="@+id/startTime"
@@ -100,8 +128,10 @@
                 style="@style/AppTheme.TextAppearance"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_margin="@dimen/sm_margin"
                 android:layout_weight="2"
-                android:text="@string/Patient_name" />
+                android:text="@string/date"
+                android:textColor="@color/lightgray" />
 
             <android.support.v7.widget.AppCompatTextView
                 android:id="@+id/shiftTime"

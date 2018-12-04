@@ -2,6 +2,7 @@ package com.joyBox.shefaa.di.ui
 
 import android.content.Context
 import com.joyBox.shefaa.entities.Prescription
+import com.joyBox.shefaa.entities.models.PrescriptionAddModel
 import com.joyBox.shefaa.networking.listeners.OnPrescriptionListResponseListener
 import com.joyBox.shefaa.networking.tasks.PrescriptionListPatientAsync
 import io.reactivex.disposables.CompositeDisposable
@@ -9,10 +10,10 @@ import io.reactivex.disposables.CompositeDisposable
 /**
  * Created by Adhamkh on 2018-08-20.
  */
-class PrescriptionListPresenter constructor(val context: Context) : PrescriptionListContract.Presenter {
+class PrescriptionPresenter constructor(val context: Context) : PrescriptionContract.Presenter {
     private val subscriptions = CompositeDisposable()
 
-    private lateinit var view: PrescriptionListContract.View
+    private lateinit var view: PrescriptionContract.View
 
     init {
 
@@ -21,8 +22,12 @@ class PrescriptionListPresenter constructor(val context: Context) : Prescription
     override fun subscribe() {
     }
 
-    override fun attachView(view: PrescriptionListContract.View) {
+    override fun attachView(view: PrescriptionContract.View) {
         this.view = view
+    }
+
+    override fun addPrescription(prescriptionAddModel: PrescriptionAddModel) {
+
     }
 
     override fun loadPrescriptions(url: String) {

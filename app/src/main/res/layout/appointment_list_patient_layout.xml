@@ -22,7 +22,8 @@
             android:drawableLeft="@drawable/ic_calender_dark_24dp"
             android:drawablePadding="@dimen/sm_padding"
             android:drawableStart="@drawable/ic_calender_dark_24dp"
-            android:text="@string/AddAppointment" />
+            android:text="@string/AddAppointment"
+            android:visibility="gone" />
 
         <RelativeLayout
             android:id="@+id/datelayout"

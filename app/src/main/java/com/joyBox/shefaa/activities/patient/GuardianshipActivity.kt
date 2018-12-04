@@ -18,6 +18,9 @@ import com.joyBox.shefaa.di.ui.GuardianshipContract
 import com.joyBox.shefaa.di.ui.GuardianshipPresenter
 import com.joyBox.shefaa.entities.GuardianshipEntity
 import com.joyBox.shefaa.enums.LayoutStatesEnum
+import com.joyBox.shefaa.eventsBus.EventActions
+import com.joyBox.shefaa.eventsBus.MessageEvent
+import com.joyBox.shefaa.eventsBus.RxBus
 import com.joyBox.shefaa.helpers.IntentHelper
 import com.joyBox.shefaa.listeners.OnRefreshLayoutListener
 import com.joyBox.shefaa.networking.NetworkingHelper
@@ -78,6 +81,14 @@ class GuardianshipActivity : BaseActivity(), GuardianshipContract.View {
 
             }
         })
+
+        RxBus.listen(MessageEvent::class.java).subscribe {
+            when (it.action) {
+                EventActions.GuardianshipAutoCompleteActivity_Tag -> {
+                    presenter.loadGuardianshipList(NetworkingHelper.MyGuardiansListUrl)
+                }
+            }
+        }
 
     }
 

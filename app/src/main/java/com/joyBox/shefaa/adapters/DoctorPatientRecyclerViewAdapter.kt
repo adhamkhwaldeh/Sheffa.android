@@ -27,7 +27,7 @@ class DoctorPatientRecyclerViewAdapter(val context: Context, val doctorPatientLi
         val poJo = doctorPatientList[position]
         holder.bind(poJo)
         holder.itemView.setOnClickListener {
-            IntentHelper.startMyMedicalProfileActivity(context, User(poJo.requester_id))
+            IntentHelper.startMyMedicalProfileActivity(context, User(poJo.uid))
 //            IntentHelper.startMyPatientProfileActivity(context, poJo.picture)
         }
     }

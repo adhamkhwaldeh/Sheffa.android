@@ -1,27 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
 
-    <android.support.v7.widget.AppCompatTextView
-        android:id="@+id/selfMonitorValue"
-        style="@style/AppTheme.TitleTextAppearance"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <android.support.v7.widget.AppCompatTextView
-        android:id="@+id/selfMonitorUnit"
-        style="@style/AppTheme.TitleTextAppearance"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1" />
+        <android.support.v7.widget.AppCompatTextView
+            style="@style/AppTheme.MediumTextAppearance"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/Value"
+            android:textColor="@color/lightgray" />
 
-    <android.support.v7.widget.AppCompatTextView
-        android:id="@+id/selfMonitorTime"
-        style="@style/AppTheme.TitleTextAppearance"
-        android:layout_width="0dp"
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/selfMonitorValue"
+            style="@style/AppTheme.MediumTextAppearance"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <android.support.v7.widget.AppCompatTextView
+            style="@style/AppTheme.MediumTextAppearance"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_weight="1"
+            android:gravity="start"
+            android:text="@string/Unit"
+            android:textColor="@color/lightgray" />
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/selfMonitorUnit"
+            style="@style/AppTheme.MediumTextAppearance"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1" />
+        android:orientation="horizontal">
+
+        <android.support.v7.widget.AppCompatTextView
+            style="@style/AppTheme.MediumTextAppearance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Time"
+            android:textColor="@color/lightgray" />
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/selfMonitorTime"
+            style="@style/AppTheme.MediumTextAppearance"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
 
 </LinearLayout>

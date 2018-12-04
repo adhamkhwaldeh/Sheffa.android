@@ -11,10 +11,6 @@ import com.joyBox.shefaa.networking.listeners.OnActiveMaterialAutoCompleteListen
 import java.util.Arrays;
 import java.util.List;
 
-/**
- * Created by Adhamkh on 2018-10-20.
- */
-
 public class ActiveMaterialAutoCompleteAsync extends AsyncTask<Void, Void, String> {
     public OnActiveMaterialAutoCompleteListener onActiveMaterialAutoCompleteListener;
 

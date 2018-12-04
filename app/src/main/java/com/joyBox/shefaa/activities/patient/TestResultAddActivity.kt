@@ -1,4 +1,4 @@
-package com.joyBox.shefaa.activities
+package com.joyBox.shefaa.activities.patient
 
 import android.content.pm.PackageManager
 import android.os.Bundle
@@ -14,6 +14,7 @@ import com.github.angads25.filepicker.controller.DialogSelectionListener
 import com.github.angads25.filepicker.model.DialogConfigs
 import com.github.angads25.filepicker.model.DialogProperties
 import com.github.angads25.filepicker.view.FilePickerDialog
+import com.joyBox.shefaa.activities.BaseActivity
 import com.joyBox.shefaa.di.component.DaggerTestResultAddComponent
 import com.joyBox.shefaa.di.module.AttachmentModule
 import com.joyBox.shefaa.di.module.TestResultsModule

@@ -1,6 +1,7 @@
 package com.joyBox.shefaa.networking.tasks;
 
 import android.os.AsyncTask;
+import android.util.Log;
 
 import com.google.gson.Gson;
 import com.joyBox.shefaa.entities.SpecialistAutoComplete;
@@ -52,7 +53,7 @@ public class SpecialiestAutoCompleteAsync extends AsyncTask<Void, Void, String> 
                 return;
             }
         } catch (Exception ex) {
-
+            Log.v("","");
         }
         onSpecialistAutoCompleteListener.onSpecialistAutoInternetConnection();
     }

@@ -15,10 +15,15 @@ import com.joyBox.shefaa.di.component.DaggerDoctorGeneralSearchComponent
 import com.joyBox.shefaa.di.module.DoctorModule
 import com.joyBox.shefaa.di.ui.DoctorContract
 import com.joyBox.shefaa.di.ui.DoctorPresenter
+import com.joyBox.shefaa.dialogs.CitiesDialog
 import com.joyBox.shefaa.entities.Doctor
 import com.joyBox.shefaa.entities.DoctorAutoComplete
 import com.joyBox.shefaa.entities.SpecialistAutoComplete
+import com.joyBox.shefaa.enums.CityEnum
 import com.joyBox.shefaa.enums.LayoutStatesEnum
+import com.joyBox.shefaa.eventsBus.EventActions
+import com.joyBox.shefaa.eventsBus.MessageEvent
+import com.joyBox.shefaa.eventsBus.RxBus
 import com.joyBox.shefaa.helpers.IntentHelper
 import com.joyBox.shefaa.listeners.OnRefreshLayoutListener
 import com.joyBox.shefaa.networking.NetworkingHelper
@@ -81,6 +86,14 @@ class DoctorGeneralSearchFragment : BaseGeneralSearchFragment(), DoctorContract.
             }
         })
 
+        RxBus.listen(MessageEvent::class.java).subscribe {
+            when (it.action) {
+                EventActions.CityDoctor_Tag -> {
+                    doctorGeneralSearchViewHolder.cityTextView.text = it.message as String
+                }
+            }
+        }
+
     }
 
     @OnClick(R.id.searchBtn)
@@ -88,6 +101,13 @@ class DoctorGeneralSearchFragment : BaseGeneralSearchFragment(), DoctorContract.
         IntentHelper.startDoctorSearchActivity(activity!!, doctorGeneralSearchViewHolder.getDoctorSearchModel())
         Log.v("", "")
     }
+
+    @OnClick(R.id.cityTextView)
+    fun onCityTextViewClick(view: View) {
+        val cityDialog = CitiesDialog.newInstance(CityEnum.DOCTOR)
+        cityDialog.show(childFragmentManager, CitiesDialog.CitiesDialog_Tag)
+    }
+
 
     /*Presenter started*/
     override fun showProgress(show: Boolean) {
@@ -128,7 +148,14 @@ class DoctorGeneralSearchFragment : BaseGeneralSearchFragment(), DoctorContract.
     override fun onSpecialistAutoCompleteLoadedSuccessfully(specialistAutoCompleteList: MutableList<SpecialistAutoComplete>) {
 //        val specList: MutableList<String> = specialistAutoCompleteList
 //                .map { it -> it.name }.toMutableList()
-        specializationSpinner.adapter = SpecializationSpinnerAdapter(context!!, specialistAutoCompleteList)
+
+        val specList: MutableList<SpecialistAutoComplete> = mutableListOf()
+        val spec = SpecialistAutoComplete()
+        spec.name = resources.getString(R.string.All)
+        specList.add(spec)
+        specList.addAll(specialistAutoCompleteList)
+
+        specializationSpinner.adapter = SpecializationSpinnerAdapter(context!!, specList)
         Log.v("", "")
     }
 

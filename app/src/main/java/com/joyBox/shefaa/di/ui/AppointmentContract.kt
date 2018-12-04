@@ -25,6 +25,8 @@ class AppointmentContract {
         fun addAppointment(url: String)
 
         fun loadAutoCompleteAppointments(title: String)
+
+        fun addAppointmentInvoice(appointmentInvoiceModel: AppointmentInvoiceModel)
     }
 
     interface View : BaseContract.View {
@@ -48,6 +50,7 @@ class AppointmentContract {
 
         fun onAppointmentAutoCompletLoaded(appointmentAutoCompleteList: MutableList<AppointmentAutoComplete>) {}
 
-
+        fun onAppointmentInvoiceAddedSuccessfully() {}
+        fun onAddAppointmentInvoiceFailed() {}
     }
 }

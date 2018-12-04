@@ -4,13 +4,10 @@ import android.content.Context
 import com.joyBox.shefaa.entities.DiagnosiseAutoComplete
 import com.joyBox.shefaa.networking.listeners.OnDiagnosiseAutoCompleteListener
 import com.joyBox.shefaa.networking.tasks.DiagnosiseAutoCompleteAsync
-import io.reactivex.disposables.CompositeDisposable
 
-/**
- * Created by Adhamkh on 2018-10-24.
- */
+
 class DiagnosisePresenter constructor(val context: Context) : DiagnosiseContract.Presenter {
-    private val subscriptions = CompositeDisposable()
+
     private lateinit var view: DiagnosiseContract.View
 
     init {

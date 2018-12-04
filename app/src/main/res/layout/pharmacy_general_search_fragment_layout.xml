@@ -74,6 +74,33 @@
 
         </LinearLayout>
 
+        <LinearLayout
+            android:id="@+id/cityContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/costContainer">
+
+
+            <android.support.v7.widget.AppCompatTextView
+                style="@style/AppTheme.TextWhiteAppearance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/CityDot" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/cityTextView"
+                style="@style/AppTheme.TextWhiteAppearance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/md_margin"
+                android:drawableEnd="@drawable/ic_location_city_light_24dp"
+                android:drawableRight="@drawable/ic_location_city_light_24dp"
+                android:gravity="center_vertical" />
+
+        </LinearLayout>
+
         <android.support.constraint.Guideline
             android:id="@+id/guideLine"
             android:layout_width="match_parent"
@@ -91,7 +118,7 @@
                 android:id="@+id/searchBtn"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:background="@drawable/button_primary_bg"
+                android:background="@drawable/button_primary_bg2"
                 android:text="@string/SearchForPharmacy"
                 android:textAllCaps="false"
                 android:textColor="@color/white"

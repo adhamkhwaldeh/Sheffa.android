@@ -9,7 +9,7 @@ import android.widget.TextView
 import com.JoyBox.Shefaa.R
 import com.joyBox.shefaa.entities.DoctorPatient
 
-class DoctorPatientSpinnerAdapter (val context: Context, val doctorPatientList: MutableList<DoctorPatient>) : BaseAdapter() {
+class DoctorPatientSpinnerAdapter(val context: Context, val doctorPatientList: MutableList<DoctorPatient>) : BaseAdapter() {
 
     val mInflater: LayoutInflater = LayoutInflater.from(context)
 
@@ -22,7 +22,7 @@ class DoctorPatientSpinnerAdapter (val context: Context, val doctorPatientList: 
         }
 
         val specializationName: TextView = view.findViewById(R.id.specializationName)
-        specializationName.text = doctorPatientList[position].picture
+        specializationName.text = doctorPatientList[position].requester_id
         // setting adapter item height programatically.
 
 //        val params = view.layoutParams

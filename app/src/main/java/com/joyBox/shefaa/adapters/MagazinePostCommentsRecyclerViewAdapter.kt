@@ -8,9 +8,6 @@ import com.JoyBox.Shefaa.R
 import com.joyBox.shefaa.entities.MagazinePostComment
 import com.joyBox.shefaa.viewHolders.MagazinePostCommentsViewHolder
 
-/**
- * Created by Adhamkh on 2018-10-05.
- */
 class MagazinePostCommentsRecyclerViewAdapter(val context: Context,
                                               private val magazinePostCommentList: List<MagazinePostComment>)
     : RecyclerView.Adapter<MagazinePostCommentsViewHolder>() {

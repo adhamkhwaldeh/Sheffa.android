@@ -23,9 +23,7 @@
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/colorGradientEnd"
-
-            >
+            android:background="@color/colorGradientEnd">
 
             <android.support.v7.widget.AppCompatEditText
                 android:id="@+id/guardianshipName"
@@ -33,6 +31,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/md_margin"
                 android:background="@drawable/edittextdrawble"
+                android:text="@string/findGuardianShip"
                 app:layout_constraintBottom_toTopOf="@+id/saveBtn"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"

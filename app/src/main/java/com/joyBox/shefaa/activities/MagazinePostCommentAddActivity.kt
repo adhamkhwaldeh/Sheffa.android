@@ -18,6 +18,9 @@ import com.joyBox.shefaa.di.ui.MagazinePostCommentsPresenter
 import com.joyBox.shefaa.entities.MagazinePost
 import com.joyBox.shefaa.entities.models.MagazinePostCommentAddModel
 import com.joyBox.shefaa.enums.LayoutStatesEnum
+import com.joyBox.shefaa.eventsBus.EventActions
+import com.joyBox.shefaa.eventsBus.MessageEvent
+import com.joyBox.shefaa.eventsBus.RxBus
 import com.joyBox.shefaa.repositories.UserRepository
 import com.joyBox.shefaa.views.Stateslayoutview
 import javax.inject.Inject
@@ -107,6 +110,7 @@ class MagazinePostCommentAddActivity : BaseActivity(), MagazinePostCommentsContr
     override fun onAddMagazinePostCommentSuccessfully() {
         Toast.makeText(baseContext, R.string.CommentAddedCorrectly, Toast.LENGTH_LONG).show()
         Handler(mainLooper).postDelayed({
+            RxBus.publish(MessageEvent(EventActions.MagazinePostCommentAddActivity_Tag,1))
             finish()
         }, 500)
     }

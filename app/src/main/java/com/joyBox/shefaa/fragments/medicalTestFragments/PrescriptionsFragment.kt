@@ -12,9 +12,9 @@ import butterknife.ButterKnife
 import com.JoyBox.Shefaa.R
 import com.joyBox.shefaa.adapters.PrescriptionAdapter
 import com.joyBox.shefaa.di.component.DaggerPrescriptionListComponent
-import com.joyBox.shefaa.di.module.PresciptionListModule
-import com.joyBox.shefaa.di.ui.PrescriptionListContract
-import com.joyBox.shefaa.di.ui.PrescriptionListPresenter
+import com.joyBox.shefaa.di.module.PrescriptionModule
+import com.joyBox.shefaa.di.ui.PrescriptionContract
+import com.joyBox.shefaa.di.ui.PrescriptionPresenter
 import com.joyBox.shefaa.entities.Prescription
 import com.joyBox.shefaa.entities.User
 import com.joyBox.shefaa.enums.LayoutStatesEnum
@@ -25,7 +25,7 @@ import com.joyBox.shefaa.views.GridDividerDecoration
 import com.joyBox.shefaa.views.Stateslayoutview
 import javax.inject.Inject
 
-class PrescriptionsFragment : BaseMedicalTestFragment(), PrescriptionListContract.View {
+class PrescriptionsFragment : BaseMedicalTestFragment(), PrescriptionContract.View {
 
     companion object {
         fun getNewInstance(user: User): PrescriptionsFragment {
@@ -37,7 +37,7 @@ class PrescriptionsFragment : BaseMedicalTestFragment(), PrescriptionListContrac
     }
 
     @Inject
-    lateinit var presenter: PrescriptionListPresenter
+    lateinit var presenter: PrescriptionPresenter
 
     @BindView(R.id.recyclerView)
     lateinit var recyclerView: RecyclerView
@@ -47,7 +47,7 @@ class PrescriptionsFragment : BaseMedicalTestFragment(), PrescriptionListContrac
 
     private fun initDI() {
         val component = DaggerPrescriptionListComponent.builder()
-                .presciptionListModule(PresciptionListModule(activity!!))
+                .prescriptionModule(PrescriptionModule(activity!!))
                 .build()
         component.inject(this)
         presenter.attachView(this)

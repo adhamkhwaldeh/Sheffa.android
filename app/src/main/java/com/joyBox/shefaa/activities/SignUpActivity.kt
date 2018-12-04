@@ -83,10 +83,14 @@ class SignUpActivity : BaseActivity(), RegistrationContract.View {
 
     override fun signUpFail() {
         super.signUpFail()
+        Toast.makeText(baseContext, resources.getString(R.string.UnexpectedError), Toast.LENGTH_LONG).show();
     }
 
     override fun signUpSuccessfully() {
         super.signUpSuccessfully()
+        Toast.makeText(baseContext, resources.getString(R.string.SignUpSuccessfully), Toast.LENGTH_LONG).show();
+        IntentHelper.startMainActivity(this)
+        IntentHelper.startMainDashBoardActivity(this)
 
     }
     /*presenter ended*/

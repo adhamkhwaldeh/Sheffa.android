@@ -43,4 +43,12 @@
         android:id="@+id/Logout"
         android:title="@string/drawer_item_my_LogOut" />
 
+    <item
+        android:id="@+id/sperator1"
+        android:title="" />
+
+    <item
+        android:id="@+id/sperator2"
+        android:title="" />
+
 </menu>

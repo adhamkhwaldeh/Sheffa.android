@@ -178,7 +178,7 @@
     <string name="Height">الطول</string>
     <string name="Smoke">مدخن؟</string>
     <string name="Allergies">الحساسية</string>
-    <string name="Diagnosis_of_Disease_headache">تشخيص وجع الرأس</string>
+    <string name="Diagnosis_of_Disease_headache">تشخيص الألم </string>
     <string name="Emergency_contact">التواصل</string>
     <string name="Pregnant">حامل</string>
     <string name="Weight">الوزن</string>
@@ -332,5 +332,24 @@
     <string name="Type">Type</string>
     <string name="receiptAddSuccessfully">Receipt add successfully</string>
     <string name="addReceiptFailed">Add receipt failed</string>
+    <string name="InvoiceAddedSuccessfully">Invoice added successfully</string>
+    <string name="SelectDate">Select date</string>
+    <string name="SelectTime">Select time</string>
+    <string name="Roles">Roles</string>
+    <string name="SignUpSuccessfully">Sign up successfully</string>
+    <string name="RequiredTest">Required test</string>
+    <string name="RequiredMedicines">Required medicines</string>
+    <string name="activeIngredient">Active ingredient</string>
+    <string name="requieredMeasurements">Requiered measurements</string>
+    <string name="SelectCity">Select city</string>
+    <string name="CityDot">City :</string>
+    <string name="Add">Add</string>
+    <string name="findGuardianShip">Find GuardianShip</string>
+    <string name="SelectDiagnosis">Select diagnosis</string>
+    <string name="SelectTest">Select test</string>
+    <string name="alterMedicine">Alter medicine</string>
+    <string name="frequent">frequent</string>
+    <string name="During">During</string>
+    <string name="For">For</string>
 
 </resources>

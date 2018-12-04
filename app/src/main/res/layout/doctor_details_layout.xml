@@ -53,6 +53,7 @@
                 android:minHeight="?attr/actionBarSize"
                 android:title="@string/app_name"
                 app:layout_collapseMode="pin"
+                app:navigationIcon="@drawable/ic_action_navigation_arrow_back_inverted"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
                 app:title="@string/app_name"
                 app:titleMarginTop="0dp" />
@@ -115,6 +116,26 @@
                 android:layout_marginBottom="@dimen/sm_margin"
                 android:layout_marginTop="@dimen/sm_margin"
                 android:background="@color/lightgray" />
+
+            <!--<TextView-->
+                <!--style="@style/AppTheme.TextAppearance"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="@string/Phone" />-->
+
+            <!--<TextView-->
+                <!--android:id="@+id/phoneNumber"-->
+                <!--style="@style/AppTheme.TextGrayAppearance"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content" />-->
+
+            <!--<View-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="@dimen/sperator"-->
+                <!--android:layout_marginBottom="@dimen/sm_margin"-->
+                <!--android:layout_marginTop="@dimen/sm_margin"-->
+                <!--android:background="@color/lightgray" />-->
+
 
             <TextView
                 style="@style/AppTheme.TextAppearance"
@@ -198,12 +219,12 @@
                 android:layout_height="wrap_content"
                 android:text="@string/Map" />
 
-            <!--<fragment xmlns:android="http://schemas.android.com/apk/res/android"-->
-            <!--android:id="@+id/map"-->
-            <!--android:name="com.google.android.gms.maps.SupportMapFragment"-->
-            <!--class="com.google.android.gms.maps.SupportMapFragment"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="300dp" />-->
+            <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/map"
+                android:name="com.google.android.gms.maps.SupportMapFragment"
+                class="com.google.android.gms.maps.SupportMapFragment"
+                android:layout_width="match_parent"
+                android:layout_height="300dp" />
 
             <View
                 android:layout_width="match_parent"
@@ -212,6 +233,15 @@
                 android:layout_marginTop="@dimen/sm_margin"
                 android:background="@color/lightgray" />
 
+
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/addAppointmentBtn"
+                style="@style/AppTheme.NormalButtonStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/md_margin"
+                android:background="@drawable/button_primary_bg"
+                android:text="@string/AddAppointment" />
 
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>

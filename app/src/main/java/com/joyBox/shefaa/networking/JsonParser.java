@@ -170,6 +170,25 @@ public class JsonParser {
                     entity.setFor_how_long2(For_how_long2Element.getAsString());
                 }
 
+                JsonElement Active_ingredient_nameElement = elmnt.getAsJsonObject().get("Active ingredient name");
+                if (Active_ingredient_nameElement.isJsonArray()) {
+                    entity.setActive_ingredient_name(Arrays.
+                            asList(new Gson().fromJson(Active_ingredient_nameElement, String[].class)));
+                }else{
+                    entity.setActive_ingredient_name(new Vector<String>());
+                    entity.Active_ingredient_name.add(Active_ingredient_nameElement.getAsString());
+                }
+
+                JsonElement Alternative_medicine_nameElement = elmnt.getAsJsonObject().get("Alternative medicine");
+                if (Alternative_medicine_nameElement.isJsonArray()) {
+                    entity.setAlternative_medicine(Arrays.
+                            asList(new Gson().fromJson(Alternative_medicine_nameElement, String[].class)));
+                }else{
+                    entity.setAlternative_medicine(new Vector<String>());
+                    entity.Alternative_medicine.add(Alternative_medicine_nameElement.getAsString());
+                }
+
+
                 entityList.add(entity);
             }
             return entityList;

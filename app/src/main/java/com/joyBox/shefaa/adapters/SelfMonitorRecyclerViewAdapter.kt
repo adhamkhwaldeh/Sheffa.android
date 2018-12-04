@@ -11,9 +11,6 @@ import com.joyBox.shefaa.helpers.IntentHelper
 import com.joyBox.shefaa.viewHolders.DoctorViewHolder
 import com.joyBox.shefaa.viewHolders.SelfMonitorViewHolder
 
-/**
- * Created by Adhamkh on 2018-10-05.
- */
 class SelfMonitorRecyclerViewAdapter(val context: Context, val selfMonitorList: List<SelfMonitorEntity>) :
         RecyclerView.Adapter<SelfMonitorViewHolder>() {
 

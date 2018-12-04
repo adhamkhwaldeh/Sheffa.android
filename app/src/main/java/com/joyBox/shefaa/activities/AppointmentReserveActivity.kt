@@ -4,19 +4,19 @@ import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.os.Bundle
 import android.support.v7.widget.Toolbar
-import android.view.KeyEvent
-import android.view.MotionEvent
-import android.view.View
+import android.view.*
 import android.widget.CompoundButton
 import android.widget.Toast
 import butterknife.*
 import com.JoyBox.Shefaa.R
+import com.google.gson.Gson
 import com.joyBox.shefaa.di.component.DaggerAppointmentReserveComponent
 import com.joyBox.shefaa.di.module.AppointmentModule
 import com.joyBox.shefaa.di.ui.AppointmentContract
 import com.joyBox.shefaa.di.ui.AppointmentPresenter
 import com.joyBox.shefaa.dialogs.DoctorAvailableTimeDialog
 import com.joyBox.shefaa.dialogs.ProgressDialog
+import com.joyBox.shefaa.entities.Doctor
 import com.joyBox.shefaa.entities.DoctorAutoComplete
 import com.joyBox.shefaa.eventsBus.EventActions
 import com.joyBox.shefaa.eventsBus.MessageEvent
@@ -30,6 +30,10 @@ import javax.inject.Inject
 
 class AppointmentReserveActivity : BaseActivity(), AppointmentContract.View {
 
+    companion object {
+        const val AppointmentReserveActivity_Tag = "AppointmentReserveActivity_Tag"
+    }
+
     @BindView(R.id.toolbar)
     lateinit var toolbar: Toolbar
 
@@ -39,6 +43,8 @@ class AppointmentReserveActivity : BaseActivity(), AppointmentContract.View {
     lateinit var presenter: AppointmentPresenter
 
     var progressDialog: ProgressDialog = ProgressDialog()
+
+    var doctorAutoComplete: DoctorAutoComplete? = null
 
     private fun initDI() {
         val component = DaggerAppointmentReserveComponent.builder()
@@ -95,6 +101,15 @@ class AppointmentReserveActivity : BaseActivity(), AppointmentContract.View {
         setContentView(R.layout.appointment_reserve_layout)
         ButterKnife.bind(this)
 
+        val json: String? = intent.getStringExtra(AppointmentReserveActivity_Tag)
+        if (!json.isNullOrBlank()) {
+            val doctor: Doctor = Gson().fromJson(json, Doctor::class.java)
+            doctorAutoComplete = DoctorAutoComplete(doctor.doctor_id, doctor.doctor_id, doctor.name, doctor.name)
+            appointmentReserveViewHolder.doctorAutoComplete = doctorAutoComplete
+            appointmentReserveViewHolder.doctorAutoCompleteEditText.setText(doctorAutoComplete!!.nothing)
+        }
+
+
         appointmentReserveViewHolder = AppointmentReserveViewHolder(findViewById(android.R.id.content))
 
         initToolBar()
@@ -117,6 +132,8 @@ class AppointmentReserveActivity : BaseActivity(), AppointmentContract.View {
         }
 
     }
+
+
 
     @OnTouch(R.id.doctorAutoCompleteEditText)
     fun onDoctorAutoCompleteEditTextClick(view: View, motionEvent: MotionEvent): Boolean {

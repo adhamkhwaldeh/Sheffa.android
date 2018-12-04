@@ -1,9 +1,5 @@
 package com.joyBox.shefaa.entities;
 
-/**
- * Created by Adhamkh on 2018-10-20.
- */
-
 public class MeasurementType {
     private String tid = "";
     private String vid = "";

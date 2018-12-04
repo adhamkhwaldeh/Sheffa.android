@@ -6,13 +6,14 @@
     android:background="@color/colorPrimary">
 
     <android.support.v7.widget.AppCompatImageView
+        android:id="@+id/userProfileImage"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_margin="@dimen/md_margin"
         android:contentDescription="@string/contentDescription"
         android:padding="@dimen/md_padding"
         android:scaleType="centerInside"
-        android:src="@drawable/ic_logo_web"
+        android:src="@drawable/userprofile"
         app:layout_constraintBottom_toTopOf="@+id/userName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -25,6 +26,7 @@
         style="@style/AppTheme.TextAppearance"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="@dimen/md_margin"
         android:gravity="center"
         android:textAlignment="gravity"
         android:textColor="@color/white"
@@ -35,6 +37,7 @@
         style="@style/AppTheme.TextAppearance"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="@dimen/md_margin"
         android:gravity="center"
         android:textAlignment="gravity"
         android:textColor="@color/white"

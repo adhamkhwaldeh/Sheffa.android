@@ -294,6 +294,9 @@ class DoctorProfileViewHolder constructor(view: View) : RecyclerView.ViewHolder(
         if (sunDay != null) {
             url += "&day0start=" + ClinicHourHelper.getTime(sunDay.starthours) +
                     "&day0end=" + ClinicHourHelper.getTime(sunDay.endhours)
+        } else {
+//            url += "&day0start=" +
+//                    "&day0end="
         }
 
         val monDay: DoctorOpenHour? = doctorProfile.field_open_hours
@@ -302,6 +305,9 @@ class DoctorProfileViewHolder constructor(view: View) : RecyclerView.ViewHolder(
         if (monDay != null) {
             url += "&day1start=" + ClinicHourHelper.getTime(monDay.starthours) +
                     "&day1end=" + ClinicHourHelper.getTime(monDay.endhours)
+        } else {
+//            url += "&day1start=" +
+//                    "&day1end="
         }
 
         val tueDay: DoctorOpenHour? = doctorProfile.field_open_hours
@@ -310,6 +316,9 @@ class DoctorProfileViewHolder constructor(view: View) : RecyclerView.ViewHolder(
         if (tueDay != null) {
             url += "&day2start=" + ClinicHourHelper.getTime(tueDay.starthours) +
                     "&day2end=" + ClinicHourHelper.getTime(tueDay.endhours)
+        } else {
+//            url += "&day2start=" +
+//                    "&day2end="
         }
 
 
@@ -319,6 +328,9 @@ class DoctorProfileViewHolder constructor(view: View) : RecyclerView.ViewHolder(
         if (wenDay != null) {
             url += "&day3start=" + ClinicHourHelper.getTime(wenDay.starthours) +
                     "&day3end=" + ClinicHourHelper.getTime(wenDay.endhours)
+        } else {
+//            url += "&day3start=" +
+//                    "&day3end="
         }
 
         val thurDay: DoctorOpenHour? = doctorProfile.field_open_hours
@@ -327,6 +339,9 @@ class DoctorProfileViewHolder constructor(view: View) : RecyclerView.ViewHolder(
         if (thurDay != null) {
             url += "&day4start=" + ClinicHourHelper.getTime(thurDay.starthours) +
                     "&day4end=" + ClinicHourHelper.getTime(thurDay.endhours)
+        } else {
+//            url += "&day4start=" +
+//                    "&day4end="
         }
 
         val friDay: DoctorOpenHour? = doctorProfile.field_open_hours
@@ -334,6 +349,9 @@ class DoctorProfileViewHolder constructor(view: View) : RecyclerView.ViewHolder(
         if (friDay != null) {
             url += "&day5start=" + ClinicHourHelper.getTime(friDay.starthours) +
                     "&day5end=" + ClinicHourHelper.getTime(friDay.endhours)
+        } else {
+//            url += "&day5start=" +
+//                    "&day5end="
         }
 
         val satDay: DoctorOpenHour? = doctorProfile.field_open_hours
@@ -341,6 +359,9 @@ class DoctorProfileViewHolder constructor(view: View) : RecyclerView.ViewHolder(
         if (satDay != null) {
             url += "&day6start=" + ClinicHourHelper.getTime(satDay.starthours) +
                     "&day6end=" + ClinicHourHelper.getTime(satDay.endhours)
+        } else {
+//            url += "&day6start=" +
+//                    "&day6end="
         }
 
         return url

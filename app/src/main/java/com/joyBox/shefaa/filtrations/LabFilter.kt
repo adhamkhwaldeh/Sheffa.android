@@ -8,8 +8,9 @@ class LabFilter : BaseFilter {
 
     constructor() : super()
 
-    constructor(query: String, address: String) {
+    constructor(query: String, city: String?, address: String) {
         this.query = query
+        this.city = city
         this.address = address
     }
 

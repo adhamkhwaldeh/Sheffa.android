@@ -9,10 +9,8 @@ import android.view.KeyEvent
 import android.view.MotionEvent
 import android.view.View
 import android.widget.Toast
-import butterknife.BindView
-import butterknife.ButterKnife
-import butterknife.OnClick
-import butterknife.OnTouch
+import butterknife.*
+import butterknife.Optional
 import com.JoyBox.Shefaa.R
 import com.joyBox.shefaa.activities.BaseActivity
 import com.joyBox.shefaa.adapters.MeasurementTypeSpinnerAdapter
@@ -25,6 +23,10 @@ import com.joyBox.shefaa.di.ui.SelfMonitorContact
 import com.joyBox.shefaa.di.ui.SelfMonitorPresenter
 import com.joyBox.shefaa.entities.MeasurementType
 import com.joyBox.shefaa.enums.LayoutStatesEnum
+import com.joyBox.shefaa.eventsBus.EventActions
+import com.joyBox.shefaa.eventsBus.MessageEvent
+import com.joyBox.shefaa.eventsBus.RxBus
+import com.joyBox.shefaa.helpers.mainHelper
 import com.joyBox.shefaa.listeners.OnRefreshLayoutListener
 import com.joyBox.shefaa.viewModels.SelfMonitorAddViewHolder
 import com.joyBox.shefaa.views.Stateslayoutview
@@ -135,6 +137,7 @@ class SelfMonitorAddActivity : BaseActivity(), SelfMonitorContact.View, Measurem
     fun onMeasureDateTouch(view: View, motionEvent: MotionEvent): Boolean {
         if (motionEvent.action != KeyEvent.ACTION_DOWN)
             return false
+        mainHelper.hideKeyboard(view)
         initDatePicker()
         return false
     }
@@ -143,6 +146,7 @@ class SelfMonitorAddActivity : BaseActivity(), SelfMonitorContact.View, Measurem
     fun onMeasureTimeTouch(view: View, motionEvent: MotionEvent): Boolean {
         if (motionEvent.action != KeyEvent.ACTION_DOWN)
             return false
+        mainHelper.hideKeyboard(view)
         initTimePicker()
         return false
     }
@@ -154,6 +158,13 @@ class SelfMonitorAddActivity : BaseActivity(), SelfMonitorContact.View, Measurem
         }
     }
 
+
+    @Optional
+    @OnFocusChange(R.id.measureDate, R.id.measureTime)
+    fun onFocusChanged(view: View, isFocused: Boolean) {
+        if (isFocused)
+            mainHelper.hideKeyboard(view)
+    }
 
     /*Self monitor presenter started*/
     override fun showProgress(show: Boolean) {
@@ -182,6 +193,8 @@ class SelfMonitorAddActivity : BaseActivity(), SelfMonitorContact.View, Measurem
 
     override fun onSelfMonitorAddedSuccessfully() {
         Toast.makeText(baseContext, R.string.SelfMonitorAddedSuccessfully, Toast.LENGTH_LONG).show()
+        RxBus.publish(MessageEvent(EventActions.SelfMonitorAddActivity_Tag, 1))
+        finish()
         Log.v("", "")
     }
 

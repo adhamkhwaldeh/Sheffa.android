@@ -342,16 +342,6 @@
                             app:layout_constraintWidth_percent="0.2" />
 
 
-                        <android.support.v7.widget.AppCompatTextView
-                            android:id="@+id/costTitle"
-                            style="@style/AppTheme.TextAppearance"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:maxLines="1"
-                            android:text="@string/Cost"
-                            app:layout_constraintLeft_toRightOf="@+id/patientTitle"
-                            app:layout_constraintStart_toEndOf="@+id/patientTitle"
-                            app:layout_constraintWidth_percent="0.2" />
 
                         <android.support.v7.widget.AppCompatTextView
                             android:id="@+id/noteTitle"
@@ -360,8 +350,8 @@
                             android:layout_height="wrap_content"
                             android:maxLines="1"
                             android:text="@string/measureNotes"
-                            app:layout_constraintLeft_toRightOf="@+id/costTitle"
-                            app:layout_constraintStart_toEndOf="@+id/costTitle"
+                            app:layout_constraintLeft_toRightOf="@+id/dateTitle"
+                            app:layout_constraintStart_toEndOf="@+id/dateTitle"
                             app:layout_constraintWidth_percent="0.2" />
 
 

@@ -6,9 +6,6 @@ import com.evernote.android.job.Job
 import com.evernote.android.job.JobCreator
 import com.evernote.android.job.JobManager
 
-/**
- * Created by Adhamkh on 2018-05-30.
- */
 class MainJobCreator : JobCreator {
 
     companion object {

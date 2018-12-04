@@ -20,6 +20,9 @@ import com.joyBox.shefaa.di.ui.SelfMonitorContact
 import com.joyBox.shefaa.di.ui.SelfMonitorPresenter
 import com.joyBox.shefaa.entities.SelfMonitorEntity
 import com.joyBox.shefaa.enums.LayoutStatesEnum
+import com.joyBox.shefaa.eventsBus.EventActions
+import com.joyBox.shefaa.eventsBus.MessageEvent
+import com.joyBox.shefaa.eventsBus.RxBus
 import com.joyBox.shefaa.helpers.IntentHelper
 import com.joyBox.shefaa.listeners.OnRefreshLayoutListener
 import com.joyBox.shefaa.networking.NetworkingHelper
@@ -29,7 +32,6 @@ import javax.inject.Inject
 
 
 class SelfMonitorActivity : BaseActivity(), SelfMonitorContact.View {
-
 
     @BindView(R.id.toolbar)
     lateinit var toolbar: Toolbar
@@ -87,6 +89,14 @@ class SelfMonitorActivity : BaseActivity(), SelfMonitorContact.View {
 
             }
         })
+
+        RxBus.listen(MessageEvent::class.java).subscribe {
+            when (it.action) {
+                EventActions.SelfMonitorAddActivity_Tag -> {
+                    presenter.loadSelfMonitorList(NetworkingHelper.SelfMonitorListUrl)
+                }
+            }
+        }
 
     }
 

@@ -107,6 +107,7 @@ class SignInActivity : BaseActivity(), RegistrationContract.View, NotificationCo
 
         Toast.makeText(baseContext, resources.getString(R.string.Welcome), Toast.LENGTH_LONG).show()
         IntentHelper.startMainActivity(this)
+        IntentHelper.startMainDashBoardActivity(this)
         finish()
     }
 

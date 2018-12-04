@@ -7,6 +7,11 @@ import android.view.ViewGroup
 import butterknife.ButterKnife
 import butterknife.OnClick
 import com.JoyBox.Shefaa.R
+import com.joyBox.shefaa.dialogs.CitiesDialog
+import com.joyBox.shefaa.enums.CityEnum
+import com.joyBox.shefaa.eventsBus.EventActions
+import com.joyBox.shefaa.eventsBus.MessageEvent
+import com.joyBox.shefaa.eventsBus.RxBus
 import com.joyBox.shefaa.helpers.IntentHelper
 import com.joyBox.shefaa.viewModels.LabGeneralSearchViewHolder
 
@@ -31,11 +36,24 @@ class LabGeneralSearchFragment : BaseGeneralSearchFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        RxBus.listen(MessageEvent::class.java).subscribe {
+            when (it.action) {
+                EventActions.CityLab_Tag -> {
+                    labGeneralSearchViewHolder.cityTextView.text = it.message as String
+                }
+            }
+        }
     }
 
     @OnClick(R.id.searchBtn)
     fun onSearchButtonClick(view: View) {
         IntentHelper.startLabSearchActivity(context!!, labGeneralSearchViewHolder.getLabFilter())
+    }
+
+    @OnClick(R.id.cityTextView)
+    fun onCityTextViewClick(view: View) {
+        val cityDialog = CitiesDialog.newInstance(CityEnum.LABORATORY)
+        cityDialog.show(childFragmentManager, CitiesDialog.CitiesDialog_Tag)
     }
 
 

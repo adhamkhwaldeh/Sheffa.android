@@ -4,7 +4,7 @@ package com.joyBox.shefaa.entities.models
  * Created by Adhamkh on 2018-10-20.
  */
 class AppointmentInvoiceModel constructor(var title: String, var desc: String,
-                                          var appointmentId: String, var invoiceValue: String) {
+                                          var appointmentName: String, var invoiceValue: String) {
     var data = "{\n" +
             "  \"title\": \"" + title + "\",\n" +
             "  \"type\": \"receipt\",\n" +
@@ -12,7 +12,7 @@ class AppointmentInvoiceModel constructor(var title: String, var desc: String,
             "  \"body\": {\"und\": [{\"value\": \"" + desc + "\"}]},\n" +
             "  \"field_appointment_number\": \n" +
             "{\n" +
-            "    \"und\": [{\"target_id\": \"" + appointmentId + "\"}]\n" +
+            "    \"und\": [{\"target_id\": \"" + appointmentName + "\"}]\n" +
             "  },\n" +
             "  \"field_receipt_value\": {\"und\": [{\"value\": \"" + invoiceValue + "\"}]}\n" +
             "}\n"

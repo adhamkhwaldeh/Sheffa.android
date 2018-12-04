@@ -23,6 +23,7 @@
     <dimen name="postItemHeight">160dp</dimen>
     <dimen name="businessItemWidth">250dp</dimen>
     <dimen name="sm_btn_height">36dp</dimen>
+    <dimen name="xsm_btn_height">28dp</dimen>
 
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
@@ -74,5 +75,7 @@
     <dimen name="toggleWidth">56dp</dimen>
     <dimen name="toggleHeight">56dp</dimen>
     <dimen name="magazineItemHeight">120dp</dimen>
+    <dimen name="spinnerHeight">50dp</dimen>
+    <dimen name="dialogHeight">300dp</dimen>
 
 </resources>

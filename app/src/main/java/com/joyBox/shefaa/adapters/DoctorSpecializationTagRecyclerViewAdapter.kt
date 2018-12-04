@@ -24,7 +24,8 @@ class DoctorSpecializationTagRecyclerViewAdapter constructor(val context: Contex
 
         holder.closeBtn.setOnClickListener({
             specializationList.removeAt(pos)
-            notifyItemRemoved(pos)
+//            notifyItemRemoved(pos)
+            notifyDataSetChanged()
         })
 
     }

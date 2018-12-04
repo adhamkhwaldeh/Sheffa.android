@@ -23,8 +23,10 @@ import javax.inject.Inject
 import android.support.v4.view.MenuItemCompat
 import android.view.Gravity
 import android.view.View
+import android.widget.ImageView
 import android.widget.TextView
 import butterknife.OnClick
+import com.joyBox.shefaa.configurations.GlideApp
 import com.joyBox.shefaa.cores.AuthenticationCore
 import com.joyBox.shefaa.entities.User
 
@@ -47,6 +49,8 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
 
     //    @BindView(R.id.userEmail)
     lateinit var userEmail: TextView
+
+    lateinit var userProfileImage: ImageView
 
 
     fun initToolBar() {
@@ -77,15 +81,35 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
 
         userName = navigationView.getHeaderView(0).findViewById(R.id.userName)
         userEmail = navigationView.getHeaderView(0).findViewById(R.id.userEmail)
+        userProfileImage = navigationView.getHeaderView(0).findViewById(R.id.userProfileImage)
 
         userName.text = user?.user?.name
         userEmail.text = user?.user?.mail
+
+        val url = user?.user?.picture?.pictureUrl
+
+        try {
+            GlideApp.with(applicationContext).load(url)/*.resize(240, 170).centerCrop().fit()*/
+                    .placeholder(R.drawable.userprofile).error(R.drawable.userprofile).into(userProfileImage
+//            , object : Callback() {
+//                fun onSuccess() {
+//                    Log.v("Success", "Load Image")
+//                }
+//
+//                fun onError() {
+//                    Log.v("Fail", "Load Image")
+//                }
+//            }
+            )
+        } catch (ex: Exception) {
+
+        }
     }
 
     private fun initRedirection() {
         val user: User = UserRepository(this).getClient()!!.user
         if (AuthenticationCore.isPatientOnly(user)) {
-            IntentHelper.startDashBoardActivity(this)
+            IntentHelper.startPatientDashBoardActivity(this)
 //            finish()
         } else if (AuthenticationCore.isDoctor(user)) {
             IntentHelper.startDoctorDashBoardActivity(this)
@@ -105,7 +129,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
 
         navigationView.setNavigationItemSelectedListener(this)
 
-        initRedirection()
+        //initRedirection()
 
     }
 
@@ -132,7 +156,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
                 IntentHelper.startProfileActivity(this)
             }
             R.id.MyMedicalProfile -> {
-                IntentHelper.startMyMedicalProfileActivity(this,UserRepository(this@MainActivity).getClient()!!.user)
+                IntentHelper.startMyMedicalProfileActivity(this, UserRepository(this@MainActivity).getClient()!!.user)
             }
             R.id.Messages -> {
                 IntentHelper.startMessagesActivity(this)

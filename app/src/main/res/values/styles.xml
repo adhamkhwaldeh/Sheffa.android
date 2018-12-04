@@ -116,6 +116,26 @@
         <item name="android:layout_gravity">left|start</item>
     </style>
 
+    <style name="AppTheme.MediumTextAppearance" parent="TextAppearance.AppCompat.Medium">
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:padding">@dimen/xsm_margin</item>
+        <item name="android:gravity">start|left</item>
+        <item name="android:layout_gravity">left|start</item>
+    </style>
+
+    <style name="AppTheme.MediumBlackTextAppearance" parent="AppTheme.MediumTextAppearance">
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="AppTheme.MediumWhiteTextAppearance" parent="TextAppearance.AppCompat.Medium">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:padding">@dimen/xsm_margin</item>
+        <item name="android:gravity">start|left</item>
+        <item name="android:layout_gravity">left|start</item>
+    </style>
+
     <style name="AppTheme.TextWhiteAppearance" parent="TextAppearance.AppCompat.Small">
         <item name="android:textColor">@color/white</item>
         <item name="android:textAllCaps">false</item>
@@ -149,6 +169,12 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <style name="AppTheme.SmallButtonStyle" parent="Base.Widget.AppCompat.Button.Small">
+        <item name="android:inputType">textCapSentences</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
 
     <style name="DialogAnimation">
         <item name="android:windowEnterAnimation">@anim/slide_up_dialog</item>
@@ -164,5 +190,34 @@
         <item name="colorControlNormal">@color/colorPrimary</item>
     </style>
 
+    <style name="AppTheme.MyRatebar" parent="Widget.AppCompat.RatingBar.Small">
+        <item name="android:layout_margin">@dimen/md_margin</item>
+        <item name="android:numStars">5</item>
+        <item name="android:stepSize">1</item>
+        <item name="colorControlNormal">@color/lightgray</item>
+        <item name="colorControlActivated">@color/golden_stars</item>
+    </style>
+
+    <style name="AppTheme.LargRatebar" parent="Base.Widget.AppCompat.RatingBar">
+        <item name="android:layout_margin">@dimen/md_margin</item>
+        <item name="android:numStars">5</item>
+        <item name="android:stepSize">1</item>
+        <item name="colorControlNormal">@color/lightgray</item>
+        <item name="colorControlActivated">@color/golden_stars</item>
+    </style>
+
+
+    <style name="TransparentBottomSheetDialogTheme" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/TransparentBottomSheetStyle</item>
+    </style>
+
+    <style name="TransparentBottomSheetStyle" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+
+    <style name="BottomSheetAnimation">
+        <item name="android:windowEnterAnimation">@anim/slide_up_dialog</item>
+        <item name="android:windowExitAnimation">@anim/slide_down</item>
+    </style>
 
 </resources>

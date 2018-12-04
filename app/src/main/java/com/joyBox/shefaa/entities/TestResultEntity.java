@@ -12,6 +12,8 @@ public class TestResultEntity {
 
     private String nid = "";
 
+    private String Title="";
+
     private String Results = "";
 
     //    @SerializedName("Test name")
@@ -83,5 +85,13 @@ public class TestResultEntity {
 
     public void setFilesDetails(List<TestResultFilesDetails> filesDetails) {
         this.filesDetails = filesDetails;
+    }
+
+    public String getTitle() {
+        return Title;
+    }
+
+    public void setTitle(String title) {
+        Title = title;
     }
 }

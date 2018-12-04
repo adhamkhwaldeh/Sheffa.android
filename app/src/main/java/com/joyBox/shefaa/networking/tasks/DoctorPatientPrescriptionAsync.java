@@ -21,7 +21,7 @@ public class DoctorPatientPrescriptionAsync extends AsyncTask<Void, Void, String
 
     private OnDoctorPatientPrescriptionListener onDoctorPatientPrescriptionListener;
 
-    public DoctorPatientPrescriptionAsync(String doctorName, String patientId,
+    public DoctorPatientPrescriptionAsync(String patientId, String doctorName,
                                           OnDoctorPatientPrescriptionListener onDoctorPatientPrescriptionListener) {
         this.doctorName = doctorName;
         this.patientId = patientId;
@@ -47,6 +47,10 @@ public class DoctorPatientPrescriptionAsync extends AsyncTask<Void, Void, String
             if (s.equalsIgnoreCase(NetworkingHelper.ErrorConnectionResponse)) {
                 onDoctorPatientPrescriptionListener.onDoctorPatientPrescriptionInternetConnection();
             } else {
+                if (s.trim().isEmpty()) {
+                    onDoctorPatientPrescriptionListener.onDoctorPatientPrescriptionNoData();
+                    return;
+                }
                 List<DoctorPatientPrescription> doctorPatientPrescriptionList = JsonParser.getDoctorPatientPrescription(s);
                 if (doctorPatientPrescriptionList.size() > 0) {
                     onDoctorPatientPrescriptionListener.onDoctorPatientPrescriptionSuccessFully(doctorPatientPrescriptionList);

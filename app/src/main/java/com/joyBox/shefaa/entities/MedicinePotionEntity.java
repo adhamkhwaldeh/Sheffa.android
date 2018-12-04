@@ -24,11 +24,11 @@ public class MedicinePotionEntity {
     @SerializedName("Medicine name")
     private String Medicine_name = "";
 
-    @SerializedName("Active ingredient name")
-    private List<String> Active_ingredient_name = null;
+    //    @SerializedName("Active ingredient name")
+    public List<String> Active_ingredient_name = null;
 
-    @SerializedName("Alternative medicine")
-    private List<String> Alternative_medicine;
+    //    @SerializedName("Alternative medicine")
+    public List<String> Alternative_medicine;
 
     //    @SerializedName("How many times")
     private String How_many_times = "";

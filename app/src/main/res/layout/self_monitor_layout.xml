@@ -32,35 +32,35 @@
             app:layout_constraintTop_toBottomOf="@+id/SelfMonitorAddBtn" />
 
 
-        <LinearLayout
-            android:id="@+id/SelfMonitorHeader"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintTop_toBottomOf="@+id/indicatorSpinner">
+        <!--<LinearLayout-->
+            <!--android:id="@+id/SelfMonitorHeader"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:orientation="horizontal"-->
+            <!--app:layout_constraintTop_toBottomOf="@+id/indicatorSpinner">-->
 
-            <android.support.v7.widget.AppCompatTextView
-                style="@style/AppTheme.TitleTextAppearance"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/Value" />
+            <!--<android.support.v7.widget.AppCompatTextView-->
+                <!--style="@style/AppTheme.TitleTextAppearance"-->
+                <!--android:layout_width="0dp"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_weight="1"-->
+                <!--android:text="@string/Value" />-->
 
-            <android.support.v7.widget.AppCompatTextView
-                style="@style/AppTheme.TitleTextAppearance"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/Unit" />
+            <!--<android.support.v7.widget.AppCompatTextView-->
+                <!--style="@style/AppTheme.TitleTextAppearance"-->
+                <!--android:layout_width="0dp"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_weight="1"-->
+                <!--android:text="@string/Unit" />-->
 
-            <android.support.v7.widget.AppCompatTextView
-                style="@style/AppTheme.TitleTextAppearance"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/Time" />
+            <!--<android.support.v7.widget.AppCompatTextView-->
+                <!--style="@style/AppTheme.TitleTextAppearance"-->
+                <!--android:layout_width="0dp"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_weight="1"-->
+                <!--android:text="@string/Time" />-->
 
-        </LinearLayout>
+        <!--</LinearLayout>-->
 
 
         <com.joyBox.shefaa.views.Stateslayoutview
@@ -72,7 +72,7 @@
             app:RefreshbtnRes="@+id/retryBtn"
             app:WaitingLayout="@layout/state_layout_waiting"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/SelfMonitorHeader">
+            app:layout_constraintTop_toBottomOf="@+id/indicatorSpinner">
 
             <include
                 android:id="@+id/recyclerView"

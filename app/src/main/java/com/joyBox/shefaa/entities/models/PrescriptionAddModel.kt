@@ -1,8 +1,5 @@
 package com.joyBox.shefaa.entities.models
 
-/**
- * Created by Adhamkh on 2018-10-20.
- */
 class PrescriptionAddModel(var desc: String, var specialist: String) {
 
     var data: String

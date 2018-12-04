@@ -29,12 +29,13 @@
             <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
+                android:layout_margin="@dimen/md_padding"
                 app:layout_constraintBottom_toTopOf="@+id/saveBtn"
                 app:layout_constraintTop_toTopOf="parent">
 
                 <android.support.constraint.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="wrap_content">
 
                     <android.support.constraint.ConstraintLayout
                         android:id="@+id/cityContainer"
@@ -45,7 +46,7 @@
                             style="@style/AppTheme.TextWhiteAppearance"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
-                            android:gravity="center"
+                            android:gravity="start|center_vertical"
                             android:text="@string/City"
                             android:textAlignment="gravity"
                             app:layout_constraintWidth_percent="0.3" />
@@ -78,7 +79,7 @@
                             style="@style/AppTheme.TextWhiteAppearance"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
-                            android:gravity="center"
+                            android:gravity="start|center_vertical"
                             android:text="@string/Area"
                             android:textAlignment="gravity"
                             app:layout_constraintWidth_percent="0.3" />
@@ -111,7 +112,7 @@
                             style="@style/AppTheme.TextWhiteAppearance"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
-                            android:gravity="center"
+                            android:gravity="start|center_vertical"
                             android:text="@string/Street"
                             android:textAlignment="gravity"
                             app:layout_constraintWidth_percent="0.3" />
@@ -145,7 +146,7 @@
                             style="@style/AppTheme.TextWhiteAppearance"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:gravity="center"
+                            android:gravity="start|center_vertical"
                             android:text="@string/Specialization"
                             android:textAlignment="gravity"
                             app:layout_constraintBottom_toBottomOf="parent"
@@ -191,7 +192,7 @@
                             style="@style/AppTheme.TextWhiteAppearance"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
-                            android:gravity="center"
+                            android:gravity="start|center_vertical"
                             android:text="@string/Phone"
                             android:textAlignment="gravity"
                             app:layout_constraintWidth_percent="0.3" />
@@ -224,7 +225,7 @@
                             style="@style/AppTheme.TextWhiteAppearance"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
-                            android:gravity="center"
+                            android:gravity="start|center_vertical"
                             android:text="@string/Cost"
                             android:textAlignment="gravity"
                             app:layout_constraintWidth_percent="0.3" />
@@ -257,7 +258,7 @@
                             style="@style/AppTheme.TextWhiteAppearance"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
-                            android:gravity="center"
+                            android:gravity="start|center_vertical"
                             android:text="@string/HomeAppointment"
                             android:textAlignment="gravity"
                             app:layout_constraintWidth_percent="0.5" />
@@ -268,7 +269,6 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="left|start"
                             android:layout_weight="1"
-                            android:background="@drawable/edittextdrawble"
                             android:inputType="text"
                             android:minHeight="@dimen/EditTextHeight"
                             android:textAlignment="gravity"
@@ -291,9 +291,7 @@
                             style="@style/AppTheme.TextWhiteAppearance"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_margin="@dimen/md_margin"
-                            android:gravity="left|start"
-                            android:padding="@dimen/md_padding"
+                            android:gravity="left|start|center_vertical"
                             android:text="@string/ClinicScheduler"
                             android:textAlignment="gravity" />
 
@@ -308,7 +306,10 @@
                                 style="@style/AppTheme.TextWhiteAppearance"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+
                                 android:text="@string/Saturday"
+                                android:textAlignment="gravity"
                                 app:layout_constraintLeft_toLeftOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintWidth_percent="0.25" />
@@ -318,7 +319,11 @@
                                 style="@style/AppTheme.TextWhiteAppearance"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
+                                android:drawableEnd="@drawable/ic_calender_dark_24dp"
+                                android:drawableRight="@drawable/ic_calender_dark_24dp"
+                                android:gravity="center"
                                 android:text="@string/Saturday"
+                                android:textAlignment="gravity"
                                 app:layout_constraintLeft_toRightOf="@+id/Saturday"
                                 app:layout_constraintStart_toEndOf="@+id/Saturday"
                                 app:layout_constraintWidth_percent="0.25" />
@@ -328,7 +333,10 @@
                                 style="@style/AppTheme.TextWhiteAppearance"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+
                                 android:text="@string/To"
+                                android:textAlignment="gravity"
                                 app:layout_constraintLeft_toRightOf="@+id/saturdayStartDate"
                                 app:layout_constraintStart_toEndOf="@+id/saturdayStartDate"
                                 app:layout_constraintWidth_percent="0.25" />
@@ -338,7 +346,11 @@
                                 style="@style/AppTheme.TextWhiteAppearance"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
+                                android:drawableEnd="@drawable/ic_calender_dark_24dp"
+                                android:drawableRight="@drawable/ic_calender_dark_24dp"
+                                android:gravity="center"
                                 android:text="@string/Saturday"
+                                android:textAlignment="gravity"
                                 app:layout_constraintLeft_toRightOf="@+id/SaturdayTo"
                                 app:layout_constraintStart_toEndOf="@+id/SaturdayTo"
                                 app:layout_constraintWidth_percent="0.25" />
@@ -356,7 +368,10 @@
                                 style="@style/AppTheme.TextWhiteAppearance"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+
                                 android:text="@string/Sunday"
+                                android:textAlignment="gravity"
                                 app:layout_constraintLeft_toLeftOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintWidth_percent="0.25" />
@@ -366,7 +381,11 @@
                                 style="@style/AppTheme.TextWhiteAppearance"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
+                                android:drawableEnd="@drawable/ic_calender_dark_24dp"
+                                android:drawableRight="@drawable/ic_calender_dark_24dp"
+                                android:gravity="center"
                                 android:text="@string/Saturday"
+                                android:textAlignment="gravity"
                                 app:layout_constraintLeft_toRightOf="@+id/sunday"
                                 app:layout_constraintStart_toEndOf="@+id/sunday"
                                 app:layout_constraintWidth_percent="0.25" />
@@ -376,7 +395,10 @@
                                 style="@style/AppTheme.TextWhiteAppearance"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+
                                 android:text="@string/To"
+                                android:textAlignment="gravity"
                                 app:layout_constraintLeft_toRightOf="@+id/sundayStartDate"
                                 app:layout_constraintStart_toEndOf="@+id/sundayStartDate"
                                 app:layout_constraintWidth_percent="0.25" />
@@ -386,7 +408,12 @@
                                 style="@style/AppTheme.TextWhiteAppearance"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
+                                android:drawableEnd="@drawable/ic_calender_dark_24dp"
+                                android:drawableRight="@drawable/ic_calender_dark_24dp"
+                                android:gravity="center"
                                 android:text="@string/Saturday"
+                                android:textAlignment="gravity"
+
                                 app:layout_constraintLeft_toRightOf="@+id/sundayTo"
                                 app:layout_constraintStart_toEndOf="@+id/sundayTo"
                                 app:layout_constraintWidth_percent="0.25" />
@@ -404,7 +431,10 @@
                                 style="@style/AppTheme.TextWhiteAppearance"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+
                                 android:text="@string/Monday"
+                                android:textAlignment="gravity"
                                 app:layout_constraintLeft_toLeftOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintWidth_percent="0.25" />
@@ -414,7 +444,11 @@
                                 style="@style/AppTheme.TextWhiteAppearance"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
+                                android:drawableEnd="@drawable/ic_calender_dark_24dp"
+                                android:drawableRight="@drawable/ic_calender_dark_24dp"
+                                android:gravity="center"
                                 android:text="@string/Saturday"
+                                android:textAlignment="gravity"
                                 app:layout_constraintLeft_toRightOf="@+id/monday"
                                 app:layout_constraintStart_toEndOf="@+id/monday"
                                 app:layout_constraintWidth_percent="0.25" />
@@ -424,7 +458,10 @@
                                 style="@style/AppTheme.TextWhiteAppearance"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+
                                 android:text="@string/To"
+                                android:textAlignment="gravity"
                                 app:layout_constraintLeft_toRightOf="@+id/monDayStartDate"
                                 app:layout_constraintStart_toEndOf="@+id/monDayStartDate"
                                 app:layout_constraintWidth_percent="0.25" />
@@ -434,7 +471,11 @@
                                 style="@style/AppTheme.TextWhiteAppearance"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
+                                android:drawableEnd="@drawable/ic_calender_dark_24dp"
+                                android:drawableRight="@drawable/ic_calender_dark_24dp"
+                                android:gravity="center"
                                 android:text="@string/Saturday"
+                                android:textAlignment="gravity"
                                 app:layout_constraintLeft_toRightOf="@+id/mondayTo"
                                 app:layout_constraintStart_toEndOf="@+id/mondayTo"
                                 app:layout_constraintWidth_percent="0.25" />
@@ -452,7 +493,10 @@
                                 style="@style/AppTheme.TextWhiteAppearance"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+
                                 android:text="@string/Tuesday"
+                                android:textAlignment="gravity"
                                 app:layout_constraintLeft_toLeftOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintWidth_percent="0.25" />
@@ -462,7 +506,11 @@
                                 style="@style/AppTheme.TextWhiteAppearance"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
+                                android:drawableEnd="@drawable/ic_calender_dark_24dp"
+                                android:drawableRight="@drawable/ic_calender_dark_24dp"
+                                android:gravity="center"
                                 android:text="@string/Saturday"
+                                android:textAlignment="gravity"
                                 app:layout_constraintLeft_toRightOf="@+id/tuesday"
                                 app:layout_constraintStart_toEndOf="@+id/tuesday"
                                 app:layout_constraintWidth_percent="0.25" />
@@ -472,7 +520,10 @@
                                 style="@style/AppTheme.TextWhiteAppearance"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+
                                 android:text="@string/To"
+                                android:textAlignment="gravity"
                                 app:layout_constraintLeft_toRightOf="@+id/tuesdayStartDate"
                                 app:layout_constraintStart_toEndOf="@+id/tuesdayStartDate"
                                 app:layout_constraintWidth_percent="0.25" />
@@ -482,7 +533,11 @@
                                 style="@style/AppTheme.TextWhiteAppearance"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
+                                android:drawableEnd="@drawable/ic_calender_dark_24dp"
+                                android:drawableRight="@drawable/ic_calender_dark_24dp"
+                                android:gravity="center"
                                 android:text="@string/Saturday"
+                                android:textAlignment="gravity"
                                 app:layout_constraintLeft_toRightOf="@+id/tuesdayTo"
                                 app:layout_constraintStart_toEndOf="@+id/tuesdayTo"
                                 app:layout_constraintWidth_percent="0.25" />
@@ -500,7 +555,10 @@
                                 style="@style/AppTheme.TextWhiteAppearance"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+
                                 android:text="@string/Wednsday"
+                                android:textAlignment="gravity"
                                 app:layout_constraintLeft_toLeftOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintWidth_percent="0.25" />
@@ -510,7 +568,12 @@
                                 style="@style/AppTheme.TextWhiteAppearance"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
+                                android:drawableEnd="@drawable/ic_calender_dark_24dp"
+                                android:drawableRight="@drawable/ic_calender_dark_24dp"
+                                android:gravity="center"
                                 android:text="@string/Saturday"
+                                android:textAlignment="gravity"
+
                                 app:layout_constraintLeft_toRightOf="@+id/wednesday"
                                 app:layout_constraintStart_toEndOf="@+id/wednesday"
                                 app:layout_constraintWidth_percent="0.25" />
@@ -520,7 +583,10 @@
                                 style="@style/AppTheme.TextWhiteAppearance"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+
                                 android:text="@string/To"
+                                android:textAlignment="gravity"
                                 app:layout_constraintLeft_toRightOf="@+id/wednesdayStartDate"
                                 app:layout_constraintStart_toEndOf="@+id/wednesdayStartDate"
                                 app:layout_constraintWidth_percent="0.25" />
@@ -530,7 +596,12 @@
                                 style="@style/AppTheme.TextWhiteAppearance"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
+                                android:drawableEnd="@drawable/ic_calender_dark_24dp"
+                                android:drawableRight="@drawable/ic_calender_dark_24dp"
+                                android:gravity="center"
                                 android:text="@string/Saturday"
+                                android:textAlignment="gravity"
+
                                 app:layout_constraintLeft_toRightOf="@+id/wednesdayTo"
                                 app:layout_constraintStart_toEndOf="@+id/wednesdayTo"
                                 app:layout_constraintWidth_percent="0.25" />
@@ -548,7 +619,10 @@
                                 style="@style/AppTheme.TextWhiteAppearance"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+
                                 android:text="@string/Thursday"
+                                android:textAlignment="gravity"
                                 app:layout_constraintLeft_toLeftOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintWidth_percent="0.25" />
@@ -558,7 +632,12 @@
                                 style="@style/AppTheme.TextWhiteAppearance"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
+                                android:drawableEnd="@drawable/ic_calender_dark_24dp"
+                                android:drawableRight="@drawable/ic_calender_dark_24dp"
+                                android:gravity="center"
                                 android:text="@string/Saturday"
+                                android:textAlignment="gravity"
+
                                 app:layout_constraintLeft_toRightOf="@+id/thursday"
                                 app:layout_constraintStart_toEndOf="@+id/thursday"
                                 app:layout_constraintWidth_percent="0.25" />
@@ -568,7 +647,10 @@
                                 style="@style/AppTheme.TextWhiteAppearance"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+
                                 android:text="@string/To"
+                                android:textAlignment="gravity"
                                 app:layout_constraintLeft_toRightOf="@+id/thursdayStartDate"
                                 app:layout_constraintStart_toEndOf="@+id/thursdayStartDate"
                                 app:layout_constraintWidth_percent="0.25" />
@@ -578,7 +660,12 @@
                                 style="@style/AppTheme.TextWhiteAppearance"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
+                                android:drawableEnd="@drawable/ic_calender_dark_24dp"
+                                android:drawableRight="@drawable/ic_calender_dark_24dp"
+                                android:gravity="center"
                                 android:text="@string/Saturday"
+                                android:textAlignment="gravity"
+
                                 app:layout_constraintLeft_toRightOf="@+id/thursdayTo"
                                 app:layout_constraintStart_toEndOf="@+id/thursdayTo"
                                 app:layout_constraintWidth_percent="0.25" />
@@ -596,7 +683,10 @@
                                 style="@style/AppTheme.TextWhiteAppearance"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+
                                 android:text="@string/Friday"
+                                android:textAlignment="gravity"
                                 app:layout_constraintLeft_toLeftOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintWidth_percent="0.25" />
@@ -606,7 +696,12 @@
                                 style="@style/AppTheme.TextWhiteAppearance"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
+                                android:drawableEnd="@drawable/ic_calender_dark_24dp"
+                                android:drawableRight="@drawable/ic_calender_dark_24dp"
+                                android:gravity="center"
                                 android:text="@string/Saturday"
+                                android:textAlignment="gravity"
+
                                 app:layout_constraintLeft_toRightOf="@+id/friday"
                                 app:layout_constraintStart_toEndOf="@+id/friday"
                                 app:layout_constraintWidth_percent="0.25" />
@@ -616,7 +711,9 @@
                                 style="@style/AppTheme.TextWhiteAppearance"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
                                 android:text="@string/To"
+                                android:textAlignment="gravity"
                                 app:layout_constraintLeft_toRightOf="@+id/fridayStartDate"
                                 app:layout_constraintStart_toEndOf="@+id/fridayStartDate"
                                 app:layout_constraintWidth_percent="0.25" />
@@ -626,7 +723,11 @@
                                 style="@style/AppTheme.TextWhiteAppearance"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
+                                android:drawableEnd="@drawable/ic_calender_dark_24dp"
+                                android:drawableRight="@drawable/ic_calender_dark_24dp"
+                                android:gravity="center"
                                 android:text="@string/Saturday"
+                                android:textAlignment="gravity"
                                 app:layout_constraintLeft_toRightOf="@+id/fridayTo"
                                 app:layout_constraintStart_toEndOf="@+id/fridayTo"
                                 app:layout_constraintWidth_percent="0.25" />

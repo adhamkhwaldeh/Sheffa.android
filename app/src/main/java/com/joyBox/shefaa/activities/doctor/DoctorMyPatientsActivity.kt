@@ -41,4 +41,5 @@ class DoctorMyPatientsActivity : BaseActivity() {
         initViewPager()
     }
 
+
 }

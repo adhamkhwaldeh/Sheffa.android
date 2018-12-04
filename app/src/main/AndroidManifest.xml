@@ -54,7 +54,9 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="com.joyBox.shefaa.activities.SignInActivity">
+        <activity
+            android:name="com.joyBox.shefaa.activities.SignInActivity"
+            android:windowSoftInputMode="adjustPan">
 
         </activity>
 
@@ -94,7 +96,9 @@
 
         </activity>
 
-        <activity android:name="com.joyBox.shefaa.activities.patient.MyMedicalProfileActivity">
+        <activity
+            android:name="com.joyBox.shefaa.activities.patient.MyMedicalProfileActivity"
+            android:windowSoftInputMode="adjustResize">
 
         </activity>
 
@@ -122,7 +126,7 @@
 
         </activity>
 
-        <activity android:name="com.joyBox.shefaa.activities.TestResultAddActivity">
+        <activity android:name="com.joyBox.shefaa.activities.patient.TestResultAddActivity">
 
         </activity>
 
@@ -138,7 +142,7 @@
 
         </activity>
 
-        <activity android:name="com.joyBox.shefaa.activities.patient.DashBoardActivity">
+        <activity android:name="com.joyBox.shefaa.activities.patient.PatientDashBoardActivity">
 
         </activity>
 
@@ -252,7 +256,8 @@
         </activity>
 
 
-        <activity android:name="com.joyBox.shefaa.activities.doctor.DoctorBudgetActivity">
+        <activity android:name="com.joyBox.shefaa.activities.doctor.DoctorBudgetActivity"
+            android:windowSoftInputMode="adjustPan">
 
         </activity>
 
@@ -265,6 +270,30 @@
         </activity>
 
         <activity android:name="com.joyBox.shefaa.activities.doctor.DoctorAppointmentInvoiceActivity">
+
+        </activity>
+
+        <activity android:name="com.joyBox.shefaa.activities.MainDashBoardActivity">
+
+        </activity>
+
+        <activity android:name="com.joyBox.shefaa.activities.DoctorSearchMapActivity">
+
+        </activity>
+
+        <activity android:name="com.joyBox.shefaa.activities.PharmacySearchMapActivity">
+
+        </activity>
+
+        <activity android:name="com.joyBox.shefaa.activities.LabSearchMapActivity">
+
+        </activity>
+
+        <activity android:name="com.joyBox.shefaa.activities.autoComplete.MedicineAutoCompleteActivity">
+
+        </activity>
+
+        <activity android:name="com.joyBox.shefaa.activities.autoComplete.ActiveMaterialAutoCompleteActivity">
 
         </activity>
 

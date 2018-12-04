@@ -1,169 +1,181 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/lg_padding">
 
-        <android.support.v7.widget.AppCompatTextView
-            style="@style/AppTheme.TitleBlackTextAppearance"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <android.support.v7.widget.AppCompatTextView
+                style="@style/AppTheme.TitleTextAppearance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/Patient_name"
+                android:textColor="@color/lightgray" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/patientName"
+                style="@style/AppTheme.TitleBlackTextAppearance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <include layout="@layout/sperator" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <android.support.v7.widget.AppCompatTextView
+                style="@style/AppTheme.TitleBlackTextAppearance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/Doctor_name"
+                android:textColor="@color/lightgray" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/doctorName"
+                style="@style/AppTheme.TitleBlackTextAppearance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <include layout="@layout/sperator" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <android.support.v7.widget.AppCompatTextView
+                style="@style/AppTheme.TitleBlackTextAppearance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/Diagnosis"
+                android:textColor="@color/lightgray" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/diagnosisName"
+                style="@style/AppTheme.TitleBlackTextAppearance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <include layout="@layout/sperator" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <android.support.v7.widget.AppCompatTextView
+                style="@style/AppTheme.TitleBlackTextAppearance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/date"
+                android:textColor="@color/lightgray" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/dateText"
+                style="@style/AppTheme.TitleBlackTextAppearance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <include layout="@layout/sperator" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/Patient_name" />
+            android:orientation="vertical">
 
-        <android.support.v7.widget.AppCompatTextView
-            android:id="@+id/patientName"
-            style="@style/AppTheme.TitleBlackTextAppearance"
+            <android.support.v7.widget.AppCompatTextView
+                style="@style/AppTheme.TitleBlackTextAppearance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/tests"
+                android:textColor="@color/lightgray" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/testsName"
+                style="@style/AppTheme.TitleBlackTextAppearance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <include layout="@layout/sperator" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
 
-        <include layout="@layout/sperator" />
+            <android.support.v7.widget.AppCompatTextView
+                style="@style/AppTheme.TitleBlackTextAppearance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/Code"
+                android:textColor="@color/lightgray" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/codeText"
+                style="@style/AppTheme.TitleBlackTextAppearance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <include layout="@layout/sperator" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <android.support.v7.widget.AppCompatTextView
+                style="@style/AppTheme.TitleBlackTextAppearance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/Key"
+                android:textColor="@color/lightgray" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/keyText"
+                style="@style/AppTheme.TitleBlackTextAppearance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <include layout="@layout/sperator" />
+
+
+        </LinearLayout>
 
 
     </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="vertical">
-
-        <android.support.v7.widget.AppCompatTextView
-            style="@style/AppTheme.TitleBlackTextAppearance"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/Doctor_name" />
-
-        <android.support.v7.widget.AppCompatTextView
-            android:id="@+id/doctorName"
-            style="@style/AppTheme.TitleBlackTextAppearance"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <include layout="@layout/sperator" />
-
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="vertical">
-
-        <android.support.v7.widget.AppCompatTextView
-            style="@style/AppTheme.TitleBlackTextAppearance"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/Diagnosis" />
-
-        <android.support.v7.widget.AppCompatTextView
-            android:id="@+id/diagnosisName"
-            style="@style/AppTheme.TitleBlackTextAppearance"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <include layout="@layout/sperator" />
-
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="vertical">
-
-        <android.support.v7.widget.AppCompatTextView
-            style="@style/AppTheme.TitleBlackTextAppearance"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/date" />
-
-        <android.support.v7.widget.AppCompatTextView
-            android:id="@+id/dateText"
-            style="@style/AppTheme.TitleBlackTextAppearance"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <include layout="@layout/sperator" />
-
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="vertical">
-
-        <android.support.v7.widget.AppCompatTextView
-            style="@style/AppTheme.TitleBlackTextAppearance"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/tests" />
-
-        <android.support.v7.widget.AppCompatTextView
-            android:id="@+id/testsName"
-            style="@style/AppTheme.TitleBlackTextAppearance"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <include layout="@layout/sperator" />
-
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="vertical">
-
-        <android.support.v7.widget.AppCompatTextView
-            style="@style/AppTheme.TitleBlackTextAppearance"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/Code" />
-
-        <android.support.v7.widget.AppCompatTextView
-            android:id="@+id/codeText"
-            style="@style/AppTheme.TitleBlackTextAppearance"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <include layout="@layout/sperator" />
-
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="vertical">
-
-        <android.support.v7.widget.AppCompatTextView
-            style="@style/AppTheme.TitleBlackTextAppearance"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/Key" />
-
-        <android.support.v7.widget.AppCompatTextView
-            android:id="@+id/keyText"
-            style="@style/AppTheme.TitleBlackTextAppearance"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <include layout="@layout/sperator" />
-
-
-    </LinearLayout>
-
-
-</LinearLayout>
+</ScrollView>

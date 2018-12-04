@@ -53,7 +53,10 @@ class PrescriptionFollowUpFragment : BasePrescriptionFragment(), PrescriptionFol
         component.inject(this)
         presenter.attachView(this)
         presenter.subscribe()
-        presenter.loadPrescriptionFollowUp(prescription.Indicators_to_follow_up[0].value)
+        if (prescription.Indicators_to_follow_up.size > 0)
+            presenter.loadPrescriptionFollowUp(prescription.Indicators_to_follow_up[0].value)
+        else
+            showEmptyView(true)
     }
 
     private fun initRecyclerView() {

@@ -9,14 +9,9 @@ import com.joyBox.shefaa.activities.patient.*
 import com.joyBox.shefaa.entities.*
 import com.joyBox.shefaa.entities.models.MessageReplayModel
 import com.joyBox.shefaa.enums.ReminderType
-import android.support.v4.content.ContextCompat.startActivity
 import android.util.Log
 import com.JoyBox.Shefaa.R
-import com.joyBox.shefaa.activities.autoComplete.DoctorAutoCompleteActivity
-import android.support.v4.content.ContextCompat.startActivity
-import com.joyBox.shefaa.activities.autoComplete.AppointmentAutoCompleteActivity
-import com.joyBox.shefaa.activities.autoComplete.GuardianshipAutoCompleteActivity
-import com.joyBox.shefaa.activities.autoComplete.UserAutoCompleteActivity
+import com.joyBox.shefaa.activities.autoComplete.*
 import com.joyBox.shefaa.activities.doctor.*
 import com.joyBox.shefaa.filtrations.DoctorFilter
 import com.joyBox.shefaa.filtrations.LabFilter
@@ -50,6 +45,13 @@ class IntentHelper {
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
             context.startActivity(intent)
         }
+
+        fun startMainDashBoardActivity(context: Context) {
+            val intent = Intent(context, MainDashBoardActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+            context.startActivity(intent)
+        }
+
 
         fun startNotificationsActivity(context: Context) {
             val intent = Intent(context, NotificationsActivity::class.java)
@@ -168,14 +170,19 @@ class IntentHelper {
             context.startActivity(intent)
         }
 
-        fun startAppointmentReserveActivity(context: Context) {
+        fun startAppointmentReserveActivity(context: Context, doctor: Doctor?) {
             val intent = Intent(context, AppointmentReserveActivity::class.java)
+            var json = ""
+            if (doctor != null) {
+                json = Gson().toJson(doctor)
+            }
+            intent.putExtra(AppointmentReserveActivity.AppointmentReserveActivity_Tag, json)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
             context.startActivity(intent)
         }
 
-        fun startDashBoardActivity(context: Context) {
-            val intent = Intent(context, DashBoardActivity::class.java)
+        fun startPatientDashBoardActivity(context: Context) {
+            val intent = Intent(context, PatientDashBoardActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
             context.startActivity(intent)
         }
@@ -200,17 +207,23 @@ class IntentHelper {
         }
 
         fun startShareLink(context: Context, title: String, url: String) {
-            val share = Intent(android.content.Intent.ACTION_SEND)
+            try {
 
-            share.type = "text/plain"
-            //or Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET
-            share.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-            // Add data to the intent, the receiving app will decide
-            // what to do with it.
-            share.putExtra(Intent.EXTRA_SUBJECT, title)
-            share.putExtra(Intent.EXTRA_TEXT, url)
+                val share = Intent(android.content.Intent.ACTION_SEND)
 
-            context.startActivity(Intent.createChooser(share, context.resources.getString(R.string.ShareLink)))
+                share.type = "text/plain"
+                //or Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET
+                share.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                // Add data to the intent, the receiving app will decide
+                // what to do with it.
+                share.putExtra(Intent.EXTRA_SUBJECT, title)
+                share.putExtra(Intent.EXTRA_TEXT, url)
+
+                context.startActivity(Intent.createChooser(share, context.resources.getString(R.string.ShareLink)))
+
+            } catch (ex: Exception) {
+
+            }
         }
 
         fun startMagazinePostCommentAddActivity(context: Context, magazinePost: MagazinePost) {
@@ -413,6 +426,20 @@ class IntentHelper {
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
             context.startActivity(intent)
         }
+
+
+        fun startMedicineAutoCompleteActivity(context: Context) {
+            val intent = Intent(context, MedicineAutoCompleteActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+            context.startActivity(intent)
+        }
+
+        fun startActiveMaterialAutoCompleteActivity(context: Context) {
+            val intent = Intent(context, ActiveMaterialAutoCompleteActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+            context.startActivity(intent)
+        }
+
 
     }
 

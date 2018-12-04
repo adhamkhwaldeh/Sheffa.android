@@ -10,10 +10,8 @@ import android.view.ViewGroup;
 import android.widget.Filter;
 
 import com.JoyBox.Shefaa.R;
-import com.joyBox.shefaa.App;
 import com.joyBox.shefaa.entities.AppointmentEntity;
 import com.joyBox.shefaa.enums.AppointmentPlace;
-import com.joyBox.shefaa.enums.AppointmentStatus;
 import com.joyBox.shefaa.helpers.IntentHelper;
 import com.joyBox.shefaa.viewHolders.AppointmentPatientViewHolder;
 
@@ -42,8 +40,7 @@ public class AppointmentPatientRecyclerViewAdapter extends RecyclerView.Adapter<
     @Override
     public void onBindViewHolder(@NonNull AppointmentPatientViewHolder holder, int position) {
         final AppointmentEntity poJo = appointmentEntityList.get(position);
-        holder.bindPojo(poJo);
-
+        holder.bindPoJo(poJo);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
